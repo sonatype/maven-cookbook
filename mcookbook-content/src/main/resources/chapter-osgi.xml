@@ -238,7 +238,7 @@ HOT/osgi-project-1.0-SNAPSHOT.pom
     <section>
       <title>Solution</title>
 
-      <para>First, creat an OSGi proejct by executing the commands in <xref
+      <para>First, creat an OSGi project by executing the commands in <xref
       linkend="sect-osgi-generate-project" />. Once you do this, you have a
       structure that has been designed to support OSGi development with Maven.
       To start the Apache Felix container, run <command>mvn install
@@ -317,10 +317,7 @@ Welcome to Felix.
 
       <para></para>
 
-      <screen db:wrap="force" xmlns:db="http://discursive.com/plugins/docbook">$ <command>mvn pax:wrap-jar \
-  -DgroupId=javax.servlet \
-  -DartifactId=servlet-api \
-  -Dversion=2.5</command>
+      <screen db:wrap="force" xmlns:db="http://discursive.com/plugins/docbook">Tim-OBrien-Media:osgi-project Tim$ mvn pax:import-bundle -DgroupId=org.apache.felix -DartifactId=org.apache.felix.webconsole -Dversion=1.2.8
 [INFO] Scanning for projects...
 [INFO] Reactor build order: 
 [INFO]   org.sonatype.mcookbook.osgi-project (OSGi project)
@@ -330,79 +327,108 @@ Welcome to Felix.
 [INFO]   osgi-project - imported bundles
 [INFO] ------------------------------------------------------------------------
 [INFO] Building org.sonatype.mcookbook.osgi-project (OSGi project)
-[INFO]    task-segment: [pax:wrap-jar] (aggregator-style)
+[INFO]    task-segment: [pax:import-bundle] (aggregator-style)
 [INFO] ------------------------------------------------------------------------
-[INFO] Setting property: classpath.resource.loader.class =&gt; 'org.codehaus.plexus.velocity.ContextClassLoaderResourceLoader'.
-[INFO] Setting property: velocimacro.messages.on =&gt; 'false'.
-[INFO] Setting property: resource.loader =&gt; 'classpath'.
-[INFO] Setting property: resource.manager.logwhenfound =&gt; 'false'.
-[INFO] ************************************************************** 
-[INFO] Starting Jakarta Velocity v1.4
-[INFO] RuntimeInstance initializing.
-[INFO] Default Properties File: org/apache/velocity/runtime/defaults/velocity.properties
-[INFO] Default ResourceManager initializing. (class org.apache.velocity.runtime.resource.ResourceManagerImpl)
-[INFO] Resource Loader Instantiated: org.codehaus.plexus.velocity.ContextClassLoaderResourceLoader
-[INFO] ClasspathResourceLoader : initialization starting.
-[INFO] ClasspathResourceLoader : initialization complete.
-[INFO] ResourceCache : initialized. (class org.apache.velocity.runtime.resource.ResourceCacheImpl)
-[INFO] Default ResourceManager initialization complete.
-[INFO] Loaded System Directive: org.apache.velocity.runtime.directive.Literal
-[INFO] Loaded System Directive: org.apache.velocity.runtime.directive.Macro
-[INFO] Loaded System Directive: org.apache.velocity.runtime.directive.Parse
-[INFO] Loaded System Directive: org.apache.velocity.runtime.directive.Include
-[INFO] Loaded System Directive: org.apache.velocity.runtime.directive.Foreach
-[INFO] Created: 20 parsers.
-[INFO] Velocimacro : initialization starting.
-[INFO] Velocimacro : adding VMs from VM library template : VM_global_library.vm
-[ERROR] ResourceManager : unable to find resource 'VM_global_library.vm' in any resource loader.
-[INFO] Velocimacro : error using  VM library template VM_global_library.vm : org.apache.velocity.exception.ResourceNotFoundException: Unable to find resource 'VM_global_library.vm'
-[INFO] Velocimacro :  VM library template macro registration complete.
-[INFO] Velocimacro : allowInline = true : VMs can be defined inline in templates
-[INFO] Velocimacro : allowInlineToOverride = false : VMs defined inline may NOT replace previous VM definitions
-[INFO] Velocimacro : allowInlineLocal = false : VMs defined inline will be  global in scope if allowed.
-[INFO] Velocimacro : initialization complete.
-[INFO] Velocity successfully started.
-[INFO] [pax:wrap-jar]
-[INFO] Selecting latest archetype release within version range [1,2)
-[INFO] artifact org.ops4j.pax.construct:maven-archetype-osgi-wrapper: checking for updates from central
-Downloading: http://repo1.maven.org/maven2/org/ops4j/pax/construct/maven-archetype-osgi-wrapper/1.0.3/maven-archetype-osgi-wrapper-1.0.3.jar
-5K downloaded  (maven-archetype-osgi-wrapper-1.0.3.jar)
-[INFO] ----------------------------------------------------------------------------
-[INFO] Using following parameters for creating Archetype: maven-archetype-osgi-wrapper:1.0.3
-[INFO] ----------------------------------------------------------------------------
-[INFO] Parameter: symbolicName, Value: javax.servlet.api
-[INFO] Parameter: packageName, Value: servlet-api
-[INFO] Parameter: archetypeVersion, Value: 1.0.3
-[INFO] Parameter: groupId, Value: org.sonatype.mcookbook.osgi-project
-[INFO] Parameter: archetypeArtifactId, Value: maven-archetype-osgi-wrapper
-[INFO] Parameter: wrappedGroupId, Value: javax.servlet
-[INFO] Parameter: version, Value: 2.5
-[INFO] Parameter: archetypeGroupId, Value: org.ops4j.pax.construct
-[INFO] Parameter: isMultiModuleProject, Value: true
-[INFO] Parameter: basedir, Value: ${root.example.dir}/osgi/osgi-project
-[INFO] Parameter: package, Value: servlet-api
-[INFO] Parameter: artifactId, Value: javax.servlet.api
-[INFO] Parameter: bundleVersion, Value: 2.5-001-SNAPSHOT
-[INFO] Parameter: wrappedArtifactId, Value: servlet-api
-[INFO] ********************* End of debug info from resources from generated POM ***********************
-[INFO] Archetype created in dir: ${root.example.dir}/osgi/osgi-project/javax.servlet.api
+[INFO] [pax:import-bundle]
+Downloading: http://repo1.maven.org/maven2/org/apache/felix/org.apache.felix.webconsole/1.2.8/org.apache.felix.webconsole-1.2.8.pom
+6K downloaded  (org.apache.felix.webconsole-1.2.8.pom)
+Downloading: http://repo1.maven.org/maven2/org/apache/felix/felix/1.0.4/felix-1.0.4.pom
+14K downloaded  (felix-1.0.4.pom)
+[INFO] Importing Apache Felix Web Management Console to org.sonatype.mcookbook.osgi-project.build:provision:pom:1.0-SNAPSHOT
 [INFO] ------------------------------------------------------------------------
 [INFO] BUILD SUCCESSFUL
 [INFO] ------------------------------------------------------------------------
-[INFO] Total time: 4 seconds
-[INFO] Finished at: Mon Jul 13 13:28:15 CDT 2009
-[INFO] Final Memory: 10M/19M
-[INFO] ------------------------------------------------------------------------</screen>
-
-      <para></para>
-
-      <screen>$ <command>mvn pax:import-bundle \
-  -DgroupId=org.ops4j.pax.logging \
-  -DartifactId=api \
-  -Dversion=0.9.4</command>
+[INFO] Total time: 6 seconds
+[INFO] Finished at: Mon Jul 13 18:30:37 CDT 2009
+[INFO] Final Memory: 8M/16M
+[INFO] ------------------------------------------------------------------------
 </screen>
 
       <para></para>
+
+      <screen>${root.example.dir}/osgi/osgi-project $ <command>mvn pax:import-bundle \
+    -DgroupId=org.apache.felix \
+    -DartifactId=javax.servlet
+    -Dversion=1.0.0</command>
+${root.example.dir}/osgi/osgi-project $ <command>mvn pax:import-bundle \
+    -DgroupId=org.apache.felix \
+    -DartifactId=org.apache.felix.scr \
+    -Dversion=1.0.8</command>
+${root.example.dir}/osgi/osgi-project $ <command>mvn pax:import-bundle \
+    -DgroupId=org.apache.felix \
+    -DartifactId=org.apache.felix.http.jetty \
+    -Dversion=1.0.1</command></screen>
+
+      <para></para>
+
+      <screen>${root.example.dir}/osgi/osgi-project $ <command>mvn install pax:provision</command>
+[INFO] [pax:provision]
+[INFO] Installing /Users/Tim/Library/Code/sonatype/maven-cookbook/mcookbook-examples/osgi/osgi-project/runner/target/pom-transformed.xml to /Users/Tim/.m2/repository/org/sonatype/mcookbook/osgi-project/build/deployment/1.0-SNAPSHOT/deployment-1.0-SNAPSHOT.pom
+    ______  ________  __  __
+   / __  / /  __   / / / / /
+  /  ___/ /  __   / _\ \ _/
+ /  /    /  / /  / / _\ \
+/__/    /__/ /__/ /_/ /_/
+
+Pax Runner (1.0.0) from OPS4J - http://www.ops4j.org
+----------------------------------------------------
+
+ -&gt; Using config [classpath:META-INF/runner.properties]
+ -&gt; Using only arguments from command line
+ -&gt; Scan bundles from [/Users/Tim/Library/Code/sonatype/maven-cookbook/mcookbook-examples/osgi/osgi-project/runner/deploy-pom.xml]
+ -&gt; Scan bundles from [scan-pom:file:/Users/Tim/Library/Code/sonatype/maven-cookbook/mcookbook-examples/osgi/osgi-project/runner/deploy-pom.xml]
+ -&gt; Provision bundle [mvn:org.apache.felix/org.apache.felix.webconsole/1.2.8, at default start level, bundle will be started, bundle will be loaded from the cache]
+ -&gt; Provision bundle [mvn:org.apache.felix/javax.servlet/1.0.0, at default start level, bundle will be started, bundle will be loaded from the cache]
+ -&gt; Provision bundle [mvn:org.apache.felix/org.apache.felix.http.jetty/1.0.1, at default start level, bundle will be started, bundle will be loaded from the cache]
+ -&gt; Provision bundle [mvn:org.apache.felix/org.apache.felix.scr/1.0.8, at default start level, bundle will be started, bundle will be loaded from the cache]
+ -&gt; Preparing framework [Felix 1.8.0]
+ -&gt; Downloading bundles...
+ -&gt; mvn:org.apache.felix/org.apache.felix.webconsole/1.2.8 : 102399 bytes @ [ 6023 -&gt; mvn:org.apache.felix/org.apache.felix.webconsole/1.2.8 : 204799 bytes @ [ 7314 -&gt; mvn:org.apache.felix/org.apache.felix.webconsole/1.2.8 : 307199 bytes @ [ 7876 -&gt; mvn:org.apache.felix/org.apache.felix.webconsole/1.2.8 : 409599 bytes @ [ 8031 -&gt; mvn:org.apache.felix/org.apache.felix.webconsole/1.2.8 : 507026 bytes @ [ 7567kBps ]
+ -&gt; mvn:org.apache.felix/javax.servlet/1.0.0 : 30450 bytes @ [ 10150kBps ]
+ -&gt; mvn:org.apache.felix/org.apache.felix.http.jetty/1.0.1 : 102399 bytes @ [ 9309 -&gt; mvn:org.apache.felix/org.apache.felix.http.jetty/1.0.1 : 204799 bytes @ [ 9309 -&gt; mvn:org.apache.felix/org.apache.felix.http.jetty/1.0.1 : 307199 bytes @ [ 8777 -&gt; mvn:org.apache.felix/org.apache.felix.http.jetty/1.0.1 : 409599 bytes @ [ 8904 -&gt; mvn:org.apache.felix/org.apache.felix.http.jetty/1.0.1 : 511999 bytes @ [ 8982 -&gt; mvn:org.apache.felix/org.apache.felix.http.jetty/1.0.1 : 614399 bytes @ [ 9035 -&gt; mvn:org.apache.felix/org.apache.felix.http.jetty/1.0.1 : 716799 bytes @ [ 8849 -&gt; mvn:org.apache.felix/org.apache.felix.http.jetty/1.0.1 : 769485 bytes @ [ 8844kBps ]
+ -&gt; mvn:org.apache.felix/org.apache.felix.scr/1.0.8 : 112058 bytes @ [ 8619kBps ]
+ -&gt; Using execution environment [J2SE-1.5]
+ -&gt; Runner has successfully finished his job!
+
+
+Welcome to Felix.
+=================
+
+-&gt; org.mortbay.log:Logging to org.mortbay.log via org.apache.felix.http.jetty.LogServiceLog
+org.mortbay.log:Init SecureRandom.
+org.mortbay.log:started org.mortbay.jetty.servlet.HashSessionIdManager@34a33d
+org.mortbay.log:started org.mortbay.jetty.servlet.HashSessionManager@46ac5a
+org.mortbay.log:starting OsgiServletHandler@dd7786
+org.mortbay.log:started OsgiServletHandler@dd7786
+org.mortbay.log:starting SessionHandler@d23e75
+org.mortbay.log:started SessionHandler@d23e75
+org.mortbay.log:starting org.mortbay.jetty.servlet.Context@9deddb{/,null}
+org.mortbay.log:starting ErrorHandler@28bda
+org.mortbay.log:started ErrorHandler@28bda
+org.mortbay.log:started org.mortbay.jetty.servlet.Context@9deddb{/,null}
+org.mortbay.log:jetty-6.1.x
+org.mortbay.log:started Realm[OSGi HTTP Service Realm]==[]
+org.mortbay.log:started org.mortbay.thread.QueuedThreadPool@f13b08
+org.mortbay.log:starting Server@5a936b
+org.mortbay.log:started org.mortbay.jetty.nio.SelectChannelConnector$1@9576c3
+org.mortbay.log:Started SelectChannelConnector@0.0.0.0:8080
+org.mortbay.log:started SelectChannelConnector@0.0.0.0:8080
+org.mortbay.log:started Server@5a936b
+org.mortbay.log:started /system/console/*
+org.mortbay.log:started /system/console/res
+</screen>
+
+      <para></para>
+
+      <figure>
+        <title></title>
+
+        <mediaobject>
+          <imageobject>
+            <imagedata fileref="figs/web/osgi_felix-admin-console.png" />
+          </imageobject>
+        </mediaobject>
+      </figure>
     </section>
 
     <section>
