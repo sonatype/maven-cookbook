@@ -25,6 +25,8 @@
     <nexusopen.version.name>nexus-webapp-1.3.4</nexusopen.version.name>
     <nexusopen.version>1.3.4</nexusopen.version>
     <maven.book.baseurl>http://books.sonatype.com/maven-book-stage</maven.book.baseurl>
+    <root.example.dir>~/examples</root.example.dir>
+    <local.repo.dir>~/.m2/repository</local.repo.dir>
   </properties>
   <developers>
     <developer>

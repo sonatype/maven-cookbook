@@ -48,8 +48,8 @@
     applications using nothing more than Maven.</para>
   </section>
 
-  <section>
-    <title>Generating OSGi Bundles with Maven</title>
+  <section id="sect-osgi-generate-project">
+    <title>Generating an OSGi Project with Maven</title>
 
     <section>
       <title>Problem</title>
@@ -68,7 +68,7 @@
       <varname>osgi-project</varname>, and a version of
       <varname>1.0-SNAPSHOT</varname>:</para>
 
-      <screen db:wrap="force" xmlns:db="http://discursive.com/plugins/docbook">$ <command>mvn org.ops4j:maven-pax-plugin:create-project \
+      <screen db:wrap="force" xmlns:db="http://discursive.com/plugins/docbook">${root.example.dir}/osgi $ <command>mvn org.ops4j:maven-pax-plugin:create-project \
   -DgroupId=org.sonatype.mcookbook \
   -DartifactId=osgi-project \
   -Dversion=1.0-SNAPSHOT</command>
@@ -91,11 +91,11 @@
 [INFO] Parameter: archetypeArtifactId, Value: maven-archetype-osgi-project
 [INFO] Parameter: version, Value: 1.0-SNAPSHOT
 [INFO] Parameter: archetypeGroupId, Value: org.ops4j.pax.construct
-[INFO] Parameter: basedir, Value: /Users/Tim/Library/Code/sonatype/maven-cookbook/mcookbook-examples/osgi
+[INFO] Parameter: basedir, Value: ${root.example.dir}/osgi
 [INFO] Parameter: package, Value: org.sonatype.mcookbook.osgi-project
 [INFO] Parameter: artifactId, Value: osgi-project
 [INFO] ********************* End of debug info from resources from generated POM ***********************
-[INFO] Archetype created in dir: /Users/Tim/Library/Code/sonatype/maven-cookbook/mcookbook-examples/osgi/osgi-project
+[INFO] Archetype created in dir: ${root.example.dir}/osgi/osgi-project
 </screen>
 
       <para>Once you've generated an OSGi project using the Pax Plugin, you
@@ -114,7 +114,7 @@
       <para>If you want to verify that you can build the project successfully,
       run <command>mvn clean install</command>:</para>
 
-      <screen>$ <command>mvn clean install</command>
+      <screen>${root.example.dir}/osgi/osgi-project $ <command>mvn clean install</command>
 [INFO] Reactor build order: 
 [INFO]   org.sonatype.mcookbook.osgi-project (OSGi project)
 [INFO]   osgi-project - plugin configuration
@@ -128,9 +128,9 @@
 [INFO] [clean:clean]
 [INFO] [site:attach-descriptor]
 [INFO] [install:install]
-[INFO] Installing /Users/Tim/Library/Code/sonatype/maven-cookbook/mcookbook-exampl
-es/osgi/osgi-project/target/pom-transformed.xml to /Users/Tim/.m2/repository/org/s
-onatype/mcookbook/osgi-project/1.0-SNAPSHOT/osgi-project-1.0-SNAPSHOT.pom
+[INFO] Installing ${root.example.dir}/osgi/osgi-project/target/pom-transformed.
+xml to ${local.repo.dir}/org/sonatype/mcookbook/osgi-project/1.0-SNAPS
+HOT/osgi-project-1.0-SNAPSHOT.pom
 [INFO] ------------------------------------------------------------------------
 [INFO] Building osgi-project - plugin configuration
 [INFO]    task-segment: [clean, install]
@@ -227,24 +227,25 @@ onatype/mcookbook/osgi-project/1.0-SNAPSHOT/osgi-project-1.0-SNAPSHOT.pom
   <section>
     <title>Starting an OSGi Container</title>
 
-    <para></para>
-
     <section>
       <title>Problem</title>
 
-      <para></para>
+      <para>You created an OSGi project, not you want to see it running in an
+      OSGi environment. You need to start an OSGi container and load imported
+      bundles into the runtime environment.</para>
     </section>
 
     <section>
       <title>Solution</title>
 
-      <para></para>
+      <para>First, creat an OSGi proejct by executing the commands in <xref
+      linkend="sect-osgi-generate-project" />. Once you do this, you have a
+      structure that has been designed to support OSGi development with Maven.
+      To start the Apache Felix container, run <command>mvn install
+      pax:provision</command> from the <filename>osgi-project/</filename>
+      directory:</para>
 
-      <para>At this point, you have a structure that has been designed to
-      support OSGi development with Maven. To start the Apache Felix
-      container, run mvn install pax:provision:</para>
-
-      <screen db:wrap="force" xmlns:db="http://discursive.com/plugins/docbook">$ <command>mvn install pax:provision</command>
+      <screen db:wrap="force" xmlns:db="http://discursive.com/plugins/docbook">${root.example.dir}/osgi/osgi-project $ <command>mvn install pax:provision</command>
 [INFO] Scanning for projects...
 [INFO] Reactor build order: 
 [INFO]   org.sonatype.mcookbook.osgi-project (OSGi project)
@@ -268,8 +269,8 @@ Pax Runner (1.0.0) from OPS4J - http://www.ops4j.org
 
  -&gt; Using config [classpath:META-INF/runner.properties]
  -&gt; Using only arguments from command line
- -&gt; Scan bundles from [/Users/Tim/Library/Code/sonatype/maven-cookbook/mcookbook-examples/osgi/osgi-project/runner/deploy-pom.xml]
- -&gt; Scan bundles from [scan-pom:file:/Users/Tim/Library/Code/sonatype/maven-cookbook/mcookbook-examples/osgi/osgi-project/runner/deploy-pom.xml]
+ -&gt; Scan bundles from [${root.example.dir}/osgi/osgi-project/runner/deploy-pom.xml]
+ -&gt; Scan bundles from [scan-pom:file:/${root.example.dir}/osgi/osgi-project/runner/deploy-pom.xml]
  -&gt; Preparing framework [Felix 1.8.0]
  -&gt; Downloading bundles...
  -&gt; Using execution environment [J2SE-1.5]
@@ -286,7 +287,17 @@ Welcome to Felix.
     <section>
       <title>Discussion</title>
 
-      <para></para>
+      <para>When you started up Felix, notice that the line directly following
+      the execution of the <varname>pax:provision</varname> goal says "No
+      bundles found!". By running pax:provision, you've started the Felix OSGi
+      service platform. Felix uses the configuration from a properties file
+      and then scans two deploy-pom.xml files for bundles that it should
+      download and install. Finding none, it presents a simple prompt and
+      awaits orders. At this point, we have an empty container that isn't
+      running any custom logic or downloading any OSGi bundles. Over the next
+      few recipes we're going to fill in this picture a bit by wrapping
+      existing JARs, importing existing OSGi bundles, and writing a custom
+      OSGi service.</para>
     </section>
   </section>
 
@@ -368,13 +379,13 @@ Downloading: http://repo1.maven.org/maven2/org/ops4j/pax/construct/maven-archety
 [INFO] Parameter: version, Value: 2.5
 [INFO] Parameter: archetypeGroupId, Value: org.ops4j.pax.construct
 [INFO] Parameter: isMultiModuleProject, Value: true
-[INFO] Parameter: basedir, Value: /Users/Tim/Library/Code/sonatype/maven-cookbook/mcookbook-examples/osgi/osgi-project
+[INFO] Parameter: basedir, Value: ${root.example.dir}/osgi/osgi-project
 [INFO] Parameter: package, Value: servlet-api
 [INFO] Parameter: artifactId, Value: javax.servlet.api
 [INFO] Parameter: bundleVersion, Value: 2.5-001-SNAPSHOT
 [INFO] Parameter: wrappedArtifactId, Value: servlet-api
 [INFO] ********************* End of debug info from resources from generated POM ***********************
-[INFO] Archetype created in dir: /Users/Tim/Library/Code/sonatype/maven-cookbook/mcookbook-examples/osgi/osgi-project/javax.servlet.api
+[INFO] Archetype created in dir: ${root.example.dir}/osgi/osgi-project/javax.servlet.api
 [INFO] ------------------------------------------------------------------------
 [INFO] BUILD SUCCESSFUL
 [INFO] ------------------------------------------------------------------------
