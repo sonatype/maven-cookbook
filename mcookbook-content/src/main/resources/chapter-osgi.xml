@@ -1,14 +1,51 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE chapter PUBLIC "-//OASIS//DTD DocBook XML V4.5//EN"
 "http://www.oasis-open.org/docbook/xml/4.5/docbookx.dtd">
-<chapter id="osgi"
-	 xmlns:db="http://discursive.com/plugins/docbook">
+<chapter id="osgi">
   <title>Cooking with Maven and OSGi</title>
 
   <section id="using-sect-intro">
     <title>Introduction</title>
 
-    <para>Maven and OSGi is awesome.</para>
+    <para>OSGi is a developing standard... well, that's not entirely true,
+    OSGi is stable, has been around for many years, and is only now beginning
+    to capture the attention of most mainstream developers. If you've been
+    using Eclipse, you've already been using an OSGi container for a few
+    years, and the pluggable and configurable nature of the Eclipse platform
+    is a product of the OSGi standards. As a concept and as an approach, OSGi
+    is a proven standard with an installed user base of millions and growing;
+    as a mainstream development methodology, OSGi is just arriving on the
+    scene. It might feel like an emerging standard because solid tool support
+    is just now emerging. Prior to the last year, you might have encountered
+    OSGi "builds", but they were usually experienced via an IDE (such as
+    Eclipse).</para>
+
+    <para>Many are starting to view OSGi as the perfect solution both for
+    deploying server-side applications and client-side GUI application, it is
+    a common standard and format that meshes very well with the al-la-carte
+    model of open source development that has recently come of age. If you
+    need a GUI front-end or a web application to interface with a database
+    backend, there is a rich array of standard components to choose from in
+    the OSGi community. Before OSGi-based servers, if you wanted a full
+    fledged application server with a Transaction provider and JMS integration
+    you had to either run something involved like JBoss or Websphere, or you
+    had to hack some custom components to a lightweight servlet-container such
+    as Tomcat or Jetty. Today, you wouldn't install Jetty from scratch, you
+    will install it as an OSGi bundle in an OSGi container such as Apache
+    Felix. If you needed an embedded database like Derby or a transaction
+    provider, you can now tell your container what bundles to deploy and every
+    component is developed to operate in a standard operating environment.
+    Once you've figured out how to instantiate a empty OSGi container such as
+    Apache Felix there is no simpler deployment mechanism for your
+    application.</para>
+
+    <para>In this chapter, we introduce some tools and techniques you can use
+    to start developing OSGi components (or bundles) using Maven. The
+    following recipes focus on the intersection of Apache Felix, the OPS4J
+    project, and the Nexus repository manager as a bridge between Maven
+    repositories and OSGi Bundle repositories. At the end of this chapter, you
+    should have a clear picture of how to start developing OSGi-based web
+    applications using nothing more than Maven.</para>
   </section>
 
   <section>
@@ -27,7 +64,7 @@
 
       <para>Use the Maven Pax Plugin from OPS4J.</para>
 
-      <screen db:wrap="force">$ <command>mvn org.ops4j:maven-pax-plugin:create-project \
+      <screen db:wrap="force" xmlns:db="http://discursive.com/plugins/docbook">$ <command>mvn org.ops4j:maven-pax-plugin:create-project \
   -DgroupId=org.sonatype.mcookbook \
   -DartifactId=osgi-project \
   -Dversion=1.0-SNAPSHOT</command>
@@ -98,7 +135,7 @@
       support OSGi development with Maven. To start the Apache Felix
       container, run mvn install pax:provision:</para>
 
-      <screen db:wrap="force">$ <command>mvn install pax:provision</command>
+      <screen db:wrap="force" xmlns:db="http://discursive.com/plugins/docbook">$ <command>mvn install pax:provision</command>
 [INFO] Scanning for projects...
 [INFO] Reactor build order: 
 [INFO]   org.sonatype.mcookbook.osgi-project (OSGi project)
@@ -160,7 +197,7 @@ Welcome to Felix.
 
       <para></para>
 
-      <screen db:wrap="force">$ <command>mvn pax:wrap-jar \
+      <screen db:wrap="force" xmlns:db="http://discursive.com/plugins/docbook">$ <command>mvn pax:wrap-jar \
   -DgroupId=javax.servlet \
   -DartifactId=servlet-api \
   -Dversion=2.5</command>
@@ -337,7 +374,7 @@ Downloading: http://repo1.maven.org/maven2/org/ops4j/pax/construct/maven-archety
       <title>Solution</title>
 
       <para>Use Nexus Professional, and create a virtual OBR repository which
-      will </para>
+      will</para>
     </section>
 
     <section>
