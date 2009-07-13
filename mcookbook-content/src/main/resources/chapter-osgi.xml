@@ -11,7 +11,74 @@
   </section>
 
   <section>
-    <title>Generating OSGi Bundles</title>
+    <title>Generating OSGi Bundles with Maven</title>
+
+    <para></para>
+
+    <section>
+      <title>Problem</title>
+
+      <para>You need to create a project that uses OSGi.</para>
+    </section>
+
+    <section>
+      <title>Solution</title>
+
+      <para>Use the Maven Pax Plugin from OPS4J.</para>
+
+      <screen>$ <command>mvn org.ops4j:maven-pax-plugin:create-project \
+  -DgroupId=org.sonatype.mcookbook \
+  -DartifactId=osgi-project \
+  -Dversion=1.0-SNAPSHOT</command>
+[INFO] Scanning for projects...
+[INFO] artifact org.ops4j:maven-pax-plugin: checking for updates from central
+[INFO] ------------------------------------------------------------------------
+[INFO] Building Maven Default Project
+[INFO]    task-segment: [org.ops4j:maven-pax-plugin:create-project] (aggregator-style)
+[INFO] ------------------------------------------------------------------------
+...
+[INFO] [pax:create-project]
+[INFO] Selecting latest archetype release within version range [1,2)
+[INFO] artifact org.ops4j.pax.construct:maven-archetype-osgi-project: checking for updates from central
+[INFO] ----------------------------------------------------------------------------
+[INFO] Using following parameters for creating Archetype: maven-archetype-osgi-project:1.0.3
+[INFO] ----------------------------------------------------------------------------
+[INFO] Parameter: packageName, Value: org.sonatype.mcookbook.osgi-project
+[INFO] Parameter: archetypeVersion, Value: 1.0.3
+[INFO] Parameter: groupId, Value: org.sonatype.mcookbook
+[INFO] Parameter: archetypeArtifactId, Value: maven-archetype-osgi-project
+[INFO] Parameter: version, Value: 1.0-SNAPSHOT
+[INFO] Parameter: archetypeGroupId, Value: org.ops4j.pax.construct
+[INFO] Parameter: basedir, Value: /Users/Tim/Library/Code/sonatype/maven-cookbook/mcookbook-examples/osgi
+[INFO] Parameter: package, Value: org.sonatype.mcookbook.osgi-project
+[INFO] Parameter: artifactId, Value: osgi-project
+[INFO] ********************* End of debug info from resources from generated POM ***********************
+[INFO] Archetype created in dir: /Users/Tim/Library/Code/sonatype/maven-cookbook/mcookbook-examples/osgi/osgi-project
+</screen>
+
+      <para>Once you've generated an OSGi project using the Pax Plugin, you
+      will have the following directory structure:</para>
+
+      <figure>
+        <title>Project Structure Created by the OPS4J Pax Plugin</title>
+
+        <mediaobject>
+          <imageobject>
+            <imagedata fileref="figs/web/osgi_osgi-project-filesystems.png" />
+          </imageobject>
+        </mediaobject>
+      </figure>
+    </section>
+
+    <section>
+      <title>Discussion</title>
+
+      <para></para>
+    </section>
+  </section>
+
+  <section>
+    <title>Starting an OSGi Container</title>
 
     <para></para>
 
@@ -25,12 +92,211 @@
       <title>Solution</title>
 
       <para></para>
+
+      <para>At this point, you have a structure that has been designed to
+      support OSGi development with Maven. To start the Apache Felix
+      container, run mvn install pax:provision:</para>
+
+      <screen>$ <command>mvn install pax:provision</command>
+[INFO] Scanning for projects...
+[INFO] Reactor build order: 
+[INFO]   org.sonatype.mcookbook.osgi-project (OSGi project)
+[INFO]   osgi-project - plugin configuration
+[INFO]   osgi-project - wrapper instructions
+[INFO]   osgi-project - bundle instructions
+[INFO]   osgi-project - imported bundles
+...
+[INFO] [pax:provision]
+[INFO] ~~~~~~~~~~~~~~~~~~~
+[INFO]  No bundles found! 
+[INFO] ~~~~~~~~~~~~~~~~~~~
+    ______  ________  __  __
+   / __  / /  __   / / / / /
+  /  ___/ /  __   / _\ \ _/
+ /  /    /  / /  / / _\ \
+/__/    /__/ /__/ /_/ /_/
+
+Pax Runner (1.0.0) from OPS4J - http://www.ops4j.org
+----------------------------------------------------
+
+ -&gt; Using config [classpath:META-INF/runner.properties]
+ -&gt; Using only arguments from command line
+ -&gt; Scan bundles from [/Users/Tim/Library/Code/sonatype/maven-cookbook/mcookbook-examples/osgi/osgi-project/runner/deploy-pom.xml]
+ -&gt; Scan bundles from [scan-pom:file:/Users/Tim/Library/Code/sonatype/maven-cookbook/mcookbook-examples/osgi/osgi-project/runner/deploy-pom.xml]
+ -&gt; Preparing framework [Felix 1.8.0]
+ -&gt; Downloading bundles...
+ -&gt; Using execution environment [J2SE-1.5]
+ -&gt; Runner has successfully finished his job!
+
+
+Welcome to Felix.
+=================
+
+-&gt; 
+</screen>
     </section>
 
     <section>
       <title>Discussion</title>
 
       <para></para>
+    </section>
+  </section>
+
+  <section>
+    <title>Importing OSGi Bundles with Maven</title>
+
+    <para></para>
+
+    <section>
+      <title>Problem</title>
+
+      <para></para>
+    </section>
+
+    <section>
+      <title>Solution</title>
+
+      <para></para>
+
+      <screen>$ <command>mvn pax:wrap-jar \
+  -DgroupId=javax.servlet \
+  -DartifactId=servlet-api \
+  -Dversion=2.5</command>
+[INFO] Scanning for projects...
+[INFO] Reactor build order: 
+[INFO]   org.sonatype.mcookbook.osgi-project (OSGi project)
+[INFO]   osgi-project - plugin configuration
+[INFO]   osgi-project - wrapper instructions
+[INFO]   osgi-project - bundle instructions
+[INFO]   osgi-project - imported bundles
+[INFO] ------------------------------------------------------------------------
+[INFO] Building org.sonatype.mcookbook.osgi-project (OSGi project)
+[INFO]    task-segment: [pax:wrap-jar] (aggregator-style)
+[INFO] ------------------------------------------------------------------------
+[INFO] Setting property: classpath.resource.loader.class =&gt; 'org.codehaus.plexus.velocity.ContextClassLoaderResourceLoader'.
+[INFO] Setting property: velocimacro.messages.on =&gt; 'false'.
+[INFO] Setting property: resource.loader =&gt; 'classpath'.
+[INFO] Setting property: resource.manager.logwhenfound =&gt; 'false'.
+[INFO] ************************************************************** 
+[INFO] Starting Jakarta Velocity v1.4
+[INFO] RuntimeInstance initializing.
+[INFO] Default Properties File: org/apache/velocity/runtime/defaults/velocity.properties
+[INFO] Default ResourceManager initializing. (class org.apache.velocity.runtime.resource.ResourceManagerImpl)
+[INFO] Resource Loader Instantiated: org.codehaus.plexus.velocity.ContextClassLoaderResourceLoader
+[INFO] ClasspathResourceLoader : initialization starting.
+[INFO] ClasspathResourceLoader : initialization complete.
+[INFO] ResourceCache : initialized. (class org.apache.velocity.runtime.resource.ResourceCacheImpl)
+[INFO] Default ResourceManager initialization complete.
+[INFO] Loaded System Directive: org.apache.velocity.runtime.directive.Literal
+[INFO] Loaded System Directive: org.apache.velocity.runtime.directive.Macro
+[INFO] Loaded System Directive: org.apache.velocity.runtime.directive.Parse
+[INFO] Loaded System Directive: org.apache.velocity.runtime.directive.Include
+[INFO] Loaded System Directive: org.apache.velocity.runtime.directive.Foreach
+[INFO] Created: 20 parsers.
+[INFO] Velocimacro : initialization starting.
+[INFO] Velocimacro : adding VMs from VM library template : VM_global_library.vm
+[ERROR] ResourceManager : unable to find resource 'VM_global_library.vm' in any resource loader.
+[INFO] Velocimacro : error using  VM library template VM_global_library.vm : org.apache.velocity.exception.ResourceNotFoundException: Unable to find resource 'VM_global_library.vm'
+[INFO] Velocimacro :  VM library template macro registration complete.
+[INFO] Velocimacro : allowInline = true : VMs can be defined inline in templates
+[INFO] Velocimacro : allowInlineToOverride = false : VMs defined inline may NOT replace previous VM definitions
+[INFO] Velocimacro : allowInlineLocal = false : VMs defined inline will be  global in scope if allowed.
+[INFO] Velocimacro : initialization complete.
+[INFO] Velocity successfully started.
+[INFO] [pax:wrap-jar]
+[INFO] Selecting latest archetype release within version range [1,2)
+[INFO] artifact org.ops4j.pax.construct:maven-archetype-osgi-wrapper: checking for updates from central
+Downloading: http://repo1.maven.org/maven2/org/ops4j/pax/construct/maven-archetype-osgi-wrapper/1.0.3/maven-archetype-osgi-wrapper-1.0.3.jar
+5K downloaded  (maven-archetype-osgi-wrapper-1.0.3.jar)
+[INFO] ----------------------------------------------------------------------------
+[INFO] Using following parameters for creating Archetype: maven-archetype-osgi-wrapper:1.0.3
+[INFO] ----------------------------------------------------------------------------
+[INFO] Parameter: symbolicName, Value: javax.servlet.api
+[INFO] Parameter: packageName, Value: servlet-api
+[INFO] Parameter: archetypeVersion, Value: 1.0.3
+[INFO] Parameter: groupId, Value: org.sonatype.mcookbook.osgi-project
+[INFO] Parameter: archetypeArtifactId, Value: maven-archetype-osgi-wrapper
+[INFO] Parameter: wrappedGroupId, Value: javax.servlet
+[INFO] Parameter: version, Value: 2.5
+[INFO] Parameter: archetypeGroupId, Value: org.ops4j.pax.construct
+[INFO] Parameter: isMultiModuleProject, Value: true
+[INFO] Parameter: basedir, Value: /Users/Tim/Library/Code/sonatype/maven-cookbook/mcookbook-examples/osgi/osgi-project
+[INFO] Parameter: package, Value: servlet-api
+[INFO] Parameter: artifactId, Value: javax.servlet.api
+[INFO] Parameter: bundleVersion, Value: 2.5-001-SNAPSHOT
+[INFO] Parameter: wrappedArtifactId, Value: servlet-api
+[INFO] ********************* End of debug info from resources from generated POM ***********************
+[INFO] Archetype created in dir: /Users/Tim/Library/Code/sonatype/maven-cookbook/mcookbook-examples/osgi/osgi-project/javax.servlet.api
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD SUCCESSFUL
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time: 4 seconds
+[INFO] Finished at: Mon Jul 13 13:28:15 CDT 2009
+[INFO] Final Memory: 10M/19M
+[INFO] ------------------------------------------------------------------------</screen>
+
+      <para></para>
+
+      <screen>$ <command>mvn pax:import-bundle \
+  -DgroupId=org.ops4j.pax.logging \
+  -DartifactId=api \
+  -Dversion=0.9.4</command>
+</screen>
+
+      <para></para>
+
+      <screen>$ <command>mvn pax:import-bundle \
+  -DgroupId=org.mortbay.jetty \
+  -DartifactId=jetty \
+  -Dversion=6.1.5</command>
+</screen>
+    </section>
+
+    <section>
+      <title>Discussion</title>
+
+      <para></para>
+    </section>
+  </section>
+
+  <section>
+    <title>Creating an OSGi Bundle with Maven</title>
+
+    <para></para>
+
+    <section>
+      <title>Problem</title>
+
+      <para></para>
+    </section>
+
+    <section>
+      <title>Solution</title>
+
+      <para></para>
+
+      <screen>$ <command>mvn pax:create-bundle \
+  -Dpackage=org.sonatype.mcookbook \
+  -Dname=osgi-bundle \
+  -Dversion=1.0-SNAPSHOT</command>
+</screen>
+    </section>
+
+    <section>
+      <title>Discussion</title>
+
+      <para></para>
+
+      <figure>
+        <title>Custom Bundle</title>
+
+        <mediaobject>
+          <imageobject>
+            <imagedata fileref="figs/web/osgi_osgi-custom-bundle-fs.png" />
+          </imageobject>
+        </mediaobject>
+      </figure>
     </section>
   </section>
 </chapter>
