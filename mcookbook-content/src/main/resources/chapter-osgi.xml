@@ -51,18 +51,22 @@
   <section>
     <title>Generating OSGi Bundles with Maven</title>
 
-    <para></para>
-
     <section>
       <title>Problem</title>
 
-      <para>You need to create a project that uses OSGi.</para>
+      <para>You need to create a Maven multi-module project that allows you to
+      develop a modular, OSGi-based web application.</para>
     </section>
 
     <section>
       <title>Solution</title>
 
-      <para>Use the Maven Pax Plugin from OPS4J.</para>
+      <para>Use the Maven Pax Plugin from OPS4J, and call the
+      <varname>create-project</varname> goal. The following command-line will
+      create a multi-module project with a groupId of
+      <varname>org.sonatype.mcookbook</varname>, an artifactId of
+      <varname>osgi-project</varname>, and a version of
+      <varname>1.0-SNAPSHOT</varname>:</para>
 
       <screen db:wrap="force" xmlns:db="http://discursive.com/plugins/docbook">$ <command>mvn org.ops4j:maven-pax-plugin:create-project \
   -DgroupId=org.sonatype.mcookbook \
@@ -106,12 +110,117 @@
           </imageobject>
         </mediaobject>
       </figure>
+
+      <para>If you want to verify that you can build the project successfully,
+      run <command>mvn clean install</command>:</para>
+
+      <screen>$ <command>mvn clean install</command>
+[INFO] Reactor build order: 
+[INFO]   org.sonatype.mcookbook.osgi-project (OSGi project)
+[INFO]   osgi-project - plugin configuration
+[INFO]   osgi-project - wrapper instructions
+[INFO]   osgi-project - bundle instructions
+[INFO]   osgi-project - imported bundles
+[INFO] ------------------------------------------------------------------------
+[INFO] Building org.sonatype.mcookbook.osgi-project (OSGi project)
+[INFO]    task-segment: [clean, install]
+[INFO] ------------------------------------------------------------------------
+[INFO] [clean:clean]
+[INFO] [site:attach-descriptor]
+[INFO] [install:install]
+[INFO] Installing /Users/Tim/Library/Code/sonatype/maven-cookbook/mcookbook-exampl
+es/osgi/osgi-project/target/pom-transformed.xml to /Users/Tim/.m2/repository/org/s
+onatype/mcookbook/osgi-project/1.0-SNAPSHOT/osgi-project-1.0-SNAPSHOT.pom
+[INFO] ------------------------------------------------------------------------
+[INFO] Building osgi-project - plugin configuration
+[INFO]    task-segment: [clean, install]
+...</screen>
     </section>
 
     <section>
       <title>Discussion</title>
 
-      <para></para>
+      <para>The generated multi-module project structure contains a parent
+      project with the supplied groupId, artifactId, and version, and a few
+      submodules:</para>
+
+      <variablelist>
+        <varlistentry>
+          <term>osgi-project/pom.xml</term>
+
+          <listitem>
+            <para>This is the parent POM</para>
+          </listitem>
+        </varlistentry>
+
+        <varlistentry>
+          <term>osgi-project/poms/pom.xml</term>
+
+          <listitem>
+            <para></para>
+          </listitem>
+        </varlistentry>
+
+        <varlistentry>
+          <term>osgi-project/poms/compiled/pom.xml</term>
+
+          <listitem>
+            <para></para>
+          </listitem>
+        </varlistentry>
+
+        <varlistentry>
+          <term>osgi-project/poms/wrappers/pom.xml</term>
+
+          <listitem>
+            <para></para>
+          </listitem>
+        </varlistentry>
+
+        <varlistentry>
+          <term>osgi-project/provision/pom.xml</term>
+
+          <listitem>
+            <para></para>
+          </listitem>
+        </varlistentry>
+      </variablelist>
+
+      <para>In addition to these projects, the osgi-project directory also
+      contains a directory that captures the configuration of the runtime
+      environment. This runner directory contains the following files and
+      directories:</para>
+
+      <variablelist>
+        <varlistentry>
+          <term>osgi-project/runner/deploy-pom.xml</term>
+
+          <listitem>
+            <para>This POM file is generated using Pax-Construct, it contains
+            some configuration parameters for the Apache Felix
+            container.</para>
+          </listitem>
+        </varlistentry>
+
+        <varlistentry>
+          <term>osgi-project/runner/bundles</term>
+
+          <listitem>
+            <para>This directory contains OSGi bundles which have been
+            downloaded for use in Apache Felix.</para>
+          </listitem>
+        </varlistentry>
+
+        <varlistentry>
+          <term>osgi-project/runner/felix</term>
+
+          <listitem>
+            <para>This directory contains the runtime files that are required
+            for Apache Felix, this includes a config.ini file and a cache
+            directory.</para>
+          </listitem>
+        </varlistentry>
+      </variablelist>
     </section>
   </section>
 
