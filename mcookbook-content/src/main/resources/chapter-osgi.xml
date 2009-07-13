@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE chapter PUBLIC "-//OASIS//DTD DocBook XML V4.5//EN"
 "http://www.oasis-open.org/docbook/xml/4.5/docbookx.dtd">
-<chapter id="osgi">
+<chapter id="osgi"
+	 xmlns:db="http://discursive.com/plugins/docbook">
   <title>Cooking with Maven and OSGi</title>
 
   <section id="using-sect-intro">
@@ -26,7 +27,7 @@
 
       <para>Use the Maven Pax Plugin from OPS4J.</para>
 
-      <screen>$ <command>mvn org.ops4j:maven-pax-plugin:create-project \
+      <screen db:wrap="force">$ <command>mvn org.ops4j:maven-pax-plugin:create-project \
   -DgroupId=org.sonatype.mcookbook \
   -DartifactId=osgi-project \
   -Dversion=1.0-SNAPSHOT</command>
@@ -97,7 +98,7 @@
       support OSGi development with Maven. To start the Apache Felix
       container, run mvn install pax:provision:</para>
 
-      <screen>$ <command>mvn install pax:provision</command>
+      <screen db:wrap="force">$ <command>mvn install pax:provision</command>
 [INFO] Scanning for projects...
 [INFO] Reactor build order: 
 [INFO]   org.sonatype.mcookbook.osgi-project (OSGi project)
@@ -159,7 +160,7 @@ Welcome to Felix.
 
       <para></para>
 
-      <screen>$ <command>mvn pax:wrap-jar \
+      <screen db:wrap="force">$ <command>mvn pax:wrap-jar \
   -DgroupId=javax.servlet \
   -DartifactId=servlet-api \
   -Dversion=2.5</command>
@@ -245,12 +246,6 @@ Downloading: http://repo1.maven.org/maven2/org/ops4j/pax/construct/maven-archety
 </screen>
 
       <para></para>
-
-      <screen>$ <command>mvn pax:import-bundle \
-  -DgroupId=org.mortbay.jetty \
-  -DartifactId=jetty \
-  -Dversion=6.1.5</command>
-</screen>
     </section>
 
     <section>
@@ -298,5 +293,87 @@ Downloading: http://repo1.maven.org/maven2/org/ops4j/pax/construct/maven-archety
         </mediaobject>
       </figure>
     </section>
+  </section>
+
+  <section>
+    <title>Deploying OSGi Bundles to a Maven Repository</title>
+
+    <para></para>
+
+    <section>
+      <title>Problem</title>
+
+      <para></para>
+    </section>
+
+    <section>
+      <title>Solution</title>
+
+      <para></para>
+    </section>
+
+    <section>
+      <title>Discussion</title>
+
+      <para></para>
+    </section>
+  </section>
+
+  <section>
+    <title>Transforming a Maven Repository into an OSGi Bundle
+    Repository</title>
+
+    <para>Now that you've published an OSGi bundle to a Maven repository, how
+    would you consume it in an OSGi container like Apache Felix?</para>
+
+    <section>
+      <title>Problem</title>
+
+      <para>You need to expose OSGi bundles in a Maven repository using the
+      OBR repository format.</para>
+    </section>
+
+    <section>
+      <title>Solution</title>
+
+      <para>Use Nexus Professional, and create a virtual OBR repository which
+      will </para>
+    </section>
+
+    <section>
+      <title>Discussion</title>
+
+      <para></para>
+    </section>
+  </section>
+
+  <section>
+    <title>Proxying OSGi Bundle Repositories</title>
+
+    <para></para>
+
+    <section>
+      <title>Problem</title>
+
+      <para></para>
+    </section>
+
+    <section>
+      <title>Solution</title>
+
+      <para></para>
+    </section>
+
+    <section>
+      <title>Discussion</title>
+
+      <para></para>
+    </section>
+  </section>
+
+  <section>
+    <title>Grouping OSGi Bundle Repositories</title>
+
+    <para></para>
   </section>
 </chapter>
