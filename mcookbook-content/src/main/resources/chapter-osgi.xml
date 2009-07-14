@@ -289,28 +289,70 @@ Welcome to Felix.
 
       <para>When you started up Felix, notice that the line directly following
       the execution of the <varname>pax:provision</varname> goal says "No
-      bundles found!". By running pax:provision, you've started the Felix OSGi
-      service platform. Felix uses the configuration from a properties file
-      and then scans two deploy-pom.xml files for bundles that it should
-      download and install. Finding none, it presents a simple prompt and
-      awaits orders. At this point, we have an empty container that isn't
-      running any custom logic or downloading any OSGi bundles. Over the next
-      few recipes we're going to fill in this picture a bit by wrapping
-      existing JARs, importing existing OSGi bundles, and writing a custom
-      OSGi service.</para>
+      bundles found!". By running <varname>pax:provision</varname>, you've
+      started the Felix OSGi service platform. Felix uses the configuration
+      from a properties file and then scans two deploy-pom.xml files for
+      bundles that it should download and install. Finding none, it presents a
+      simple prompt and awaits orders. At this point, we have an empty
+      container that isn't running any custom logic or downloading any OSGi
+      bundles. Over the next few recipes we're going to fill in this picture a
+      bit by wrapping existing JARs, importing existing OSGi bundles, and
+      writing a custom OSGi service.</para>
+
+      <para>Once you have the console for Felix loaded, you can control the
+      platform, load components from remote repositories, list all of the
+      running components, and start and stop components. Try executing the
+      command <command>help</command> to see a list of available
+      commands:</para>
+
+      <screen db:wrap="force" xmlns:db="http://discursive.com/plugins/docbook">-&gt; <command>help</command>
+bundlelevel &lt;level&gt; &lt;id&gt; ... | &lt;id&gt; - set or get bundle start level.
+cd [&lt;base-URL&gt;]                     - change or display base URL.
+exports &lt;id&gt; ...                    - list exported packages.
+headers [&lt;id&gt; ...]                  - display bundle header properties.
+help                                - display impl commands.
+imports &lt;id&gt; ...                    - list imported packages.
+install &lt;URL&gt; [&lt;URL&gt; ...]           - install bundle(s).
+ps [-l | -s | -u]                   - list installed bundles.
+refresh [&lt;id&gt; ...]                  - refresh packages.
+requirers &lt;id&gt; ...                  - list requiring bundles.
+requires &lt;id&gt; ...                   - list required bundles.
+resolve [&lt;id&gt; ...]                  - attempt to resolve the specified bundles.
+scr help                            - Declarative Services Runtime
+services [-u] [-a] [&lt;id&gt; ...]       - list registered or used services.
+shutdown                            - shutdown framework.
+start [-t] &lt;id&gt; [&lt;id&gt; &lt;URL&gt; ...]    - start bundle(s).
+startlevel [&lt;level&gt;]                - get or set framework start level.
+stop [-t] &lt;id&gt; [&lt;id&gt; ...]           - stop bundle(s).
+uninstall &lt;id&gt; [&lt;id&gt; ...]           - uninstall bundle(s).
+update &lt;id&gt; [&lt;URL&gt;]                 - update bundle.
+version                             - display version of framework.
+</screen>
+
+      <para>If you execute the <command>ps</command> command, you can see a
+      list of bundles with IDs that are running in the Felix container. You
+      can start and stop bundles by running <command>start</command> and
+      <command>stop</command> followed by the ID of the specific bundle you
+      want to control. You can also install and uninstall bundles in the
+      running container. </para>
+    </section>
+
+    <section>
+      <title>Resources</title>
+
+      <para>For more information about Apache Felix, see <ulink
+      url="http://felix.apache.org/site/index.html">http://felix.apache.org/site/index.html</ulink>.</para>
     </section>
   </section>
 
   <section>
     <title>Importing OSGi Bundles with Maven</title>
 
-    <para></para>
-
     <section>
       <title>Problem</title>
 
       <para>You want to configure your OSGi runtime to load bundles on
-      startup. </para>
+      startup.</para>
     </section>
 
     <section>
@@ -325,7 +367,7 @@ Welcome to Felix.
 
       <para>As shown in the following screen listing, you are going to import
       several OSGi bundles from the Maven repository. First you are going to
-      install the Apaceh Felix Web Management Console and then you are going
+      install the Apache Felix Web Management Console and then you are going
       to install some of its requirements. To install the first OSGi bundle
       run the following command:</para>
 
@@ -364,7 +406,7 @@ Downloading: http://repo1.maven.org/maven2/org/apache/felix/felix/1.0.4/felix-1.
       install version 2.1 of the Java Servlet API, the Jetty HTTP server, and
       the <varname>org.apache.felix.scr</varname> component. As you can see,
       some of the OSGi bundle you are installing are simple libraries and
-      APIs, while others are complex servers. </para>
+      APIs, while others are complex servers.</para>
 
       <screen db:wrap="force" xmlns:db="http://discursive.com/plugins/docbook">${root.example.dir}/osgi/osgi-project $ <command>mvn pax:import-bundle \
     -DgroupId=org.apache.felix \
@@ -380,10 +422,10 @@ ${root.example.dir}/osgi/osgi-project $ <command>mvn pax:import-bundle \
     -Dversion=1.0.1</command></screen>
 
       <para>Once you have bundled these OSGi bundles, you can start your
-      runtme environment. Because the pax:import-bundle goal changex some of
-      the POMs in your osgi-project, you will need to run <command>mvn
-      install</command> before you can run <command>mvn
-      pax:provision</command>.</para>
+      runtme environment. Because the <varname>pax:import-bundle</varname>
+      goal changes some of the POMs in your <varname>osgi-project</varname>,
+      you will need to run <command>mvn install</command> before you can run
+      <command>mvn pax:provision</command>.</para>
 
       <screen db:wrap="force" xmlns:db="http://discursive.com/plugins/docbook">${root.example.dir}/osgi/osgi-project $ <command>mvn install pax:provision</command>
 [INFO] [pax:provision]
@@ -468,30 +510,189 @@ org.mortbay.log:started /system/console/res
     <section>
       <title>Discussion</title>
 
-      <para></para>
+      <para>Once you start the web management console for Apache Felix, you
+      can start to manage the installed bundles. You can start and stop
+      bundles via the interface, and you can install bundles from remote
+      repositories. If you prefer to use the shell interface from the previous
+      recipe, click on the Shell interface and you can enter in any of the
+      commands you used at the command-line Felix management console as shown
+      in <xref linkend="fig-osgi-felix-admin-console-shell" />.</para>
+
+      <figure id="fig-osgi-felix-admin-console-shell">
+        <title>Running the Apache Felix Shell via the Administrative Web
+        Console</title>
+
+        <mediaobject>
+          <imageobject>
+            <imagedata fileref="figs/web/osgi_felix-admin-console-shell.png" />
+          </imageobject>
+        </mediaobject>
+      </figure>
+
+      <para>You can manage Felix interactions with events and repositories,
+      and you can also restart, stop, and change the default run levels.
+      Clicking on the "System Information" tab will also allow you to get some
+      statistics about the runtime container as shown in <xref
+      linkend="fig-osgi-felix-admin-console-system" />.</para>
+
+      <figure id="fig-osgi-felix-admin-console-system">
+        <title>Managing the Apache Felix via System Information</title>
+
+        <mediaobject>
+          <imageobject>
+            <imagedata fileref="figs/web/osgi_felix-admin-console-system.png" />
+          </imageobject>
+        </mediaobject>
+      </figure>
+    </section>
+
+    <section>
+      <title>Resources</title>
+
+      <para>For more information about the Apache Felix Web Console, see
+      <ulink
+      url="http://cwiki.apache.org/confluence/display/FELIX/Apache+Felix+Web+Console">http://cwiki.apache.org/confluence/display/FELIX/Apache+Felix+Web+Console</ulink>.</para>
     </section>
   </section>
 
   <section>
     <title>Creating an OSGi Bundle with Maven</title>
 
-    <para></para>
-
     <section>
       <title>Problem</title>
 
-      <para></para>
+      <para>You need to create you own OSGi bundle project to integrate with
+      the runtime environment created in the previous recipes.</para>
     </section>
 
     <section>
       <title>Solution</title>
 
-      <para></para>
+      <para>Run the <varname>pax:create-bundle</varname> goal. The following
+      screen listing runs the <varname>pax:create-bundle</varname> to create a
+      new Maven project for an OSGi bundle with a package
+      org.sonatype.mcookbook and a name <varname>osgi-bundle</varname>. Run
+      this command from the
+      <filename>${root.example.dir}/osgi/osgi-project</filename>
+      directory:</para>
 
-      <screen>$ <command>mvn pax:create-bundle \
+      <screen db:wrap="force" xmlns:db="http://discursive.com/plugins/docbook">${root.example.dir}/osgi/osgi-project $ <command>mvn pax:create-bundle \
   -Dpackage=org.sonatype.mcookbook \
   -Dname=osgi-bundle \
   -Dversion=1.0-SNAPSHOT</command>
+</screen>
+
+      <para>Once this command has been completed, run <command>mvn install
+      pax:provision</command> and then verify that the component is present by
+      running <command>ps</command> at the Felix administrative
+      console:</para>
+
+      <screen db:wrap="force" xmlns:db="http://discursive.com/plugins/docbook">${root.example.dir}/osgi/osgi-project $ <command>mvn install pax:provision</command>
+...
+[INFO] Reactor build order: 
+[INFO]   org.sonatype.mcookbook.osgi-project (OSGi project)
+[INFO]   osgi-project - plugin configuration
+[INFO]   osgi-project - wrapper instructions
+[INFO]   osgi-project - bundle instructions
+[INFO]   osgi-project - imported bundles
+[INFO]   org.sonatype.mcookbook
+..
+[INFO] ------------------------------------------------------------------------
+[INFO] Building org.sonatype.mcookbook
+[INFO]    task-segment: [install]
+[INFO] ------------------------------------------------------------------------
+[INFO] [resources:resources]
+[WARNING] Using platform encoding (MacRoman actually) to copy filtered resources, i.e. build is platform dependent!
+[INFO] Copying 1 resource
+[INFO] Copying 0 resource
+[INFO] [pax:compile]
+[INFO] Nothing to compile - all classes are up to date
+[INFO] [pax:testCompile]
+[INFO] No sources to compile
+...
+[INFO] [install:install]
+[INFO] Installing /Users/tobrien/Library/Code/sonatype/maven-cookbook/mcookbook-examples/osgi/osgi-project/org.sonatype.mcookbook/target/org.sonatype.mcookbook-1.0-SNAPSHOT.jar to /Users/tobrien/.m2/repository/org/sonatype/mcookbook/osgi-project/org.sonatype.mcookbook/1.0-SNAPSHOT/org.sonatype.mcookbook-1.0-SNAPSHOT.jar
+[INFO] [bundle:install]
+[INFO] Parsing file:/Users/tobrien/.m2/repository/repository.xml
+[INFO] Installing org/sonatype/mcookbook/osgi-project/org.sonatype.mcookbook/1.0-SNAPSHOT/org.sonatype.mcookbook-1.0-SNAPSHOT.jar
+[INFO] Writing OBR metadata
+[INFO] ------------------------------------------------------------------------
+[INFO] Building org.sonatype.mcookbook.osgi-project (OSGi project)
+[INFO]    task-segment: [pax:provision] (aggregator-style)
+[INFO] ------------------------------------------------------------------------
+</screen>
+
+      <para>The Pax plugin bundles the new OSGi bundle into a JAR file which
+      is deployed to the local Maven repository in ~/.m2/repository. The
+      resulting artifact has the following identifiers:</para>
+
+      <itemizedlist>
+        <listitem>
+          <para><emphasis>groupId:</emphasis>
+          <varname>org.sonatype.mcookbook.osgi-project</varname></para>
+        </listitem>
+
+        <listitem>
+          <para><emphasis>artifactId:</emphasis>
+          <varname>org.sonatype.mcookbook</varname></para>
+        </listitem>
+
+        <listitem>
+          <para><emphasis>version:</emphasis>
+          <varname>1.0-SNAPSHOT</varname></para>
+        </listitem>
+      </itemizedlist>
+
+      <para>Continuing on with this particular execution of Maven, lines
+      corresponding to this new custom OSGi bundle have been highlighted. The
+      <varname>mvn:org.sonatype.mcookbook.osgi-project/org.sonatype.mcookbook/1.0-SNAPSHOT</varname>
+      is provisioned to Apache Felix and after running the
+      <command>ps</command> command we see that the
+      <varname>org.sonatype.mcookbook</varname> bundle is deployed with ID
+      5.</para>
+
+      <screen db:wrap="force" xmlns:db="http://discursive.com/plugins/docbook">[INFO] [pax:provision]
+[INFO] Installing /Users/tobrien/Library/Code/sonatype/maven-cookbook/mcookbook-examples/osgi/osgi-project/runner/target/pom-transformed.xml to /Users/tobrien/.m2/repository/org/sonatype/mcookbook/osgi-project/build/deployment/1.0-SNAPSHOT/deployment-1.0-SNAPSHOT.pom
+
+Pax Runner (1.0.0) from OPS4J - http://www.ops4j.org
+----------------------------------------------------
+
+ -&gt; Using config [classpath:META-INF/runner.properties]
+ -&gt; Using only arguments from command line
+ -&gt; Scan bundles from [/Users/tobrien/Library/Code/sonatype/maven-cookbook/mcookbook-examples/osgi/osgi-project/runner/deploy-pom.xml]
+ -&gt; Scan bundles from [scan-pom:file:/Users/tobrien/Library/Code/sonatype/maven-cookbook/mcookbook-examples/osgi/osgi-project/runner/deploy-pom.xml]
+ -&gt; Provision bundle [mvn:org.apache.felix/org.apache.felix.webconsole/1.2.8, at default start level, bundle will be started, bundle will be loaded from the cache]
+ -&gt; Provision bundle [mvn:org.apache.felix/javax.servlet/1.0.0, at default start level, bundle will be started, bundle will be loaded from the cache]
+ -&gt; Provision bundle [mvn:org.apache.felix/org.apache.felix.scr/1.0.8, at default start level, bundle will be started, bundle will be loaded from the cache]
+ -&gt; Provision bundle [mvn:org.apache.felix/org.apache.felix.http.jetty/1.0.1, at default start level, bundle will be started, bundle will be loaded from the cache]
+<emphasis> -&gt; Provision bundle [mvn:org.sonatype.mcookbook.osgi-project/org.sonatype.mcookbook/1.0-SNAPSHOT, at default start level, bundle will be started, bundle will be loaded from the cache]
+</emphasis> -&gt; Preparing framework [Felix 1.8.0]
+...
+ -&gt; Runner has successfully finished his job!
+
+
+Welcome to Felix.
+=================
+
+-&gt; org.mortbay.log:Logging to org.mortbay.log via org.apache.felix.http.jetty.LogServiceLog
+STARTING org.sonatype.mcookbook
+REGISTER org.sonatype.mcookbook.ExampleService
+org.mortbay.log:Init SecureRandom.
+...
+org.mortbay.log:started /system/console/res
+
+-&gt; <command>ps</command>
+START LEVEL 6
+   ID   State         Level  Name
+[   0] [Active     ] [    0] System Bundle (1.8.0)
+[   1] [Active     ] [    5] Apache Felix Web Management Console (1.2.8)
+[   2] [Active     ] [    5] Servlet 2.1 API (1.0.0)
+[   3] [Active     ] [    5] Apache Felix Declarative Services (1.0.8)
+[   4] [Active     ] [    5] HTTP Service (1.0.1)
+<emphasis>[   5] [Active     ] [    5] org.sonatype.mcookbook (1.0.0.SNAPSHOT)</emphasis>
+[   6] [Active     ] [    1] osgi.compendium (4.1.0.build-200702212030)
+[   7] [Active     ] [    1] Apache Felix Shell Service (1.2.0)
+[   8] [Active     ] [    1] Apache Felix Shell TUI (1.2.0)
 </screen>
     </section>
 
@@ -515,18 +716,49 @@ org.mortbay.log:started /system/console/res
   <section>
     <title>Deploying OSGi Bundles to a Maven Repository</title>
 
-    <para></para>
-
     <section>
       <title>Problem</title>
 
-      <para></para>
+      <para>You need to configure your project to deploy your own custom OSGi
+      bundles to a Maven repository.</para>
     </section>
 
     <section>
       <title>Solution</title>
 
-      <para></para>
+      <para>The solution is to download an install Nexus Professional, and
+      configure your Maven environment to deploy snapshot and release
+      artifacts to a Hosted Maven repository. To install and configure Nexus
+      Professional, complete the following steps:</para>
+
+      <orderedlist>
+        <listitem>
+          <para>Download Nexus Professional from <ulink
+          url="http://www.sonatype.com/products/downloads">http://www.sonatype.com/products/downloads</ulink>.</para>
+        </listitem>
+
+        <listitem>
+          <para>Unpack the Nexus Professional archive on your local
+          workstation, or on the machine that will host Nexus Professional for
+          your workgroup or organization. </para>
+        </listitem>
+
+        <listitem>
+          <para>Start Nexus Professional by running the startup script in
+          ${nexus_install_dir}/bin/jsw</para>
+        </listitem>
+      </orderedlist>
+
+      <note>
+        <para>You can also setup and install Nexus Open Source, and rely on
+        the first-class support that the the Pax plugin provides for OSGi
+        bundles stored in a standard Maven repository. In the context of OSGi
+        development, the main difference between Nexus Professional and Nexus
+        Open Source is that Nexus Professional provides direct support for OBR
+        repositories, allowing you to proxy, host, and group OSGi bundle
+        repositories and convert existing Maven repositories to OSGi bundle
+        repositories.</para>
+      </note>
     </section>
 
     <section>
