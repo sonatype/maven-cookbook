@@ -24,13 +24,18 @@
   <dependencies>
     <dependency>
       <groupId>org.apache.felix</groupId>
-      <artifactId>org.apache.felix.scr</artifactId>
-      <version>1.0.8</version>
+      <artifactId>org.apache.felix.webconsole</artifactId>
+      <version>1.2.8</version>
     </dependency>
     <dependency>
       <groupId>org.apache.felix</groupId>
       <artifactId>javax.servlet</artifactId>
       <version>1.0.0</version>
+    </dependency>
+    <dependency>
+      <groupId>org.apache.felix</groupId>
+      <artifactId>org.apache.felix.scr</artifactId>
+      <version>1.0.8</version>
     </dependency>
     <dependency>
       <groupId>org.apache.felix</groupId>
