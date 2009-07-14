@@ -7,6 +7,7 @@
   </parent>
   <artifactId>mcookbook-content</artifactId>
   <packaging>jar</packaging>
+  <name>Maven Cookbook Content</name>
   <build>
     <sourceDirectory>src/main/resources</sourceDirectory>
     <resources>

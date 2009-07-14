@@ -7,6 +7,7 @@
   </parent>
   <artifactId>mcookbook-pdf</artifactId>
   <packaging>jar</packaging>
+  <name>Maven Cookbook PDF</name>
   <build>
     <resources>
       <resource>
