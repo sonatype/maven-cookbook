@@ -114,7 +114,7 @@
       <para>If you want to verify that you can build the project successfully,
       run <command>mvn clean install</command>:</para>
 
-      <screen db:wrap="force">${root.example.dir}/osgi/osgi-project $ <command>mvn clean install</command>
+      <screen>${root.example.dir}/osgi/osgi-project $ <command>mvn clean install</command>
 [INFO] Reactor build order: 
 [INFO]   org.sonatype.mcookbook.osgi-project (OSGi project)
 [INFO]   osgi-project - plugin configuration
@@ -309,15 +309,30 @@ Welcome to Felix.
     <section>
       <title>Problem</title>
 
-      <para></para>
+      <para>You want to configure your OSGi runtime to load bundles on
+      startup. </para>
     </section>
 
     <section>
       <title>Solution</title>
 
-      <para></para>
+      <para>Import OSGi bundles from the Maven repository. While the Maven
+      repository wasn't designed for OSGi like the OBR repository format, it
+      contains a few components which contain the appropriate metadata to be
+      referenced as OSGi components. To configure your runtime environment to
+      load these components at runtime, you will need to invoke the
+      pax:import-bundle goal.</para>
 
-      <screen db:wrap="force" xmlns:db="http://discursive.com/plugins/docbook">Tim-OBrien-Media:osgi-project Tim$ mvn pax:import-bundle -DgroupId=org.apache.felix -DartifactId=org.apache.felix.webconsole -Dversion=1.2.8
+      <para>As shown in the following screen listing, you are going to import
+      several OSGi bundles from the Maven repository. First you are going to
+      install the Apaceh Felix Web Management Console and then you are going
+      to install some of its requirements. To install the first OSGi bundle
+      run the following command:</para>
+
+      <screen db:wrap="force" xmlns:db="http://discursive.com/plugins/docbook">${root.example.dir}/osgi/osgi-project $ <command>mvn pax:import-bundle \
+    -DgroupId=org.apache.felix \
+    -DartifactId=org.apache.felix.webconsole \
+    -Dversion=1.2.8</command>
 [INFO] Scanning for projects...
 [INFO] Reactor build order: 
 [INFO]   org.sonatype.mcookbook.osgi-project (OSGi project)
@@ -344,9 +359,14 @@ Downloading: http://repo1.maven.org/maven2/org/apache/felix/felix/1.0.4/felix-1.
 [INFO] ------------------------------------------------------------------------
 </screen>
 
-      <para></para>
+      <para>After installing the Apache Felix Web Management console, you will
+      need to install some of its prerequisites. The following commands
+      install version 2.1 of the Java Servlet API, the Jetty HTTP server, and
+      the <varname>org.apache.felix.scr</varname> component. As you can see,
+      some of the OSGi bundle you are installing are simple libraries and
+      APIs, while others are complex servers. </para>
 
-      <screen db:wrap="force">${root.example.dir}/osgi/osgi-project $ <command>mvn pax:import-bundle \
+      <screen>${root.example.dir}/osgi/osgi-project $ <command>mvn pax:import-bundle \
     -DgroupId=org.apache.felix \
     -DartifactId=javax.servlet
     -Dversion=1.0.0</command>
@@ -359,11 +379,16 @@ ${root.example.dir}/osgi/osgi-project $ <command>mvn pax:import-bundle \
     -DartifactId=org.apache.felix.http.jetty \
     -Dversion=1.0.1</command></screen>
 
-      <para></para>
+      <para>Once you have bundled these OSGi bundles, you can start your
+      runtme environment. Because the pax:import-bundle goal changex some of
+      the POMs in your osgi-project, you will need to run <command>mvn
+      install</command> before you can run <command>mvn
+      pax:provision</command>.</para>
 
-      <screen db:wrap="force">${root.example.dir}/osgi/osgi-project $ <command>mvn install pax:provision</command>
+      <screen>${root.example.dir}/osgi/osgi-project $ <command>mvn install pax:provision</command>
 [INFO] [pax:provision]
-[INFO] Installing /Users/Tim/Library/Code/sonatype/maven-cookbook/mcookbook-examples/osgi/osgi-project/runner/target/pom-transformed.xml to /Users/Tim/.m2/repository/org/sonatype/mcookbook/osgi-project/build/deployment/1.0-SNAPSHOT/deployment-1.0-SNAPSHOT.pom
+[INFO] Installing ${root.example.dir}/osgi/osgi-project/runner/target/pom-transformed.xml 
+       to ${local.repo.dir}/org/sonatype/mcookbook/osgi-project/build/deployment/1.0-SNAPSHOT/deployment-1.0-SNAPSHOT.pom
     ______  ________  __  __
    / __  / /  __   / / / / /
   /  ___/ /  __   / _\ \ _/
@@ -375,17 +400,21 @@ Pax Runner (1.0.0) from OPS4J - http://www.ops4j.org
 
  -&gt; Using config [classpath:META-INF/runner.properties]
  -&gt; Using only arguments from command line
- -&gt; Scan bundles from [/Users/Tim/Library/Code/sonatype/maven-cookbook/mcookbook-examples/osgi/osgi-project/runner/deploy-pom.xml]
- -&gt; Scan bundles from [scan-pom:file:/Users/Tim/Library/Code/sonatype/maven-cookbook/mcookbook-examples/osgi/osgi-project/runner/deploy-pom.xml]
- -&gt; Provision bundle [mvn:org.apache.felix/org.apache.felix.webconsole/1.2.8, at default start level, bundle will be started, bundle will be loaded from the cache]
- -&gt; Provision bundle [mvn:org.apache.felix/javax.servlet/1.0.0, at default start level, bundle will be started, bundle will be loaded from the cache]
- -&gt; Provision bundle [mvn:org.apache.felix/org.apache.felix.http.jetty/1.0.1, at default start level, bundle will be started, bundle will be loaded from the cache]
- -&gt; Provision bundle [mvn:org.apache.felix/org.apache.felix.scr/1.0.8, at default start level, bundle will be started, bundle will be loaded from the cache]
+ -&gt; Scan bundles from [${root.example.dir}/osgi/osgi-project/runner/deploy-pom.xml]
+ -&gt; Scan bundles from [scan-pom:file:${root.example.dir}/osgi/osgi-project/runner/deploy-pom.xml]
+ -&gt; Provision bundle [mvn:org.apache.felix/org.apache.felix.webconsole/1.2.8, 
+at default start level, bundle will be started, bundle will be loaded from the cache]
+ -&gt; Provision bundle [mvn:org.apache.felix/javax.servlet/1.0.0, at default start 
+level, bundle will be started, bundle will be loaded from the cache]
+ -&gt; Provision bundle [mvn:org.apache.felix/org.apache.felix.http.jetty/1.0.1, 
+at default start level, bundle will be started, bundle will be loaded from the cache]
+ -&gt; Provision bundle [mvn:org.apache.felix/org.apache.felix.scr/1.0.8, at default 
+start level, bundle will be started, bundle will be loaded from the cache]
  -&gt; Preparing framework [Felix 1.8.0]
  -&gt; Downloading bundles...
- -&gt; mvn:org.apache.felix/org.apache.felix.webconsole/1.2.8 : 102399 bytes @ [ 6023 -&gt; mvn:org.apache.felix/org.apache.felix.webconsole/1.2.8 : 204799 bytes @ [ 7314 -&gt; mvn:org.apache.felix/org.apache.felix.webconsole/1.2.8 : 307199 bytes @ [ 7876 -&gt; mvn:org.apache.felix/org.apache.felix.webconsole/1.2.8 : 409599 bytes @ [ 8031 -&gt; mvn:org.apache.felix/org.apache.felix.webconsole/1.2.8 : 507026 bytes @ [ 7567kBps ]
+ -&gt; mvn:org.apache.felix/org.apache.felix.webconsole/1.2.8 : 102399 bytes 
  -&gt; mvn:org.apache.felix/javax.servlet/1.0.0 : 30450 bytes @ [ 10150kBps ]
- -&gt; mvn:org.apache.felix/org.apache.felix.http.jetty/1.0.1 : 102399 bytes @ [ 9309 -&gt; mvn:org.apache.felix/org.apache.felix.http.jetty/1.0.1 : 204799 bytes @ [ 9309 -&gt; mvn:org.apache.felix/org.apache.felix.http.jetty/1.0.1 : 307199 bytes @ [ 8777 -&gt; mvn:org.apache.felix/org.apache.felix.http.jetty/1.0.1 : 409599 bytes @ [ 8904 -&gt; mvn:org.apache.felix/org.apache.felix.http.jetty/1.0.1 : 511999 bytes @ [ 8982 -&gt; mvn:org.apache.felix/org.apache.felix.http.jetty/1.0.1 : 614399 bytes @ [ 9035 -&gt; mvn:org.apache.felix/org.apache.felix.http.jetty/1.0.1 : 716799 bytes @ [ 8849 -&gt; mvn:org.apache.felix/org.apache.felix.http.jetty/1.0.1 : 769485 bytes @ [ 8844kBps ]
+ -&gt; mvn:org.apache.felix/org.apache.felix.http.jetty/1.0.1 : 102399 bytes @ 
  -&gt; mvn:org.apache.felix/org.apache.felix.scr/1.0.8 : 112058 bytes @ [ 8619kBps ]
  -&gt; Using execution environment [J2SE-1.5]
  -&gt; Runner has successfully finished his job!
@@ -418,10 +447,15 @@ org.mortbay.log:started /system/console/*
 org.mortbay.log:started /system/console/res
 </screen>
 
-      <para></para>
+      <para>After running mvn pax:provision, you have an instance of Felix
+      that is running the Apache Felix Web Management Console application.
+      Fire up a web brower, and go to <ulink
+      url="http://localhost:8080/system/console">http://localhost:8080/system/console</ulink>
+      to load the interface. The default administrative username and password
+      is <varname>admin</varname>/<varname>admin</varname>.</para>
 
-      <figure>
-        <title></title>
+      <figure id="fig-osgi-felix-web-management">
+        <title>Apache Felix Web Management Console</title>
 
         <mediaobject>
           <imageobject>
