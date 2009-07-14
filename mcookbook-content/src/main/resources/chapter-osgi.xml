@@ -114,7 +114,7 @@
       <para>If you want to verify that you can build the project successfully,
       run <command>mvn clean install</command>:</para>
 
-      <screen db:wrap="force">${root.example.dir}/osgi/osgi-project $ <command>mvn clean install</command>
+      <screen db:wrap="force" xmlns:db="http://discursive.com/plugins/docbook">${root.example.dir}/osgi/osgi-project $ <command>mvn clean install</command>
 [INFO] Reactor build order: 
 [INFO]   org.sonatype.mcookbook.osgi-project (OSGi project)
 [INFO]   osgi-project - plugin configuration
@@ -366,7 +366,7 @@ Downloading: http://repo1.maven.org/maven2/org/apache/felix/felix/1.0.4/felix-1.
       some of the OSGi bundle you are installing are simple libraries and
       APIs, while others are complex servers. </para>
 
-      <screen db:wrap="force">${root.example.dir}/osgi/osgi-project $ <command>mvn pax:import-bundle \
+      <screen db:wrap="force" xmlns:db="http://discursive.com/plugins/docbook">${root.example.dir}/osgi/osgi-project $ <command>mvn pax:import-bundle \
     -DgroupId=org.apache.felix \
     -DartifactId=javax.servlet
     -Dversion=1.0.0</command>
@@ -385,7 +385,7 @@ ${root.example.dir}/osgi/osgi-project $ <command>mvn pax:import-bundle \
       install</command> before you can run <command>mvn
       pax:provision</command>.</para>
 
-      <screen db:wrap="force">${root.example.dir}/osgi/osgi-project $ <command>mvn install pax:provision</command>
+      <screen db:wrap="force" xmlns:db="http://discursive.com/plugins/docbook">${root.example.dir}/osgi/osgi-project $ <command>mvn install pax:provision</command>
 [INFO] [pax:provision]
 [INFO] Installing ${root.example.dir}/osgi/osgi-project/runner/target/pom-transformed.xml 
        to ${local.repo.dir}/org/sonatype/mcookbook/osgi-project/build/deployment/1.0-SNAPSHOT/deployment-1.0-SNAPSHOT.pom
