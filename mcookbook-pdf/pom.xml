@@ -58,7 +58,7 @@
 	<configuration>
 	  <sourceDirectory>${basedir}/target/docbook</sourceDirectory>
 	  <targetDirectory>${basedir}/target</targetDirectory>
-	  <includes>book-nexus.xml</includes>
+	  <includes>book-mcook.xml</includes>
 	  <xincludeSupported>true</xincludeSupported>
 	  <imgSrcPath>${basedir}/target/docbook/</imgSrcPath>
 	  <foCustomization>${basedir}/target/classes/fopdf.xsl</foCustomization>
