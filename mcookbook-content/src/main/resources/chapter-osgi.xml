@@ -722,7 +722,7 @@ START LEVEL 6
       <example>
         <title>ExampleService Interface</title>
 
-        <programlisting>package org.sonatype.mcookbook;
+        <programlisting db:wrap="force" xmlns:db="http://discursive.com/plugins/docbook">package org.sonatype.mcookbook;
 
 /**
  * Public API representing an example OSGi service
@@ -743,7 +743,7 @@ public interface ExampleService
         <title>ExampleServiceImpl Implementation of the ExampleService
         Interface</title>
 
-        <programlisting>package org.sonatype.mcookbook.internal;
+        <programlisting db:wrap="force" xmlns:db="http://discursive.com/plugins/docbook">package org.sonatype.mcookbook.internal;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -798,7 +798,7 @@ public final class ExampleServiceImpl
       <example>
         <title>The BundleActivator implementation: ExampleActivator</title>
 
-        <programlisting>package org.sonatype.mcookbook.internal;
+        <programlisting db:wrap="force" xmlns:db="http://discursive.com/plugins/docbook">package org.sonatype.mcookbook.internal;
 
 import java.util.Dictionary;
 import java.util.Properties;
@@ -854,7 +854,7 @@ public final class ExampleActivator
       <example>
         <title>osgi.bnd Bundle Configuration</title>
 
-        <programlisting>#-----------------------------------------------------------------
+        <programlisting db:wrap="force" xmlns:db="http://discursive.com/plugins/docbook">#-----------------------------------------------------------------
 # Use this file to add customized Bnd instructions for the bundle
 #-----------------------------------------------------------------
 
@@ -905,7 +905,7 @@ Bundle-Activator: ${bundle.namespace}.internal.ExampleActivator
       <para>The following commands will install and start Nexus Professional
       1.3.5:</para>
 
-      <screen>~/programs $ <command>cp ~/Downloads/nexus-professional-webapp-1.3.5-bundle.tar.gz ~/programs</command>
+      <screen db:wrap="force" xmlns:db="http://discursive.com/plugins/docbook">~/programs $ <command>cp ~/Downloads/nexus-professional-webapp-1.3.5-bundle.tar.gz ~/programs</command>
 ~/programs $ <command>tar xvzf nexus-professional-webapp-1.3.5-bundle.tar.gz</command>
 ~/programs $ <command>cd nexus-professional-webapp-1.3.5</command>
 ~/programs/nexus-professional-webapp-1.3.5 $ <command>./bin/jsw/macosx-universal-32/nexus start</command>
@@ -921,7 +921,7 @@ Started Sonatype Nexus Repository Manager.
         <title>settings.xml to configure deployment credentials and mirrors
         for Nexus</title>
 
-        <programlisting>&lt;settings&gt;
+        <programlisting db:wrap="force" xmlns:db="http://discursive.com/plugins/docbook">&lt;settings&gt;
   &lt;mirrors&gt;
     &lt;mirror&gt;
       &lt;!--This sends everything else to /public --&gt;
@@ -984,7 +984,7 @@ Started Sonatype Nexus Repository Manager.
         <title>Distribution Management Settings for the osgi-project
         Project</title>
 
-        <programlisting>&lt;project&gt;
+        <programlisting db:wrap="force" xmlns:db="http://discursive.com/plugins/docbook">&lt;project&gt;
   ...
   &lt;distributionManagement&gt;
     &lt;repository&gt;
@@ -1004,7 +1004,7 @@ Started Sonatype Nexus Repository Manager.
       <para>Now, deploy the the bundle from your osgi-project to the Nexus
       Snapshots repository by running mvn deploy -DremoteOBR.</para>
 
-      <screen>~/osgi/osgi-project $ <command>mvn deploy -DremoteOBR</command>
+      <screen db:wrap="force" xmlns:db="http://discursive.com/plugins/docbook">~/osgi/osgi-project $ <command>mvn deploy -DremoteOBR</command>
 [INFO] Scanning for projects...
 ...
 [INFO] [deploy:deploy]
@@ -1173,7 +1173,7 @@ Uploading: http://localhost:8081/nexus/content/repositories/snapshots/org/sonaty
       <para>These commands are captured in the following screen
       listing:</para>
 
-      <screen>~/programs $ <command>wget http://www.apache.org/dist/felix/felix-1.8.0.tar.gz</command>
+      <screen db:wrap="force" xmlns:db="http://discursive.com/plugins/docbook">~/programs $ <command>wget http://www.apache.org/dist/felix/felix-1.8.0.tar.gz</command>
 --2009-07-14 22:46:19--  http://www.apache.org/dist/felix/felix-1.8.0.tar.gz
 Resolving www.apache.org... 140.211.11.130
 Connecting to www.apache.org|140.211.11.130|:80... connected.
@@ -1359,7 +1359,7 @@ REGISTER org.sonatype.mcookbook.ExampleService
       <example id="ex-osgi-obr-virtual-snapshots">
         <title>Metadata for the Snapshots OBR Virtual Repository</title>
 
-        <programlisting>&lt;repository name='Snapshots OBR' lastmodified='1247630990695'&gt;
+        <programlisting db:wrap="force" xmlns:db="http://discursive.com/plugins/docbook">&lt;repository name='Snapshots OBR' lastmodified='1247630990695'&gt;
 &lt;resource id='org.sonatype.mcookbook/1.0.0.SNAPSHOT' presentationname='org.sonatype.mcookbook' symbolicname='org.sonatype.mcookbook' uri='../org/sonatype/mcookbook/osgi-project/org.sonatype.mcookbook/1.0-SNAPSHOT/org.sonatype.mcookbook-1.0-20090715.030813-1.jar' version='1.0.0.SNAPSHOT'&gt;
   &lt;description&gt;
     Generated using Pax-Construct
@@ -1467,7 +1467,7 @@ REGISTER org.sonatype.mcookbook.ExampleService
       <para>These commands are captured in the following screen
       listing:</para>
 
-      <screen>~/programs $ <command>wget http://www.apache.org/dist/felix/felix-1.8.0.tar.gz</command>
+      <screen db:wrap="force" xmlns:db="http://discursive.com/plugins/docbook">~/programs $ <command>wget http://www.apache.org/dist/felix/felix-1.8.0.tar.gz</command>
 --2009-07-14 22:46:19--  http://www.apache.org/dist/felix/felix-1.8.0.tar.gz
 Resolving www.apache.org... 140.211.11.130
 Connecting to www.apache.org|140.211.11.130|:80... connected.
@@ -1696,7 +1696,7 @@ REGISTER org.sonatype.mcookbook.ExampleService
       <para>These commands are captured in the following screen
       listing:</para>
 
-      <screen>~/programs $ <command>wget http://www.apache.org/dist/felix/felix-1.8.0.tar.gz</command>
+      <screen db:wrap="force" xmlns:db="http://discursive.com/plugins/docbook">~/programs $ <command>wget http://www.apache.org/dist/felix/felix-1.8.0.tar.gz</command>
 --2009-07-14 22:46:19--  http://www.apache.org/dist/felix/felix-1.8.0.tar.gz
 Resolving www.apache.org... 140.211.11.130
 Connecting to www.apache.org|140.211.11.130|:80... connected.
@@ -1978,7 +1978,7 @@ START LEVEL 1
       <para>These commands are captured in the following screen
       listing:</para>
 
-      <screen>~/programs $ <command>wget http://www.apache.org/dist/felix/felix-1.8.0.tar.gz</command>
+      <screen db:wrap="force" xmlns:db="http://discursive.com/plugins/docbook">~/programs $ <command>wget http://www.apache.org/dist/felix/felix-1.8.0.tar.gz</command>
 --2009-07-14 22:46:19--  http://www.apache.org/dist/felix/felix-1.8.0.tar.gz
 Resolving www.apache.org... 140.211.11.130
 Connecting to www.apache.org|140.211.11.130|:80... connected.
