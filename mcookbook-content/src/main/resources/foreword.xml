@@ -4,7 +4,12 @@
 <preface id="foreword">
   <title>Foreword: ${project.version}</title>
 
-  <para>This is an initial pre-alpha for the Maven Cookbook.</para>
+  <para>This is an initial pre-alpha for the Maven Cookbook. I hate to call
+  this a book at the moment: one chapter, a cover, and a copyright statement
+  is more a pamphlet than a book. But, everything has to have a beginning, and
+  (in the interest of openness) why not distribute the information as it
+  appears, chapter by chapter. Enjoy, and if you want us to write about
+  something specific, just ask. We're continuing to take requests.</para>
 
   <para>Tim O'Brien, Sonatype</para>
 
