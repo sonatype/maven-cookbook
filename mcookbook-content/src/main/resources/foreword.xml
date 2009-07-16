@@ -4,12 +4,42 @@
 <preface id="foreword">
   <title>Foreword: ${project.version}</title>
 
-  <para>This is an initial pre-alpha for the Maven Cookbook. I hate to call
-  this a book at the moment: one chapter, a cover, and a copyright statement
-  is more a pamphlet than a book. But, everything has to have a beginning, and
-  (in the interest of openness) why not distribute the information as it
-  appears, chapter by chapter. Enjoy, and if you want us to write about
-  something specific, just ask. We're continuing to take requests.</para>
+  <para>This is an initial pre-alpha version of the Maven Cookbook, and I mean
+  "pre-alpha". If you are coming to the book with the expectation that this is
+  a polished product, please check back in a few months, we're going to be
+  developing this content over the next few months, and you should expect at
+  least two chapters a month for the next five or six. I'm convinced that this
+  will be a better book because people are going to have a window into the
+  process, you will be able to see the false starts, outline revisions, and
+  other parts of the writing process that are usually hidden from view. You'll
+  be able to give us feedback and reviews even before we've stated that the
+  content is ready for review. </para>
+
+  <para>What's up with this cover image? It is a Galaxy, the <ulink
+  url="http://en.wikipedia.org/wiki/NGC_1300">Barred Spiral Galaxy NGC
+  1300</ulink> to be exact, and the picture is a composite of images from
+  NASA's Hubble Space Telescope. NGC 1300 is 61 million light-years away and
+  it is 110,000 light-years across. Why a Galaxy? Two reasons: First reason,
+  because a Galaxy is a good analogy for the ecosystem that surrounds Maven.
+  If Maven were the massive energetic core of a galaxy, the various projects
+  and plugins that provide Maven's functionality are the various solar systems
+  and star clusters that comprise the bulk of what you see when you look at a
+  galaxy. While Maven: The Definitive Guide is going to be focused on the core
+  of Maven, this book is focused on the various objects one would encounter in
+  the "spiral arms". Second reason I used this picture, because it's a cool
+  picture that is in the public domain. (Just in case you are curious, your
+  own galaxy, The Milky Way, is a Spiral Galaxy that has a logarithmic spiral
+  shape, measurements from the Spitzer Space Telescope in 2005 confirmed that
+  our own galaxy is a barred spiral galaxy.)</para>
+
+  <para>And another thing, we're calling this thing a "book", but doesn't the
+  term seem a bit archaic at the moment? This book is more of a periodical (as
+  are most of our books), they change and evolve as the community and software
+  evolves. Admittedly, parts of our other books tend to converge to a stable
+  point, but even the most basic parts of Maven: The Definitive Guide are open
+  to change. Despite this constant evolution, we are currently investigating
+  new ways to make this content available as a regular, printed book for those
+  of you who would like a copy. </para>
 
   <para>Tim O'Brien, Sonatype</para>
 
