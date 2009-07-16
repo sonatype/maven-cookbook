@@ -15,8 +15,8 @@
   be able to give us feedback and reviews even before we've stated that the
   content is ready for review. </para>
 
-  <para>What's up with this cover image? It is a Galaxy, the <ulink
-  url="http://en.wikipedia.org/wiki/NGC_1300">Barred Spiral Galaxy NGC
+  <para>What's up with this cover image (on the PDF)? It is a Galaxy, the
+  <ulink url="http://en.wikipedia.org/wiki/NGC_1300">Barred Spiral Galaxy NGC
   1300</ulink> to be exact, and the picture is a composite of images from
   NASA's Hubble Space Telescope. NGC 1300 is 61 million light-years away and
   it is 110,000 light-years across. Why a Galaxy? Two reasons: First reason,
@@ -39,11 +39,11 @@
   point, but even the most basic parts of Maven: The Definitive Guide are open
   to change. Despite this constant evolution, we are currently investigating
   new ways to make this content available as a regular, printed book for those
-  of you who would like a copy. </para>
+  of you who would like a copy.</para>
 
   <para>Tim O'Brien, Sonatype</para>
 
-  <para>July 13, 2009</para>
+  <para>July 15, 2009</para>
 
   <para>Edition: ${project.version}</para>
 
@@ -67,6 +67,10 @@
 
         <listitem>
           <para>Create a cover for the Maven Cookbook.</para>
+        </listitem>
+
+        <listitem>
+          <para>Write a Chapter on OSGi Development</para>
         </listitem>
       </itemizedlist>
     </section>

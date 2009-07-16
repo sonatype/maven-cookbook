@@ -154,18 +154,12 @@ HOT/osgi-project-1.0-SNAPSHOT.pom
         </varlistentry>
 
         <varlistentry>
-          <term>osgi-project/poms/pom.xml</term>
-
-          <listitem>
-            <para></para>
-          </listitem>
-        </varlistentry>
-
-        <varlistentry>
           <term>osgi-project/poms/compiled/pom.xml</term>
 
           <listitem>
-            <para></para>
+            <para>This POM serves as the parent POM to all of the compiled
+            OSGi components you will add to this osgi-project Maven
+            project.</para>
           </listitem>
         </varlistentry>
 
@@ -173,7 +167,10 @@ HOT/osgi-project-1.0-SNAPSHOT.pom
           <term>osgi-project/poms/wrappers/pom.xml</term>
 
           <listitem>
-            <para></para>
+            <para>If you can't find a particular library as an OSGi component,
+            the Pax Construct tools allow you to wrap an existing dependency
+            artifact into an OSGi bundle. The configuration for these wrapped
+            bundles is stored in this POM.</para>
           </listitem>
         </varlistentry>
 
@@ -181,7 +178,11 @@ HOT/osgi-project-1.0-SNAPSHOT.pom
           <term>osgi-project/provision/pom.xml</term>
 
           <listitem>
-            <para></para>
+            <para>This POM configures the Apache Felix runtime environment
+            that you can start by running the <varname>pax:provision</varname>
+            goal. If you need to import a bundle into your runtime
+            environment, this is the POM that contains a reference to the
+            corresponding Maven dependency.</para>
           </listitem>
         </varlistentry>
       </variablelist>
@@ -722,7 +723,8 @@ START LEVEL 6
       <example>
         <title>ExampleService Interface</title>
 
-        <programlisting db:wrap="force" xmlns:db="http://discursive.com/plugins/docbook">package org.sonatype.mcookbook;
+        <programlisting db:wrap="force"
+                        xmlns:db="http://discursive.com/plugins/docbook">package org.sonatype.mcookbook;
 
 /**
  * Public API representing an example OSGi service
@@ -743,7 +745,8 @@ public interface ExampleService
         <title>ExampleServiceImpl Implementation of the ExampleService
         Interface</title>
 
-        <programlisting db:wrap="force" xmlns:db="http://discursive.com/plugins/docbook">package org.sonatype.mcookbook.internal;
+        <programlisting db:wrap="force"
+                        xmlns:db="http://discursive.com/plugins/docbook">package org.sonatype.mcookbook.internal;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -798,7 +801,8 @@ public final class ExampleServiceImpl
       <example>
         <title>The BundleActivator implementation: ExampleActivator</title>
 
-        <programlisting db:wrap="force" xmlns:db="http://discursive.com/plugins/docbook">package org.sonatype.mcookbook.internal;
+        <programlisting db:wrap="force"
+                        xmlns:db="http://discursive.com/plugins/docbook">package org.sonatype.mcookbook.internal;
 
 import java.util.Dictionary;
 import java.util.Properties;
@@ -854,7 +858,8 @@ public final class ExampleActivator
       <example>
         <title>osgi.bnd Bundle Configuration</title>
 
-        <programlisting db:wrap="force" xmlns:db="http://discursive.com/plugins/docbook">#-----------------------------------------------------------------
+        <programlisting db:wrap="force"
+                        xmlns:db="http://discursive.com/plugins/docbook">#-----------------------------------------------------------------
 # Use this file to add customized Bnd instructions for the bundle
 #-----------------------------------------------------------------
 
@@ -921,7 +926,8 @@ Started Sonatype Nexus Repository Manager.
         <title>settings.xml to configure deployment credentials and mirrors
         for Nexus</title>
 
-        <programlisting db:wrap="force" xmlns:db="http://discursive.com/plugins/docbook">&lt;settings&gt;
+        <programlisting db:wrap="force"
+                        xmlns:db="http://discursive.com/plugins/docbook">&lt;settings&gt;
   &lt;mirrors&gt;
     &lt;mirror&gt;
       &lt;!--This sends everything else to /public --&gt;
@@ -984,7 +990,8 @@ Started Sonatype Nexus Repository Manager.
         <title>Distribution Management Settings for the osgi-project
         Project</title>
 
-        <programlisting db:wrap="force" xmlns:db="http://discursive.com/plugins/docbook">&lt;project&gt;
+        <programlisting db:wrap="force"
+                        xmlns:db="http://discursive.com/plugins/docbook">&lt;project&gt;
   ...
   &lt;distributionManagement&gt;
     &lt;repository&gt;
@@ -1359,7 +1366,8 @@ REGISTER org.sonatype.mcookbook.ExampleService
       <example id="ex-osgi-obr-virtual-snapshots">
         <title>Metadata for the Snapshots OBR Virtual Repository</title>
 
-        <programlisting db:wrap="force" xmlns:db="http://discursive.com/plugins/docbook">&lt;repository name='Snapshots OBR' lastmodified='1247630990695'&gt;
+        <programlisting db:wrap="force"
+                        xmlns:db="http://discursive.com/plugins/docbook">&lt;repository name='Snapshots OBR' lastmodified='1247630990695'&gt;
 &lt;resource id='org.sonatype.mcookbook/1.0.0.SNAPSHOT' presentationname='org.sonatype.mcookbook' symbolicname='org.sonatype.mcookbook' uri='../org/sonatype/mcookbook/osgi-project/org.sonatype.mcookbook/1.0-SNAPSHOT/org.sonatype.mcookbook-1.0-20090715.030813-1.jar' version='1.0.0.SNAPSHOT'&gt;
   &lt;description&gt;
     Generated using Pax-Construct
@@ -1828,7 +1836,7 @@ START LEVEL 1
     between Maven and OSGi. In the previous recipe, you proxied a remote OBR
     repository using a Nexus proxy repository. In this recipe, you are going
     to learn how to consolidate multiple OBR repositories into a single URL
-    using a Nexus repository group. </para>
+    using a Nexus repository group.</para>
 
     <section>
       <title>Problem</title>
@@ -1894,7 +1902,7 @@ START LEVEL 1
 
         <listitem>
           <para>Drag the two OBR repositories created in the previous recipes
-          to the Ordered Group Repositories list. </para>
+          to the Ordered Group Repositories list.</para>
         </listitem>
 
         <listitem>
