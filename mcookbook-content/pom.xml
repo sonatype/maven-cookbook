@@ -52,6 +52,9 @@
         		<goals>
         			<goal>wrappify</goal>
         		</goals>
+                <configuration>
+                  <columnLimit>79</columnLimit>
+                </configuration>
         	</execution>
         </executions>
       </plugin>
