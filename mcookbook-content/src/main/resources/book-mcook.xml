@@ -27,5 +27,8 @@
   <xi:include href="chapter-osgi.xml"
               xmlns:xi="http://www.w3.org/2001/XInclude" />
 
+  <xi:include href="chapter-groovy.xml"
+              xmlns:xi="http://www.w3.org/2001/XInclude" />
+
   <index></index>
 </book>
