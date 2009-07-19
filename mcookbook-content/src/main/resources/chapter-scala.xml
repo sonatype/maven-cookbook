@@ -15,7 +15,7 @@
     chapter will introduce you to Scala by way of Maven.</para>
   </section>
 
-  <section>
+  <section id="sect-scala-script-inline">
     <title>Running an Inline Scala Script in a Maven Build</title>
 
     <section>
@@ -28,13 +28,15 @@
     <section>
       <title>Solution</title>
 
-      <para></para>
+      <para>Configure the <varname>script</varname> goal of the
+      <varname>maven-scala-plugin</varname>, and pass a Scala script to the
+      <varname>script</varname> configuration parameter.</para>
 
-      <example>
+      <example id="ex-scala-script-inline">
         <title>Executing an Inline Scala Script with the Maven Scala
         Plugin</title>
 
-        <programlisting db:wrap="force" xmlns:db="http://discursive.com/plugins/docbook">&lt;project xmlns="http://maven.apache.org/POM/4.0.0"
+        <programlisting>&lt;project xmlns="http://maven.apache.org/POM/4.0.0"
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0                        
                              http://maven.apache.org/maven-v4_0_0.xsd"&gt;
@@ -113,7 +115,27 @@
 </programlisting>
       </example>
 
-      <para></para>
+      <para>If you run <command>mvn package</command>, the
+      <varname>script</varname> goal will be executed during the
+      <varname>prepare-package</varname> phase.</para>
+
+      <screen>${root.example.dir}/scala/scala-script $ <command>mvn package -Dmaven.test.skip=true</command>
+[INFO] Scanning for projects...
+[INFO] ------------------------------------------------------------------------
+[INFO] Building scala-script
+[INFO]    task-segment: [package]
+[INFO] ------------------------------------------------------------------------
+...
+[INFO] [scala:script {execution: scala-magic}]
+[INFO] Checking for multiple versions of scala
+...
+[INFO] BUILD SUCCESSFUL
+</screen>
+
+      <para>After this script executes, there will be a file named
+      <filename>deps.txt</filename> in
+      <filename>${basedir}/target/classes</filename> containing a list of the
+      project's direct dependencies.</para>
 
       <programlisting>org.scalaforge:scalax:0.1
 org.apache.maven:maven-model:2.2.0
@@ -142,13 +164,16 @@ org.scala-lang:scala-library:2.7.3
     <section>
       <title>Solution</title>
 
-      <para></para>
+      <para>Similar to <xref linkend="ex-scala-script-inline" />, configure
+      the <varname>script</varname> goal of the Maven Scala plugin and specify
+      a Scala script in the <varname>scriptFile</varname> configuration
+      parameter.</para>
 
       <example>
         <title>Configuring the Maven Scala Plugn Script Goal to Execute an
         External Script</title>
 
-        <programlisting db:wrap="force" xmlns:db="http://discursive.com/plugins/docbook">&lt;project xmlns="http://maven.apache.org/POM/4.0.0"
+        <programlisting>&lt;project xmlns="http://maven.apache.org/POM/4.0.0"
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0                        
                              http://maven.apache.org/maven-v4_0_0.xsd"&gt;
@@ -212,12 +237,17 @@ org.scala-lang:scala-library:2.7.3
 </programlisting>
       </example>
 
-      <para></para>
+      <para>The script that this build will execute is the same Scala script
+      which was executed in <xref linkend="ex-scala-script-inline" />. In this
+      example, the script is stored in an external file in
+      ${basedir]/src/main/scala, and in <xref
+      linkend="ex-scala-script-inline" />, the script was listed inline in the
+      project's POM.</para>
 
       <example>
         <title>The CreateDeps.scala Script</title>
 
-        <programlisting db:wrap="force" xmlns:db="http://discursive.com/plugins/docbook">import java.io.{File,  PrintWriter, FileWriter};
+        <programlisting>import java.io.{File,  PrintWriter, FileWriter};
 import scalax.io.FileExtras;
 import scala.collection.mutable.HashSet;
 
@@ -232,7 +262,11 @@ pw.writeLines( depSet.toSeq );
 </programlisting>
       </example>
 
-      <para></para>
+      <para>Just like the example in <xref
+      linkend="sect-scala-script-inline" />, this script creates a file named
+      <filename>deps.txt</filename> in
+      <filename>${basedir}/target/classes</filename> which contains a list of
+      the project's dependencies.</para>
 
       <programlisting>org.scalaforge:scalax:0.1
 org.apache.maven:maven-model:2.2.0
