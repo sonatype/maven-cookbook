@@ -4,7 +4,7 @@
 <chapter id="scala">
   <title>Scala and Maven</title>
 
-  <section id="groovy-sect-intro">
+  <section id="scala-sect-intro">
     <title>Introduction</title>
 
     <para>Scala., haven't used it yet? Not surprised, few have, but everyone
@@ -34,7 +34,7 @@
         <title>Executing an Inline Scala Script with the Maven Scala
         Plugin</title>
 
-        <programlisting db:wrap="force" xmlns:db="http://discursive.com/plugins/docbook">&lt;project xmlns="http://maven.apache.org/POM/4.0.0"
+        <programlisting>&lt;project xmlns="http://maven.apache.org/POM/4.0.0"
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0                        
                              http://maven.apache.org/maven-v4_0_0.xsd"&gt;
@@ -148,7 +148,7 @@ org.scala-lang:scala-library:2.7.3
         <title>Configuring the Maven Scala Plugn Script Goal to Execute an
         External Script</title>
 
-        <programlisting db:wrap="force" xmlns:db="http://discursive.com/plugins/docbook">&lt;project xmlns="http://maven.apache.org/POM/4.0.0"
+        <programlisting>&lt;project xmlns="http://maven.apache.org/POM/4.0.0"
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0                        
                              http://maven.apache.org/maven-v4_0_0.xsd"&gt;
@@ -217,7 +217,7 @@ org.scala-lang:scala-library:2.7.3
       <example>
         <title>The CreateDeps.scala Script</title>
 
-        <programlisting db:wrap="force" xmlns:db="http://discursive.com/plugins/docbook">import java.io.{File,  PrintWriter, FileWriter};
+        <programlisting>import java.io.{File,  PrintWriter, FileWriter};
 import scalax.io.FileExtras;
 import scala.collection.mutable.HashSet;
 
