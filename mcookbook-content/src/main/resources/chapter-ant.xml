@@ -59,11 +59,11 @@
               &lt;tasks&gt;
                 &lt;property name="compile_classpath"
                           refid="maven.compile.classpath"/&gt;
-                &lt;echo file="${project.build.outputDirectory}/deps.txt"
-                      message="compile classpath: ${compile_classpath}"/&gt;
+                &lt;echo file="\${project.build.outputDirectory}/deps.txt"
+                      message="compile classpath: \${compile_classpath}"/&gt;
 
-                &lt;copy todir="${project.build.outputDirectory}"&gt;
-                  &lt;fileset dir="${project.build.sourceDirectory}"/&gt;
+                &lt;copy todir="\${project.build.outputDirectory}"&gt;
+                  &lt;fileset dir="\${project.build.sourceDirectory}"/&gt;
                 &lt;/copy&gt;
               &lt;/tasks&gt;
             &lt;/configuration&gt;
@@ -89,7 +89,7 @@
 </screen>
 
       <para>Once this simple Ant script has been completed, the contents of
-      <filename>${basedir}/target/classes/deps.txt</filename> should contain
+      <filename>\${basedir}/target/classes/deps.txt</filename> should contain
       the following:</para>
 
       <programlisting db:wrap="force"
@@ -145,10 +145,10 @@
                 &lt;property name="compile_classpath" 
                           refid="maven.compile.classpath"/&gt;
                 &lt;property name="outputDir"
-                          value="${project.build.outputDirectory}"/&gt;
+                          value="\${project.build.outputDirectory}"/&gt;
                 &lt;property name="sourceDir"
-                          value="${project.build.sourceDirectory}"/&gt;
-                &lt;ant antfile="${basedir}/src/main/ant/create-deps.xml"
+                          value="\${project.build.sourceDirectory}"/&gt;
+                &lt;ant antfile="\${basedir}/src/main/ant/create-deps.xml"
                      target="create"/&gt;
               &lt;/tasks&gt;
             &lt;/configuration&gt;
@@ -180,7 +180,7 @@ create:
 </screen>
 
       <para>Once this simple Ant script has been completed, the contents of
-      <filename>${basedir}/target/classes/deps.txt</filename> should contain
+      <filename>\${basedir}/target/classes/deps.txt</filename> should contain
       the following:</para>
 
       <programlisting db:wrap="force"
