@@ -120,7 +120,8 @@
       <varname>script</varname> goal will be executed during the
       <varname>prepare-package</varname> phase.</para>
 
-      <screen>${root.example.dir}/scala/scala-script $ <command>mvn package -Dmaven.test.skip=true</command>
+      <screen db:wrap="force"
+                        xmlns:db="http://discursive.com/plugins/docbook">${root.example.dir}/scala/scala-script $ <command>mvn package -Dmaven.test.skip=true</command>
 [INFO] Scanning for projects...
 [INFO] ------------------------------------------------------------------------
 [INFO] Building scala-script
@@ -168,7 +169,8 @@ org.scala-lang:scala-library:2.7.3
       source file. Let's take a look at the embeddedScript_1.scala
       file:</para>
 
-      <programlisting>import scala.collection.jcl.Conversions._
+      <programlisting db:wrap="force"
+                        xmlns:db="http://discursive.com/plugins/docbook">import scala.collection.jcl.Conversions._
 class embeddedScript_1(project:org.scala_tools.maven.model.MavenProjectAdapter,log:org
 .apache.maven.plugin.logging.Log) {
   import java.io.{File,  PrintWriter, FileWriter};
