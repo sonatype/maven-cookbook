@@ -33,7 +33,8 @@
       <example id="ex-ant-script-inline">
         <title>Executing an Inline Ant Script in a Maven Build</title>
 
-        <programlisting db:wrap="force" xmlns:db="http://discursive.com/plugins/docbook">&lt;project xmlns="http://maven.apache.org/POM/4.0.0"
+        <programlisting db:wrap="force"
+                        xmlns:db="http://discursive.com/plugins/docbook">&lt;project xmlns="http://maven.apache.org/POM/4.0.0"
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0                        
                              http://maven.apache.org/maven-v4_0_0.xsd"&gt;
@@ -74,9 +75,9 @@
 &lt;/project&gt;</programlisting>
       </example>
 
-      <para>You </para>
+      <para>You can run this script, by executing the package phase.</para>
 
-      <screen db:wrap="force" xmlns:db="http://discursive.com/plugins/docbook">${root.example.dir}/ant/ant-script $ <command>mvn clean install</command>
+      <screen db:wrap="force" xmlns:db="http://discursive.com/plugins/docbook">${root.example.dir}/ant/ant-script $ <command>mvn package</command>
 [INFO] Scanning for projects...
 ...
 [INFO] [antrun:run {execution: ant-magic}]
@@ -87,15 +88,12 @@
 [INFO] BUILD SUCCESSFUL
 </screen>
 
-      <para></para>
+      <para>Once this simple Ant script has been completed, the contents of
+      <filename>${basedir}/target/classes/deps.txt</filename> should contain
+      the following:</para>
 
-      <programlisting db:wrap="force" xmlns:db="http://discursive.com/plugins/docbook">compile classpath: ${root.example.dir}/ant/ant-script/target/classes</programlisting>
-    </section>
-
-    <section>
-      <title>Discussion</title>
-
-      <para></para>
+      <programlisting db:wrap="force"
+                      xmlns:db="http://discursive.com/plugins/docbook">compile classpath: ${root.example.dir}/ant/ant-script/target/classes</programlisting>
     </section>
   </section>
 
@@ -105,18 +103,23 @@
     <section>
       <title>Problem</title>
 
-      <para></para>
+      <para>You need to execute an external Ant script in a Maven
+      build.</para>
     </section>
 
     <section>
       <title>Solution</title>
 
-      <para></para>
+      <para>Configure the run goal form the Maven AntRun plugin. Define any
+      properties you wish to pass to the external Ant build, and then call the
+      external Ant build with the ant task, specifying the antfile and target
+      you wish to execute.</para>
 
       <example>
         <title>Executing an External Ant Script from a Maven Build</title>
 
-        <programlisting db:wrap="force" xmlns:db="http://discursive.com/plugins/docbook">&lt;project xmlns="http://maven.apache.org/POM/4.0.0" 
+        <programlisting db:wrap="force"
+                        xmlns:db="http://discursive.com/plugins/docbook">&lt;project xmlns="http://maven.apache.org/POM/4.0.0" 
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 
                              http://maven.apache.org/maven-v4_0_0.xsd"&gt;
@@ -158,9 +161,10 @@
 </programlisting>
       </example>
 
-      <para></para>
+      <para>To execute this external Ant build, run <command>mvn
+      package</command>.</para>
 
-      <screen db:wrap="force" xmlns:db="http://discursive.com/plugins/docbook">${root.example.dir}/ant/ant-script Tim$ <command>mvn clean install</command>
+      <screen db:wrap="force" xmlns:db="http://discursive.com/plugins/docbook">${root.example.dir}/ant/ant-script Tim$ <command>mvn package</command>
 [INFO] Scanning for projects...
 [INFO] ------------------------------------------------------------------------
 [INFO] Building ant-script-ex
@@ -175,15 +179,12 @@ create:
 [INFO] BUILD SUCCESSFUL
 </screen>
 
-      <para></para>
+      <para>Once this simple Ant script has been completed, the contents of
+      <filename>${basedir}/target/classes/deps.txt</filename> should contain
+      the following:</para>
 
-      <programlisting db:wrap="force" xmlns:db="http://discursive.com/plugins/docbook">compile classpath: ${root.example.dir}/ant/ant-script-ex/target/classes</programlisting>
-    </section>
-
-    <section>
-      <title>Discussion</title>
-
-      <para></para>
+      <programlisting db:wrap="force"
+                      xmlns:db="http://discursive.com/plugins/docbook">compile classpath: ${root.example.dir}/ant/ant-script-ex/target/classes</programlisting>
     </section>
   </section>
 </chapter>

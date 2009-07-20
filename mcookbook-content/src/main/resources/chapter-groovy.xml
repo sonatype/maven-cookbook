@@ -40,7 +40,8 @@
       <example id="ex-groovy-script-in-pom">
         <title>Running a Groovy Script from a POM</title>
 
-        <programlisting db:wrap="force" xmlns:db="http://discursive.com/plugins/docbook">&lt;project xmlns="http://maven.apache.org/POM/4.0.0"
+        <programlisting db:wrap="force"
+                        xmlns:db="http://discursive.com/plugins/docbook">&lt;project xmlns="http://maven.apache.org/POM/4.0.0"
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0                    
                              http://maven.apache.org/maven-v4_0_0.xsd"&gt;
@@ -136,7 +137,8 @@
       ${basedir}/target/classes/deps.txt, and you should see the following
       contents:</para>
 
-      <programlisting db:wrap="force" xmlns:db="http://discursive.com/plugins/docbook">${root.example.dir}/groovy/groovy-script $ <command>more deps.txt</command> 
+      <programlisting db:wrap="force"
+                      xmlns:db="http://discursive.com/plugins/docbook">${root.example.dir}/groovy/groovy-script $ <command>more deps.txt</command> 
 org.apache.maven:maven-model:2.2.0
 </programlisting>
     </section>
@@ -146,8 +148,8 @@ org.apache.maven:maven-model:2.2.0
 
       <para>This simple Groovy script contained a number of references to
       implicit objects such as project and ant, it also demonstrated the
-      simple syntax of Groovy and its closure-friendly nature of Groovy.
-      </para>
+      simple syntax of Groovy and its closure-friendly nature of
+      Groovy.</para>
     </section>
   </section>
 
@@ -173,7 +175,8 @@ org.apache.maven:maven-model:2.2.0
       <example id="ex-groovy-script-ex">
         <title>Executing External Groovy Scripts in a Maven Build</title>
 
-        <programlisting db:wrap="force" xmlns:db="http://discursive.com/plugins/docbook">&lt;project xmlns="http://maven.apache.org/POM/4.0.0"
+        <programlisting db:wrap="force"
+                        xmlns:db="http://discursive.com/plugins/docbook">&lt;project xmlns="http://maven.apache.org/POM/4.0.0"
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0                        
                              http://maven.apache.org/maven-v4_0_0.xsd"&gt;
@@ -234,7 +237,8 @@ org.apache.maven:maven-model:2.2.0
       <example>
         <title>The CreateDeps.groovy Script</title>
 
-        <programlisting db:wrap="force" xmlns:db="http://discursive.com/plugins/docbook">def depFile = new File(project.build.outputDirectory,
+        <programlisting db:wrap="force"
+                        xmlns:db="http://discursive.com/plugins/docbook">def depFile = new File(project.build.outputDirectory,
               'deps.txt')
 
 project.dependencies.each() {
@@ -245,17 +249,12 @@ project.dependencies.each() {
       <example>
         <title>The CopySource.groovy Script</title>
 
-        <programlisting db:wrap="force" xmlns:db="http://discursive.com/plugins/docbook">ant.copy(todir: project.build.outputDirectory ) {
+        <programlisting db:wrap="force"
+                        xmlns:db="http://discursive.com/plugins/docbook">ant.copy(todir: project.build.outputDirectory ) {
   fileset(dir: project.build.sourceDirectory)
 }
 </programlisting>
       </example>
-    </section>
-
-    <section>
-      <title>Discussion</title>
-
-      <para></para>
     </section>
   </section>
 </chapter>
