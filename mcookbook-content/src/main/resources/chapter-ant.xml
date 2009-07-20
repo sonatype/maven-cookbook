@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE chapter PUBLIC "-//OASIS//DTD DocBook XML V4.5//EN"
+"http://www.oasis-open.org/docbook/xml/4.5/docbookx.dtd">
+<chapter id="ant">
+  <title>Ant and Maven</title>
+
+  <section id="ant-sect-intro">
+    <title>Introduction</title>
+
+    <para>Ant and Maven? Yes, it is true.</para>
+  </section>
+
+  <section>
+    <title>Running an Inline Ant Script in a Maven Build</title>
+
+    <para></para>
+
+    <section>
+      <title>Problem</title>
+
+      <para></para>
+    </section>
+
+    <section>
+      <title>Solution</title>
+
+      <para></para>
+    </section>
+
+    <section>
+      <title>Discussion</title>
+
+      <para></para>
+    </section>
+  </section>
+
+  <section>
+    <title>Running an External Ant Script in a Maven Build</title>
+
+    <para></para>
+
+    <section>
+      <title></title>
+
+      <para></para>
+    </section>
+
+    <section>
+      <title></title>
+
+      <para></para>
+    </section>
+
+    <section>
+      <title></title>
+
+      <para></para>
+    </section>
+  </section>
+</chapter>
