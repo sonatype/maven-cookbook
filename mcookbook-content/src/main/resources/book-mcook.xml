@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE book PUBLIC "-//OASIS//DTD DocBook XML V4.5//EN"
 "http://www.oasis-open.org/docbook/xml/4.5/docbookx.dtd">
-<book id="book-nexus"><?dbhtml filename="index.html"?>
+<book id="book-nexus">
+  <?dbhtml filename="index.html"?>
+
   <title>${book.title}</title>
 
   <bookinfo>
@@ -14,6 +16,24 @@
         <orgname>${project.organization.name}</orgname>
       </affiliation>
     </editor>
+
+    <authorgroup>
+      <author>
+        <surname>O'Brien</surname>
+
+        <firstname>Tim</firstname>
+
+        <email>tobrien@sonatype.com</email>
+      </author>
+
+      <author>
+        <surname>McCulloch</surname>
+
+        <firstname>Stuart</firstname>
+
+        <email>mcculls@sonatype.com</email>
+      </author>
+    </authorgroup>
 
     <abstract role="description-short">
       <para>Maven Cookbook is a cookbook about Apache Maven.</para>

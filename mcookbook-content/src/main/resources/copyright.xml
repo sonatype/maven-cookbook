@@ -9,10 +9,26 @@
   <para>Online version published by ${project.organization.name},
   ${organization.address}.</para>
 
+  <para>Nexus™, Nexus Professional™, and all Nexus-related logos are
+  trademarks or registered trademarks of Sonatype, Inc., in the United States
+  and other countries. </para>
+
   <para>Java™ and all Java-based trademarks and logos are trademarks or
   registered trademarks of Sun Microsystems, Inc., in the United States and
-  other countries. Many of the designations used by manufacturers and sellers
-  to distinguish their products are claimed as trademarks. Where those
+  other countries.</para>
+
+  <para>IBM® and WebSphere® are trademarks or registered trademarks of
+  International Business Machines, Inc., in the United States and other
+  countries.</para>
+
+  <para>Eclipse™ is a trademark of the Eclipse Foundation, Inc., in the United
+  States and other countries.</para>
+
+  <para>Apache and the Apache feather logo are trademarks of The Apache
+  Software Foundation.</para>
+
+  <para>Many of the designations used by manufacturers and sellers to
+  distinguish their products are claimed as trademarks. Where those
   designations appear in this book, and ${project.organization.name} was aware
   of a trademark claim, the designations have been printed in caps or initial
   caps.</para>

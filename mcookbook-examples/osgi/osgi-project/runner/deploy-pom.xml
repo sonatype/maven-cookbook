@@ -8,12 +8,26 @@
   <packaging>pom</packaging>
   <name>org.sonatype.mcookbook.osgi-project (OSGi project)</name>
   <description>Generated using Pax-Construct</description>
+  <distributionManagement>
+    <repository>
+      <id>nx-releases</id>
+      <name>Nexus Releases</name>
+      <url>http://localhost:8081/nexus/content/repositories/releases</url>
+    </repository>
+    <snapshotRepository>
+      <id>nx-snapshots</id>
+      <name>Nexus Snapshots</name>
+      <url>http://localhost:8081/nexus/content/repositories/snapshots</url>
+    </snapshotRepository>
+  </distributionManagement>
   <repositories>
     <repository>
-      <releases />
-      <snapshots />
+      <snapshots>
+        <enabled>false</enabled>
+      </snapshots>
       <id>central</id>
-      <url>http://central</url>
+      <name>Maven Repository Switchboard</name>
+      <url>http://repo1.maven.org/maven2</url>
     </repository>
   </repositories>
   <dependencies>

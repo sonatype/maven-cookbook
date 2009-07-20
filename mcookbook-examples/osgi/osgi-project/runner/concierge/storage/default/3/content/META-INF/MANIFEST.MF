@@ -1,0 +1,56 @@
+Manifest-Version: 1.0
+Built-By: cziegeler
+Bundle-Activator: org.apache.felix.webconsole.internal.OsgiManagerActi
+ vator
+Created-By: Apache Maven Bundle Plugin
+Bundle-License: http://www.apache.org/licenses/LICENSE-2.0.txt
+Import-Package: javax.portlet;resolution:=optional,javax.servlet,javax
+ .servlet.http,javax.xml.parsers,org.apache.felix.scr;resolution:=opti
+ onal,org.apache.felix.shell;resolution:=optional;version="1.0",org.ap
+ ache.felix.webconsole;version="1.2.8",org.osgi.framework,org.osgi.ser
+ vice.cm;resolution:=optional,org.osgi.service.component;resolution:=o
+ ptional,org.osgi.service.deploymentadmin;resolution:=optional,org.osg
+ i.service.event;resolution:=optional,org.osgi.service.http;resolution
+ :=optional,org.osgi.service.log;resolution:=optional,org.osgi.service
+ .metatype;resolution:=optional,org.osgi.service.obr;resolution:=optio
+ nal;version="1.0",org.osgi.service.packageadmin;resolution:=optional,
+ org.osgi.service.prefs;resolution:=optional,org.osgi.service.startlev
+ el;resolution:=optional,org.osgi.util.tracker,org.xml.sax
+Bnd-LastModified: 1237890450645
+Export-Package: org.osgi.service.obr;uses:="org.osgi.framework";versio
+ n="1.0",org.apache.felix.webconsole;uses:="javax.servlet.http,javax.s
+ ervlet,org.osgi.framework";version="1.2.8"
+Bundle-Version: 1.2.8
+Bundle-Name: Apache Felix Web Management Console
+Bundle-Description: Web Based Management Console for OSGi Frameworks. 
+ See        http://felix.apache.org/apache-felix-web-console.html for 
+ more        information on this bundle.
+Bundle-ClassPath: .,commons-io-1.4.jar,commons-fileupload-1.1.1.jar,or
+ g.apache.felix.bundlerepository-1.0.3.jar,json-20070829.jar
+Build-Jdk: 1.5.0_16
+Bundle-DocURL: http://felix.apache.org/site/apache-felix-web-console.h
+ tml
+Private-Package: org.apache.commons.fileupload,org.apache.commons.file
+ upload.disk,org.apache.commons.fileupload.portlet,org.apache.commons.
+ fileupload.servlet,org.apache.commons.io,org.apache.commons.io.compar
+ ator,org.apache.commons.io.filefilter,org.apache.commons.io.input,org
+ .apache.commons.io.output,org.apache.felix.bundlerepository,org.apach
+ e.felix.bundlerepository.metadataparser,org.apache.felix.bundlereposi
+ tory.metadataparser.kxmlsax,org.apache.felix.webconsole.internal,org.
+ apache.felix.webconsole.internal.compendium,org.apache.felix.webconso
+ le.internal.core,org.apache.felix.webconsole.internal.deppack,org.apa
+ che.felix.webconsole.internal.misc,org.apache.felix.webconsole.intern
+ al.obr,org.apache.felix.webconsole.internal.servlet,org.apache.felix.
+ webconsole.internal.system,org.json,org.kxml2.io,org.kxml2.kdom,org.k
+ xml2.wap,org.kxml2.wap.syncml,org.kxml2.wap.wml,org.kxml2.wap.wv,org.
+ xmlpull.v1,res.imgs,res.ui
+Bundle-ManifestVersion: 2
+Bundle-Vendor: The Apache Software Foundation
+Bundle-SymbolicName: org.apache.felix.webconsole
+Tool: Bnd-0.0.255
+Embed-Dependency: org.apache.felix.bundlerepository,                  
+                                                                   jso
+ n,                                                                   
+                  commons-fileupload,                                 
+                        commons-io
+
