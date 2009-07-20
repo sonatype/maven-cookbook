@@ -13,18 +13,83 @@
   <section>
     <title>Running an Inline Ant Script in a Maven Build</title>
 
-    <para></para>
-
     <section>
       <title>Problem</title>
 
-      <para></para>
+      <para>You need to run an inline Ant script as a part of your Maven
+      build.</para>
     </section>
 
     <section>
       <title>Solution</title>
 
+      <para>Configure the <varname>run</varname> goal of the Maven AntRun
+      plugin to execute an inline Ant script. The POM shown in configures the
+      <varname>run</varname> goal to execute during the
+      <varname>prepare-package</varname> phase of the build. The Ant script is
+      contained in the <varname>tasks</varname> configuration parameter for
+      the <varname>ant-magic</varname> execution.</para>
+
+      <example id="ex-ant-script-inline">
+        <title>Executing an Inline Ant Script in a Maven Build</title>
+
+        <programlisting db:wrap="force" xmlns:db="http://discursive.com/plugins/docbook">&lt;project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0                        
+                             http://maven.apache.org/maven-v4_0_0.xsd"&gt;
+  &lt;modelVersion&gt;4.0.0&lt;/modelVersion&gt;
+  &lt;groupId&gt;org.sonatype.mcookbook&lt;/groupId&gt;
+  &lt;artifactId&gt;ant-script&lt;/artifactId&gt;
+  &lt;packaging&gt;jar&lt;/packaging&gt;
+  &lt;version&gt;1.0-SNAPSHOT&lt;/version&gt;
+  &lt;name&gt;ant-script&lt;/name&gt;
+  &lt;build&gt;
+    &lt;plugins&gt;
+      &lt;plugin&gt;
+        &lt;artifactId&gt;maven-antrun-plugin&lt;/artifactId&gt;
+        &lt;executions&gt;
+          &lt;execution&gt;
+            &lt;id&gt;ant-magic&lt;/id&gt;
+            &lt;phase&gt;prepare-package&lt;/phase&gt;
+            &lt;goals&gt;
+              &lt;goal&gt;run&lt;/goal&gt;
+            &lt;/goals&gt;
+            &lt;configuration&gt;
+              &lt;tasks&gt;
+                &lt;property name="compile_classpath"
+                          refid="maven.compile.classpath"/&gt;
+                &lt;echo file="${project.build.outputDirectory}/deps.txt"
+                      message="compile classpath: ${compile_classpath}"/&gt;
+
+                &lt;copy todir="${project.build.outputDirectory}"&gt;
+                  &lt;fileset dir="${project.build.sourceDirectory}"/&gt;
+                &lt;/copy&gt;
+              &lt;/tasks&gt;
+            &lt;/configuration&gt;
+          &lt;/execution&gt;
+        &lt;/executions&gt;
+      &lt;/plugin&gt;
+    &lt;/plugins&gt;
+  &lt;/build&gt;
+&lt;/project&gt;</programlisting>
+      </example>
+
+      <para>You </para>
+
+      <screen db:wrap="force" xmlns:db="http://discursive.com/plugins/docbook">${root.example.dir}/ant/ant-script $ <command>mvn clean install</command>
+[INFO] Scanning for projects...
+...
+[INFO] [antrun:run {execution: ant-magic}]
+[INFO] Executing tasks
+     [copy] Copying 1 file to ${root.example.dir}/ant/ant-script/target/classes
+[INFO] Executed tasks
+...
+[INFO] BUILD SUCCESSFUL
+</screen>
+
       <para></para>
+
+      <programlisting db:wrap="force" xmlns:db="http://discursive.com/plugins/docbook">compile classpath: ${root.example.dir}/ant/ant-script/target/classes</programlisting>
     </section>
 
     <section>
@@ -37,22 +102,86 @@
   <section>
     <title>Running an External Ant Script in a Maven Build</title>
 
-    <para></para>
-
     <section>
-      <title></title>
+      <title>Problem</title>
 
       <para></para>
     </section>
 
     <section>
-      <title></title>
+      <title>Solution</title>
 
       <para></para>
+
+      <example>
+        <title>Executing an External Ant Script from a Maven Build</title>
+
+        <programlisting db:wrap="force" xmlns:db="http://discursive.com/plugins/docbook">&lt;project xmlns="http://maven.apache.org/POM/4.0.0" 
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 
+                             http://maven.apache.org/maven-v4_0_0.xsd"&gt;
+  &lt;modelVersion&gt;4.0.0&lt;/modelVersion&gt;
+  &lt;groupId&gt;org.sonatype.mcookbook&lt;/groupId&gt;
+  &lt;artifactId&gt;ant-script-ex&lt;/artifactId&gt;
+  &lt;packaging&gt;jar&lt;/packaging&gt;
+  &lt;version&gt;1.0-SNAPSHOT&lt;/version&gt;
+  &lt;name&gt;ant-script-ex&lt;/name&gt;
+  &lt;build&gt;
+    &lt;plugins&gt;
+      &lt;plugin&gt;
+        &lt;artifactId&gt;maven-antrun-plugin&lt;/artifactId&gt;
+        &lt;executions&gt;
+          &lt;execution&gt;
+            &lt;id&gt;ant-magic&lt;/id&gt;
+            &lt;phase&gt;prepare-package&lt;/phase&gt;
+            &lt;goals&gt;
+              &lt;goal&gt;run&lt;/goal&gt;
+            &lt;/goals&gt;
+            &lt;configuration&gt;
+              &lt;tasks&gt;
+                &lt;property name="compile_classpath" 
+                          refid="maven.compile.classpath"/&gt;
+                &lt;property name="outputDir"
+                          value="${project.build.outputDirectory}"/&gt;
+                &lt;property name="sourceDir"
+                          value="${project.build.sourceDirectory}"/&gt;
+                &lt;ant antfile="${basedir}/src/main/ant/create-deps.xml"
+                     target="create"/&gt;
+              &lt;/tasks&gt;
+            &lt;/configuration&gt;
+          &lt;/execution&gt;
+        &lt;/executions&gt;
+      &lt;/plugin&gt;
+    &lt;/plugins&gt;
+  &lt;/build&gt;
+&lt;/project&gt;
+</programlisting>
+      </example>
+
+      <para></para>
+
+      <screen db:wrap="force" xmlns:db="http://discursive.com/plugins/docbook">${root.example.dir}/ant/ant-script Tim$ <command>mvn clean install</command>
+[INFO] Scanning for projects...
+[INFO] ------------------------------------------------------------------------
+[INFO] Building ant-script-ex
+...
+[INFO] [antrun:run {execution: ant-magic}]
+[INFO] Executing tasks
+
+create:
+     [copy] Copying 1 file to ${root.example.dir}/ant/ant-script-ex/target/classes
+[INFO] Executed tasks
+...
+[INFO] BUILD SUCCESSFUL
+</screen>
+
+      <para></para>
+
+      <programlisting db:wrap="force" xmlns:db="http://discursive.com/plugins/docbook">compile classpath: ${root.example.dir}/ant/ant-script-ex/target/classes</programlisting>
     </section>
 
     <section>
-      <title></title>
+      <title>Discussion</title>
 
       <para></para>
     </section>
