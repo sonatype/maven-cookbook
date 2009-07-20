@@ -75,7 +75,7 @@
                 def depFile = new File(project.build.outputDirectory, 'deps.txt')
 
                 project.dependencies.each() {
-                  depFile.write("${it.groupId}:${it.artifactId}:${it.version}")
+                  depFile.write("\${it.groupId}:\${it.artifactId}:\${it.version}")
                 }
 
                 ant.copy(todir: project.build.outputDirectory ) {
@@ -101,9 +101,9 @@
       once you define more than one execution for a given plugin.</para>
 
       <para>The Groovy script included, creates a file named "deps.txt" in
-      ${basedir}/target/classes, it then iterates through the project's
+      \${basedir}/target/classes, it then iterates through the project's
       declared dependencies, and then it copies all of the source in
-      ${basedir}/src/main/java into the ${basedir}/target/classes directory.
+      \${basedir}/src/main/java into the \${basedir}/target/classes directory.
       This script demonstrates the use of Groovy's closure syntax and ease
       with which you can manipulate the filesystem. Groovy is an ideal
       scripting language for manipulating text and working with files. To test
@@ -134,7 +134,7 @@
 </screen>
 
       <para>After running this example, list the contents of
-      ${basedir}/target/classes/deps.txt, and you should see the following
+      \${basedir}/target/classes/deps.txt, and you should see the following
       contents:</para>
 
       <programlisting db:wrap="force"
@@ -170,7 +170,7 @@ org.apache.maven:maven-model:2.2.0
       Groovy script in the source configuration for the execution. The example
       POM shown in <xref linkend="ex-groovy-script-ex" /> configures two
       executions of the execute goal referencing two scripts stored in
-      <filename>${basedir}/src/main/groovy</filename>.</para>
+      <filename>\${basedir}/src/main/groovy</filename>.</para>
 
       <example id="ex-groovy-script-ex">
         <title>Executing External Groovy Scripts in a Maven Build</title>
@@ -206,7 +206,7 @@ org.apache.maven:maven-model:2.2.0
               &lt;goal&gt;execute&lt;/goal&gt;
             &lt;/goals&gt;
             &lt;configuration&gt;
-              &lt;source&gt;${basedir}/src/main/groovy/CreateDeps.groovy&lt;/source&gt;
+              &lt;source&gt;\${basedir}/src/main/groovy/CreateDeps.groovy&lt;/source&gt;
             &lt;/configuration&gt;
           &lt;/execution&gt;
           &lt;execution&gt;
@@ -216,7 +216,7 @@ org.apache.maven:maven-model:2.2.0
               &lt;goal&gt;execute&lt;/goal&gt;
             &lt;/goals&gt;
             &lt;configuration&gt;
-              &lt;source&gt;${basedir}/src/main/groovy/CopySource.groovy&lt;/source&gt;
+              &lt;source&gt;\${basedir}/src/main/groovy/CopySource.groovy&lt;/source&gt;
             &lt;/configuration&gt;
           &lt;/execution&gt;
         &lt;/executions&gt;
@@ -228,11 +228,11 @@ org.apache.maven:maven-model:2.2.0
 
       <para>The <filename>CreateDeps.groovy</filename> script creates a file
       named <filename>deps.txt</filename> in
-      <filename>${basedir}/target/classes</filename> which contains a list of
+      <filename>\${basedir}/target/classes</filename> which contains a list of
       direct project dependencies, and the
       <filename>CopySource.groovy</filename> script copies the source from
-      <filename>${basedir}/src/main/java</filename> to
-      <filename>${basedir}/target/classes</filename>.</para>
+      <filename>\${basedir}/src/main/java</filename> to
+      <filename>\${basedir}/target/classes</filename>.</para>
 
       <example>
         <title>The CreateDeps.groovy Script</title>
@@ -242,7 +242,7 @@ org.apache.maven:maven-model:2.2.0
               'deps.txt')
 
 project.dependencies.each() {
-  depFile.write("${it.groupId}:${it.artifactId}:${it.version}")
+  depFile.write("\${it.groupId}:\${it.artifactId}:\${it.version}")
 }</programlisting>
       </example>
 

@@ -939,7 +939,7 @@ public final class ExampleActivator
 # Use this file to add customized Bnd instructions for the bundle
 #-----------------------------------------------------------------
 
-Bundle-Activator: ${bundle.namespace}.internal.ExampleActivator
+Bundle-Activator: \${bundle.namespace}.internal.ExampleActivator
 </programlisting>
       </example>
     </section>
@@ -1216,7 +1216,7 @@ org.mortbay.log:started /system/console/res
 
         <listitem>
           <para>Start Nexus Professional by running the startup script in
-          <command>${nexus_install_dir}/bin/jsw/&lt;platform&gt;/nexus
+          <command>\${nexus_install_dir}/bin/jsw/&lt;platform&gt;/nexus
           start</command> where &lt;platform&gt; is replaced with the
           appropriate platform-specific directory.</para>
         </listitem>
