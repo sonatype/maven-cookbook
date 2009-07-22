@@ -3,7 +3,7 @@
   <parent>
     <groupId>org.sonatype.mcookbook</groupId>
     <artifactId>mcookbook-parent</artifactId>
-    <version>0.1.2-SNAPSHOT</version>
+    <version>0.1.3-SNAPSHOT</version>
   </parent>
   <artifactId>mcookbook-site</artifactId>
   <packaging>jar</packaging>
