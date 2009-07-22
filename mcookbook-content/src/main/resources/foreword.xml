@@ -43,7 +43,7 @@
 
   <para>Tim O'Brien, Sonatype</para>
 
-  <para>July 20, 2009</para>
+  <para>July 21, 2009</para>
 
   <para>Edition: ${project.version}</para>
 
@@ -53,6 +53,20 @@
     <para>Many readers have been asking us to keep track of specific changes
     to the book content, the following sections list changes made to the book
     in reverse chronological order starting with ${project.version}.</para>
+
+    <section id="foreword-sect-rev-0_1_2">
+      <title>Changes in Edition 0.1.2</title>
+
+      <para>The following changes were introduced in Edition 0.1.2:</para>
+
+      <itemizedlist>
+        <listitem>
+          <para>Added Scribd API integration to the Maven Cookbook Maven build
+          (yes, the book has a Maven build). This book now uses the Maven
+          Scribd Plugin to publish the book to Scribd.</para>
+        </listitem>
+      </itemizedlist>
+    </section>
 
     <section id="foreword-sect-rev-0_1_1">
       <title>Changes in Edition 0.1.1</title>
