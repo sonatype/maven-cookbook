@@ -56,5 +56,17 @@
   <xi:include href="chapter-ant.xml"
               xmlns:xi="http://www.w3.org/2001/XInclude" />
 
+  <xi:include href="chapter-ruby.xml"
+              xmlns:xi="http://www.w3.org/2001/XInclude" />
+
+  <xi:include href="chapter-unit-testing.xml"
+	      xmlns:xi="http://www.w3.org/2001/XInclude" />
+
+  <xi:include href="chapter-int-testing.xml"
+	      xmlns:xi="http://www.w3.org/2001/XInclude" />
+
+  <xi:include href="chapter-release.xml"
+	      xmlns:xi="http://www.w3.org/2001/XInclude" />
+
   <index></index>
 </book>

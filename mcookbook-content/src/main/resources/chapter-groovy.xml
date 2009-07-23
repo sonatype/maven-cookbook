@@ -257,4 +257,113 @@ project.dependencies.each() {
       </example>
     </section>
   </section>
+
+  <section id="writing-plugins-alternative-sect-writing-groovy">
+    <title>Writing Plugins in Groovy</title>
+
+    <para>Groovy is a dynamic language based on the Java Virtual Machine which
+    compiles to Java bytecode. Groovy is a project in the Codehaus community.
+    If you are fluent in Java, Groovy will seem like a natural choice for a
+    scripting language. Groovy takes the features of Java, pares down the
+    syntax a bit, and adds features like closures, duck-typing, and regular
+    expressions. For more information about Groovy, please see the Groovy web
+    site at <ulink
+    url="http://groovy.codehaus.org">http://groovy.codehaus.org</ulink>.</para>
+
+    <section id="writing-plugins-alternative-sect-creating-groovy-plugin">
+      <title>Creating a Groovy Plugin</title>
+
+      <para>To create a Maven Plugin using Groovy, you only need two files: a
+      <filename>pom.xml</filename> and a single Mojo implemented in Groovy. To
+      get started, create a project directory named
+      <varname>firstgroovy-maven-plugin</varname>. Place the following
+      <filename>pom.xml</filename> in this directory.</para>
+
+      <example>
+        <title>POM for a Groovy Maven Plugin</title>
+
+        <programlisting language="xml">&lt;?xml version="1.0" encoding="UTF-8"?&gt;
+&lt;project&gt;
+  &lt;modelVersion&gt;4.0.0&lt;/modelVersion&gt;
+  &lt;groupId&gt;org.sonatype.mavenbook.plugins&lt;/groupId&gt;
+  &lt;artifactId&gt;firstgroovy-maven-plugin&lt;/artifactId&gt;
+  &lt;name&gt;Example Groovy Mojo - firstgroovy-maven-plugin&lt;/name&gt;
+  &lt;packaging&gt;maven-plugin&lt;/packaging&gt;
+  &lt;version&gt;1.0-SNAPSHOT&lt;/version&gt;
+  &lt;dependencies&gt;
+    &lt;dependency&gt;
+      &lt;groupId&gt;org.codehaus.mojo.groovy&lt;/groupId&gt;
+      &lt;artifactId&gt;groovy-mojo-support&lt;/artifactId&gt;
+      &lt;version&gt;1.0-beta-3&lt;/version&gt;
+    &lt;/dependency&gt;
+  &lt;/dependencies&gt;
+  &lt;build&gt;
+    &lt;plugins&gt;
+      &lt;plugin&gt;
+        &lt;artifactId&gt;maven-plugin-plugin&lt;/artifactId&gt;
+        &lt;version&gt;2.4&lt;/version&gt;
+      &lt;/plugin&gt;
+      &lt;plugin&gt;
+        &lt;groupId&gt;org.codehaus.mojo.groovy&lt;/groupId&gt;
+        &lt;artifactId&gt;groovy-maven-plugin&lt;/artifactId&gt;
+        &lt;version&gt;1.0-beta-3&lt;/version&gt;
+        &lt;extensions&gt;true&lt;/extensions&gt;
+        &lt;executions&gt;
+          &lt;execution&gt;
+            &lt;goals&gt;
+              &lt;goal&gt;generateStubs&lt;/goal&gt;
+              &lt;goal&gt;compile&lt;/goal&gt;
+              &lt;goal&gt;generateTestStubs&lt;/goal&gt;
+              &lt;goal&gt;testCompile&lt;/goal&gt;
+            &lt;/goals&gt;
+          &lt;/execution&gt;
+        &lt;/executions&gt;
+      &lt;/plugin&gt;
+    &lt;/plugins&gt;
+  &lt;/build&gt;
+&lt;/project&gt;
+</programlisting>
+      </example>
+
+      <para>What's going on in this <acronym>POM</acronym>? First, notice that
+      the packaging of the <acronym>POM</acronym> is
+      <varname>maven-plugin</varname> because we are creating a project that
+      will package a Maven plugin. Next, note that the project depends on the
+      <varname>groovy-mojo-support</varname> artifact in the
+      <varname>org.codehaus.mojo.groovy</varname> group.</para>
+
+      <para>Then under <filename>src/main/groovy</filename> in a directory
+      <filename>org/sonatype/mavenbook/plugins</filename>, create a file named
+      <filename>EchoMojo.groovy</filename> which contains the EchoMojo
+      class.</para>
+
+      <example>
+        <title></title>
+
+        <programlisting language="java">package org.sonatype.mavenbook.plugins
+
+import org.codehaus.mojo.groovy.GroovyMojo
+
+/**
+ * Example goal which echos a message
+ *
+ * @goal echo
+ */
+class EchoMojo extends GroovyMojo {
+
+    /**
+     * Message to print
+     *
+     * @parameter expression="\${echo.message}"
+     *            default-value="Hello Maven World"
+     */
+    String message
+
+    void execute() {
+      log.info( message )
+    }
+}</programlisting>
+      </example>
+    </section>
+  </section>
 </chapter>
