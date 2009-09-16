@@ -7,6 +7,6 @@
   <section id="int-testing-sect-intro">
     <title>Introduction</title>
 
-    <para>Ant and Maven? Yes, it is true.</para>
+    <para>This chapter covers integration testing with Maven.</para>
   </section>
 </chapter>

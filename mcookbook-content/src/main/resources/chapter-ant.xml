@@ -8,6 +8,20 @@
     <title>Introduction</title>
 
     <para>Ant and Maven? Yes, it is true.</para>
+
+    <para>Ant isn't a language as much as it is a build tool which allows you
+    to describe a build as a set of tasks grouped into build targets. Ant then
+    allows you to declare dependencies between build targets. When you are
+    using Ant you are essentially creating your own lifecycle. An Ant
+    <filename>build.xml</filename> might have an install target which depends
+    on a test target which depends on a compile target, but these
+    relationships are arbitrary and managed by the person who writes the Ant
+    build file. </para>
+
+    <para>Ant is something of a ancestor to Maven, it was the ubiquitous
+    procedural build tool that almost every project used before Maven
+    introduced the concept of wide-scale reusability of common build plugins
+    and the concept of a universal lifecycle.</para>
   </section>
 
   <section>
@@ -191,12 +205,24 @@ create:
   <section>
     <title>Creating an Ant Maven Plugin</title>
 
-    <para></para>
+    <para>While Maven is an improvement on Ant, Ant can still be useful when
+    describing parts of the build process. Ant provides a set of tasks which
+    can come in handy when you need to perform file operations or
+    <acronym>XSLT</acronym> transformations or any other operation you could
+    think of. There is a large library of available Ant tasks for everything
+    from running JUnit tests to transforming <acronym>XML</acronym> to copying
+    files to a remote server using <acronym>SCP</acronym>. An overview of
+    available Ant tasks can be found online in the <ulink
+    url="http://ant.apache.org/manual/tasksoverview.html">Apache Ant
+    Manual</ulink>. You can use these tasks as a low-level build customization
+    language, and you can also write a Maven plugin where, instead of a Mojo
+    written in Java, you can pass parameters to a Mojo which is an Ant build
+    target.</para>
 
     <section>
       <title>Problem</title>
 
-      <para></para>
+      <para>You need to write a Maven Plugin in Ant.</para>
     </section>
 
     <section>
@@ -348,17 +374,6 @@ echotarget:
 
     <section>
       <title>Discussion</title>
-
-      <para>Ant isn't a language as much as it is a build tool which allows
-      you to describe a build as a set of tasks grouped into build targets.
-      Ant then allows you to declare dependencies between build targets; for
-      example, in Ant you are essentially creating your own lifecycle. An Ant
-      <filename>build.xml</filename> might have an install target which
-      depends on a test target which depends on a compile target. Ant is
-      something of a ancestor to Maven, it was the ubiquitous procedural build
-      tool that almost every project used before Maven introduced the concept
-      of wide-scale reusability of common build plugins and the concept of a
-      universal lifecycle.</para>
 
       <para>While Maven is an improvement on Ant, Ant can still be useful when
       describing parts of the build process. Ant provides a set of tasks which
