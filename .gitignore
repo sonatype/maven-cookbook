@@ -1,5 +1,5 @@
-mcookbook-examples/osgi/osgi-project/runner/felix/*
-mcookbook-examples/osgi/osgi-project/runner/bundles/*
+mhandbook-examples/osgi/osgi-project/runner/felix/*
+mhandbook-examples/osgi/osgi-project/runner/bundles/*
 target/
 velocity.log
 cobertura.ser
