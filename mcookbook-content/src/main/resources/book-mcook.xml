@@ -36,7 +36,7 @@
     </authorgroup>
 
     <abstract role="description-short">
-      <para>Maven Cookbook is a cookbook about Apache Maven.</para>
+      <para>Maven Handbook is a Handbook about Apache Maven.</para>
     </abstract>
   </bookinfo>
 
@@ -60,13 +60,13 @@
               xmlns:xi="http://www.w3.org/2001/XInclude" />
 
   <xi:include href="chapter-unit-testing.xml"
-	      xmlns:xi="http://www.w3.org/2001/XInclude" />
+              xmlns:xi="http://www.w3.org/2001/XInclude" />
 
   <xi:include href="chapter-int-testing.xml"
-	      xmlns:xi="http://www.w3.org/2001/XInclude" />
+              xmlns:xi="http://www.w3.org/2001/XInclude" />
 
   <xi:include href="chapter-release.xml"
-	      xmlns:xi="http://www.w3.org/2001/XInclude" />
+              xmlns:xi="http://www.w3.org/2001/XInclude" />
 
   <index></index>
 </book>

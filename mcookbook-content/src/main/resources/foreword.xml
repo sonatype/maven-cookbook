@@ -4,7 +4,7 @@
 <preface id="foreword">
   <title>Foreword: ${project.version}</title>
 
-  <para>This is an initial pre-alpha version of the Maven Cookbook, and I mean
+  <para>This is an initial pre-alpha version of the Maven Handbook, and I mean
   "pre-alpha". If you are coming to the book with the expectation that this is
   a polished product, please check back in a few months, we're going to be
   developing this content over the next few months, and you should expect at
@@ -43,7 +43,7 @@
 
   <para>Tim O'Brien, Sonatype</para>
 
-  <para>July 21, 2009</para>
+  <para>September 16, 2009</para>
 
   <para>Edition: ${project.version}</para>
 
@@ -87,6 +87,16 @@
         <listitem>
           <para>Added a new Recipe for Creating a Groovy Maven Plugin</para>
         </listitem>
+
+        <listitem>
+          <para>Preparing Book for Printing:</para>
+
+          <itemizedlist>
+            <listitem>
+              <para></para>
+            </listitem>
+          </itemizedlist>
+        </listitem>
       </itemizedlist>
     </section>
 
@@ -97,7 +107,7 @@
 
       <itemizedlist>
         <listitem>
-          <para>Added Scribd API integration to the Maven Cookbook Maven build
+          <para>Added Scribd API integration to the Maven Handbook Maven build
           (yes, the book has a Maven build). This book now uses the Maven
           Scribd Plugin to publish the book to Scribd.</para>
         </listitem>
@@ -156,7 +166,7 @@
         </listitem>
 
         <listitem>
-          <para>Create a cover for the Maven Cookbook.</para>
+          <para>Create a cover for the Maven Handbook.</para>
         </listitem>
 
         <listitem>
