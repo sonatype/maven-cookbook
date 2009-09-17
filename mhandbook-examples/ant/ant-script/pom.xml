@@ -1,0 +1,39 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" 
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	 xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 
+			     http://maven.apache.org/maven-v4_0_0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>org.sonatype.mhandbook</groupId>
+  <artifactId>ant-script</artifactId>
+  <packaging>jar</packaging>
+  <version>1.0-SNAPSHOT</version>
+  <name>ant-script</name>
+  <build>
+    <plugins>
+      <plugin>
+	<artifactId>maven-antrun-plugin</artifactId>
+	<executions>
+	  <execution>
+	    <id>ant-magic</id>
+            <phase>prepare-package</phase>
+            <goals>
+              <goal>run</goal>
+            </goals>
+	    <configuration>
+	      <tasks>
+		<property name="compile_classpath" 
+			  refid="maven.compile.classpath"/>
+		<echo file="${project.build.outputDirectory}/deps.txt"
+		      message="compile classpath: ${compile_classpath}"/>
+
+		<copy todir="${project.build.outputDirectory}">
+		  <fileset dir="${project.build.sourceDirectory}"/>
+                </copy>
+	      </tasks>
+	    </configuration>
+	  </execution>
+	</executions>
+      </plugin>
+    </plugins>
+  </build>
+</project>

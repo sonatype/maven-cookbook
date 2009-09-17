@@ -1,0 +1,369 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE chapter PUBLIC "-//OASIS//DTD DocBook XML V4.5//EN"
+"http://www.oasis-open.org/docbook/xml/4.5/docbookx.dtd">
+<chapter id="groovy">
+  <title>Groovy Maven</title>
+
+  <section id="groovy-sect-intro">
+    <title>Introduction</title>
+
+    <para>Groovy is just that: Groovy, and maybe in future versions of this
+    book, I'll go on and on and on about how wonderful it is. For now, the
+    pre-alpha Maven Handbook gets straight to the content. This chapter
+    contains a number of recipes that should make it easier for you to
+    integrate Groovy into your Maven builds. For more information about
+    Groovy, take a look at the Groovy project page <ulink
+    url="http://groovy.codehaus.org/">http://groovy.codehaus.org/</ulink>.</para>
+  </section>
+
+  <section>
+    <title>Running an Inline Groovy Script in a Maven Build</title>
+
+    <para>While Maven covers a lot of ground, there are certainly times when
+    you just want to shell out to a script to get something simple done
+    without having to write a custom plugin. Groovy is ideal for these
+    situations because it provides you with a simple, dynamic scripting
+    language that can be added directly to a project's POM.</para>
+
+    <section>
+      <title>Task</title>
+
+      <para>You need to run some Groovy script as a part of your build
+      process.</para>
+    </section>
+
+    <section>
+      <title>Action</title>
+
+      <para>Put some Groovy in your project's POM like this:</para>
+
+      <example id="ex-groovy-script-in-pom">
+        <title>Running a Groovy Script from a POM</title>
+
+        <programlisting db:wrap="force"
+                        xmlns:db="http://discursive.com/plugins/docbook">&lt;project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0                    
+                             http://maven.apache.org/maven-v4_0_0.xsd"&gt;
+  &lt;modelVersion&gt;4.0.0&lt;/modelVersion&gt;
+  &lt;groupId&gt;org.sonatype.mhandbook&lt;/groupId&gt;
+  &lt;artifactId&gt;groovy-script&lt;/artifactId&gt;
+  &lt;packaging&gt;jar&lt;/packaging&gt;
+  &lt;version&gt;1.0-SNAPSHOT&lt;/version&gt;
+  &lt;name&gt;groovy-script&lt;/name&gt;
+  &lt;dependencies&gt;
+    &lt;dependency&gt;
+      &lt;groupId&gt;org.apache.maven&lt;/groupId&gt;
+      &lt;artifactId&gt;maven-model&lt;/artifactId&gt;
+      &lt;version&gt;2.2.0&lt;/version&gt;
+    &lt;/dependency&gt;
+  &lt;/dependencies&gt;
+  &lt;build&gt;
+    &lt;plugins&gt;
+      &lt;plugin&gt;
+        &lt;groupId&gt;org.codehaus.groovy.maven&lt;/groupId&gt;
+        &lt;artifactId&gt;gmaven-plugin&lt;/artifactId&gt;
+        &lt;executions&gt;
+          &lt;execution&gt;
+            &lt;id&gt;groovy-magic&lt;/id&gt;
+            &lt;phase&gt;prepare-package&lt;/phase&gt;
+            &lt;goals&gt;
+              &lt;goal&gt;execute&lt;/goal&gt;
+            &lt;/goals&gt;
+            &lt;configuration&gt;
+              &lt;source&gt;
+                def depFile = new File(project.build.outputDirectory, 'deps.txt')
+
+                project.dependencies.each() {
+                  depFile.write("\${it.groupId}:\${it.artifactId}:\${it.version}")
+                }
+
+                ant.copy(todir: project.build.outputDirectory ) {
+                  fileset(dir: project.build.sourceDirectory)
+                }
+              &lt;/source&gt;
+            &lt;/configuration&gt;
+          &lt;/execution&gt;
+        &lt;/executions&gt;
+      &lt;/plugin&gt;
+    &lt;/plugins&gt;
+  &lt;/build&gt;
+&lt;/project&gt;
+</programlisting>
+      </example>
+
+      <para><xref linkend="ex-groovy-script-in-pom" /> configures the GMaven
+      Plugin's execute goal to execute during the prepare-package phase. The
+      source configuration supplies a Groovy script which is run during the
+      execution of the execute goal. Also note that the execution has an id
+      element with a value of groovy-magic. This id element isn't required if
+      you are only configuring one execution for a plugin, but it is necessary
+      once you define more than one execution for a given plugin.</para>
+
+      <para>The Groovy script included, creates a file named "deps.txt" in
+      \${basedir}/target/classes, it then iterates through the project's
+      declared dependencies, and then it copies all of the source in
+      \${basedir}/src/main/java into the \${basedir}/target/classes directory.
+      This script demonstrates the use of Groovy's closure syntax and ease
+      with which you can manipulate the filesystem. Groovy is an ideal
+      scripting language for manipulating text and working with files. To test
+      this script example, run <command>mvn package</command> as shown
+      below.</para>
+
+      <screen db:wrap="force" xmlns:db="http://discursive.com/plugins/docbook">${root.example.dir}/groovy/groovy-script $ <command>mvn package -Dmaven.test.skip=true</command>
+[INFO] Scanning for projects...
+[INFO] ------------------------------------------------------------------------
+[INFO] Building groovy-script
+[INFO]    task-segment: [package]
+[INFO] ------------------------------------------------------------------------
+[INFO] [resources:resources]
+[WARNING] Using platform encoding (MacRoman actually) to copy filtered resources, i.e. build is platform dependent!
+[INFO] skip non existing resourceDirectory ${root.example.dir}/groovy/groovy-script/src/main/resources
+[INFO] [compiler:compile]
+[INFO] Nothing to compile - all classes are up to date
+[INFO] [resources:testResources]
+[WARNING] Using platform encoding (MacRoman actually) to copy filtered resources, i.e. build is platform dependent!
+[INFO] skip non existing resourceDirectory ${root.example.dir}/groovy/groovy-script/src/test/resources
+[INFO] [compiler:testCompile]
+[INFO] Not compiling test sources
+[INFO] [surefire:test]
+[INFO] Tests are skipped.
+[INFO] [groovy:execute {execution: default}]
+[INFO] [jar:jar]
+[INFO] Building jar: ${root.example.dir}/groovy/groovy-script/target/groovy-script-1.0-SNAPSHOT.jar
+</screen>
+
+      <para>After running this example, list the contents of
+      \${basedir}/target/classes/deps.txt, and you should see the following
+      contents:</para>
+
+      <programlisting db:wrap="force"
+                      xmlns:db="http://discursive.com/plugins/docbook">${root.example.dir}/groovy/groovy-script $ <command>more deps.txt</command> 
+org.apache.maven:maven-model:2.2.0
+</programlisting>
+    </section>
+
+    <section>
+      <title>Detail</title>
+
+      <para>This simple Groovy script contained a number of references to
+      implicit objects such as project and ant, it also demonstrated the
+      simple syntax of Groovy and its closure-friendly nature of
+      Groovy.</para>
+    </section>
+  </section>
+
+  <section>
+    <title>Executing Groovy Scripts in a Maven Build</title>
+
+    <section>
+      <title>Task</title>
+
+      <para>You need to execute one or more groovy scripts in a Maven
+      build.</para>
+    </section>
+
+    <section>
+      <title>Action</title>
+
+      <para>Configure the execute goal of the GMaven plugin, reference the
+      Groovy script in the source configuration for the execution. The example
+      POM shown in <xref linkend="ex-groovy-script-ex" /> configures two
+      executions of the execute goal referencing two scripts stored in
+      <filename>\${basedir}/src/main/groovy</filename>.</para>
+
+      <example id="ex-groovy-script-ex">
+        <title>Executing External Groovy Scripts in a Maven Build</title>
+
+        <programlisting db:wrap="force"
+                        xmlns:db="http://discursive.com/plugins/docbook">&lt;project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0                        
+                             http://maven.apache.org/maven-v4_0_0.xsd"&gt;
+  &lt;modelVersion&gt;4.0.0&lt;/modelVersion&gt;
+  &lt;groupId&gt;org.sonatype.mhandbook&lt;/groupId&gt;
+  &lt;artifactId&gt;groovy-script-ex&lt;/artifactId&gt;
+  &lt;packaging&gt;jar&lt;/packaging&gt;
+  &lt;version&gt;1.0-SNAPSHOT&lt;/version&gt;
+  &lt;name&gt;groovy-script-ex&lt;/name&gt;
+  &lt;dependencies&gt;
+    &lt;dependency&gt;
+      &lt;groupId&gt;org.apache.maven&lt;/groupId&gt;
+      &lt;artifactId&gt;maven-model&lt;/artifactId&gt;
+      &lt;version&gt;2.2.0&lt;/version&gt;
+    &lt;/dependency&gt;
+  &lt;/dependencies&gt;
+  &lt;build&gt;
+    &lt;plugins&gt;
+      &lt;plugin&gt;
+        &lt;groupId&gt;org.codehaus.groovy.maven&lt;/groupId&gt;
+        &lt;artifactId&gt;gmaven-plugin&lt;/artifactId&gt;
+        &lt;executions&gt;
+          &lt;execution&gt;
+            &lt;id&gt;create-deps-file&lt;/id&gt;
+            &lt;phase&gt;process-classes&lt;/phase&gt;
+            &lt;goals&gt;
+              &lt;goal&gt;execute&lt;/goal&gt;
+            &lt;/goals&gt;
+            &lt;configuration&gt;
+              &lt;source&gt;\${basedir}/src/main/groovy/CreateDeps.groovy&lt;/source&gt;
+            &lt;/configuration&gt;
+          &lt;/execution&gt;
+          &lt;execution&gt;
+            &lt;id&gt;copy-the-source&lt;/id&gt;
+            &lt;phase&gt;prepare-package&lt;/phase&gt;
+            &lt;goals&gt;
+              &lt;goal&gt;execute&lt;/goal&gt;
+            &lt;/goals&gt;
+            &lt;configuration&gt;
+              &lt;source&gt;\${basedir}/src/main/groovy/CopySource.groovy&lt;/source&gt;
+            &lt;/configuration&gt;
+          &lt;/execution&gt;
+        &lt;/executions&gt;
+      &lt;/plugin&gt;
+    &lt;/plugins&gt;
+  &lt;/build&gt;
+&lt;/project&gt;</programlisting>
+      </example>
+
+      <para>The <filename>CreateDeps.groovy</filename> script creates a file
+      named <filename>deps.txt</filename> in
+      <filename>\${basedir}/target/classes</filename> which contains a list of
+      direct project dependencies, and the
+      <filename>CopySource.groovy</filename> script copies the source from
+      <filename>\${basedir}/src/main/java</filename> to
+      <filename>\${basedir}/target/classes</filename>.</para>
+
+      <example>
+        <title>The CreateDeps.groovy Script</title>
+
+        <programlisting db:wrap="force"
+                        xmlns:db="http://discursive.com/plugins/docbook">def depFile = new File(project.build.outputDirectory,
+              'deps.txt')
+
+project.dependencies.each() {
+  depFile.write("\${it.groupId}:\${it.artifactId}:\${it.version}")
+}</programlisting>
+      </example>
+
+      <example>
+        <title>The CopySource.groovy Script</title>
+
+        <programlisting db:wrap="force"
+                        xmlns:db="http://discursive.com/plugins/docbook">ant.copy(todir: project.build.outputDirectory ) {
+  fileset(dir: project.build.sourceDirectory)
+}
+</programlisting>
+      </example>
+    </section>
+  </section>
+
+  <section id="writing-plugins-alternative-sect-writing-groovy">
+    <title>Writing Plugins in Groovy</title>
+
+    <para>Groovy is a dynamic language based on the Java Virtual Machine which
+    compiles to Java bytecode. Groovy is a project in the Codehaus community.
+    If you are fluent in Java, Groovy will seem like a natural choice for a
+    scripting language. Groovy takes the features of Java, pares down the
+    syntax a bit, and adds features like closures, duck-typing, and regular
+    expressions. For more information about Groovy, please see the Groovy web
+    site at <ulink
+    url="http://groovy.codehaus.org">http://groovy.codehaus.org</ulink>.</para>
+
+    <section id="writing-plugins-alternative-sect-creating-groovy-plugin">
+      <title>Creating a Groovy Plugin</title>
+
+      <para>To create a Maven Plugin using Groovy, you only need two files: a
+      <filename>pom.xml</filename> and a single Mojo implemented in Groovy. To
+      get started, create a project directory named
+      <varname>firstgroovy-maven-plugin</varname>. Place the following
+      <filename>pom.xml</filename> in this directory.</para>
+
+      <example>
+        <title>POM for a Groovy Maven Plugin</title>
+
+        <programlisting language="xml">&lt;?xml version="1.0" encoding="UTF-8"?&gt;
+&lt;project&gt;
+  &lt;modelVersion&gt;4.0.0&lt;/modelVersion&gt;
+  &lt;groupId&gt;org.sonatype.mavenbook.plugins&lt;/groupId&gt;
+  &lt;artifactId&gt;firstgroovy-maven-plugin&lt;/artifactId&gt;
+  &lt;name&gt;Example Groovy Mojo - firstgroovy-maven-plugin&lt;/name&gt;
+  &lt;packaging&gt;maven-plugin&lt;/packaging&gt;
+  &lt;version&gt;1.0-SNAPSHOT&lt;/version&gt;
+  &lt;dependencies&gt;
+    &lt;dependency&gt;
+      &lt;groupId&gt;org.codehaus.mojo.groovy&lt;/groupId&gt;
+      &lt;artifactId&gt;groovy-mojo-support&lt;/artifactId&gt;
+      &lt;version&gt;1.0-beta-3&lt;/version&gt;
+    &lt;/dependency&gt;
+  &lt;/dependencies&gt;
+  &lt;build&gt;
+    &lt;plugins&gt;
+      &lt;plugin&gt;
+        &lt;artifactId&gt;maven-plugin-plugin&lt;/artifactId&gt;
+        &lt;version&gt;2.4&lt;/version&gt;
+      &lt;/plugin&gt;
+      &lt;plugin&gt;
+        &lt;groupId&gt;org.codehaus.mojo.groovy&lt;/groupId&gt;
+        &lt;artifactId&gt;groovy-maven-plugin&lt;/artifactId&gt;
+        &lt;version&gt;1.0-beta-3&lt;/version&gt;
+        &lt;extensions&gt;true&lt;/extensions&gt;
+        &lt;executions&gt;
+          &lt;execution&gt;
+            &lt;goals&gt;
+              &lt;goal&gt;generateStubs&lt;/goal&gt;
+              &lt;goal&gt;compile&lt;/goal&gt;
+              &lt;goal&gt;generateTestStubs&lt;/goal&gt;
+              &lt;goal&gt;testCompile&lt;/goal&gt;
+            &lt;/goals&gt;
+          &lt;/execution&gt;
+        &lt;/executions&gt;
+      &lt;/plugin&gt;
+    &lt;/plugins&gt;
+  &lt;/build&gt;
+&lt;/project&gt;
+</programlisting>
+      </example>
+
+      <para>What's going on in this <acronym>POM</acronym>? First, notice that
+      the packaging of the <acronym>POM</acronym> is
+      <varname>maven-plugin</varname> because we are creating a project that
+      will package a Maven plugin. Next, note that the project depends on the
+      <varname>groovy-mojo-support</varname> artifact in the
+      <varname>org.codehaus.mojo.groovy</varname> group.</para>
+
+      <para>Then under <filename>src/main/groovy</filename> in a directory
+      <filename>org/sonatype/mavenbook/plugins</filename>, create a file named
+      <filename>EchoMojo.groovy</filename> which contains the EchoMojo
+      class.</para>
+
+      <example>
+        <title></title>
+
+        <programlisting language="java">package org.sonatype.mavenbook.plugins
+
+import org.codehaus.mojo.groovy.GroovyMojo
+
+/**
+ * Example goal which echos a message
+ *
+ * @goal echo
+ */
+class EchoMojo extends GroovyMojo {
+
+    /**
+     * Message to print
+     *
+     * @parameter expression="\${echo.message}"
+     *            default-value="Hello Maven World"
+     */
+    String message
+
+    void execute() {
+      log.info( message )
+    }
+}</programlisting>
+      </example>
+    </section>
+  </section>
+</chapter>
