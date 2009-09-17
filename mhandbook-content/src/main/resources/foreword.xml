@@ -89,11 +89,107 @@
         </listitem>
 
         <listitem>
-          <para>Preparing Book for Printing:</para>
+          <para>Prepared Book for Printing:</para>
 
           <itemizedlist>
             <listitem>
-              <para></para>
+              <para>Book resized to Crown Quarto (7.444" x 9.681"). (<ulink
+              url="https://issues.sonatype.org/browse/MVNCOOK-18">MVNCOOK-18</ulink>)</para>
+            </listitem>
+
+            <listitem>
+              <para>Assigned the Handbook an ISBN. (<ulink
+              url="https://issues.sonatype.org/browse/MVNCOOK-19">MVNCOOK-19</ulink>)</para>
+            </listitem>
+
+            <listitem>
+              <para>Created a Title Page for the Handbook. (<ulink
+              url="https://issues.sonatype.org/browse/MVNCOOK-20">MVNCOOK-20</ulink>)</para>
+            </listitem>
+
+            <listitem>
+              <para>Created a Copyright Page for the Handbook. (<ulink
+              url="https://issues.sonatype.org/browse/MVNCOOK-21">MVNCOOK-21</ulink>)</para>
+            </listitem>
+
+            <listitem>
+              <para>Embedded Fonts in the PDF. (<ulink
+              url="https://issues.sonatype.org/browse/MVNCOOK-22">MVNCOOK-22</ulink>)</para>
+            </listitem>
+
+            <listitem>
+              <para>Standardized on 0.5" Margins. (<ulink
+              url="https://issues.sonatype.org/browse/MVNCOOK-23">MVNCOOK-23</ulink>)</para>
+            </listitem>
+
+            <listitem>
+              <para>Added Text of Creative Commons License to Copyright.
+              (<ulink
+              url="https://issues.sonatype.org/browse/MVNCOOK-26">MVNCOOK-26</ulink>)</para>
+            </listitem>
+
+            <listitem>
+              <para>Automated the Generation of Print PDF figures. (<ulink
+              url="https://issues.sonatype.org/browse/MVNCOOK-24">MVNCOOK-24</ulink>)</para>
+            </listitem>
+
+            <listitem>
+              <para>Started using roles for image objects in print output.
+              (<ulink
+              url="https://issues.sonatype.org/browse/MVNCOOK-25">MVNCOOK-25</ulink>)</para>
+            </listitem>
+          </itemizedlist>
+        </listitem>
+
+        <listitem>
+          <para>Changed the name of the book to Maven Handbook. (<ulink
+          url="https://issues.sonatype.org/browse/MVNCOOK-27">MVNCOOK-27</ulink>)</para>
+        </listitem>
+
+        <listitem>
+          <para>Address feedback from proof of 0.1.2 PDF: (<ulink
+          url="https://issues.sonatype.org/browse/MVNCOOK-8">MVNCOOK-8</ulink>)</para>
+
+          <itemizedlist>
+            <listitem>
+              <para>Fixed a typo on Page 53. (<ulink
+              url="https://issues.sonatype.org/browse/MVNCOOK-9"
+              userlevel="">MVNCOOK-9</ulink>)</para>
+            </listitem>
+
+            <listitem>
+              <para>Fixed a package name error on Page 52. (<ulink type=""
+              url="https://issues.sonatype.org/browse/MVNCOOK-10">MVNCOOK-10</ulink>)</para>
+            </listitem>
+
+            <listitem>
+              <para>Fixed a grammar issue on Page 52. (<ulink
+              url="https://issues.sonatype.org/browse/MVNCOOK-11">MVNCOOK-11</ulink>)</para>
+            </listitem>
+
+            <listitem>
+              <para>Fixed a spelling issues on Page 5. (<ulink
+              url="https://issues.sonatype.org/browse/MVNCOOK-12">MVNCOOK-12</ulink>)</para>
+            </listitem>
+
+            <listitem>
+              <para>Removed duplicate the from Page 41. (<ulink
+              url="https://issues.sonatype.org/browse/MVNCOOK-13">MVNCOOK-13</ulink>)</para>
+            </listitem>
+
+            <listitem>
+              <para>Fixed sentence structure on Page 40. (<ulink
+              url="https://issues.sonatype.org/browse/MVNCOOK-14">MVNCOOK-14</ulink>)</para>
+            </listitem>
+
+            <listitem>
+              <para>Fixed a Spelling Problem on Page 33. (<ulink type=""
+              url="https://issues.sonatype.org/browse/MVNCOOK-16">MVNCOOK-16</ulink>)</para>
+            </listitem>
+
+            <listitem>
+              <para>Removed duplicate punctuation from Page 1. (<ulink
+              url="???">MVNCOOK-17</ulink>)</para>
             </listitem>
           </itemizedlist>
         </listitem>

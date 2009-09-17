@@ -26,14 +26,14 @@
     language that can be added directly to a project's POM.</para>
 
     <section>
-      <title>Problem</title>
+      <title>Task</title>
 
       <para>You need to run some Groovy script as a part of your build
       process.</para>
     </section>
 
     <section>
-      <title>Solution</title>
+      <title>Action</title>
 
       <para>Put some Groovy in your project's POM like this:</para>
 
@@ -144,7 +144,7 @@ org.apache.maven:maven-model:2.2.0
     </section>
 
     <section>
-      <title>Discussion</title>
+      <title>Detail</title>
 
       <para>This simple Groovy script contained a number of references to
       implicit objects such as project and ant, it also demonstrated the
@@ -157,14 +157,14 @@ org.apache.maven:maven-model:2.2.0
     <title>Executing Groovy Scripts in a Maven Build</title>
 
     <section>
-      <title>Problem</title>
+      <title>Task</title>
 
       <para>You need to execute one or more groovy scripts in a Maven
       build.</para>
     </section>
 
     <section>
-      <title>Solution</title>
+      <title>Action</title>
 
       <para>Configure the execute goal of the GMaven plugin, reference the
       Groovy script in the source configuration for the execution. The example

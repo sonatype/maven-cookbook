@@ -19,14 +19,14 @@
     <title>Running an Inline Scala Script in a Maven Build</title>
 
     <section>
-      <title>Problem</title>
+      <title>Task</title>
 
       <para>You need to execute an inline Scala script as a part of your Maven
       build.</para>
     </section>
 
     <section>
-      <title>Solution</title>
+      <title>Action</title>
 
       <para>Configure the <varname>script</varname> goal of the
       <varname>maven-scala-plugin</varname>, and pass a Scala script to the
@@ -146,7 +146,7 @@ org.scala-lang:scala-library:2.7.3
     </section>
 
     <section>
-      <title>Discussion</title>
+      <title>Detail</title>
 
       <para><xref linkend="ex-scala-script-inline" /> includes the scala-tools
       repository and the dependency on version 0.1 of scalax to gain access to
@@ -189,10 +189,10 @@ class embeddedScript_1(project:org.scala_tools.maven.model.MavenProjectAdapter,l
 
       <para>Notice that the class includes to argument
       project:org.scala_tools.maven.model.MavenProjectAdapter and
-      log:org.apache.maven.plugin.loggin.Log. The project argument gives you
+      log:org.apache.maven.plugin.logging.Log. The project argument gives you
       access to the Maven project object model and the log argument gives you
       access to the logging facilities of Maven. The project and log objects
-      are only available in the Maven Scala plugin is available on the
+      are only available when the Maven Scala plugin is available on the
       classpath, this is why you see the Maven Scala plugin declared both as a
       dependency of the project under dependencies in <xref
       linkend="ex-scala-script-inline" /> and as a plugin.</para>
@@ -203,14 +203,14 @@ class embeddedScript_1(project:org.scala_tools.maven.model.MavenProjectAdapter,l
     <title>Running an External Scala Script in a Maven Build</title>
 
     <section>
-      <title>Problem</title>
+      <title>Task</title>
 
       <para>You need to execute an external Scala script as a part of your
       Maven build.</para>
     </section>
 
     <section>
-      <title>Solution</title>
+      <title>Action</title>
 
       <para>Similar to <xref linkend="ex-scala-script-inline" />, configure
       the <varname>script</varname> goal of the Maven Scala plugin and specify
@@ -287,7 +287,7 @@ class embeddedScript_1(project:org.scala_tools.maven.model.MavenProjectAdapter,l
       </example>
 
       <para>The script that this build will execute is the same Scala script
-      which was executed in <xref linkend="ex-scala-script-inline" />. In this
+      that was executed in <xref linkend="ex-scala-script-inline" />. In this
       example, the script is stored in an external file in
       <filename>\${basedir]/src/main/scala</filename>, and in <xref
       linkend="ex-scala-script-inline" />, the script was listed inline in the
@@ -326,7 +326,7 @@ org.scala-lang:scala-library:2.7.3
     </section>
 
     <section>
-      <title>Discussion</title>
+      <title>Detail</title>
 
       <para>There is very little difference between the example from <xref
       linkend="sect-scala-script-inline" /> and the example in this section

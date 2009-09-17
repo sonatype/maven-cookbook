@@ -28,14 +28,14 @@
     <title>Running an Inline Ant Script in a Maven Build</title>
 
     <section>
-      <title>Problem</title>
+      <title>Task</title>
 
       <para>You need to run an inline Ant script as a part of your Maven
       build.</para>
     </section>
 
     <section>
-      <title>Solution</title>
+      <title>Action</title>
 
       <para>Configure the <varname>run</varname> goal of the Maven AntRun
       plugin to execute an inline Ant script. The POM shown in configures the
@@ -115,14 +115,14 @@
     <title>Running an External Ant Script in a Maven Build</title>
 
     <section>
-      <title>Problem</title>
+      <title>Task</title>
 
       <para>You need to execute an external Ant script in a Maven
       build.</para>
     </section>
 
     <section>
-      <title>Solution</title>
+      <title>Action</title>
 
       <para>Configure the run goal form the Maven AntRun plugin. Define any
       properties you wish to pass to the external Ant build, and then call the
@@ -220,13 +220,13 @@ create:
     target.</para>
 
     <section>
-      <title>Problem</title>
+      <title>Task</title>
 
       <para>You need to write a Maven Plugin in Ant.</para>
     </section>
 
     <section>
-      <title>Solution</title>
+      <title>Action</title>
 
       <para>To create a Maven plugin using Ant, you will need to have a
       <filename>pom.xml</filename> and a single Mojo implemented in Ant. To
@@ -373,7 +373,7 @@ echotarget:
     </section>
 
     <section>
-      <title>Discussion</title>
+      <title>Detail</title>
 
       <para>While Maven is an improvement on Ant, Ant can still be useful when
       describing parts of the build process. Ant provides a set of tasks which

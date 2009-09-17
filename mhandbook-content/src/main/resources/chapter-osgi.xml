@@ -19,7 +19,7 @@
     usually experienced via an IDE (such as Eclipse).</para>
 
     <para>Many are starting to view OSGi as the perfect solution both for
-    deploying server-side applications and client-side GUI applications.. If
+    deploying server-side applications and client-side GUI applications. If
     you need a GUI front-end or a web application to interface with a database
     back-end, there is a rich array of standard components to choose from in
     the OSGi community. Before OSGi-based servers, if you wanted a full
@@ -60,14 +60,14 @@
     <title>Generating an OSGi Project with Maven</title>
 
     <section>
-      <title>Problem</title>
+      <title>Task</title>
 
       <para>You need to create a Maven multi-module project that allows you to
       develop a modular, OSGi-based web application.</para>
     </section>
 
     <section>
-      <title>Solution</title>
+      <title>Action</title>
 
       <para>Use the <ulink
       url="http://www.ops4j.org/projects/pax/construct/maven-pax-plugin/">Maven
@@ -161,7 +161,7 @@ HOT/osgi-project-1.0-SNAPSHOT.pom
     </section>
 
     <section>
-      <title>Discussion</title>
+      <title>Detail</title>
 
       <para>The generated multi-module project structure contains a parent
       project with the supplied groupId, artifactId, and version, and a few
@@ -222,7 +222,7 @@ HOT/osgi-project-1.0-SNAPSHOT.pom
     <title>Starting an OSGi Container</title>
 
     <section>
-      <title>Problem</title>
+      <title>Task</title>
 
       <para>You created an OSGi project, not you want to see it running in an
       OSGi environment. You need to start an OSGi container and load imported
@@ -230,9 +230,9 @@ HOT/osgi-project-1.0-SNAPSHOT.pom
     </section>
 
     <section>
-      <title>Solution</title>
+      <title>Action</title>
 
-      <para>First, creat an OSGi project by executing the commands in <xref
+      <para>First, create an OSGi project by executing the commands in <xref
       linkend="sect-osgi-generate-project" />. Once you do this, you have a
       structure that has been designed to support OSGi development with Maven.
       To start the Apache Felix container, run <command>mvn install
@@ -288,7 +288,7 @@ Welcome to Felix.
     </section>
 
     <section>
-      <title>Discussion</title>
+      <title>Detail</title>
 
       <para>When you started up Felix, notice that the line directly following
       the execution of the <varname>pax:provision</varname> goal says "No
@@ -389,14 +389,14 @@ version                             - display version of framework.
     <title>Importing OSGi Bundles with Maven</title>
 
     <section>
-      <title>Problem</title>
+      <title>Task</title>
 
       <para>You want to configure your OSGi runtime to load bundles on
       startup.</para>
     </section>
 
     <section>
-      <title>Solution</title>
+      <title>Action</title>
 
       <para>Import OSGi bundles from the Maven repository. While the Maven
       repository wasn't designed for OSGi like the OSGi Bundle Repositoriy
@@ -562,7 +562,7 @@ org.mortbay.log:started /system/console/res
     </section>
 
     <section>
-      <title>Discussion</title>
+      <title>Detail</title>
 
       <para>Once you start the web management console for Apache Felix, you
       can start to manage the installed bundles. You can start and stop
@@ -645,14 +645,14 @@ org.mortbay.log:started /system/console/res
     <title>Creating an OSGi Bundle with Maven</title>
 
     <section>
-      <title>Problem</title>
+      <title>Task</title>
 
       <para>You need to create you own OSGi bundle project to integrate with
       the runtime environment created in the previous recipes.</para>
     </section>
 
     <section>
-      <title>Solution</title>
+      <title>Action</title>
 
       <para>Run the <varname>pax:create-bundle</varname> goal. The following
       screen listing runs the <varname>pax:create-bundle</varname> to create a
@@ -790,7 +790,7 @@ START LEVEL 6
     </section>
 
     <section>
-      <title>Discussion</title>
+      <title>Detail</title>
 
       <para>So you just deployed your own OSGi bundle to a OSGi runtime
       environment, but where is the code? And, what is in this OSGi bundle
@@ -969,14 +969,14 @@ Bundle-Activator: \${bundle.namespace}.internal.ExampleActivator
     <title>Starting an Alternative OSGi Framework (Knopflerfish)</title>
 
     <section>
-      <title>Problem</title>
+      <title>Task</title>
 
       <para>You want to run your OSGi bundles in the Knopflerfish OSGi runtime
       environment.</para>
     </section>
 
     <section>
-      <title>Solution</title>
+      <title>Action</title>
 
       <para>Pass in the framework configuration parameter when running the
       <varname>pax:provision</varname> goal. To start Knopflerfish, run
@@ -1076,7 +1076,7 @@ org.mortbay.log:started /system/console/res
     </section>
 
     <section>
-      <title>Discussion</title>
+      <title>Detail</title>
 
       <para>For more information about Knopflerfish, see <ulink
       url="http://www.knopflerfish.org">http://www.knopflerfish.org</ulink>.
@@ -1090,14 +1090,14 @@ org.mortbay.log:started /system/console/res
     <title>Starting an Alternative OSGi Framework (Equinox)</title>
 
     <section>
-      <title>Problem</title>
+      <title>Task</title>
 
       <para>You want to run your OSGi bundles in Eclipse's Equinox OSGi
       runtime environment.</para>
     </section>
 
     <section>
-      <title>Solution</title>
+      <title>Action</title>
 
       <para>Pass in the framework configuration parameter when running the
       <varname>pax:provision</varname> goal. To start Knopflerfish, run
@@ -1194,7 +1194,7 @@ org.mortbay.log:started /system/console/res
     </section>
 
     <section>
-      <title>Discussion</title>
+      <title>Detail</title>
 
       <para>For more information about Equinox, see <ulink
       url="http://www.eclipse.org/equinox/">http://www.eclipse.org/equinox/</ulink>.
@@ -1208,14 +1208,14 @@ org.mortbay.log:started /system/console/res
     <title>Deploying OSGi Bundles to a Maven Repository</title>
 
     <section>
-      <title>Problem</title>
+      <title>Task</title>
 
       <para>You need to configure your project to deploy your own custom OSGi
       bundles to a Maven repository.</para>
     </section>
 
     <section>
-      <title>Solution</title>
+      <title>Action</title>
 
       <para>The solution is to download an install Nexus Professional, and
       configure your Maven environment to deploy snapshot and release
@@ -1343,7 +1343,7 @@ Started Sonatype Nexus Repository Manager.
 &lt;/project&gt;</programlisting>
       </example>
 
-      <para>Now, deploy the the bundle from your osgi-project to the Nexus
+      <para>Now, deploy the bundle from your osgi-project to the Nexus
       Snapshots repository by running mvn deploy -DremoteOBR.</para>
 
       <screen db:wrap="force" xmlns:db="http://discursive.com/plugins/docbook">~/osgi/osgi-project $ <command>mvn deploy -DremoteOBR</command>
@@ -1438,7 +1438,7 @@ Uploading: http://localhost:8081/nexus/content/repositories/snapshots/org/sonaty
     </section>
 
     <section>
-      <title>Discussion</title>
+      <title>Detail</title>
 
       <para>To verify that your artifacts made it into the Snapshots
       repository on your local Nexus instance, go to the Nexus interface at
@@ -1598,14 +1598,14 @@ REGISTER org.sonatype.mhandbook.ExampleService
     repository in Nexus Professional.</para>
 
     <section>
-      <title>Problem</title>
+      <title>Task</title>
 
       <para>You need to expose OSGi bundles in a Maven repository using the
       OBR repository format.</para>
     </section>
 
     <section>
-      <title>Solution</title>
+      <title>Action</title>
 
       <para>Use Nexus Professional, and create a virtual OBR repository which
       will scan a Maven repository for OSGi bundle artifacts and generate the
@@ -1691,7 +1691,7 @@ REGISTER org.sonatype.mhandbook.ExampleService
     </section>
 
     <section>
-      <title>Discussion</title>
+      <title>Detail</title>
 
       <para>To verify that our new Virtual OBR repository is generating the
       the appropriate XML based on the contents of the Maven repository, click
@@ -1888,14 +1888,14 @@ REGISTER org.sonatype.mhandbook.ExampleService
     <para>If you've followed the recipes in this chapter sequentially, you
     deployed an artifact to a Maven repository and you've seen two ways to get
     that repository to an OSGi container: via a standard Maven repository and
-    via a virutal OBR repository that acts as a transformer between Maven and
+    via a virtual OBR repository that acts as a transformer between Maven and
     OSGi. This chapter has focused on hosted repositories so far, but one of
     the most common reasons for people to use repository managers is to proxy
     remote repositories. In this recipe, you will learn how to proxy a remote
     OSGi bundle repository using Nexus Professional's support for OBR.</para>
 
     <section>
-      <title>Problem</title>
+      <title>Task</title>
 
       <para>You would like to maintain a local cache of a remote OSGi Bundle
       repository that is populated with artifacts as they are requested. You
@@ -1907,7 +1907,7 @@ REGISTER org.sonatype.mhandbook.ExampleService
     </section>
 
     <section>
-      <title>Solution</title>
+      <title>Action</title>
 
       <para>Use Nexus Professional to create a proxy repository for a remote
       OSGi bundle repository. To do this:</para>
@@ -1984,7 +1984,7 @@ REGISTER org.sonatype.mhandbook.ExampleService
     </section>
 
     <section>
-      <title>Discussion</title>
+      <title>Detail</title>
 
       <para>To verify that our new Proxy OBR repository is generating the the
       appropriate XML based on the remote OBR repository, click on
@@ -2190,17 +2190,17 @@ START LEVEL 1
     using a Nexus repository group.</para>
 
     <section>
-      <title>Problem</title>
+      <title>Task</title>
 
       <para>You need to consolidate a number of Nexus OBR repositories into a
       single OBR repository interface. You have a collection of Proxy,
       Virtual, and Hosted OBR repositories, and you want to connect your OSGi
-      aware systems to a single OBR repository reducing the number of moving
+      aware systems to a single OBR repository, reducing the number of moving
       parts involved in your current deployment procedures.</para>
     </section>
 
     <section>
-      <title>Solution</title>
+      <title>Action</title>
 
       <para>Create a OBR repository group in Nexus Professional which combines
       one or more OBR repositories into a single repository. To do
@@ -2278,7 +2278,7 @@ START LEVEL 1
     </section>
 
     <section>
-      <title>Discussion</title>
+      <title>Detail</title>
 
       <para>To verify that the new OBR repository group is generating the the
       appropriate XML combining the Felix OBR reposiotry and the Snapshots OBR
