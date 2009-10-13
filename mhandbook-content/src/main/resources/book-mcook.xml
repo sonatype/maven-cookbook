@@ -33,6 +33,14 @@
 
         <email>mcculls@sonatype.com</email>
       </author>
+
+      <author>
+        <surname>Demers</surname>
+
+        <firstname>Brian</firstname>
+
+        <email>bdemers@sonatype.com</email>
+      </author>
     </authorgroup>
 
     <abstract role="description-short">
@@ -66,6 +74,9 @@
               xmlns:xi="http://www.w3.org/2001/XInclude" />
 
   <xi:include href="chapter-release.xml"
+              xmlns:xi="http://www.w3.org/2001/XInclude" />
+
+  <xi:include href="chapter-repoman.xml"
               xmlns:xi="http://www.w3.org/2001/XInclude" />
 
   <index></index>

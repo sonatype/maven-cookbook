@@ -1,0 +1,168 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE chapter PUBLIC "-//OASIS//DTD DocBook XML V4.5//EN"
+"http://www.oasis-open.org/docbook/xml/4.5/docbookx.dtd">
+<chapter id="repoman">
+  <title>Repository Management</title>
+
+  <section id="repoman-sect-intro">
+    <title>Introduction</title>
+
+    <para>Repository management is awesome.</para>
+
+    <section>
+      <title>Configuring a Staging Repository for Deployment in Nexus
+      Professional</title>
+
+      <para>For a number of reasons you might want to require your developers
+      to use a staging repository. Staged software releases in <ulink
+      url="http://www.sonatype.com/products/nexus">Nexus Professional</ulink>
+      are the best way to enable your development team to push a release to an
+      artifact repository such as Nexus while providing management and quality
+      assurance with a way to test and approve a release before “burning” it
+      to production. If you want to learn how to make a staged release, you
+      can watch this <ulink
+      url="http://www.sonatype.com/people/2009/01/nexus-professional-what-is-staging/">video</ulink>.
+      or read the remainder of this section.</para>
+
+      <section>
+        <title>Task</title>
+
+        <para>Deploy an artifact to a staging repository in Nexus
+        Professional.</para>
+      </section>
+
+      <section>
+        <title>Action</title>
+
+        <para>First step, is to download Nexus Professional if you don’t
+        already have it installed, you can do so, by going to the Nexus
+        Professional product page and clicking on the download link in the
+        right-hand menu. Once you’ve downloaded Nexus, log in as an
+        administrator as you must have administrative rights to perform the
+        following configuration:</para>
+
+        <orderedlist>
+          <listitem>
+            <para>From Nexus, click on the ‘Repositories’ link in left
+            navigation.</para>
+          </listitem>
+
+          <listitem>
+            <para>Click on the repository you want to use, or create one (If
+            you need help with that take a look at the Nexus book, <ulink
+            url="http://www.sonatype.com/books/nexus-book/reference/procure-sect-configure.html#procue-sect-create-hosted">here</ulink>)</para>
+          </listitem>
+
+          <listitem>
+            <para>Click on the ‘Configuration’ tab.</para>
+          </listitem>
+
+          <listitem>
+            <para>Set the ‘Allow Deployment’ field to false.</para>
+          </listitem>
+
+          <listitem>
+            <para>Click the Save button.</para>
+          </listitem>
+        </orderedlist>
+
+        <figure>
+          <title></title>
+
+          <mediaobject>
+            <imageobject>
+              <imagedata fileref="???" />
+            </imageobject>
+          </mediaobject>
+        </figure>
+
+        <para>That is it! Users will not be able to deploy or upload artifacts
+        directly to the repository. All artifacts must be staged and promoted
+        to this repository. For more information on staging and promoting take
+        a look at <ulink
+        url="http://www.sonatype.com/books/nexus-book/reference/staging-sect-managing-staging.html">this</ulink>,
+        or with the maven plugin, <ulink
+        url="http://www.sonatype.com/books/nexus-book/reference/ch09s07.html">here</ulink>.</para>
+
+        <para>Next, create a staging repository. To create a staging
+        repository:</para>
+
+        <orderedlist>
+          <listitem>
+            <para>From Nexus, click on the ‘Staging’ link in left
+            navigation.</para>
+          </listitem>
+
+          <listitem>
+            <para>Click the ‘Add’ button then the ‘Staging Profile’
+            item.</para>
+          </listitem>
+
+          <listitem>
+            <para>Enter the following information: </para>
+
+            <itemizedlist>
+              <listitem>
+                <para>Profile Name: Staging Demo Profile</para>
+              </listitem>
+
+              <listitem>
+                <para>Profile Repository Target: All (Maven2)</para>
+              </listitem>
+
+              <listitem>
+                <para>Staging Repository ID Template: staging-demo</para>
+              </listitem>
+
+              <listitem>
+                <para>Staging Repository Name Template: Staging Demo</para>
+              </listitem>
+
+              <listitem>
+                <para>Staging Repository Template: Default Release Hosted
+                Repository Template</para>
+              </listitem>
+
+              <listitem>
+                <para>Target Groups: Public Releases</para>
+              </listitem>
+            </itemizedlist>
+          </listitem>
+
+          <listitem>
+            <para>Click the ‘Save’ button</para>
+          </listitem>
+        </orderedlist>
+
+        <figure>
+          <title></title>
+
+          <mediaobject>
+            <imageobject>
+              <imagedata fileref="???" />
+            </imageobject>
+          </mediaobject>
+        </figure>
+
+        <para>Next, assign new permissions to users who will need to deploy to
+        the staging repository. A new role is created for each staging profile
+        that is created ( in this example the role is ‘Staging Deployer:
+        (Staging Demo Profile)’). Assign the new role to your users. You can
+        find more details on user management, <ulink
+        url="http://www.sonatype.com/books/nexus-book/reference/config.html#config-sect-managing-users">here</ulink>.</para>
+
+        <figure>
+          <title></title>
+
+          <mediaobject>
+            <imageobject>
+              <imagedata fileref="???" />
+            </imageobject>
+          </mediaobject>
+        </figure>
+
+        <para></para>
+      </section>
+    </section>
+  </section>
+</chapter>
