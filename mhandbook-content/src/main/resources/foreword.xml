@@ -15,23 +15,6 @@
   be able to give us feedback and reviews even before we've stated that the
   content is ready for review.</para>
 
-  <para>What's up with this cover image (on the PDF)? It is a Galaxy, the
-  <ulink url="http://en.wikipedia.org/wiki/NGC_1300">Barred Spiral Galaxy NGC
-  1300</ulink> to be exact, and the picture is a composite of images from
-  NASA's Hubble Space Telescope. NGC 1300 is 61 million light-years away and
-  it is 110,000 light-years across. Why a Galaxy? Two reasons: First reason,
-  because a Galaxy is a good analogy for the ecosystem that surrounds Maven.
-  If Maven were the massive energetic core of a galaxy, the various projects
-  and plugins that provide Maven's functionality are the various solar systems
-  and star clusters that comprise the bulk of what you see when you look at a
-  galaxy. While Maven: The Definitive Guide is going to be focused on the core
-  of Maven, this book is focused on the various objects one would encounter in
-  the "spiral arms". Second reason I used this picture, because it's a cool
-  picture that is in the public domain. (Just in case you are curious, your
-  own galaxy, The Milky Way, is a Spiral Galaxy that has a logarithmic spiral
-  shape, measurements from the Spitzer Space Telescope in 2005 confirmed that
-  our own galaxy is a barred spiral galaxy.)</para>
-
   <para>And another thing, we're calling this thing a "book", but doesn't the
   term seem a bit archaic at the moment? This book is more of a periodical (as
   are most of our books), they change and evolve as the community and software
@@ -43,7 +26,7 @@
 
   <para>Tim O'Brien, Sonatype</para>
 
-  <para>September 16, 2009</para>
+  <para>October 13, 2009</para>
 
   <para>Edition: ${project.version}</para>
 
@@ -63,6 +46,11 @@
         <listitem>
           <para>Added <xref linkend="repoman" />. (<ulink
           url="https://issues.sonatype.org/browse/MVNCOOK-35">MVNCOOK-35</ulink>)</para>
+        </listitem>
+
+        <listitem>
+          <para>Updated the book cover. (<ulink
+          url="https://issues.sonatype.org/browse/MVNCOOK-36">MVNCOOK-36</ulink>)</para>
         </listitem>
       </itemizedlist>
     </section>

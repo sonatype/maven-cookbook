@@ -7,20 +7,53 @@
   <section id="repoman-sect-intro">
     <title>Introduction</title>
 
-    <para>Repository management is awesome.</para>
+    <section>
+      <title>Installing Nexus Open Source</title>
+
+      <section>
+        <title>Task</title>
+
+        <para>You need to download and install Nexus Open Source to proxy and
+        host Maven repositories.</para>
+      </section>
+
+      <section>
+        <title>Action</title>
+
+        <para></para>
+      </section>
+
+      <section>
+        <title>Detail</title>
+
+        <para></para>
+      </section>
+    </section>
+
+    <section>
+      <title>Installing Nexus Professional</title>
+
+      <section>
+        <title>Task</title>
+
+        <para>Download and Install Nexus Professional.</para>
+      </section>
+    </section>
 
     <section>
       <title>Configuring a Staging Repository for Deployment in Nexus
       Professional</title>
 
-      <para>For a number of reasons you might want to require your developers
-      to use a staging repository. Staged software releases in <ulink
-      url="http://www.sonatype.com/products/nexus">Nexus Professional</ulink>
-      are the best way to enable your development team to push a release to an
-      artifact repository such as Nexus while providing management and quality
-      assurance with a way to test and approve a release before “burning” it
-      to production. If you want to learn how to make a staged release, you
-      can watch this <ulink
+      <para>There might be any number of reasons why you might want to require
+      your developers to use a staging repository. You might want to make sure
+      that software artifacts contain valid POMs using a Staging Ruleset, or
+      you might want to make sure that your process guarantees that QA has the
+      final decision making authority to either promote or drop a release
+      candidate. Staged software releases are very easy to implement using the
+      Staging Plugin in <ulink
+      url="http://www.sonatype.com/products/nexus">Nexus Professional</ulink>.
+      If you want to learn how to make a staged release, you can watch this
+      <ulink
       url="http://www.sonatype.com/people/2009/01/nexus-professional-what-is-staging/">video</ulink>.
       or read the remainder of this section.</para>
 
@@ -58,7 +91,7 @@
           </listitem>
 
           <listitem>
-            <para>Set the ‘Allow Deployment’ field to false.</para>
+            <para>Set the ‘Deployment Policy’ field to "Read Only".</para>
           </listitem>
 
           <listitem>
@@ -67,11 +100,11 @@
         </orderedlist>
 
         <figure>
-          <title></title>
+          <title>Prohibit Direct Deployment to a Release Repository</title>
 
           <mediaobject>
             <imageobject>
-              <imagedata fileref="???" />
+              <imagedata fileref="figs/web/repoman_stage-allow-deploy-release.png" />
             </imageobject>
           </mediaobject>
         </figure>
@@ -99,7 +132,7 @@
           </listitem>
 
           <listitem>
-            <para>Enter the following information: </para>
+            <para>Enter the following information:</para>
 
             <itemizedlist>
               <listitem>
