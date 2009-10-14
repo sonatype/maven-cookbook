@@ -46,11 +46,29 @@
         <listitem>
           <para>Added <xref linkend="repoman" />. (<ulink
           url="https://issues.sonatype.org/browse/MVNCOOK-35">MVNCOOK-35</ulink>)</para>
+
+          <itemizedlist>
+            <listitem>
+              <para>Added a simple recipe that references the Nexus Book for
+              <xref linkend="repoman-sect-install-os" />, and <xref
+              linkend="repoman-sect-install-pro" />.</para>
+            </listitem>
+          </itemizedlist>
         </listitem>
 
         <listitem>
           <para>Updated the book cover. (<ulink
           url="https://issues.sonatype.org/browse/MVNCOOK-36">MVNCOOK-36</ulink>)</para>
+        </listitem>
+
+        <listitem>
+          <para>Reduced the heading level displayed in the Table of Contents
+          to Level 1. (<ulink
+          url="https://issues.sonatype.org/browse/MVNCOOK-43">MVNCOOK-43</ulink>)</para>
+        </listitem>
+
+        <listitem>
+          <para>Added a Table of Examples to the Book PDF. (MVNCOOK-45)</para>
         </listitem>
       </itemizedlist>
     </section>

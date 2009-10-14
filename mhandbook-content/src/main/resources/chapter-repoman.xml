@@ -4,198 +4,460 @@
 <chapter id="repoman">
   <title>Repository Management</title>
 
-  <section id="repoman-sect-intro">
-    <title>Introduction</title>
+  <section id="repoman-sect-install-os">
+    <title>Installing and Running Nexus Open Source</title>
 
     <section>
-      <title>Installing Nexus Open Source</title>
+      <title>Task</title>
 
-      <section>
-        <title>Task</title>
-
-        <para>You need to download and install Nexus Open Source to proxy and
-        host Maven repositories.</para>
-      </section>
-
-      <section>
-        <title>Action</title>
-
-        <para></para>
-      </section>
-
-      <section>
-        <title>Detail</title>
-
-        <para></para>
-      </section>
+      <para>You need to download and install Nexus Open Source to proxy and
+      host Maven repositories.</para>
     </section>
 
     <section>
-      <title>Installing Nexus Professional</title>
+      <title>Action</title>
 
-      <section>
-        <title>Task</title>
+      <para>To download and install Sonatype Nexus Open Source, follow the
+      instructions in <ulink
+      url="http://www.sonatype.com/books/nexus-book-stage/reference/install.html#installing-sect-dl-open">Section
+      2.1.1, "Downloading Nexus Open Source",</ulink> and <ulink
+      url="http://www.sonatype.com/books/nexus-book-stage/reference/ch02s02.html#installing-sect-open-source">Section
+      2.2.2, "Installing Nexus Open Source",</ulink> from "Repository
+      Management with Nexus".</para>
 
-        <para>Download and Install Nexus Professional.</para>
-      </section>
+      <para>If you've installed Nexus on the default port 8081 listening on
+      localhost, going to http://localhost:8081/nexus/ will load the interface
+      shown in <xref
+      linkend="fig-repoman_nexus-open-source-interface" />.</para>
+
+      <figure floatstyle="" id="fig-repoman_nexus-open-source-unauthenticated">
+        <title>Nexus Open Source Prior to Authentication</title>
+
+        <mediaobject>
+          <imageobject role="web">
+            <imagedata fileref="figs/web/repoman_nexus-open-source-unauthenticated.png" />
+          </imageobject>
+
+          <imageobject role="print">
+            <imagedata align="center"
+                       fileref="figs/print/repoman_nexus-open-source-unauthenticated.pdf"
+                       scalefit="0" security="" width="100%" />
+          </imageobject>
+        </mediaobject>
+      </figure>
+
+      <para>Clicking on the Log In link in the upper right-hand corner of the
+      window, will prompt you for a username and password in the Nexus Log In
+      dialogin shown in <xref linkend="fig-repoman_nexus-login" />. The
+      default administrative username is "admin" and the default
+      administrative password is "admin123".</para>
+
+      <figure floatstyle="" id="fig-repoman_nexus-login">
+        <title>The Nexus Log In Dialog</title>
+
+        <mediaobject>
+          <imageobject role="web">
+            <imagedata fileref="figs/web/repoman_nexus-login.png" />
+          </imageobject>
+
+          <imageobject role="print">
+            <imagedata align="center"
+                       fileref="figs/print/repoman_nexus-login.pdf"
+                       scalefit="0" security="" width="100%" />
+          </imageobject>
+        </mediaobject>
+      </figure>
+
+      <para>Once you have successfully authenticated as an administrative
+      user, you will see the full Nexus user interface as shown in <xref
+      linkend="fig-repoman_nexus-open-source-interface" />.</para>
+
+      <figure floatstyle="" id="fig-repoman_nexus-open-source-interface">
+        <title>Crowd Menu Link under the Security Section of the Nexus
+        Menu</title>
+
+        <mediaobject>
+          <imageobject role="web">
+            <imagedata fileref="figs/web/repoman_nexus-open-source-interface.png" />
+          </imageobject>
+
+          <imageobject role="print">
+            <imagedata align="center"
+                       fileref="figs/print/repoman_nexus-open-source-interface.pdf"
+                       scalefit="0" security="" width="100%" />
+          </imageobject>
+        </mediaobject>
+      </figure>
+    </section>
+  </section>
+
+  <section>
+    <title>Proxying a Remote Repository</title>
+
+    <section>
+      <title>Task</title>
+
+      <para></para>
     </section>
 
     <section>
-      <title>Configuring a Staging Repository for Deployment in Nexus
-      Professional</title>
+      <title>Action</title>
 
-      <para>There might be any number of reasons why you might want to require
-      your developers to use a staging repository. You might want to make sure
-      that software artifacts contain valid POMs using a Staging Ruleset, or
-      you might want to make sure that your process guarantees that QA has the
-      final decision making authority to either promote or drop a release
-      candidate. Staged software releases are very easy to implement using the
-      Staging Plugin in <ulink
-      url="http://www.sonatype.com/products/nexus">Nexus Professional</ulink>.
-      If you want to learn how to make a staged release, you can watch this
-      <ulink
-      url="http://www.sonatype.com/people/2009/01/nexus-professional-what-is-staging/">video</ulink>.
-      or read the remainder of this section.</para>
+      <para></para>
 
-      <section>
-        <title>Task</title>
+      <figure floatstyle="" id="fig-repoman_open-repositories">
+        <title>Opening the Repositories Panel</title>
 
-        <para>Deploy an artifact to a staging repository in Nexus
-        Professional.</para>
-      </section>
+        <mediaobject>
+          <imageobject role="web">
+            <imagedata fileref="figs/web/repoman_open-repositories.png" />
+          </imageobject>
 
-      <section>
-        <title>Action</title>
+          <imageobject role="print">
+            <imagedata align="center"
+                       fileref="figs/print/repoman_open-repositories.pdf"
+                       scalefit="0" security="" width="100%" />
+          </imageobject>
+        </mediaobject>
+      </figure>
 
-        <para>First step, is to download Nexus Professional if you don’t
-        already have it installed, you can do so, by going to the Nexus
-        Professional product page and clicking on the download link in the
-        right-hand menu. Once you’ve downloaded Nexus, log in as an
-        administrator as you must have administrative rights to perform the
-        following configuration:</para>
+      <figure floatstyle="" id="fig-repoman_create-proxy">
+        <title>Crowd Menu Link under the Security Section of the Nexus
+        Menu</title>
 
-        <orderedlist>
-          <listitem>
-            <para>From Nexus, click on the ‘Repositories’ link in left
-            navigation.</para>
-          </listitem>
+        <mediaobject>
+          <imageobject role="web">
+            <imagedata fileref="figs/web/repoman_create-proxy.png" />
+          </imageobject>
 
-          <listitem>
-            <para>Click on the repository you want to use, or create one (If
-            you need help with that take a look at the Nexus book, <ulink
-            url="http://www.sonatype.com/books/nexus-book/reference/procure-sect-configure.html#procue-sect-create-hosted">here</ulink>)</para>
-          </listitem>
+          <imageobject role="print">
+            <imagedata align="center"
+                       fileref="figs/print/repoman_create-proxy.pdf"
+                       scalefit="0" security="" width="100%" />
+          </imageobject>
+        </mediaobject>
+      </figure>
 
-          <listitem>
-            <para>Click on the ‘Configuration’ tab.</para>
-          </listitem>
+      <figure floatstyle="" id="fig-repoman_browse-storage-repo-tab">
+        <title>Crowd Menu Link under the Security Section of the Nexus
+        Menu</title>
 
-          <listitem>
-            <para>Set the ‘Deployment Policy’ field to "Read Only".</para>
-          </listitem>
+        <mediaobject>
+          <imageobject role="web">
+            <imagedata fileref="figs/web/repoman_browse-storage-repo-tab.png" />
+          </imageobject>
 
-          <listitem>
-            <para>Click the Save button.</para>
-          </listitem>
-        </orderedlist>
+          <imageobject role="print">
+            <imagedata align="center"
+                       fileref="figs/print/repoman_browse-storage-repo-tab.pdf"
+                       scalefit="0" security="" width="100%" />
+          </imageobject>
+        </mediaobject>
+      </figure>
 
-        <figure>
-          <title>Prohibit Direct Deployment to a Release Repository</title>
+      <figure floatstyle="" id="fig-repoman_browse-index-repo-tab">
+        <title>Crowd Menu Link under the Security Section of the Nexus
+        Menu</title>
 
-          <mediaobject>
-            <imageobject>
-              <imagedata fileref="figs/web/repoman_stage-allow-deploy-release.png" />
-            </imageobject>
-          </mediaobject>
-        </figure>
+        <mediaobject>
+          <imageobject role="web">
+            <imagedata fileref="figs/web/repoman_browse-index-repo-tab.png" />
+          </imageobject>
 
-        <para>That is it! Users will not be able to deploy or upload artifacts
-        directly to the repository. All artifacts must be staged and promoted
-        to this repository. For more information on staging and promoting take
-        a look at <ulink
-        url="http://www.sonatype.com/books/nexus-book/reference/staging-sect-managing-staging.html">this</ulink>,
-        or with the maven plugin, <ulink
-        url="http://www.sonatype.com/books/nexus-book/reference/ch09s07.html">here</ulink>.</para>
+          <imageobject role="print">
+            <imagedata align="center"
+                       fileref="figs/print/repoman_browse-index-repo-tab.pdf"
+                       scalefit="0" security="" width="100%" />
+          </imageobject>
+        </mediaobject>
+      </figure>
 
-        <para>Next, create a staging repository. To create a staging
-        repository:</para>
+      <figure floatstyle="" id="fig-repoman_browse-configuration-repo-tab">
+        <title>Crowd Menu Link under the Security Section of the Nexus
+        Menu</title>
 
-        <orderedlist>
-          <listitem>
-            <para>From Nexus, click on the ‘Staging’ link in left
-            navigation.</para>
-          </listitem>
+        <mediaobject>
+          <imageobject role="web">
+            <imagedata fileref="figs/web/repoman_configuration-repo-tab.png" />
+          </imageobject>
 
-          <listitem>
-            <para>Click the ‘Add’ button then the ‘Staging Profile’
-            item.</para>
-          </listitem>
+          <imageobject role="print">
+            <imagedata align="center"
+                       fileref="figs/print/repoman_configuration-repo-tab.pdf"
+                       scalefit="0" security="" width="100%" />
+          </imageobject>
+        </mediaobject>
+      </figure>
 
-          <listitem>
-            <para>Enter the following information:</para>
+      <figure floatstyle="" id="fig-repoman_browse-mirror-repo-tab">
+        <title>Crowd Menu Link under the Security Section of the Nexus
+        Menu</title>
 
-            <itemizedlist>
-              <listitem>
-                <para>Profile Name: Staging Demo Profile</para>
-              </listitem>
+        <mediaobject>
+          <imageobject role="web">
+            <imagedata fileref="figs/web/repoman_mirror-repo-tab.png" />
+          </imageobject>
 
-              <listitem>
-                <para>Profile Repository Target: All (Maven2)</para>
-              </listitem>
+          <imageobject role="print">
+            <imagedata align="center"
+                       fileref="figs/print/repoman_mirror-repo-tab.pdf"
+                       scalefit="0" security="" width="100%" />
+          </imageobject>
+        </mediaobject>
+      </figure>
 
-              <listitem>
-                <para>Staging Repository ID Template: staging-demo</para>
-              </listitem>
+      <figure floatstyle="" id="fig-repoman_browse-summary-repo-tab">
+        <title>Crowd Menu Link under the Security Section of the Nexus
+        Menu</title>
 
-              <listitem>
-                <para>Staging Repository Name Template: Staging Demo</para>
-              </listitem>
+        <mediaobject>
+          <imageobject role="web">
+            <imagedata fileref="figs/web/repoman_summary-repo-tab.png" />
+          </imageobject>
 
-              <listitem>
-                <para>Staging Repository Template: Default Release Hosted
-                Repository Template</para>
-              </listitem>
+          <imageobject role="print">
+            <imagedata align="center"
+                       fileref="figs/print/repoman_summary-repo-tab.pdf"
+                       scalefit="0" security="" width="100%" />
+          </imageobject>
+        </mediaobject>
+      </figure>
+    </section>
+  </section>
 
-              <listitem>
-                <para>Target Groups: Public Releases</para>
-              </listitem>
-            </itemizedlist>
-          </listitem>
+  <section>
+    <title>Grouping Repositories</title>
 
-          <listitem>
-            <para>Click the ‘Save’ button</para>
-          </listitem>
-        </orderedlist>
+    <para></para>
 
-        <figure>
-          <title></title>
+    <section>
+      <title>Task</title>
 
-          <mediaobject>
-            <imageobject>
-              <imagedata fileref="???" />
-            </imageobject>
-          </mediaobject>
-        </figure>
+      <para></para>
+    </section>
 
-        <para>Next, assign new permissions to users who will need to deploy to
-        the staging repository. A new role is created for each staging profile
-        that is created ( in this example the role is ‘Staging Deployer:
-        (Staging Demo Profile)’). Assign the new role to your users. You can
-        find more details on user management, <ulink
-        url="http://www.sonatype.com/books/nexus-book/reference/config.html#config-sect-managing-users">here</ulink>.</para>
+    <section>
+      <title>Action</title>
 
-        <figure>
-          <title></title>
+      <para></para>
 
-          <mediaobject>
-            <imageobject>
-              <imagedata fileref="???" />
-            </imageobject>
-          </mediaobject>
-        </figure>
+      <figure floatstyle="" id="fig-repoman_add-to-group">
+        <title>Crowd Menu Link under the Security Section of the Nexus
+        Menu</title>
 
-        <para></para>
-      </section>
+        <mediaobject>
+          <imageobject role="web">
+            <imagedata fileref="figs/web/repoman_add-to-group.png" />
+          </imageobject>
+
+          <imageobject role="print">
+            <imagedata align="center"
+                       fileref="figs/print/repoman_add-to-group.pdf"
+                       scalefit="0" security="" width="100%" />
+          </imageobject>
+        </mediaobject>
+      </figure>
+    </section>
+  </section>
+
+  <section>
+    <title>Proxying a Remote Repository</title>
+
+    <section>
+      <title>Task</title>
+
+      <para>You and your team are constantly accessing artifacts on remote
+      repositories such as the Central Maven repository. To increase the speed
+      of your builds, and to gain some control over these resources, you want
+      to proxy the remote repository and cache these artifacts on a server in
+      your own network.</para>
+    </section>
+
+    <section>
+      <title>Action</title>
+
+      <para>Aftering completing the tasks discussed in <xref
+      linkend="repoman-sect-install-os" />,</para>
+    </section>
+  </section>
+
+  <section id="repoman-sect-install-pro">
+    <title>Installing Nexus Professional</title>
+
+    <section>
+      <title>Task</title>
+
+      <para>You need to download and install Nexus Professional to integrate
+      your repository manager with enteprise security, manage the procurement
+      of software artifacts, and track staged software releases.</para>
+    </section>
+
+    <section>
+      <title>Action</title>
+
+      <para>To download and install Sonatype Nexus Professional, follow the
+      instructions in <ulink
+      url="http://www.sonatype.com/books/nexus-book-stage/reference/install.html#install-sect-download">Section
+      2.1.2, "Downloading Nexus Professional",</ulink> and <ulink
+      url="http://www.sonatype.com/books/nexus-book-stage/reference/ch02s02.html#install-sect-pro">Section
+      2.2.3, "Installing Nexus Professional",</ulink> from "Repository
+      Management with Nexus".</para>
+    </section>
+  </section>
+
+  <section>
+    <title>Configuring a Staging Repository for Deployment in Nexus
+    Professional</title>
+
+    <para>There might be any number of reasons why you might want to require
+    your developers to use a staging repository. You might want to make sure
+    that software artifacts contain valid POMs using a Staging Ruleset, or you
+    might want to make sure that your process guarantees that QA has the final
+    decision making authority to either promote or drop a release candidate.
+    Staged software releases are very easy to implement using the Staging
+    Plugin in <ulink url="http://www.sonatype.com/products/nexus">Nexus
+    Professional</ulink>. If you want to learn how to make a staged release,
+    you can watch this <ulink
+    url="http://www.sonatype.com/people/2009/01/nexus-professional-what-is-staging/">video</ulink>.
+    or read the remainder of this section.</para>
+
+    <section>
+      <title>Task</title>
+
+      <para>Deploy an artifact to a staging repository in Nexus
+      Professional.</para>
+    </section>
+
+    <section>
+      <title>Action</title>
+
+      <para>First step, is to download Nexus Professional if you don’t already
+      have it installed, you can do so, by going to the Nexus Professional
+      product page and clicking on the download link in the right-hand menu.
+      Once you’ve downloaded Nexus, log in as an administrator as you must
+      have administrative rights to perform the following
+      configuration:</para>
+
+      <orderedlist>
+        <listitem>
+          <para>From Nexus, click on the ‘Repositories’ link in left
+          navigation.</para>
+        </listitem>
+
+        <listitem>
+          <para>Click on the repository you want to use, or create one (If you
+          need help with that take a look at the Nexus book, <ulink
+          url="http://www.sonatype.com/books/nexus-book/reference/procure-sect-configure.html#procue-sect-create-hosted">here</ulink>)</para>
+        </listitem>
+
+        <listitem>
+          <para>Click on the ‘Configuration’ tab.</para>
+        </listitem>
+
+        <listitem>
+          <para>Set the ‘Deployment Policy’ field to "Read Only".</para>
+        </listitem>
+
+        <listitem>
+          <para>Click the Save button.</para>
+        </listitem>
+      </orderedlist>
+
+      <figure>
+        <title>Prohibit Direct Deployment to a Release Repository</title>
+
+        <mediaobject>
+          <imageobject>
+            <imagedata fileref="figs/web/repoman_stage-allow-deploy-release.png" />
+          </imageobject>
+        </mediaobject>
+      </figure>
+
+      <para>That is it! Users will not be able to deploy or upload artifacts
+      directly to the repository. All artifacts must be staged and promoted to
+      this repository. For more information on staging and promoting take a
+      look at <ulink
+      url="http://www.sonatype.com/books/nexus-book/reference/staging-sect-managing-staging.html">this</ulink>,
+      or with the maven plugin, <ulink
+      url="http://www.sonatype.com/books/nexus-book/reference/ch09s07.html">here</ulink>.</para>
+
+      <para>Next, create a staging repository. To create a staging
+      repository:</para>
+
+      <orderedlist>
+        <listitem>
+          <para>From Nexus, click on the ‘Staging’ link in left
+          navigation.</para>
+        </listitem>
+
+        <listitem>
+          <para>Click the ‘Add’ button then the ‘Staging Profile’ item.</para>
+        </listitem>
+
+        <listitem>
+          <para>Enter the following information:</para>
+
+          <itemizedlist>
+            <listitem>
+              <para>Profile Name: Staging Demo Profile</para>
+            </listitem>
+
+            <listitem>
+              <para>Profile Repository Target: All (Maven2)</para>
+            </listitem>
+
+            <listitem>
+              <para>Staging Repository ID Template: staging-demo</para>
+            </listitem>
+
+            <listitem>
+              <para>Staging Repository Name Template: Staging Demo</para>
+            </listitem>
+
+            <listitem>
+              <para>Staging Repository Template: Default Release Hosted
+              Repository Template</para>
+            </listitem>
+
+            <listitem>
+              <para>Target Groups: Public Releases</para>
+            </listitem>
+          </itemizedlist>
+        </listitem>
+
+        <listitem>
+          <para>Click the ‘Save’ button</para>
+        </listitem>
+      </orderedlist>
+
+      <figure>
+        <title></title>
+
+        <mediaobject>
+          <imageobject>
+            <imagedata fileref="???" />
+          </imageobject>
+        </mediaobject>
+      </figure>
+
+      <para>Next, assign new permissions to users who will need to deploy to
+      the staging repository. A new role is created for each staging profile
+      that is created ( in this example the role is ‘Staging Deployer:
+      (Staging Demo Profile)’). Assign the new role to your users. You can
+      find more details on user management, <ulink
+      url="http://www.sonatype.com/books/nexus-book/reference/config.html#config-sect-managing-users">here</ulink>.</para>
+
+      <figure>
+        <title></title>
+
+        <mediaobject>
+          <imageobject>
+            <imagedata fileref="???" />
+          </imageobject>
+        </mediaobject>
+      </figure>
+
+      <para></para>
     </section>
   </section>
 </chapter>
