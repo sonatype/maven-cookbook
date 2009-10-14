@@ -26,8 +26,9 @@
       Management with Nexus".</para>
 
       <para>If you've installed Nexus on the default port 8081 listening on
-      localhost, going to http://localhost:8081/nexus/ will load the interface
-      shown in <xref
+      localhost, going to <ulink
+      url="http://localhost:8081/nexus/">http://localhost:8081/nexus/</ulink>
+      will load the interface shown in <xref
       linkend="fig-repoman_nexus-open-source-interface" />.</para>
 
       <figure floatstyle="" id="fig-repoman_nexus-open-source-unauthenticated">
@@ -97,13 +98,21 @@
     <section>
       <title>Task</title>
 
-      <para></para>
+      <para>You and your team or organization are heavy users of remote
+      repositories. Every time a user installs a development environment, they
+      end up downloading data directly from the remote repository. You want to
+      create a caching proxy of the remote repository that will increase the
+      speed of your builds and give you some stability in case the remote
+      repository is unavailable.</para>
     </section>
 
     <section>
       <title>Action</title>
 
-      <para></para>
+      <para>To configure a new Proxy repository, open the Repositories panel
+      by clicking on Repositories under Views/Repositories section of the
+      Nexus menu. Clicking Repositories should display the Repositories panel
+      shown in <xref linkend="fig-repoman_open-repositories" />.</para>
 
       <figure floatstyle="" id="fig-repoman_open-repositories">
         <title>Opening the Repositories Panel</title>
@@ -121,9 +130,12 @@
         </mediaobject>
       </figure>
 
+      <para>To create a new proxy repository, click on the Add... button and
+      select Proxy Repository from the dropdown as shown in <xref
+      linkend="fig-repoman_create-proxy" />.</para>
+
       <figure floatstyle="" id="fig-repoman_create-proxy">
-        <title>Crowd Menu Link under the Security Section of the Nexus
-        Menu</title>
+        <title>Creating a New Proxy Repository</title>
 
         <mediaobject>
           <imageobject role="web">
@@ -138,9 +150,52 @@
         </mediaobject>
       </figure>
 
+      <para>When you create a new proxy repository, you'll need to choose a
+      Repository ID. A Repository ID is an internal identifier which is used
+      in the URL that you will connect your clients to. The standard for
+      Repository IDs is to use a lower case word or words separated by a
+      hyphen. Examples of valid Repository IDs are: "central", "internal", and
+      "custom-snapshots".</para>
+
+      <para>Other important fields in the form shown in <xref
+      linkend="fig-repoman_create-proxy" />, are: Repository Policy, Remote
+      Storage Location, and Download Remote Indexes. The repository policy
+      controls what artifacts can be stored in a repository: snapshot
+      artifacts or release artifacts. The Remote Storage Location is the URL
+      of the remote repository, and Download Remote Indexes tells Nexus to
+      download an index that will enable searching and browsing from the
+      remote repository.</para>
+    </section>
+  </section>
+
+  <section>
+    <title>Browsing a Nexus Repository</title>
+
+    <section>
+      <title>Task</title>
+
+      <para>You want to browse the contents of a Nexus repository.</para>
+    </section>
+
+    <section>
+      <title>Action</title>
+
+      <para>If your Nexus repository is a proxy repository, you will have two
+      browsing tabs available: Browse Storage and Browse Index. If your Nexus
+      repository is a hosted repository, you will only see the Browse Storage
+      option, and if you are browsing a repository group, you will see both
+      Browse Storage and Browse Index.</para>
+
+      <para>The Browse Storage tab shown in <xref
+      linkend="fig-repoman_browse-storage-repo-tab" />, allows you to see the
+      artifacts that available available in the local disk storage associated
+      with a repostiory. If you are browsing a hosted repository, the storage
+      contains the entire repository. If you are browsing a proxy repository,
+      the Browse Storage tab will display only the artifacts that have been
+      referenced, downloaded, and cached by Nexus.</para>
+
       <figure floatstyle="" id="fig-repoman_browse-storage-repo-tab">
-        <title>Crowd Menu Link under the Security Section of the Nexus
-        Menu</title>
+        <title>Browsing Repository Storage</title>
 
         <mediaobject>
           <imageobject role="web">
@@ -154,6 +209,11 @@
           </imageobject>
         </mediaobject>
       </figure>
+
+      <para>If you are browsing a proxy repository and you have configured
+      Nexus to download the remote repository index, you will be able to
+      browse the entire repository in the Browse Index tab as shown in <xref
+      linkend="fig-repoman_browse-index-repo-tab" />. </para>
 
       <figure floatstyle="" id="fig-repoman_browse-index-repo-tab">
         <title>Crowd Menu Link under the Security Section of the Nexus
@@ -171,6 +231,26 @@
           </imageobject>
         </mediaobject>
       </figure>
+    </section>
+  </section>
+
+  <section>
+    <title>Configuring a Nexus Repository</title>
+
+    <section>
+      <title>Task</title>
+
+      <para>You need to change the configuration of a Nexus repository.</para>
+    </section>
+
+    <section>
+      <title>Action</title>
+
+      <para>To configure a Nexus repository, click on Repositories under the
+      Views/Repositories section of the Nexus menu, and then select the
+      repository you wish to configure. Once the repository is select, click
+      on the Configuration tab to display the form shown in <xref
+      linkend="fig-repoman_browse-configuration-repo-tab" />.</para>
 
       <figure floatstyle="" id="fig-repoman_browse-configuration-repo-tab">
         <title>Crowd Menu Link under the Security Section of the Nexus
@@ -188,23 +268,27 @@
           </imageobject>
         </mediaobject>
       </figure>
+    </section>
+  </section>
 
-      <figure floatstyle="" id="fig-repoman_browse-mirror-repo-tab">
-        <title>Crowd Menu Link under the Security Section of the Nexus
-        Menu</title>
+  <section>
+    <title>Viewing Summary Information for Nexus Repositories</title>
 
-        <mediaobject>
-          <imageobject role="web">
-            <imagedata fileref="figs/web/repoman_mirror-repo-tab.png" />
-          </imageobject>
+    <section>
+      <title>Task</title>
 
-          <imageobject role="print">
-            <imagedata align="center"
-                       fileref="figs/print/repoman_mirror-repo-tab.pdf"
-                       scalefit="0" security="" width="100%" />
-          </imageobject>
-        </mediaobject>
-      </figure>
+      <para>You need to view some summary information about a particular
+      repository in Nexus.</para>
+    </section>
+
+    <section>
+      <title>Action</title>
+
+      <para>To view summary information about a Nexus repository, click on
+      Repositories under the Views/Repositories section of the Nexus menu, and
+      then select the repository you wish to view. Once the repository is
+      select, click on the Summary tab to display the form shown in <xref
+      linkend="fig-repoman_browse-summary-repo-tab" />.</para>
 
       <figure floatstyle="" id="fig-repoman_browse-summary-repo-tab">
         <title>Crowd Menu Link under the Security Section of the Nexus
@@ -226,24 +310,92 @@
   </section>
 
   <section>
-    <title>Grouping Repositories</title>
-
-    <para></para>
+    <title>Using Mirrors for Proxy Repositories</title>
 
     <section>
       <title>Task</title>
 
-      <para></para>
+      <para>You want to help ease the traffic and bandwidth burden on the
+      Central Maven repository by configuring your Nexus instance to use a
+      mirror to download artifacts.</para>
     </section>
 
     <section>
       <title>Action</title>
 
-      <para></para>
+      <para>Once you have created a proxy repository, you should configure
+      Nexus to download artifacts from one or more mirrors. To configure
+      mirrors, click on Repositories under the View/Repositories section of
+      the Nexus menu, select the proxy repository you want to configure, and
+      then select the Mirrors tab for this repository. Clicking on the Mirrors
+      tab will display the form shown in <xref
+      linkend="fig-repoman_browse-mirror-repo-tab" />.</para>
+
+      <figure floatstyle="" id="fig-repoman_browse-mirror-repo-tab">
+        <title>Configuring Mirrors for Proxy Repositories</title>
+
+        <mediaobject>
+          <imageobject role="web">
+            <imagedata fileref="figs/web/repoman_mirror-repo-tab.png" />
+          </imageobject>
+
+          <imageobject role="print">
+            <imagedata align="center"
+                       fileref="figs/print/repoman_mirror-repo-tab.pdf"
+                       scalefit="0" security="" width="100%" />
+          </imageobject>
+        </mediaobject>
+      </figure>
+
+      <para>The Central Maven repository contains an XML file which will be
+      used to populate the mirrors dropdown shown in <xref
+      linkend="fig-repoman_browse-mirror-repo-tab" />. To configure a mirror,
+      select it from the dropdown, and click on the Add button to add the
+      mirror to the list of Mirror URLs.</para>
+    </section>
+
+    <section>
+      <title>Details</title>
+
+      <para>When a proxy repository is confgured to retrieve artifacts from a
+      Mirror, it will consult each configured mirror in the order shown in the
+      Mirror URLs list from <xref
+      linkend="fig-repoman_browse-mirror-repo-tab" />. While Nexus will
+      retrieve POM information, checksums, and PGP signatures from the
+      original repository, it will retrieve all artfiacts directly from the
+      first available mirror.</para>
+    </section>
+  </section>
+
+  <section>
+    <title>Grouping Repositories</title>
+
+    <section>
+      <title>Task</title>
+
+      <para>You want to consolidate access to multiple repositories with a
+      single repository URL.</para>
+    </section>
+
+    <section>
+      <title>Action</title>
+
+      <para>Nexus Open Source provides for the ability to group one or more
+      repositories into a Repository Group. The default installation of Nexus
+      is preconfigured with two Repository Groups: Public Repositories and
+      Public Snapshot Repositories. Public Repositories groups all of the
+      repositories with a Release policy together, and Public Snapshot
+      Repositories groups all of the repositories with a Snapshot policy
+      together. To add a repository to the Public Repositories group, click on
+      Repositories under the View/Repositories section of the Nexus menu, and
+      then click on the Repository Group that you want to add a Repository to.
+      Once the group is selected, click on the Configuration tab shown in
+      <xref linkend="fig-repoman_add-to-group" />, and drag the repository you
+      wich to add from the Available Repositories list to the Ordered Group
+      Repositories list.</para>
 
       <figure floatstyle="" id="fig-repoman_add-to-group">
-        <title>Crowd Menu Link under the Security Section of the Nexus
-        Menu</title>
+        <title>Adding a Repository to a Repository Group</title>
 
         <mediaobject>
           <imageobject role="web">
@@ -253,6 +405,25 @@
           <imageobject role="print">
             <imagedata align="center"
                        fileref="figs/print/repoman_add-to-group.pdf"
+                       scalefit="0" security="" width="100%" />
+          </imageobject>
+        </mediaobject>
+      </figure>
+
+      <para>To add a new Repository Group, click on the Add.. button and
+      choose Repository Group.</para>
+
+      <figure floatstyle="" id="fig-repoman_nexus-adding-new-group">
+        <title>Adding a New Repository Group</title>
+
+        <mediaobject>
+          <imageobject role="web">
+            <imagedata fileref="figs/web/repoman_nexus-adding-new-group.png" />
+          </imageobject>
+
+          <imageobject role="print">
+            <imagedata align="center"
+                       fileref="figs/print/repoman_nexus-adding-new-group.pdf"
                        scalefit="0" security="" width="100%" />
           </imageobject>
         </mediaobject>
@@ -363,12 +534,18 @@
         </listitem>
       </orderedlist>
 
-      <figure>
+      <figure floatstyle="" id="fig-repoman_stage-allow-deploy-release">
         <title>Prohibit Direct Deployment to a Release Repository</title>
 
         <mediaobject>
-          <imageobject>
+          <imageobject role="web">
             <imagedata fileref="figs/web/repoman_stage-allow-deploy-release.png" />
+          </imageobject>
+
+          <imageobject role="print">
+            <imagedata align="center"
+                       fileref="figs/print/repoman_stage-allow-deploy-release.pdf"
+                       scalefit="0" security="" width="100%" />
           </imageobject>
         </mediaobject>
       </figure>
@@ -430,12 +607,18 @@
         </listitem>
       </orderedlist>
 
-      <figure>
-        <title></title>
+      <figure floatstyle="" id="fig-repoman_stage-create-stage-profile">
+        <title>Configuring a Staging Profile</title>
 
         <mediaobject>
-          <imageobject>
-            <imagedata fileref="???" />
+          <imageobject role="web">
+            <imagedata fileref="figs/web/repoman_stage-create-stage-profile.png" />
+          </imageobject>
+
+          <imageobject role="print">
+            <imagedata align="center"
+                       fileref="figs/print/repoman_stage-create-stage-profile.pdf"
+                       scalefit="0" security="" width="100%" />
           </imageobject>
         </mediaobject>
       </figure>
@@ -447,12 +630,18 @@
       find more details on user management, <ulink
       url="http://www.sonatype.com/books/nexus-book/reference/config.html#config-sect-managing-users">here</ulink>.</para>
 
-      <figure>
-        <title></title>
+      <figure floatstyle="" id="fig-repoman_stage-roles">
+        <title>Assigning Staging Roles</title>
 
         <mediaobject>
-          <imageobject>
-            <imagedata fileref="???" />
+          <imageobject role="web">
+            <imagedata fileref="figs/web/repoman_stage-roles.png" />
+          </imageobject>
+
+          <imageobject role="print">
+            <imagedata align="center"
+                       fileref="figs/print/repoman_stage-roles.pdf"
+                       scalefit="0" security="" width="100%" />
           </imageobject>
         </mediaobject>
       </figure>
