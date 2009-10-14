@@ -92,7 +92,7 @@
     </section>
   </section>
 
-  <section>
+  <section id="repoman-sect-proxy-repo" label="">
     <title>Proxying a Remote Repository</title>
 
     <section>
@@ -168,7 +168,7 @@
     </section>
   </section>
 
-  <section>
+  <section id="repoman-sect-browsing">
     <title>Browsing a Nexus Repository</title>
 
     <section>
@@ -234,7 +234,7 @@
     </section>
   </section>
 
-  <section>
+  <section id="repoman-sect-configuring">
     <title>Configuring a Nexus Repository</title>
 
     <section>
@@ -271,7 +271,7 @@
     </section>
   </section>
 
-  <section>
+  <section id="repoman-sect-summary">
     <title>Viewing Summary Information for Nexus Repositories</title>
 
     <section>
@@ -309,7 +309,7 @@
     </section>
   </section>
 
-  <section>
+  <section id="repoman-sect-mirrors">
     <title>Using Mirrors for Proxy Repositories</title>
 
     <section>
@@ -367,7 +367,7 @@
     </section>
   </section>
 
-  <section>
+  <section id="repoman-sect-grouping" label="">
     <title>Grouping Repositories</title>
 
     <section>
@@ -431,27 +431,6 @@
     </section>
   </section>
 
-  <section>
-    <title>Proxying a Remote Repository</title>
-
-    <section>
-      <title>Task</title>
-
-      <para>You and your team are constantly accessing artifacts on remote
-      repositories such as the Central Maven repository. To increase the speed
-      of your builds, and to gain some control over these resources, you want
-      to proxy the remote repository and cache these artifacts on a server in
-      your own network.</para>
-    </section>
-
-    <section>
-      <title>Action</title>
-
-      <para>Aftering completing the tasks discussed in <xref
-      linkend="repoman-sect-install-os" />,</para>
-    </section>
-  </section>
-
   <section id="repoman-sect-install-pro">
     <title>Installing Nexus Professional</title>
 
@@ -476,7 +455,7 @@
     </section>
   </section>
 
-  <section>
+  <section id="repoman-staging">
     <title>Configuring a Staging Repository for Deployment in Nexus
     Professional</title>
 
@@ -553,7 +532,7 @@
       <para>That is it! Users will not be able to deploy or upload artifacts
       directly to the repository. All artifacts must be staged and promoted to
       this repository. For more information on staging and promoting take a
-      look at <ulink
+      look at <ulink type=""
       url="http://www.sonatype.com/books/nexus-book/reference/staging-sect-managing-staging.html">this</ulink>,
       or with the maven plugin, <ulink
       url="http://www.sonatype.com/books/nexus-book/reference/ch09s07.html">here</ulink>.</para>
@@ -645,8 +624,6 @@
           </imageobject>
         </mediaobject>
       </figure>
-
-      <para></para>
     </section>
   </section>
 </chapter>

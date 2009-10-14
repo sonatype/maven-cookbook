@@ -51,7 +51,46 @@
             <listitem>
               <para>Added a simple recipe that references the Nexus Book for
               <xref linkend="repoman-sect-install-os" />, and <xref
-              linkend="repoman-sect-install-pro" />.</para>
+              linkend="repoman-sect-install-pro" />. (<ulink
+              url="https://issues.sonatype.org/browse/MVNCOOK-37">MVNBOOK-37</ulink>,
+              <ulink
+              url="https://issues.sonatype.org/browse/MVNCOOK-38">MVNBOOK-38</ulink>)</para>
+            </listitem>
+
+            <listitem>
+              <para>Added <xref linkend="repoman-sect-proxy-repo" />. (<ulink
+              url="https://issues.sonatype.org/browse/MVNCOOK-39">MVNBOOK-39</ulink>)</para>
+            </listitem>
+
+            <listitem>
+              <para>Added <xref linkend="repoman-sect-browsing" />. (<ulink
+              url="https://issues.sonatype.org/browse/MVNCOOK-46">MVNCOOK-46</ulink>)</para>
+            </listitem>
+
+            <listitem>
+              <para>Added <xref linkend="repoman-sect-configuring" />. (<ulink
+              url="https://issues.sonatype.org/browse/MVNCOOK-47">MVNCOOK-47</ulink>)</para>
+            </listitem>
+
+            <listitem>
+              <para>Added <xref linkend="repoman-sect-summary" />. (<ulink
+              url="https://issues.sonatype.org/browse/MVNCOOK-48">MVNCOOK-48</ulink>)</para>
+            </listitem>
+
+            <listitem>
+              <para>Added <xref linkend="repoman-sect-mirrors" />. (<ulink
+              type="" url="https://issues.sonatype.org/browse/MVNCOOK-49"
+              userlevel="">MVNCOOK-49</ulink>)</para>
+            </listitem>
+
+            <listitem>
+              <para>Added <xref linkend="repoman-sect-grouping" />. (<ulink
+              url="https://issues.sonatype.org/browse/MVNCOOK-41">MVNCOOK-41</ulink>)</para>
+            </listitem>
+
+            <listitem>
+              <para>Added <xref linkend="repoman-staging" />. (<ulink
+              url="https://issues.sonatype.org/browse/MVNCOOK-48">MVNCOOK-48</ulink>)</para>
             </listitem>
           </itemizedlist>
         </listitem>
@@ -68,7 +107,24 @@
         </listitem>
 
         <listitem>
-          <para>Added a Table of Examples to the Book PDF. (MVNCOOK-45)</para>
+          <para>Added a Table of Examples to the Book PDF. (<ulink
+          url="https://issues.sonatype.org/browse/MVNCOOK-45">MVNCOOK-45</ulink>)</para>
+        </listitem>
+
+        <listitem>
+          <para>Added a Table of Figures to the Book PDF. (<ulink
+          url="https://issues.sonatype.org/browse/MVNCOOK-44">MVNCOOK-44</ulink>)</para>
+        </listitem>
+
+        <listitem>
+          <para>Added Linux trademark information to <xref
+          linkend="copyright" />. (<ulink
+          url="https://issues.sonatype.org/browse/MVNCOOK-31">MVNCOOK-31</ulink>)</para>
+        </listitem>
+
+        <listitem>
+          <para>Added Brian Demers to the list of authors. (<ulink
+          url="https://issues.sonatype.org/browse/MVNCOOK-49">MVNCOOK-49</ulink>)</para>
         </listitem>
       </itemizedlist>
     </section>
