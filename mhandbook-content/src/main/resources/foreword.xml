@@ -15,18 +15,9 @@
   be able to give us feedback and reviews even before we've stated that the
   content is ready for review.</para>
 
-  <para>And another thing, we're calling this thing a "book", but doesn't the
-  term seem a bit archaic at the moment? This book is more of a periodical (as
-  are most of our books), they change and evolve as the community and software
-  evolves. Admittedly, parts of our other books tend to converge to a stable
-  point, but even the most basic parts of Maven: The Definitive Guide are open
-  to change. Despite this constant evolution, we are currently investigating
-  new ways to make this content available as a regular, printed book for those
-  of you who would like a copy.</para>
-
   <para>Tim O'Brien, Sonatype</para>
 
-  <para>October 13, 2009</para>
+  <para>October 14, 2009</para>
 
   <para>Edition: ${project.version}</para>
 
