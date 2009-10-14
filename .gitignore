@@ -9,3 +9,5 @@ cobertura.ser
 *~
 pom.xml~
 .svn/*
+*.releaseBackup
+release.properties

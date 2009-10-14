@@ -3,7 +3,7 @@
   <parent>
 	<groupId>org.sonatype.mhandbook</groupId>
 	<artifactId>mhandbook-parent</artifactId>
-	<version>0.1.3</version>
+	<version>0.1.4</version>
   </parent>
   <artifactId>mhandbook-eclipse</artifactId>
   <packaging>jar</packaging>
