@@ -7,6 +7,340 @@
   <section id="unit-testing-sect-intro">
     <title>Introduction</title>
 
-    <para>Ant and Maven? Yes, it is true.</para>
+    <para>Maven can run Unit Tests, this chapter shows you how.</para>
+  </section>
+
+  <section>
+    <title>Running JUnit Tests</title>
+
+    <section>
+      <title>Task</title>
+
+      <para>You need to run all JUnit tests in a given project.</para>
+    </section>
+
+    <section>
+      <title>Action</title>
+
+      <para>To execute all of the unit tests in a project, include JUnit as a
+      test scoped dependency in your project's pom.xml:</para>
+
+      <programlisting>&lt;project xmlns="http://maven.apache.org/POM/4.0.0" 
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 
+                             http://maven.apache.org/maven-v4_0_0.xsd"&gt;
+  &lt;modelVersion&gt;4.0.0&lt;/modelVersion&gt;
+  &lt;groupId&gt;org.sonatype.mhandbook&lt;/groupId&gt;
+  &lt;artifactId&gt;junit-tests&lt;/artifactId&gt;
+  &lt;packaging&gt;jar&lt;/packaging&gt;
+  &lt;version&gt;1.0-SNAPSHOT&lt;/version&gt;
+  &lt;name&gt;junit-tests&lt;/name&gt;
+  &lt;dependencies&gt;
+    &lt;dependency&gt;
+      &lt;groupId&gt;junit&lt;/groupId&gt;
+      &lt;artifactId&gt;junit&lt;/artifactId&gt;
+      &lt;version&gt;4.5&lt;/version&gt;
+      &lt;scope&gt;test&lt;/scope&gt;
+    &lt;/dependency&gt;
+  &lt;/dependencies&gt;
+&lt;/project&gt;</programlisting>
+
+      <para>Your project should then store unit classes in the default
+      location of ${basedir}/src/test/java. The Maven Surefire plugin will
+      scan these directory for JUnit tests. In this example, a component named
+      SeriousComponent has a corresponding JUnit test named
+      SeriousComponentTest.</para>
+
+      <figure id="fig-unit_junit-directory-structure">
+        <title>Project Structure for Unit Tests</title>
+
+        <mediaobject>
+          <imageobject role="web">
+            <imagedata fileref="figs/web/unit_junit-directory-structure.png" />
+          </imageobject>
+
+          <imageobject role="print">
+            <imagedata fileref="figs/print/osgi_osgi-project-filesystems.pdf" />
+          </imageobject>
+        </mediaobject>
+      </figure>
+
+      <para>In this example, the simple component being tested is named
+      SeriousComponent. SeriousComponent contains a single static method to be
+      tested.</para>
+
+      <example>
+        <title>SeriousComponent class</title>
+
+        <programlisting>package org.sonatype.mhandbook;
+
+public class SeriousComponent {
+
+ /**
+  * This function tests the seriousness of a String.
+  * Returns false if the string contains the word
+  * "FUNNY", returns true otherwise.
+  */
+  public static boolean testSeriousness( String text ) {
+    return !text.toUpperCase().contains( "FUNNY" );
+  }
+}</programlisting>
+      </example>
+
+      <para>This class is tested by a simple JUnit test - SeriousComponentTest
+      shown in the following exmple:</para>
+
+      <example>
+        <title>JUnit test for SeriousComponent</title>
+
+        <programlisting>package org.sonatype.mhandbook;
+
+import junit.framework.TestCase;
+
+public class SeriousComponentTest extends TestCase {
+
+        public SeriousComponentTest(String name) {
+                super( name );
+        }
+
+        public void testSeriousness() throws Exception {
+                assertTrue( SeriousComponent.testSeriousness( "SAD" ) );
+                assertTrue( SeriousComponent.testSeriousness( "SERIOUS" ) );
+                assertTrue( SeriousComponent.testSeriousness( "CRAZY" ) );
+                assertTrue( !SeriousComponent.testSeriousness( "FUNNY" ) );
+        }
+}</programlisting>
+      </example>
+
+      <para>To execute your unit test, you don't need to do anything. Maven's
+      default settings are to scan ${basedir}/src/test/java for unit tests
+      matching the pattern <filename>*Test.java</filename>. To run your unit
+      test specify the test phase of the default Maven lifecycle and run
+      <command>mvn test</command>.</para>
+
+      <screen>$ <command>mvn test</command>
+[INFO] Scanning for projects...
+[INFO] ------------------------------------------------------------------------
+[INFO] Building junit-tests
+[INFO]    task-segment: [test]
+[INFO] ------------------------------------------------------------------------
+[INFO] [resources:resources {execution: default-resources}]
+[WARNING] Using platform encoding (MacRoman actually) to copy filtered 
+resources, i.e. build is platform dependent!
+[INFO] Copying 0 resource
+[INFO] [compiler:compile {execution: default-compile}]
+[INFO] Compiling 1 source file to /Users/Tim/Library/Code/sonatype/
+maven-cookbook/mhandbook-examples/unit/junit-tests/target/classes
+[INFO] [resources:testResources {execution: default-testResources}]
+[WARNING] Using platform encoding (MacRoman actually) to copy filtered 
+resources, i.e. build is platform dependent!
+[INFO] Copying 0 resource
+[INFO] [compiler:testCompile {execution: default-testCompile}]
+[INFO] Compiling 1 source file to /Users/Tim/Library/Code/sonatype/
+maven-cookbook/mhandbook-examples/unit/junit-tests/target/test-classes
+[INFO] [surefire:test {execution: default-test}]
+[INFO] Surefire report directory: /Users/Tim/Library/Code/sonatype/
+maven-cookbook/mhandbook-examples/unit/junit-tests/target/surefire-reports
+
+-------------------------------------------------------
+ T E S T S
+-------------------------------------------------------
+Running org.sonatype.mhandbook.SeriousComponentTest
+Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.065 sec
+
+Results :
+
+Tests run: 1, Failures: 0, Errors: 0, Skipped: 0
+
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD SUCCESSFUL
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time: 5 seconds
+[INFO] Finished at: Wed Nov 25 14:42:39 CST 2009
+[INFO] Final Memory: 17M/80M
+[INFO] ------------------------------------------------------------------------</screen>
+    </section>
+
+    <section>
+      <title>Detail</title>
+
+      <para>The test results will be made available in
+      ${basedir}/target/surefire-reports as both an XML file and a text
+      file.</para>
+
+      <figure id="fig-unit_junit-directory-structure">
+        <title>Project Structure for JUnit Test Results</title>
+
+        <mediaobject>
+          <imageobject role="web">
+            <imagedata fileref="figs/web/unit_junit-directory-structure-results.png" />
+          </imageobject>
+
+          <imageobject role="print">
+            <imagedata fileref="figs/web/unit_junit-directory-structure-results.pdf" />
+          </imageobject>
+        </mediaobject>
+      </figure>
+
+      <para>The TEST-org.sonatype.mhandbook.SeriousComponentTest.xml contains
+      an XML document describing the environment and state of the JVM in
+      addition to data about the test cases which have been executed, and the
+      org.sonatype.mhandbook.SeriousComponentTest.txt file a summary of a
+      successful test or output that contains stack traces generated by a test
+      failure.</para>
+
+      <para>If your unit test passes, the
+      org.sonatypemhandbook.SeriousComponentTest.txt will contain the
+      following output:</para>
+
+      <programlisting>$ <command>cd target/surefire-reports/</command>
+$ <command>more org.sonatype.mhandbook.SeriousComponentTest.txt</command> 
+-------------------------------------------------------------------------------
+Test set: org.sonatype.mhandbook.SeriousComponentTest
+-------------------------------------------------------------------------------
+Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.065 sec</programlisting>
+
+      <para>If the unit test fails the same file will contain a stack trace
+      that points to a failed assertion on a specific line of the unit test as
+      shown below:</para>
+
+      <programlisting>-------------------------------------------------------------------------------
+Test set: org.sonatype.mhandbook.SeriousComponentTest
+-------------------------------------------------------------------------------
+Tests run: 1, Failures: 1, Errors: 0, Skipped: 0, Time elapsed: 0.062 sec &lt;&lt;&lt; FAILURE!
+testSeriousness(org.sonatype.mhandbook.SeriousComponentTest)  Time elapsed: 0.017 sec  &lt;&lt;&lt; FAILURE!
+junit.framework.AssertionFailedError: null
+        at junit.framework.Assert.fail(Assert.java:47)
+        at junit.framework.Assert.assertTrue(Assert.java:20)
+        at junit.framework.Assert.assertTrue(Assert.java:27)
+        at org.sonatype.mhandbook.SeriousComponentTest.testSeriousness(SeriousComponentTest.java:15)
+....</programlisting>
+    </section>
+  </section>
+
+  <section>
+    <title>Running TestNG Tests</title>
+
+    <section>
+      <title>Task</title>
+
+      <para>You need to run all TestNG tests in a given project.</para>
+    </section>
+
+    <section>
+      <title>Action</title>
+
+      <para></para>
+
+      <example>
+        <title>TestNG Test for the SeriousComponent</title>
+
+        <programlisting>package org.sonatype.mhandbook;
+
+import org.testng.annotations.Test;
+
+@Test
+public class SeriousComponentTest {
+
+  @Test
+  public void testSeriousness() throws Exception {
+    assert SeriousComponent.testSeriousness("SAD");
+    assert SeriousComponent.testSeriousness("SERIOUS");
+    assert SeriousComponent.testSeriousness("CRAZY");
+    assert !SeriousComponent.testSeriousness("FUNNY");
+  }
+}</programlisting>
+      </example>
+
+      <para></para>
+
+      <screen>$ <command>mvn test</command>
+[INFO] Scanning for projects...
+[INFO] ------------------------------------------------------------------------
+[INFO] Building testng-tests
+[INFO]    task-segment: [test]
+[INFO] ------------------------------------------------------------------------
+[INFO] [resources:resources {execution: default-resources}]
+[WARNING] Using platform encoding (MacRoman actually) to copy filtered resources, i.e. build is platform dependent!
+[INFO] Copying 0 resource
+[INFO] [compiler:compile {execution: default-compile}]
+[INFO] Compiling 1 source file to /Users/Tim/Library/Code/sonatype/maven-cookbook/mhandbook-examples/unit/testng-tests/target/classes
+[INFO] [resources:testResources {execution: default-testResources}]
+[WARNING] Using platform encoding (MacRoman actually) to copy filtered resources, i.e. build is platform dependent!
+[INFO] Copying 0 resource
+[INFO] [compiler:testCompile {execution: default-testCompile}]
+[INFO] Compiling 1 source file to /Users/Tim/Library/Code/sonatype/maven-cookbook/mhandbook-examples/unit/testng-tests/target/test-classes
+[INFO] [surefire:test {execution: default-test}]
+[INFO] Surefire report directory: /Users/Tim/Library/Code/sonatype/maven-cookbook/mhandbook-examples/unit/testng-tests/target/surefire-reports
+
+-------------------------------------------------------
+ T E S T S
+-------------------------------------------------------
+Running TestSuite
+Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.292 sec
+
+Results :
+
+Tests run: 1, Failures: 0, Errors: 0, Skipped: 0
+
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD SUCCESSFUL
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time: 4 seconds
+[INFO] Finished at: Thu Nov 26 08:24:02 CST 2009
+[INFO] Final Memory: 17M/80M
+[INFO] ------------------------------------------------------------------------
+</screen>
+    </section>
+
+    <section>
+      <title>Detail</title>
+
+      <para></para>
+
+      <figure id="fig-unit_testng-directory-structure">
+        <title>Project Structure for TestNG Test Results</title>
+
+        <mediaobject>
+          <imageobject role="web">
+            <imagedata fileref="figs/web/unit_testng-directory-structure-results.png" />
+          </imageobject>
+
+          <imageobject role="print">
+            <imagedata fileref="figs/web/unit_testng-directory-structure-results.pdf" />
+          </imageobject>
+        </mediaobject>
+      </figure>
+    </section>
+  </section>
+
+  <section>
+    <title>Using TestNG Suite XML Files</title>
+
+    <para></para>
+  </section>
+
+  <section>
+    <title>Configuring TestNG Tests</title>
+
+    <para></para>
+  </section>
+
+  <section>
+    <title>Running TestNG Tests in Parallel</title>
+
+    <para></para>
+  </section>
+
+  <section>
+    <title>Skipping Unit Tests</title>
+
+    <para></para>
+  </section>
+
+  <section>
+    <title>Running a Single Unit Test</title>
+
+    <para></para>
   </section>
 </chapter>
