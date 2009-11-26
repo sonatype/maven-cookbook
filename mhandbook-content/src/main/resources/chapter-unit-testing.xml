@@ -10,7 +10,7 @@
     <para>Maven can run Unit Tests, this chapter shows you how.</para>
   </section>
 
-  <section>
+  <section id="unit-sect-junit-run">
     <title>Running JUnit Tests</title>
 
     <section>
@@ -207,13 +207,16 @@ Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.065 sec</progr
       <programlisting>-------------------------------------------------------------------------------
 Test set: org.sonatype.mhandbook.SeriousComponentTest
 -------------------------------------------------------------------------------
-Tests run: 1, Failures: 1, Errors: 0, Skipped: 0, Time elapsed: 0.062 sec &lt;&lt;&lt; FAILURE!
-testSeriousness(org.sonatype.mhandbook.SeriousComponentTest)  Time elapsed: 0.017 sec  &lt;&lt;&lt; FAILURE!
+Tests run: 1, Failures: 1, Errors: 0, Skipped: 0, Time elapsed: 0.062 sec 
+&lt;&lt;&lt; FAILURE!
+testSeriousness(org.sonatype.mhandbook.SeriousComponentTest)  Time elapsed: 
+0.017 sec  &lt;&lt;&lt; FAILURE!
 junit.framework.AssertionFailedError: null
         at junit.framework.Assert.fail(Assert.java:47)
         at junit.framework.Assert.assertTrue(Assert.java:20)
         at junit.framework.Assert.assertTrue(Assert.java:27)
-        at org.sonatype.mhandbook.SeriousComponentTest.testSeriousness(SeriousComponentTest.java:15)
+        at org.sonatype.mhandbook.SeriousComponentTest.testSeriousness(
+SeriousComponentTest.java:15)
 ....</programlisting>
     </section>
   </section>
@@ -230,7 +233,52 @@ junit.framework.AssertionFailedError: null
     <section>
       <title>Action</title>
 
-      <para></para>
+      <para>To use TestNG, you will need to add TestNG as a dependency in your
+      project's POM. Since the TestNG unit test shown in this section uses
+      Java 5 annotation, you will also need to configure the Maven Compiler
+      plugin to target Java 5. The following POM shows the minimum required
+      configuration for running TestNG tests with Java 5 annotations.</para>
+
+      <programlisting>&lt;project xmlns="http://maven.apache.org/POM/4.0.0" 
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 
+           http://maven.apache.org/maven-v4_0_0.xsd"&gt;
+  &lt;modelVersion&gt;4.0.0&lt;/modelVersion&gt;
+  &lt;groupId&gt;org.sonatype.mhandbook&lt;/groupId&gt;
+  &lt;artifactId&gt;testng-tests&lt;/artifactId&gt;
+  &lt;packaging&gt;jar&lt;/packaging&gt;
+  &lt;version&gt;1.0-SNAPSHOT&lt;/version&gt;
+  &lt;name&gt;testng-tests&lt;/name&gt;
+  &lt;build&gt;
+    &lt;plugins&gt;
+      &lt;plugin&gt;
+        &lt;groupId&gt;org.apache.maven.plugins&lt;/groupId&gt;
+        &lt;artifactId&gt;maven-compiler-plugin&lt;/artifactId&gt;
+        &lt;configuration&gt;
+          &lt;source&gt;1.5&lt;/source&gt;
+          &lt;target&gt;1.5&lt;/target&gt;
+        &lt;/configuration&gt;
+      &lt;/plugin&gt;
+    &lt;/plugins&gt;
+  &lt;/build&gt;
+  &lt;dependencies&gt;
+    &lt;dependency&gt;
+      &lt;groupId&gt;org.testng&lt;/groupId&gt;
+      &lt;artifactId&gt;testng&lt;/artifactId&gt;
+      &lt;version&gt;5.10&lt;/version&gt;
+      &lt;classifier&gt;jdk15&lt;/classifier&gt;
+      &lt;scope&gt;test&lt;/scope&gt;
+    &lt;/dependency&gt;
+  &lt;/dependencies&gt;
+&lt;/project&gt;
+</programlisting>
+
+      <para>You would then put your TestNG unit test classses in the
+      <filename>${basedir}/src/test/java</filename> directory. The following
+      TestNG test uses Java 5 annotations to mark a class and a method as a
+      TestNG test. The following TestNG unit test duplicates the JUnit test
+      shown in <xref linkend="unit-sect-junit-run" />, and it tests the
+      SeriousComponent class.</para>
 
       <example>
         <title>TestNG Test for the SeriousComponent</title>
@@ -252,7 +300,10 @@ public class SeriousComponentTest {
 }</programlisting>
       </example>
 
-      <para></para>
+      <para>There is no other configuration necessary to have Maven execute
+      any TestNG tests it locates under ${basedir}/src/test/java which match
+      the pattern <filename>s*Test.java</filename>. Running <command>mvn
+      test</command> will execute your TestNG unit tests.</para>
 
       <screen>$ <command>mvn test</command>
 [INFO] Scanning for projects...
@@ -261,17 +312,22 @@ public class SeriousComponentTest {
 [INFO]    task-segment: [test]
 [INFO] ------------------------------------------------------------------------
 [INFO] [resources:resources {execution: default-resources}]
-[WARNING] Using platform encoding (MacRoman actually) to copy filtered resources, i.e. build is platform dependent!
+[WARNING] Using platform encoding (MacRoman actually) to copy filtered 
+resources, i.e. build is platform dependent!
 [INFO] Copying 0 resource
 [INFO] [compiler:compile {execution: default-compile}]
-[INFO] Compiling 1 source file to /Users/Tim/Library/Code/sonatype/maven-cookbook/mhandbook-examples/unit/testng-tests/target/classes
+[INFO] Compiling 1 source file to /Users/Tim/Library/Code/sonatype/
+maven-cookbook/mhandbook-examples/unit/testng-tests/target/classes
 [INFO] [resources:testResources {execution: default-testResources}]
-[WARNING] Using platform encoding (MacRoman actually) to copy filtered resources, i.e. build is platform dependent!
+[WARNING] Using platform encoding (MacRoman actually) to copy filtered 
+resources, i.e. build is platform dependent!
 [INFO] Copying 0 resource
 [INFO] [compiler:testCompile {execution: default-testCompile}]
-[INFO] Compiling 1 source file to /Users/Tim/Library/Code/sonatype/maven-cookbook/mhandbook-examples/unit/testng-tests/target/test-classes
+[INFO] Compiling 1 source file to /Users/Tim/Library/Code/sonatype/
+maven-cookbook/mhandbook-examples/unit/testng-tests/target/test-classes
 [INFO] [surefire:test {execution: default-test}]
-[INFO] Surefire report directory: /Users/Tim/Library/Code/sonatype/maven-cookbook/mhandbook-examples/unit/testng-tests/target/surefire-reports
+[INFO] Surefire report directory: /Users/Tim/Library/Code/sonatype/
+maven-cookbook/mhandbook-examples/unit/testng-tests/target/surefire-reports
 
 -------------------------------------------------------
  T E S T S
@@ -296,7 +352,11 @@ Tests run: 1, Failures: 0, Errors: 0, Skipped: 0
     <section>
       <title>Detail</title>
 
-      <para></para>
+      <para>Once the TestNG unit tests have been executed, you will have a
+      TestNG HTML report under
+      <filename>${basedir}/target/surfire-reports/index.html</filename>. To
+      view a report which displays statistics about which tests failed and
+      which tests passed, load this HTML page in a web browser.</para>
 
       <figure id="fig-unit_testng-directory-structure">
         <title>Project Structure for TestNG Test Results</title>
