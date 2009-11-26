@@ -389,7 +389,257 @@ Tests run: 1, Failures: 0, Errors: 0, Skipped: 0
   <section>
     <title>Running TestNG Tests in Parallel</title>
 
-    <para></para>
+    <section>
+      <title>Task</title>
+
+      <para>You would like to run your unit tests in parallel to speed up your
+      builds.</para>
+    </section>
+
+    <section>
+      <title>Action</title>
+
+      <para>To illustrate executing tests in parallel, we can create a
+      component to be tests that sleeps for 5 seconds. The following listing
+      is the SeriousComponent.java class which would be stored in
+      ${basedir}/src/main/java under the org.sonatype.mhandbook
+      package:</para>
+
+      <programlisting>package org.sonatype.mhandbook;
+
+public class SeriousComponent {
+
+ /**
+  * This function tests the seriousness of a String.
+  * Returns false if the string contains the word
+  * "FUNNY", returns truje otherwise.
+  */
+  public static boolean testSeriousness( String text ) {
+    try {
+      Thread.sleep( 5000 );
+    } catch (InterruptedException e) {
+    }
+    return !text.toUpperCase().contains( "FUNNY" );
+  }
+}</programlisting>
+
+      <para>This class has a single static method which sleeps for five
+      seconds and then tests a string for the presence of the word "funny". To
+      test this class, there is a SeriousComponentTest.java class in
+      ${basedir}/src/test/java under the org.sonatype.mhandbook package which
+      contains the following four test methods:</para>
+
+      <programlisting>package org.sonatype.mhandbook;
+
+import org.testng.annotations.Test;
+
+@Test
+public class SeriousComponentTest {
+
+  @Test
+  public void testSad() throws Exception {
+    assert SeriousComponent.testSeriousness("SAD");
+  }
+
+  @Test
+  public void testSerious() throws Exception {
+    assert SeriousComponent.testSeriousness("SERIOUS");
+  }
+
+  @Test
+  public void testCrazy() throws Exception {
+    assert SeriousComponent.testSeriousness("CRAZY");
+  }
+
+  @Test
+  public void testFunny() throws Exception {
+    assert !SeriousComponent.testSeriousness("FUNNY");
+  }
+}</programlisting>
+
+      <para>If you ran this test in a single thread, it would take
+      approximately 20 seconds to execute. To speed up your build, configure
+      Maven to execute each test method in parallel and set the available
+      thread count for parallel test execution to 4. To do this, add the
+      following plugin configuration to your project's POM.</para>
+
+      <programlisting>&lt;project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 
+           http://maven.apache.org/maven-v4_0_0.xsd"&gt;
+  &lt;modelVersion&gt;4.0.0&lt;/modelVersion&gt;
+  &lt;groupId&gt;org.sonatype.mhandbook&lt;/groupId&gt;
+  &lt;artifactId&gt;testng-parallel&lt;/artifactId&gt;
+  &lt;packaging&gt;jar&lt;/packaging&gt;
+  &lt;version&gt;1.0-SNAPSHOT&lt;/version&gt;
+  &lt;name&gt;testng-tests&lt;/name&gt;
+  &lt;build&gt;
+    &lt;plugins&gt;
+      &lt;plugin&gt;
+        &lt;groupId&gt;org.apache.maven.plugins&lt;/groupId&gt;
+        &lt;artifactId&gt;maven-compiler-plugin&lt;/artifactId&gt;
+        &lt;configuration&gt;
+          &lt;source&gt;1.5&lt;/source&gt;
+          &lt;target&gt;1.5&lt;/target&gt;
+        &lt;/configuration&gt;
+      &lt;/plugin&gt;
+      &lt;plugin&gt;
+        &lt;groupId&gt;org.apache.maven.plugins&lt;/groupId&gt;
+        &lt;artifactId&gt;maven-surefire-plugin&lt;/artifactId&gt;
+        &lt;configuration&gt;
+          &lt;parallel&gt;methods&lt;/parallel&gt;
+          &lt;threadCount&gt;4&lt;/threadCount&gt;
+        &lt;/configuration&gt;
+      &lt;/plugin&gt;
+    &lt;/plugins&gt;
+  &lt;/build&gt;
+  &lt;dependencies&gt;
+    &lt;dependency&gt;
+      &lt;groupId&gt;org.testng&lt;/groupId&gt;
+      &lt;artifactId&gt;testng&lt;/artifactId&gt;
+      &lt;version&gt;5.10&lt;/version&gt;
+      &lt;classifier&gt;jdk15&lt;/classifier&gt;
+      &lt;scope&gt;test&lt;/scope&gt;
+    &lt;/dependency&gt;
+  &lt;/dependencies&gt;
+&lt;/project&gt;
+</programlisting>
+
+      <para>Execute the TestNG test in parallel by running mvn test and take
+      note of the time it takes to execute all four tests.</para>
+
+      <screen>$ mvn test
+[INFO] Scanning for projects...
+[INFO] ------------------------------------------------------------------------
+[INFO] Building testng-tests
+[INFO]    task-segment: [test]
+[INFO] ------------------------------------------------------------------------
+[INFO] [resources:resources {execution: default-resources}]
+[WARNING] Using platform encoding (MacRoman actually) to copy filtered resources, i.e. build is platform dependent!
+[INFO] Copying 0 resource
+[INFO] [compiler:compile {execution: default-compile}]
+[INFO] Nothing to compile - all classes are up to date
+[INFO] [resources:testResources {execution: default-testResources}]
+[WARNING] Using platform encoding (MacRoman actually) to copy filtered resources, i.e. build is platform dependent!
+[INFO] Copying 0 resource
+[INFO] [compiler:testCompile {execution: default-testCompile}]
+[INFO] Nothing to compile - all classes are up to date
+[INFO] [surefire:test {execution: default-test}]
+[INFO] Surefire report directory: /Users/Tim/Library/Code/sonatype/maven-cookbook/mhandbook-examples/unit/testng-parallel/target/surefire-reports
+
+-------------------------------------------------------
+ T E S T S
+-------------------------------------------------------
+Running TestSuite
+Tests run: 4, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 5.342 sec
+
+Results :
+
+Tests run: 4, Failures: 0, Errors: 0, Skipped: 0
+
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD SUCCESSFUL
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time: 9 seconds
+[INFO] Finished at: Thu Nov 26 10:43:45 CST 2009
+[INFO] Final Memory: 11M/80M
+[INFO] ------------------------------------------------------------------------</screen>
+
+      <para></para>
+
+      <programlisting>      &lt;plugin&gt;
+        &lt;groupId&gt;org.apache.maven.plugins&lt;/groupId&gt;
+        &lt;artifactId&gt;maven-surefire-plugin&lt;/artifactId&gt;
+        &lt;configuration&gt;
+          &lt;parallel&gt;classes&lt;/parallel&gt;
+          &lt;threadCount&gt;4&lt;/threadCount&gt;
+        &lt;/configuration&gt;
+      &lt;/plugin&gt;</programlisting>
+
+      <para></para>
+
+      <screen>$ <command>mvn test</command>
+[INFO] Scanning for projects...
+[INFO] ------------------------------------------------------------------------
+[INFO] Building testng-tests
+[INFO]    task-segment: [test]
+[INFO] ------------------------------------------------------------------------
+[INFO] [resources:resources {execution: default-resources}]
+[WARNING] Using platform encoding (MacRoman actually) to copy filtered resources, i.e. build is platform dependent!
+[INFO] Copying 0 resource
+[INFO] [compiler:compile {execution: default-compile}]
+[INFO] Nothing to compile - all classes are up to date
+[INFO] [resources:testResources {execution: default-testResources}]
+[WARNING] Using platform encoding (MacRoman actually) to copy filtered resources, i.e. build is platform dependent!
+[INFO] Copying 0 resource
+[INFO] [compiler:testCompile {execution: default-testCompile}]
+[INFO] Nothing to compile - all classes are up to date
+[INFO] [surefire:test {execution: default-test}]
+[INFO] Surefire report directory: /Users/Tim/Library/Code/sonatype/maven-cookbook/mhandbook-examples/unit/testng-parallel/target/surefire-reports
+
+-------------------------------------------------------
+ T E S T S
+-------------------------------------------------------
+Running TestSuite
+Tests run: 4, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 20.411 sec
+
+Results :
+
+Tests run: 4, Failures: 0, Errors: 0, Skipped: 0
+
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD SUCCESSFUL
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time: 23 seconds
+[INFO] Finished at: Thu Nov 26 10:34:40 CST 2009
+[INFO] Final Memory: 11M/80M
+[INFO] ------------------------------------------------------------------------</screen>
+    </section>
+
+    <section>
+      <title>Detail</title>
+
+      <para>If your unit tests are straightforward, this is a great way to
+      make your builds a bit faster.</para>
+
+      <para>You use the following values in the parallel configuration
+      parmeter:</para>
+
+      <variablelist>
+        <varlistentry>
+          <term>classes</term>
+
+          <listitem>
+            <para>Each test class will be executed in an independent execution
+            thread.</para>
+          </listitem>
+        </varlistentry>
+
+        <varlistentry>
+          <term>methods</term>
+
+          <listitem>
+            <para>Each test method will be run as an independent test in a
+            separate thread. Note that if one method states and explicit
+            dependency on another method, TestNG will note the dependency and
+            execute both methods in the same Thread.</para>
+          </listitem>
+        </varlistentry>
+
+        <varlistentry>
+          <term>tests</term>
+
+          <listitem>
+            <para>If you use a TestNG Suite XML file and you list a test
+            element that groups a number of related tests, listing test in the
+            parallel configuration element will configure TestNG to use a
+            separate thread for each &lt;test&gt; element. This option is only
+            relevant if you have configured the Maven Surefire plugin to use a
+            custom TestNG Suite XML file with one or more &lt;test&gt;
+            elements.</para>
+          </listitem>
+        </varlistentry>
+      </variablelist>
+    </section>
   </section>
 
   <section>
