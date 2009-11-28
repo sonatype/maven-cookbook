@@ -9,4 +9,174 @@
 
     <para>This chapter covers integration testing with Maven.</para>
   </section>
+
+  <section>
+    <title>Running a Selenium Test</title>
+
+    <section>
+      <title>Task</title>
+
+      <para>You need to write a Selenium test to test a web application or a
+      web site.</para>
+    </section>
+
+    <section>
+      <title>Action</title>
+
+      <para>Selenium is a very straightforward way to test a web application,
+      you can write a unit test in any number of languages and then use the
+      Selenium Remote Control to automate a browser and perform assertions
+      about the presence of text or UI elements in a page. This recipe uses a
+      TestNG test which includes the appropriate Selenium code to test a well
+      known web site: http://www.reddit.com. In a Maven project devoted to
+      integration testing, the following</para>
+
+      <example>
+        <title>TwitterTest a Selenium Test written in TestNG</title>
+
+        <programlisting>package org.sonatype.mhandbook;
+
+import org.testng.annotations.AfterClass;
+import org.testng.annotations.BeforeClass;
+import org.testng.annotations.Parameters;
+import org.testng.annotations.Test;
+
+import com.thoughtworks.selenium.DefaultSelenium;
+import com.thoughtworks.selenium.Selenium;
+import com.thoughtworks.selenium.SeleniumException;
+
+public class TwitterTest {
+
+  private Selenium selenium;
+
+  @BeforeClass
+  public void startSelenium() {
+    this.selenium = new DefaultSelenium("localhost", 4444, "*safari",
+        "http://www.twitter.com");
+    this.selenium.start();
+  }
+
+  @Test
+  @Parameters( { "user", "name" })
+  public void testReddit(String user, String name) {
+    try {
+      selenium.open("http://www.twitter.com/" + user);
+      selenium.waitForPageToLoad("3000");
+      assert selenium.isTextPresent(name);
+
+    } catch (SeleniumException e) {
+      throw e;
+    }
+  }
+
+  @AfterClass(alwaysRun = true)
+  public void stopSelenium() {
+    this.selenium.stop();
+  }
+
+}
+</programlisting>
+      </example>
+
+      <para></para>
+
+      <example>
+        <title>POM configuring SureFire to Execute Selenium Remote
+        Control</title>
+
+        <programlisting>&lt;project xmlns="http://maven.apache.org/POM/4.0.0" 
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 
+           http://maven.apache.org/maven-v4_0_0.xsd"&gt;
+  &lt;modelVersion&gt;4.0.0&lt;/modelVersion&gt;
+  &lt;groupId&gt;org.sonatype.mhandbook&lt;/groupId&gt;
+  &lt;artifactId&gt;selenium-reddit&lt;/artifactId&gt;
+  &lt;packaging&gt;jar&lt;/packaging&gt;
+  &lt;version&gt;1.0-SNAPSHOT&lt;/version&gt;
+  &lt;name&gt;selenium-reddit&lt;/name&gt;
+  &lt;build&gt;
+    &lt;plugins&gt;
+      &lt;plugin&gt;
+        &lt;groupId&gt;org.apache.maven.plugins&lt;/groupId&gt;
+        &lt;artifactId&gt;maven-compiler-plugin&lt;/artifactId&gt;
+        &lt;configuration&gt;
+          &lt;source&gt;1.5&lt;/source&gt;
+          &lt;target&gt;1.5&lt;/target&gt;
+        &lt;/configuration&gt;
+      &lt;/plugin&gt;
+      &lt;plugin&gt;
+        &lt;groupId&gt;org.apache.maven.plugins&lt;/groupId&gt;
+        &lt;artifactId&gt;maven-surefire-plugin&lt;/artifactId&gt;
+        &lt;configuration&gt;
+          &lt;skip&gt;true&lt;/skip&gt;
+          &lt;systemProperties&gt;
+            &lt;property&gt;
+              &lt;name&gt;user&lt;/name&gt;
+              &lt;value&gt;tobrien&lt;/value&gt;
+            &lt;/property&gt;
+            &lt;property&gt;
+              &lt;name&gt;name&lt;/name&gt;
+              &lt;value&gt;Tim O'Brien&lt;/value&gt;
+            &lt;/property&gt;
+          &lt;/systemProperties&gt;
+        &lt;/configuration&gt;
+        &lt;executions&gt;
+          &lt;execution&gt;
+            &lt;phase&gt;integration-test&lt;/phase&gt;
+            &lt;goals&gt;
+              &lt;goal&gt;test&lt;/goal&gt;
+            &lt;/goals&gt;
+            &lt;configuration&gt;
+              &lt;skip&gt;false&lt;/skip&gt;
+            &lt;/configuration&gt;
+          &lt;/execution&gt;
+        &lt;/executions&gt;
+      &lt;/plugin&gt;
+      &lt;plugin&gt;
+        &lt;groupId&gt;org.codehaus.mojo&lt;/groupId&gt;
+        &lt;artifactId&gt;selenium-maven-plugin&lt;/artifactId&gt;
+        &lt;executions&gt;
+          &lt;execution&gt;
+            &lt;phase&gt;pre-integration-test&lt;/phase&gt;
+            &lt;goals&gt;
+              &lt;goal&gt;start-server&lt;/goal&gt;
+            &lt;/goals&gt;
+            &lt;configuration&gt;
+              &lt;background&gt;true&lt;/background&gt;
+            &lt;/configuration&gt;
+          &lt;/execution&gt;
+        &lt;/executions&gt;
+      &lt;/plugin&gt;
+    &lt;/plugins&gt;
+  &lt;/build&gt;
+  &lt;dependencies&gt;
+    &lt;dependency&gt;
+      &lt;groupId&gt;org.testng&lt;/groupId&gt;
+      &lt;artifactId&gt;testng&lt;/artifactId&gt;
+      &lt;version&gt;5.10&lt;/version&gt;
+      &lt;classifier&gt;jdk15&lt;/classifier&gt;
+      &lt;scope&gt;test&lt;/scope&gt;
+    &lt;/dependency&gt;
+    &lt;dependency&gt;
+      &lt;groupId&gt;org.seleniumhq.selenium.client-drivers&lt;/groupId&gt;
+      &lt;artifactId&gt;selenium-java-client-driver&lt;/artifactId&gt;
+      &lt;version&gt;1.0.1&lt;/version&gt;
+      &lt;scope&gt;test&lt;/scope&gt;
+    &lt;/dependency&gt;
+  &lt;/dependencies&gt;
+&lt;/project&gt;
+</programlisting>
+      </example>
+
+      <para></para>
+
+      <screen></screen>
+    </section>
+
+    <section>
+      <title>Detail</title>
+
+      <para></para>
+    </section>
+  </section>
 </chapter>
