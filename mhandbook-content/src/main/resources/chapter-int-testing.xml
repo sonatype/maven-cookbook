@@ -28,8 +28,9 @@
       Selenium Remote Control to automate a browser and perform assertions
       about the presence of text or UI elements in a page. This recipe uses a
       TestNG test which includes the appropriate Selenium code to test a well
-      known web site: http://www.reddit.com. In a Maven project devoted to
-      integration testing, the following</para>
+      known web site: http://www.twitter.com. In a Maven project devoted to
+      integration testing, the following test class connects to a Twitter user
+      page and verifies the correct user name.</para>
 
       <example>
         <title>TwitterTest a Selenium Test written in TestNG</title>
@@ -78,7 +79,44 @@ public class TwitterTest {
 </programlisting>
       </example>
 
-      <para></para>
+      <para>The following POM contains the following configuration to
+      configure the Selenium server and the Selenium integration tests:</para>
+
+      <itemizedlist>
+        <listitem>
+          <para>The Maven Surefire plugin is configured to skip tests. This
+          will prevent the Surefire plugin from executing any unit tests
+          during the test phase.</para>
+        </listitem>
+
+        <listitem>
+          <para>An execution of the Surefire plugin is configured not to skip
+          tests during the integration-test phase. This configuration coupled
+          with the previous configuration simply moves the execution of the
+          tests into the integration-test phase of the lifecycle.</para>
+        </listitem>
+
+        <listitem>
+          <para>The user and name properties that the testReddit() method
+          relies upon are configured via the systemProperties configuration
+          parameter of the Maven Surefire plugin.</para>
+        </listitem>
+
+        <listitem>
+          <para>The Selenium Maven plugin's start-server goal is configured to
+          run in the pre-integration-test phase. This has the effect of
+          starting Selenium before the Surefire plugin executes the
+          integration tests. No configuration options are passed to the
+          start-server goal so Selenium will be started on a default port of
+          4444.</para>
+        </listitem>
+
+        <listitem>
+          <para>A dependency on selenium-java-client-driver exposes the
+          Selenium API to the test cases and allows the Surefire test to
+          interact with the Selenium server.</para>
+        </listitem>
+      </itemizedlist>
 
       <example>
         <title>POM configuring SureFire to Execute Selenium Remote
@@ -168,15 +206,113 @@ public class TwitterTest {
 </programlisting>
       </example>
 
-      <para></para>
+      <para>If you run Maven to the integration-test phase, Maven will start
+      the Selenium server before it executes the integration-test phase. In
+      the output shown below, the section that starts with
+      selenium:start-server is the pre-integration-test execution of the
+      start-server goal in the Selenium Maven plugin. This is followed by an
+      invocation of the test goal from the Maven Surefire plugin which will
+      execute the TestNG tests which rely on the Selenium server.</para>
 
-      <screen></screen>
-    </section>
+      <screen>$ <command>mvn integration-test</command>
+[INFO] Scanning for projects...
+[INFO] ------------------------------------------------------------------------
+[INFO] Building selenium-reddit
+[INFO]    task-segment: [integration-test]
+[INFO] ------------------------------------------------------------------------
+[INFO] [resources:resources {execution: default-resources}]
+[WARNING] Using platform encoding (MacRoman actually) to copy filtered 
+resources, i.e. build is platform dependent!
+[INFO] Copying 0 resource
+[INFO] [compiler:compile {execution: default-compile}]
+[INFO] Nothing to compile - all classes are up to date
+[INFO] [resources:testResources {execution: default-testResources}]
+[WARNING] Using platform encoding (MacRoman actually) to copy filtered 
+resources, i.e. build is platform dependent!
+[INFO] Copying 0 resource
+[INFO] [compiler:testCompile {execution: default-testCompile}]
+[INFO] Compiling 1 source file to /Users/Tim/Library/Code/sonatype/
+maven-cookbook/mhandbook-examples/integrate/selenium-reddit/
+target/test-classes
+[INFO] [surefire:test {execution: default-test}]
+[INFO] Tests are skipped.
+[INFO] [jar:jar {execution: default-jar}]
+[INFO] Building jar: /Users/Tim/Library/Code/sonatype/maven-cookbook/
+mhandbook-examples/integrate/selenium-reddit/
+target/selenium-reddit-1.0-SNAPSHOT.jar
+[INFO] [selenium:start-server {execution: default}]
+Created dir: /Users/Tim/Library/Code/sonatype/maven-cookbook/
+mhandbook-examples/integrate/selenium-reddit/target/selenium
+Launching Selenium Server
+Waiting for Selenium Server...
+[INFO] User extensions: /Users/Tim/Library/Code/sonatype/maven-cookbook/
+mhandbook-examples/integrate/selenium-reddit/
+target/selenium/user-extensions.js
+23:41:46,726 INFO  [SeleniumServer] Java: Apple Inc. 14.1-b02-90
+23:41:46,727 INFO  [SeleniumServer] OS: Mac OS X 10.6.1 x86_64
+23:41:46,735 INFO  [SeleniumServer] v1.0.1 [2697], with Core 
+23:41:46,829 INFO  [HttpServer] Version Jetty/5.1.x
+23:41:46,830 INFO  [Container] Started HttpContext[/selenium-server/driver,
+/selenium-server/driver]
+23:41:46,832 INFO  [Container] Started HttpContext[/selenium-server,
+/selenium-server]
+23:41:46,832 INFO  [Container] Started HttpContext[/,/]
+23:41:46,846 INFO  [SocketListener] Started SocketListener on 0.0.0.0:4444
+23:41:46,846 INFO  [Container] Started org.mortbay.jetty.Server@4a4e79f1
+23:41:47,262 INFO  [Credential] Checking Resource aliases
+Selenium Server started
+[INFO] [surefire:test {execution: default}]
+[INFO] Surefire report directory: /Users/Tim/Library/Code/sonatype/
+maven-cookbook/mhandbook-examples/integrate/selenium-reddit/
+target/surefire-reports
 
-    <section>
-      <title>Detail</title>
+-------------------------------------------------------
+ T E S T S
+-------------------------------------------------------
+Running TestSuite
+23:41:48,178 INFO  [org.mortbay.util.Credential] Checking Resource aliases
+23:41:48,184 INFO  [org.openqa.selenium.server.SeleniumDriverResourceHandler] 
+Command request: getNewBrowserSession[*safari, http://www.twitter.com, ] on 
+session null
+23:41:48,187 INFO  [org.openqa.selenium.server.BrowserSessionFactory] 
+creating new remote session
+23:41:48,436 INFO  [org.openqa.selenium.server.BrowserSessionFactory] 
+Allocated session 2a66870a3c894a60a19ef6f2e7a1dc74 for 
+http://www.twitter.com, launching...
+23:41:48,519 INFO  [org.openqa.selenium.server.browserlaunchers.
+SafariCustomProfileLauncher] Launching Safari to visit... 
+23:41:53,251 INFO  [org.openqa.selenium.server.SeleniumDriverResourceHandler] 
+Got result: OK, on session 
+23:41:53,265 INFO  [org.openqa.selenium.server.SeleniumDriverResourceHandler] 
+Command request: open[http://www.twitter.com/tobrien, ] on session 
+23:41:56,231 INFO  [org.openqa.selenium.server.SeleniumDriverResourceHandler] 
+Got result: OK on session 
+23:41:56,256 INFO  [org.openqa.selenium.server.SeleniumDriverResourceHandler] 
+Command request: waitForPageToLoad[3000, ] on session 
+23:41:56,270 INFO  [org.openqa.selenium.server.SeleniumDriverResourceHandler] 
+Got result: OK on session 
+23:41:56,284 INFO  [org.openqa.selenium.server.SeleniumDriverResourceHandler] 
+Command request: isTextPresent[Tim O'Brien, ] on session 
+23:41:56,343 INFO  [org.openqa.selenium.server.SeleniumDriverResourceHandler] 
+Got result: OK,true on session 
+23:41:56,352 INFO  [org.openqa.selenium.server.SeleniumDriverResourceHandler] 
+Command request: testComplete[, ] on session 
+23:41:56,370 INFO  [org.openqa.selenium.server.SeleniumDriverResourceHandler] 
+Got result: OK on session 
+Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 8.609 sec
 
-      <para></para>
+Results :
+
+Tests run: 1, Failures: 0, Errors: 0, Skipped: 0
+
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD SUCCESSFUL
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time: 18 seconds
+[INFO] Finished at: Fri Nov 27 23:41:56 CST 2009
+[INFO] Final Memory: 32M/80M
+[INFO] ------------------------------------------------------------------------
+</screen>
     </section>
   </section>
 </chapter>
