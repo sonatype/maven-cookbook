@@ -205,4 +205,125 @@ public class FibonacciServlet extends HttpServlet {
 
     <para></para>
   </section>
+
+  <section>
+    <title>Starting a WAR Dependency in a Servlet Container</title>
+
+    <section>
+      <title>Task</title>
+
+      <para>You need to configure Maven to download and start a web
+      application from a repository manager.</para>
+    </section>
+
+    <section>
+      <title>Action</title>
+
+      <para>Use the Maven Dependency plugin to copy the web application to
+      your project. Then configure the Maven Jetty plugin to execute the web
+      application.</para>
+
+      <programlisting>&lt;project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 
+           http://maven.apache.org/maven-v4_0_0.xsd"&gt;
+  &lt;modelVersion&gt;4.0.0&lt;/modelVersion&gt;
+  &lt;groupId&gt;org.sonatype.mhandbook&lt;/groupId&gt;
+  &lt;artifactId&gt;start-jackrabbit&lt;/artifactId&gt;
+  &lt;packaging&gt;jar&lt;/packaging&gt;
+  &lt;version&gt;1.0-SNAPSHOT&lt;/version&gt;
+  &lt;name&gt;start-jackrabbit&lt;/name&gt;
+  &lt;build&gt;
+    &lt;plugins&gt;
+      &lt;plugin&gt;
+        &lt;groupId&gt;org.apache.maven.plugins&lt;/groupId&gt;
+        &lt;artifactId&gt;maven-dependency-plugin&lt;/artifactId&gt;
+        &lt;executions&gt;
+          &lt;execution&gt;
+            &lt;id&gt;default-cli&lt;/id&gt;<co id="web-co-run-war-1" />
+            &lt;configuration&gt;
+              &lt;artifactItems&gt;
+                &lt;artifactItem&gt;
+                  &lt;groupId&gt;org.apache.jackrabbit&lt;/groupId&gt;
+                  &lt;artifactId&gt;jackrabbit-webapp&lt;/artifactId&gt;
+                  &lt;version&gt;1.6.0&lt;/version&gt;
+                  &lt;type&gt;war&lt;/type&gt;
+                  &lt;overWrite&gt;true&lt;/overWrite&gt;
+                  &lt;destFileName&gt;jackrabbit-webapp.war&lt;/destFileName&gt;
+                &lt;/artifactItem&gt;
+              &lt;/artifactItems&gt;
+              &lt;outputDirectory&gt;${project.build.directory}/war&lt;/outputDirectory&gt;
+              &lt;overWriteReleases&gt;true&lt;/overWriteReleases&gt;
+              &lt;overWriteSnapshots&gt;true&lt;/overWriteSnapshots&gt;
+            &lt;/configuration&gt;
+          &lt;/execution&gt;
+        &lt;/executions&gt;
+      &lt;/plugin&gt;
+      &lt;plugin&gt;
+        &lt;groupId&gt;org.mortbay.jetty&lt;/groupId&gt;
+        &lt;artifactId&gt;maven-jetty-plugin&lt;/artifactId&gt;
+        &lt;version&gt;6.1.22&lt;/version&gt;
+        &lt;executions&gt;
+          &lt;execution&gt;
+            &lt;id&gt;default-cli&lt;/id&gt;<co id="web-co-run-war-2" />
+            &lt;configuration&gt;
+              &lt;contextPath&gt;jackrabbit&lt;/contextPath&gt;
+              &lt;daemon&gt;false&lt;/daemon&gt;
+              &lt;webApp&gt;${project.build.directory}/war/jackrabbit-webapp.war&lt;/webApp&gt;
+            &lt;/configuration&gt;
+          &lt;/execution&gt;
+        &lt;/executions&gt;
+        &lt;dependencies&gt;
+          &lt;dependency&gt;<co id="web-co-run-war-3" />
+            &lt;groupId&gt;org.apache.jackrabbit&lt;/groupId&gt;
+            &lt;artifactId&gt;jackrabbit-webapp&lt;/artifactId&gt;
+            &lt;version&gt;1.6.0&lt;/version&gt;
+            &lt;type&gt;war&lt;/type&gt;
+          &lt;/dependency&gt;
+          &lt;dependency&gt;
+            &lt;groupId&gt;javax.jcr&lt;/groupId&gt;
+            &lt;artifactId&gt;jcr&lt;/artifactId&gt;
+            &lt;version&gt;2.0&lt;/version&gt;
+          &lt;/dependency&gt;
+        &lt;/dependencies&gt;
+      &lt;/plugin&gt;
+    &lt;/plugins&gt;
+  &lt;/build&gt;
+  &lt;dependencies&gt;
+    &lt;dependency&gt;<co id="web-co-run-war-4" />
+      &lt;groupId&gt;org.apache.jackrabbit&lt;/groupId&gt;
+      &lt;artifactId&gt;jackrabbit-webapp&lt;/artifactId&gt;
+      &lt;version&gt;1.6.0&lt;/version&gt;
+      &lt;type&gt;war&lt;/type&gt;
+    &lt;/dependency&gt;
+  &lt;/dependencies&gt;
+&lt;/project&gt;
+</programlisting>
+
+      <para></para>
+
+      <calloutlist>
+        <callout arearefs="web-co-run-war-1">
+          <para></para>
+        </callout>
+
+        <callout arearefs="web-co-run-war-2">
+          <para></para>
+        </callout>
+
+        <callout arearefs="web-co-run-war-3">
+          <para></para>
+        </callout>
+
+        <callout arearefs="web-co-run-war-3">
+          <para></para>
+        </callout>
+      </calloutlist>
+    </section>
+
+    <section>
+      <title>Details</title>
+
+      <para></para>
+    </section>
+  </section>
 </chapter>
