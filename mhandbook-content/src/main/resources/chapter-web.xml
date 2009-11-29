@@ -223,7 +223,7 @@ public class FibonacciServlet extends HttpServlet {
       your project. Then configure the Maven Jetty plugin to execute the web
       application.</para>
 
-      <programlisting>&lt;project xmlns="http://maven.apache.org/POM/4.0.0" 
+      <programlisting db:wrap="force" xmlns:db="http://discursive.com/plugins/docbook">&lt;project xmlns="http://maven.apache.org/POM/4.0.0" 
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 
            http://maven.apache.org/maven-v4_0_0.xsd"&gt;
