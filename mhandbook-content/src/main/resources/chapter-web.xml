@@ -6,7 +6,7 @@
 
   <para>This is a test</para>
 
-  <section>
+  <section id="web-sect-running-war">
     <title>Running a Web Application in a Servlet Container</title>
 
     <section>
@@ -198,5 +198,11 @@ public class FibonacciServlet extends HttpServlet {
       index and pressing calculate will load the Fibonacci servlet and print
       out the number at that position of the sequence.</para>
     </section>
+  </section>
+
+  <section>
+    <title>Configuring a Servlet Container</title>
+
+    <para></para>
   </section>
 </chapter>
