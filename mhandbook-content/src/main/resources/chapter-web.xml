@@ -223,8 +223,9 @@ public class FibonacciServlet extends HttpServlet {
       your project. Then configure the Maven Jetty plugin to execute the web
       application.</para>
 
-      <programlisting>&lt;project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 
+      <programlisting>&lt;project xmlns="http://maven.apache.org/POM/4.0.0" 
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 
            http://maven.apache.org/maven-v4_0_0.xsd"&gt;
   &lt;modelVersion&gt;4.0.0&lt;/modelVersion&gt;
   &lt;groupId&gt;org.sonatype.mhandbook&lt;/groupId&gt;
@@ -251,7 +252,9 @@ public class FibonacciServlet extends HttpServlet {
                   &lt;destFileName&gt;jackrabbit-webapp.war&lt;/destFileName&gt;
                 &lt;/artifactItem&gt;
               &lt;/artifactItems&gt;
-              &lt;outputDirectory&gt;${project.build.directory}/war&lt;/outputDirectory&gt;
+              &lt;outputDirectory&gt;
+                ${project.build.directory}/war
+              &lt;/outputDirectory&gt;
               &lt;overWriteReleases&gt;true&lt;/overWriteReleases&gt;
               &lt;overWriteSnapshots&gt;true&lt;/overWriteSnapshots&gt;
             &lt;/configuration&gt;
@@ -268,7 +271,9 @@ public class FibonacciServlet extends HttpServlet {
             &lt;configuration&gt;
               &lt;contextPath&gt;jackrabbit&lt;/contextPath&gt;
               &lt;daemon&gt;false&lt;/daemon&gt;
-              &lt;webApp&gt;${project.build.directory}/war/jackrabbit-webapp.war&lt;/webApp&gt;
+              &lt;webApp&gt;
+                ${project.build.directory}/war/jackrabbit-webapp.war
+              &lt;/webApp&gt;
             &lt;/configuration&gt;
           &lt;/execution&gt;
         &lt;/executions&gt;

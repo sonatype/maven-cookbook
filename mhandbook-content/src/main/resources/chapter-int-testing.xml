@@ -436,7 +436,9 @@ public class FibTest {
                   &lt;destFileName&gt;sample-web.war&lt;/destFileName&gt;
                 &lt;/artifactItem&gt;
               &lt;/artifactItems&gt;
-              &lt;outputDirectory&gt;${project.build.directory}/war&lt;/outputDirectory&gt;
+              &lt;outputDirectory&gt;
+                ${project.build.directory}/war
+              &lt;/outputDirectory&gt;
               &lt;overWriteReleases&gt;true&lt;/overWriteReleases&gt;
               &lt;overWriteSnapshots&gt;true&lt;/overWriteSnapshots&gt;
             &lt;/configuration&gt;
@@ -492,7 +494,9 @@ public class FibTest {
             &lt;configuration&gt;
               &lt;contextPath&gt;sample-web&lt;/contextPath&gt;
               &lt;daemon&gt;true&lt;/daemon&gt;
-              &lt;webApp&gt;${project.build.directory}/war/sample-web.war&lt;/webApp&gt;
+              &lt;webApp&gt;
+                ${project.build.directory}/war/sample-web.war
+              &lt;/webApp&gt;
             &lt;/configuration&gt;
           &lt;/execution&gt;
           &lt;execution&gt;
