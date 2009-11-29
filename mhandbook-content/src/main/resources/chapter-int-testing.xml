@@ -35,7 +35,7 @@
       <example>
         <title>TwitterTest a Selenium Test written in TestNG</title>
 
-        <programlisting>package org.sonatype.mhandbook;
+        <programlisting db:wrap="force" xmlns:db="http://discursive.com/plugins/docbook">package org.sonatype.mhandbook;
 
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
@@ -122,7 +122,7 @@ public class TwitterTest {
         <title>POM configuring SureFire to Execute Selenium Remote
         Control</title>
 
-        <programlisting>&lt;project xmlns="http://maven.apache.org/POM/4.0.0" 
+        <programlisting db:wrap="force" xmlns:db="http://discursive.com/plugins/docbook">&lt;project xmlns="http://maven.apache.org/POM/4.0.0" 
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 
            http://maven.apache.org/maven-v4_0_0.xsd"&gt;
@@ -355,7 +355,7 @@ Tests run: 1, Failures: 0, Errors: 0, Skipped: 0
       (F<subscript>10</subscript>). This integration test is stored in
       <filename>${basedir}/src/test/java</filename>.</para>
 
-      <programlisting>package org.sonatype.mhandbook;
+      <programlisting db:wrap="force" xmlns:db="http://discursive.com/plugins/docbook">package org.sonatype.mhandbook;
 
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
@@ -395,7 +395,7 @@ public class FibTest {
 
       <para>The POM to configure the sample-web-it is shown below.</para>
 
-      <programlisting>&lt;project xmlns="http://maven.apache.org/POM/4.0.0" 
+      <programlisting db:wrap="force" xmlns:db="http://discursive.com/plugins/docbook">&lt;project xmlns="http://maven.apache.org/POM/4.0.0" 
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 
            http://maven.apache.org/maven-v4_0_0.xsd"&gt;

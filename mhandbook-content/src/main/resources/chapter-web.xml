@@ -21,7 +21,7 @@
       <para>Configure your web application's Maven project to inlcude the
       Maven Jetty plugin as shown in the following POM:</para>
 
-      <programlisting>&lt;project xmlns="http://maven.apache.org/POM/4.0.0" 
+      <programlisting db:wrap="force" xmlns:db="http://discursive.com/plugins/docbook">&lt;project xmlns="http://maven.apache.org/POM/4.0.0" 
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 
          http://maven.apache.org/maven-v4_0_0.xsd"&gt;
@@ -120,7 +120,7 @@ requires one, please configure one.
         <title>Simple Form Accepting an Index to Pass to the Fibonacci
         Servlet</title>
 
-        <programlisting>&lt;html&gt;
+        <programlisting db:wrap="force" xmlns:db="http://discursive.com/plugins/docbook">&lt;html&gt;
 &lt;body&gt;
 &lt;h2&gt;Fibonacci Page&lt;/h2&gt;
 &lt;form action="fib" method="GET"&gt;
@@ -141,7 +141,7 @@ requires one, please configure one.
         <title>Fibonacci Servlet which Calculates a Number from the Fibonacci
         Sequence</title>
 
-        <programlisting>package org.sonatype.mhandbook;
+        <programlisting db:wrap="force" xmlns:db="http://discursive.com/plugins/docbook">package org.sonatype.mhandbook;
 
 import java.io.IOException;
 import java.util.Enumeration;
@@ -175,7 +175,7 @@ public class FibonacciServlet extends HttpServlet {
       <example>
         <title>Web Application Descriptor for sample-web</title>
 
-        <programlisting>&lt;!DOCTYPE web-app PUBLIC
+        <programlisting db:wrap="force" xmlns:db="http://discursive.com/plugins/docbook">&lt;!DOCTYPE web-app PUBLIC
  "-//Sun Microsystems, Inc.//DTD Web Application 2.3//EN"
  "http://java.sun.com/dtd/web-app_2_3.dtd" &gt;
 
