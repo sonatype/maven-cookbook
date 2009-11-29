@@ -315,4 +315,61 @@ Tests run: 1, Failures: 0, Errors: 0, Skipped: 0
 </screen>
     </section>
   </section>
+
+  <section>
+    <title>Starting a Server for Integration Tests</title>
+
+    <section>
+      <title>Task</title>
+
+      <para>You are testing a web application and you need to start a server
+      prior to running integration tests.</para>
+    </section>
+
+    <section>
+      <title>Action</title>
+
+      <para>Use the Maven Jetty Plugin to start an instance of a server prior
+      to running your integration tests. </para>
+
+      <para>Consider a simple webapp project in Maven named simple-webapp with
+      a single servlet - FibonacciServlet.java.</para>
+
+      <example>
+        <title></title>
+
+        <programlisting>package org.sonatype.mhandbook;
+
+import java.io.IOException;
+
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+public class FibonacciServlet extends HttpServlet {
+
+  protected void doGet(HttpServletRequest req, HttpServletResponse resp)
+      throws ServletException, IOException {
+    Integer index = Integer.getInteger(req.getParameter("index"));
+    resp.getWriter().write( fib(index.intValue()) + "" );
+    resp.getWriter().flush();
+    resp.getWriter().close();
+  }
+
+  public long fib(int n) {
+    if (n &lt;= 1) return n;
+    else return fib(n-1) + fib(n-2);
+  }
+}
+</programlisting>
+      </example>
+    </section>
+
+    <section>
+      <title>Detail</title>
+
+      <para></para>
+    </section>
+  </section>
 </chapter>

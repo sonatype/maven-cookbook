@@ -1,0 +1,202 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE chapter PUBLIC "-//OASIS//DTD DocBook XML V4.5//EN"
+"http://www.oasis-open.org/docbook/xml/4.5/docbookx.dtd">
+<chapter id="web">
+  <title>Web Development</title>
+
+  <para>This is a test</para>
+
+  <section>
+    <title>Running a Web Application in a Servlet Container</title>
+
+    <section>
+      <title>Task</title>
+
+      <para>You need to run a web application in a servlet container.</para>
+    </section>
+
+    <section>
+      <title>Action</title>
+
+      <para>Configure your web application's Maven project to inlcude the
+      Maven Jetty plugin as shown in the following POM:</para>
+
+      <programlisting>&lt;project xmlns="http://maven.apache.org/POM/4.0.0" 
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 
+         http://maven.apache.org/maven-v4_0_0.xsd"&gt;
+  &lt;modelVersion&gt;4.0.0&lt;/modelVersion&gt;
+  &lt;groupId&gt;org.sonatype.mhandbook&lt;/groupId&gt;
+  &lt;artifactId&gt;sample-web&lt;/artifactId&gt;
+  &lt;packaging&gt;war&lt;/packaging&gt;
+  &lt;version&gt;1.0-SNAPSHOT&lt;/version&gt;
+  &lt;name&gt;sample-web Maven Webapp&lt;/name&gt;
+  &lt;url&gt;http://maven.apache.org&lt;/url&gt;
+  &lt;dependencies&gt;
+    &lt;dependency&gt;
+      &lt;groupId&gt;junit&lt;/groupId&gt;
+      &lt;artifactId&gt;junit&lt;/artifactId&gt;
+      &lt;version&gt;3.8.1&lt;/version&gt;
+      &lt;scope&gt;test&lt;/scope&gt;
+    &lt;/dependency&gt;
+    &lt;dependency&gt;
+      &lt;groupId&gt;javax.servlet&lt;/groupId&gt;
+      &lt;artifactId&gt;servlet-api&lt;/artifactId&gt;
+      &lt;version&gt;2.5&lt;/version&gt;
+    &lt;/dependency&gt;
+  &lt;/dependencies&gt;
+  &lt;build&gt;
+    &lt;finalName&gt;sample-web&lt;/finalName&gt;
+    &lt;plugins&gt;
+      &lt;plugin&gt;
+        &lt;groupId&gt;org.mortbay.jetty&lt;/groupId&gt;
+        &lt;artifactId&gt;maven-jetty-plugin&lt;/artifactId&gt;
+        &lt;version&gt;6.1.22&lt;/version&gt;
+      &lt;/plugin&gt;
+    &lt;/plugins&gt;
+  &lt;/build&gt;
+&lt;/project&gt;
+</programlisting>
+
+      <para>To start the web application in Jetty, run the run goal from the
+      Maven Jetty plugin by running <command>mvn jetty:run</command>.</para>
+
+      <screen>$ <command>mvn jetty:run</command>
+[INFO] Scanning for projects...
+[INFO] ------------------------------------------------------------------------
+[INFO] Building sample-web Maven Webapp
+[INFO]    task-segment: [jetty:run]
+[INFO] ------------------------------------------------------------------------
+[INFO] Preparing jetty:run
+[INFO] [resources:resources {execution: default-resources}]
+[WARNING] Using platform encoding (MacRoman actually) to copy filtered 
+resources, i.e. build is platform dependent!
+[INFO] Copying 0 resource
+[INFO] [compiler:compile {execution: default-compile}]
+[INFO] Nothing to compile - all classes are up to date
+[INFO] [resources:testResources {execution: default-testResources}]
+[WARNING] Using platform encoding (MacRoman actually) to copy filtered 
+resources, i.e. build is platform dependent!
+[INFO] skip non existing resourceDirectory ~/maven-cookbook/
+mhandbook-examples/web/sample-web/src/test/resources
+[INFO] [compiler:testCompile {execution: default-testCompile}]
+[INFO] No sources to compile
+[INFO] [jetty:run {execution: default-cli}]
+[INFO] Configuring Jetty for project: sample-web Maven Webapp
+[INFO] Webapp source directory = ~/maven-cookbook/mhandbook-examples/web/
+sample-web/src/main/webapp
+[INFO] Reload Mechanic: automatic
+[INFO] Classes = ~/maven-cookbook/mhandbook-examples/web/sample-web/
+target/classes
+2009-11-28 19:25:18.129:INFO::Logging to STDERR via org.mortbay.log.StdErrLog
+[INFO] Context path = /sample-web
+[INFO] Tmp directory =  determined at runtime
+[INFO] Web defaults = org/mortbay/jetty/webapp/webdefault.xml
+[INFO] Web overrides =  none
+[INFO] web.xml file = ~/maven-cookbook/mhandbook-examples/web/sample-web/
+src/main/webapp/WEB-INF/web.xml
+[INFO] Webapp directory = ~/maven-cookbook/mhandbook-examples/web/sample-web
+/src/main/webapp
+[INFO] Starting jetty 6.1.22 ...
+2009-11-28 19:25:18.231:INFO::jetty-6.1.22
+2009-11-28 19:25:18.405:INFO::No Transaction manager found - if your webapp 
+requires one, please configure one.
+2009-11-28 19:25:18.800:INFO::Started SelectChannelConnector@0.0.0.0:8080
+[INFO] Started Jetty Server</screen>
+
+      <para>At this point, you can use a web browser to navigate to <ulink
+      url="http://localhost:8080/sample-web/">http://localhost:8080/sample-web/</ulink>
+      to interact with the web application.</para>
+    </section>
+
+    <section>
+      <title>Detail</title>
+
+      <para>Consider a simple web application with a single index.jsp page
+      that contains a form, and a single Servlet that calculates a number from
+      the Fibonacci sequence.</para>
+
+      <example>
+        <title>Simple Form Accepting an Index to Pass to the Fibonacci
+        Servlet</title>
+
+        <programlisting>&lt;html&gt;
+&lt;body&gt;
+&lt;h2&gt;Fibonacci Page&lt;/h2&gt;
+&lt;form action="fib" method="GET"&gt;
+  &lt;p&gt;Fetch Fibonacci Sequence Index:
+  &lt;input type="text" name="index" size="5"/&gt;&lt;/p&gt;
+  &lt;input type="submit" value="Calculate"/&gt;
+&lt;/form&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</programlisting>
+      </example>
+
+      <para>The following class is the Servlet which calculates the Fibonacci
+      sequence. It takes a single parameter index and simply prints of the
+      number at the specified position of the Fibonacci sequence.</para>
+
+      <example>
+        <title>Fibonacci Servlet which Calculates a Number from the Fibonacci
+        Sequence</title>
+
+        <programlisting>package org.sonatype.mhandbook;
+
+import java.io.IOException;
+import java.util.Enumeration;
+
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+public class FibonacciServlet extends HttpServlet {
+
+  protected void doGet(HttpServletRequest req, HttpServletResponse resp)
+      throws ServletException, IOException {
+    int index = Integer.parseInt(req.getParameter("index"));
+    resp.getWriter().write( fib(index) + "" );
+    resp.getWriter().flush();
+    resp.getWriter().close();
+  }
+
+  public long fib(int n) {
+    if (n &lt;= 1) return n;
+    else return fib(n-1) + fib(n-2);
+  }
+}
+</programlisting>
+      </example>
+
+      <para>The following web.xml configures the FibonacciServlet to respond
+      to the request path <filename>&lt;context&gt;/fib</filename>.</para>
+
+      <example>
+        <title>Web Application Descriptor for sample-web</title>
+
+        <programlisting>&lt;!DOCTYPE web-app PUBLIC
+ "-//Sun Microsystems, Inc.//DTD Web Application 2.3//EN"
+ "http://java.sun.com/dtd/web-app_2_3.dtd" &gt;
+
+&lt;web-app&gt;
+  &lt;display-name&gt;Archetype Created Web Application&lt;/display-name&gt;
+  &lt;servlet&gt;
+    &lt;servlet-name&gt;fibonacci&lt;/servlet-name&gt;
+    &lt;servlet-class&gt;org.sonatype.mhandbook.FibonacciServlet&lt;/servlet-class&gt;
+  &lt;/servlet&gt;
+  &lt;servlet-mapping&gt;
+    &lt;servlet-name&gt;fibonacci&lt;/servlet-name&gt;
+    &lt;url-pattern&gt;/fib&lt;/url-pattern&gt;
+  &lt;/servlet-mapping&gt;
+&lt;/web-app&gt;
+</programlisting>
+      </example>
+
+      <para>After running mvn:jetty, you can load the initial form by going to
+      http://localhost:8080/sample-web/index.jsp. Populating the form with an
+      index and pressing calculate will load the Fibonacci servlet and print
+      out the number at that position of the sequence.</para>
+    </section>
+  </section>
+</chapter>
