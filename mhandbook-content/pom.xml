@@ -47,7 +47,7 @@
         			<goal>inject-examples</goal>
         		</goals>
         	</execution> -->
-        	<execution>
+<!--        	<execution>
         		<id>wrappify</id>
         		<goals>
         			<goal>wrappify</goal>
@@ -55,7 +55,7 @@
                 <configuration>
                   <columnLimit>79</columnLimit>
                 </configuration>
-        	</execution>
+        	</execution> -->
         </executions>
       </plugin>
       <plugin>
