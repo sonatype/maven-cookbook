@@ -21,7 +21,8 @@
       <para>Configure your web application's Maven project to inlcude the
       Maven Jetty plugin as shown in the following POM:</para>
 
-      <programlisting db:wrap="force" xmlns:db="http://discursive.com/plugins/docbook">&lt;project xmlns="http://maven.apache.org/POM/4.0.0" 
+      <programlisting db:wrap="force"
+                      xmlns:db="http://discursive.com/plugins/docbook">&lt;project xmlns="http://maven.apache.org/POM/4.0.0" 
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 
          http://maven.apache.org/maven-v4_0_0.xsd"&gt;
@@ -120,7 +121,8 @@ requires one, please configure one.
         <title>Simple Form Accepting an Index to Pass to the Fibonacci
         Servlet</title>
 
-        <programlisting db:wrap="force" xmlns:db="http://discursive.com/plugins/docbook">&lt;html&gt;
+        <programlisting db:wrap="force"
+                        xmlns:db="http://discursive.com/plugins/docbook">&lt;html&gt;
 &lt;body&gt;
 &lt;h2&gt;Fibonacci Page&lt;/h2&gt;
 &lt;form action="fib" method="GET"&gt;
@@ -141,7 +143,8 @@ requires one, please configure one.
         <title>Fibonacci Servlet which Calculates a Number from the Fibonacci
         Sequence</title>
 
-        <programlisting db:wrap="force" xmlns:db="http://discursive.com/plugins/docbook">package org.sonatype.mhandbook;
+        <programlisting db:wrap="force"
+                        xmlns:db="http://discursive.com/plugins/docbook">package org.sonatype.mhandbook;
 
 import java.io.IOException;
 import java.util.Enumeration;
@@ -175,7 +178,8 @@ public class FibonacciServlet extends HttpServlet {
       <example>
         <title>Web Application Descriptor for sample-web</title>
 
-        <programlisting db:wrap="force" xmlns:db="http://discursive.com/plugins/docbook">&lt;!DOCTYPE web-app PUBLIC
+        <programlisting db:wrap="force"
+                        xmlns:db="http://discursive.com/plugins/docbook">&lt;!DOCTYPE web-app PUBLIC
  "-//Sun Microsystems, Inc.//DTD Web Application 2.3//EN"
  "http://java.sun.com/dtd/web-app_2_3.dtd" &gt;
 
@@ -219,11 +223,13 @@ public class FibonacciServlet extends HttpServlet {
     <section>
       <title>Action</title>
 
-      <para>Use the Maven Dependency plugin to copy the web application to
-      your project. Then configure the Maven Jetty plugin to execute the web
-      application.</para>
+      <para>Use the Maven Dependency plugin to copy the web application's WAR
+      artifact to your project. Then configure the Maven Jetty plugin to
+      execute the web application using the plugin's dependencies element to
+      configure the classpath for Jetty.</para>
 
-      <programlisting db:wrap="force" xmlns:db="http://discursive.com/plugins/docbook">&lt;project xmlns="http://maven.apache.org/POM/4.0.0" 
+      <programlisting db:wrap="force"
+                      xmlns:db="http://discursive.com/plugins/docbook">&lt;project xmlns="http://maven.apache.org/POM/4.0.0" 
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 
            http://maven.apache.org/maven-v4_0_0.xsd"&gt;
@@ -240,7 +246,8 @@ public class FibonacciServlet extends HttpServlet {
         &lt;artifactId&gt;maven-dependency-plugin&lt;/artifactId&gt;
         &lt;executions&gt;
           &lt;execution&gt;
-            &lt;id&gt;default-cli&lt;/id&gt;<co id="web-co-run-war-1" />
+            &lt;id&gt;default-cli&lt;/id&gt;<co id="web-co-run-war-1"
+          linkends="web-cr-run-war-1" />
             &lt;configuration&gt;
               &lt;artifactItems&gt;
                 &lt;artifactItem&gt;
@@ -253,7 +260,7 @@ public class FibonacciServlet extends HttpServlet {
                 &lt;/artifactItem&gt;
               &lt;/artifactItems&gt;
               &lt;outputDirectory&gt;
-                ${project.build.directory}/war
+                \${project.build.directory}/war
               &lt;/outputDirectory&gt;
               &lt;overWriteReleases&gt;true&lt;/overWriteReleases&gt;
               &lt;overWriteSnapshots&gt;true&lt;/overWriteSnapshots&gt;
@@ -267,18 +274,20 @@ public class FibonacciServlet extends HttpServlet {
         &lt;version&gt;6.1.22&lt;/version&gt;
         &lt;executions&gt;
           &lt;execution&gt;
-            &lt;id&gt;default-cli&lt;/id&gt;<co id="web-co-run-war-2" />
+            &lt;id&gt;default-cli&lt;/id&gt;<co id="web-co-run-war-2"
+          linkends="web-cr-run-war-2" />
             &lt;configuration&gt;
               &lt;contextPath&gt;jackrabbit&lt;/contextPath&gt;
               &lt;daemon&gt;false&lt;/daemon&gt;
-              &lt;webApp&gt;
-                ${project.build.directory}/war/jackrabbit-webapp.war
+              &lt;webApp
+                \${project.build.directory}/war/jackrabbit-webapp.war
               &lt;/webApp&gt;
             &lt;/configuration&gt;
           &lt;/execution&gt;
         &lt;/executions&gt;
         &lt;dependencies&gt;
-          &lt;dependency&gt;<co id="web-co-run-war-3" />
+          &lt;dependency&gt;<co id="web-co-run-war-3"
+          linkends="web-cr-run-war-3" />
             &lt;groupId&gt;org.apache.jackrabbit&lt;/groupId&gt;
             &lt;artifactId&gt;jackrabbit-webapp&lt;/artifactId&gt;
             &lt;version&gt;1.6.0&lt;/version&gt;
@@ -294,7 +303,7 @@ public class FibonacciServlet extends HttpServlet {
     &lt;/plugins&gt;
   &lt;/build&gt;
   &lt;dependencies&gt;
-    &lt;dependency&gt;<co id="web-co-run-war-4" />
+    &lt;dependency&gt;<co id="web-co-run-war-4" linkends="web-cr-run-war-4" />
       &lt;groupId&gt;org.apache.jackrabbit&lt;/groupId&gt;
       &lt;artifactId&gt;jackrabbit-webapp&lt;/artifactId&gt;
       &lt;version&gt;1.6.0&lt;/version&gt;
@@ -304,31 +313,119 @@ public class FibonacciServlet extends HttpServlet {
 &lt;/project&gt;
 </programlisting>
 
-      <para></para>
+      <para>This POM uses some advanced concepts to configure the default
+      command-line options for both the Maven Dependency plugin and the Maven
+      Jetty plugin. It also downloads and executes the jackrabbit-webapp.war
+      artifact from the Central Maven repository.</para>
 
       <calloutlist>
-        <callout arearefs="web-co-run-war-1">
-          <para></para>
+        <callout arearefs="web-co-run-war-1" id="web-cr-run-war-1">
+          <para>This particular plugin configuration configures the default
+          command-line execution of a goal by using the default-cli
+          identifier. This configures the default configuration that is used
+          when a plugin goal is executed directly on the command-line (i.e.
+          mvn dependency:copy). In this section of the POM, the Maven
+          Dependency plugin is configured to download the Jackrabbit web
+          application artifact and to save this file in
+          \${project.build.directory}/war/jackrabbit-webapp.war.</para>
         </callout>
 
-        <callout arearefs="web-co-run-war-2">
-          <para></para>
+        <callout arearefs="web-co-run-war-2" id="web-cr-run-war-2">
+          <para>Again, using the identifier of default-cli specifies the
+          configuration of the plugin when one of its goals is executed on the
+          command-line. This particular configuration points the Jetty plugin
+          at the downloaded jackrabbit-webapp.war file, sets the context path
+          to jackrabbit, and sets the daemon parameter to false. Setting
+          daemon to false will cause the Maven build to block and wait for the
+          Jetty process.</para>
         </callout>
 
-        <callout arearefs="web-co-run-war-3">
-          <para></para>
+        <callout arearefs="web-co-run-war-3" id="web-cr-run-war-3">
+          <para>This dependencies element under the Maven Jetty plugin
+          configuration configures the classpath for the Jetty servlet
+          container. Without declaring these dependencies, the Jackrabbit web
+          application would not have access to the libraries that are required
+          for execution. Listing the jackrabbit-webapp artifact as a
+          dependency for this plugin execution causes Maven to read the POM
+          for this artifact and download all of the transitive dependencies of
+          the web application artifact. This element also adds in an
+          implementation of the Java Content Repository (JCR) API.</para>
         </callout>
 
-        <callout arearefs="web-co-run-war-3">
-          <para></para>
+        <callout arearefs="web-co-run-war-3" id="web-cr-run-war-3">
+          <para>Even though this project is nothing more than a place-holder
+          project for the plugin configuration contained in the POM it does
+          declare a dependency on the jackrabbit-webapp artifact it requires
+          for execution. This particular dependency block is unnecessary, but
+          its presence helps to declare the explicit dependency for other
+          tools which may consume this POM.</para>
         </callout>
       </calloutlist>
-    </section>
 
-    <section>
-      <title>Details</title>
+      <para>To download the Jackrabbit web application and execute it in
+      Jetty, copy the POM to an empty directory and run <command>mvn clean
+      dependency:copy jetty:run-war</command>. Because you've configured the
+      default command-line options in the POM, you should Maven downloading
+      Jackrabbit, all of its dependencies, and starting the application in
+      Jetty on port 8080.</para>
 
-      <para></para>
+      <screen db:wrap="force" xmlns:db="http://discursive.com/plugins/docbook">$ <command>mvn clean dependency:copy jetty:run-war</command>
+[INFO] Scanning for projects...
+[INFO] ------------------------------------------------------------------------
+[INFO] Building start-jackrabbit
+[INFO]    task-segment: [clean, dependency:copy, jetty:run-war]
+[INFO] ------------------------------------------------------------------------
+[INFO] [clean:clean {execution: default-clean}]
+[INFO] Deleting directory /Users/Tim/Library/Code/sonatype/maven-cookbook/mhandbook-examples/web/start-jackrabbit/target
+[INFO] [dependency:copy {execution: default-cli}]
+[INFO] Configured Artifact: org.apache.jackrabbit:jackrabbit-webapp:1.6.0:war
+[INFO] Copying jackrabbit-webapp-1.6.0.war to /Users/Tim/Library/Code/sonatype/maven-cookbook/mhandbook-examples/web/start-jackrabbit/target/war/jackrabbit-webapp.war
+...
+[INFO] [jetty:run-war {execution: default-cli}]
+[INFO] Configuring Jetty for project: start-jackrabbit
+2009-11-29 18:57:26.676:INFO::Logging to STDERR via org.mortbay.log.StdErrLog
+[INFO] Context path = /jackrabbit
+[INFO] Tmp directory =  determined at runtime
+[INFO] Web defaults = org/mortbay/jetty/webapp/webdefault.xml
+[INFO] Web overrides =  none
+[INFO] Starting jetty 6.1.22 ...
+2009-11-29 18:57:26.811:INFO::jetty-6.1.22
+2009-11-29 18:57:26.845:INFO::Extract /Users/Tim/Library/Code/sonatype/maven-cookbook/mhandbook-examples/web/start-jackrabbit/target/war/jackrabbit-webapp.war to /Users/Tim/Library/Code/sonatype/maven-cookbook/mhandbook-examples/web/start-jackrabbit/target/work/webapp
+2009-11-29 18:57:27.796:INFO::No Transaction manager found - if your webapp requires one, please configure one.
+29.11.2009 18:57:28 *INFO * root: Logging initialized. (LoggingServlet.java, line 87)
+29.11.2009 18:57:28 *INFO * RepositoryStartupServlet: RepositoryStartupServlet initializing... (RepositoryStartupServlet.java, line 235)
+29.11.2009 18:57:28 *ERROR* RepositoryStartupServlet: Repository startup configuration is not valid but a bootstrap config is specified. (RepositoryStartupServlet.java, line 366)
+29.11.2009 18:57:28 *ERROR* RepositoryStartupServlet: Either create the jackrabbit/bootstrap.properties file or (RepositoryStartupServlet.java, line 367)
+29.11.2009 18:57:28 *ERROR* RepositoryStartupServlet: use the '/config/index.jsp' for easy configuration. (RepositoryStartupServlet.java, line 368)
+29.11.2009 18:57:28 *ERROR* RepositoryStartupServlet: RepositoryStartupServlet initializing failed: javax.servlet.ServletException: Repository startup configuration is not valid. (RepositoryStartupServlet.java, line 245)
+29.11.2009 18:57:28 *INFO * RepositoryAccessServlet: RepositoryAccessServlet initialized. (RepositoryAccessServlet.java, line 98)
+29.11.2009 18:57:28 *INFO * SimpleWebdavServlet: resource-path-prefix = '/repository' (SimpleWebdavServlet.java, line 145)
+29.11.2009 18:57:28 *INFO * SimpleWebdavServlet: WWW-Authenticate header = 'Basic realm="Jackrabbit Webdav Server"' (SimpleWebdavServlet.java, line 151)
+2009-11-29 18:57:28.982:INFO::Started SelectChannelConnector@0.0.0.0:8080
+[INFO] Started Jetty Server
+</screen>
+
+      <para>Once Maven has started Jetty with the jackrabbit-webapp.war JAR,
+      go to a web browser and open <ulink
+      url="http://localhost:8080/jackrabbit">http://localhost:8080/jackrabbit</ulink>.
+      You should see the Apache Jackrabbit administrative web
+      interface.</para>
+
+      <note>
+        <para>The first time you start the Jackrabbit web application, it will
+        print an exception stack trace as it tries to locate a Jackrabbit
+        database. This stack trace disappears once you load the Jackrabbit
+        administrative interface and create a new Jackrabbit database.</para>
+      </note>
+
+      <para>While this isn't the most straightforward use of a Maven POM, it
+      does demonstrate the power of using Maven's dependency management and
+      plugin configuration to distribute the settings necessary to execute a
+      web application. If you used such a mechanism to distribute your own web
+      applications, you could configure a web application and all of the
+      information required to download your web application, it's
+      dependencies, the servlet container, and any configuration needed to run
+      your application.</para>
     </section>
   </section>
 </chapter>

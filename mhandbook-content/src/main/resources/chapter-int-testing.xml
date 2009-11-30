@@ -35,7 +35,7 @@
       <example>
         <title>TwitterTest a Selenium Test written in TestNG</title>
 
-        <programlisting db:wrap="force" xmlns:db="http://discursive.com/plugins/docbook">package org.sonatype.mhandbook;
+        <programlisting>package org.sonatype.mhandbook;
 
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
@@ -122,7 +122,7 @@ public class TwitterTest {
         <title>POM configuring SureFire to Execute Selenium Remote
         Control</title>
 
-        <programlisting db:wrap="force" xmlns:db="http://discursive.com/plugins/docbook">&lt;project xmlns="http://maven.apache.org/POM/4.0.0" 
+        <programlisting>&lt;project xmlns="http://maven.apache.org/POM/4.0.0" 
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 
            http://maven.apache.org/maven-v4_0_0.xsd"&gt;
@@ -353,9 +353,9 @@ Tests run: 1, Failures: 0, Errors: 0, Skipped: 0
       to the default Jetty host and port of localhost:8080, and submit a form
       that calculates the tenth number in the Fibonacci sequence
       (F<subscript>10</subscript>). This integration test is stored in
-      <filename>${basedir}/src/test/java</filename>.</para>
+      <filename>\${basedir}/src/test/java</filename>.</para>
 
-      <programlisting db:wrap="force" xmlns:db="http://discursive.com/plugins/docbook">package org.sonatype.mhandbook;
+      <programlisting>package org.sonatype.mhandbook;
 
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
@@ -368,7 +368,7 @@ import com.thoughtworks.selenium.SeleniumException;
 
 public class FibTest {
 
-	private Selenium selenium;
+private Selenium selenium;
 
   @BeforeClass
   public void startSelenium() {
@@ -395,7 +395,7 @@ public class FibTest {
 
       <para>The POM to configure the sample-web-it is shown below.</para>
 
-      <programlisting db:wrap="force" xmlns:db="http://discursive.com/plugins/docbook">&lt;project xmlns="http://maven.apache.org/POM/4.0.0" 
+      <programlisting>&lt;project xmlns="http://maven.apache.org/POM/4.0.0" 
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 
            http://maven.apache.org/maven-v4_0_0.xsd"&gt;
@@ -420,7 +420,8 @@ public class FibTest {
         &lt;artifactId&gt;maven-dependency-plugin&lt;/artifactId&gt;
         &lt;executions&gt;
           &lt;execution&gt;
-            &lt;id&gt;copy&lt;/id&gt;<co id="int-co-run-war-1" />
+            &lt;id&gt;copy&lt;/id&gt;<co id="int-co-run-war-1"
+          linkends="int-cr-run-war-1" />
             &lt;phase&gt;package&lt;/phase&gt;
             &lt;goals&gt;
               &lt;goal&gt;copy&lt;/goal&gt;
@@ -437,7 +438,7 @@ public class FibTest {
                 &lt;/artifactItem&gt;
               &lt;/artifactItems&gt;
               &lt;outputDirectory&gt;
-                ${project.build.directory}/war
+                \${project.build.directory}/war
               &lt;/outputDirectory&gt;
               &lt;overWriteReleases&gt;true&lt;/overWriteReleases&gt;
               &lt;overWriteSnapshots&gt;true&lt;/overWriteSnapshots&gt;
@@ -454,7 +455,7 @@ public class FibTest {
         &lt;executions&gt;
           &lt;execution&gt;
             &lt;phase&gt;integration-test&lt;/phase&gt;<co
-          id="int-co-run-war-2" />
+          id="int-co-run-war-2" linkends="int-cr-run-war-2" />
             &lt;goals&gt;
               &lt;goal&gt;test&lt;/goal&gt;
             &lt;/goals&gt;
@@ -470,7 +471,7 @@ public class FibTest {
         &lt;executions&gt;
           &lt;execution&gt;
             &lt;phase&gt;pre-integration-test&lt;/phase&gt;<co
-          id="int-co-run-war-3" />
+          id="int-co-run-war-3" linkends="int-cr-run-war-3" />
             &lt;goals&gt;
               &lt;goal&gt;start-server&lt;/goal&gt;
             &lt;/goals&gt;
@@ -486,7 +487,8 @@ public class FibTest {
         &lt;version&gt;6.1.22&lt;/version&gt;
         &lt;executions&gt;
           &lt;execution&gt;
-            &lt;id&gt;start-jetty&lt;/id&gt;<co id="int-co-run-war-4" />
+            &lt;id&gt;start-jetty&lt;/id&gt;<co id="int-co-run-war-4"
+          linkends="int-cr-run-war-4" />
             &lt;phase&gt;pre-integration-test&lt;/phase&gt;
             &lt;goals&gt;
               &lt;goal&gt;run-war&lt;/goal&gt;
@@ -495,19 +497,21 @@ public class FibTest {
               &lt;contextPath&gt;sample-web&lt;/contextPath&gt;
               &lt;daemon&gt;true&lt;/daemon&gt;
               &lt;webApp&gt;
-                ${project.build.directory}/war/sample-web.war
+                \${project.build.directory}/war/sample-web.war
               &lt;/webApp&gt;
             &lt;/configuration&gt;
           &lt;/execution&gt;
           &lt;execution&gt;
-            &lt;id&gt;stop-jetty&lt;/id&gt;<co id="int-co-run-war-5" />
+            &lt;id&gt;stop-jetty&lt;/id&gt;<co id="int-co-run-war-5"
+          linkends="int-cr-run-war-5" />
             &lt;phase&gt;post-integration-test&lt;/phase&gt;
             &lt;goals&gt;
               &lt;goal&gt;stop&lt;/goal&gt;
             &lt;/goals&gt;
           &lt;/execution&gt;
         &lt;/executions&gt;
-        &lt;configuration&gt;<co id="int-co-run-war-6" />
+        &lt;configuration&gt;<co id="int-co-run-war-6"
+          linkends="int-cr-run-war-6" />
           &lt;stopPort&gt;9991&lt;/stopPort&gt;
           &lt;stopKey&gt;test&lt;/stopKey&gt;
         &lt;/configuration&gt;
@@ -530,7 +534,7 @@ public class FibTest {
     &lt;/dependency&gt;
     &lt;dependency&gt;
       &lt;groupId&gt;org.sonatype.mhandbook&lt;/groupId&gt;<co
-          id="int-co-run-war-7" />
+          id="int-co-run-war-7" linkends="int-cr-run-war-7" />
       &lt;artifactId&gt;sample-web&lt;/artifactId&gt;
       &lt;version&gt;1.0-SNAPSHOT&lt;/version&gt;
       &lt;type&gt;war&lt;/type&gt;
@@ -542,27 +546,27 @@ public class FibTest {
       <para>This POM contains the following configuration:</para>
 
       <calloutlist>
-        <callout arearefs="int-co-run-war-1">
+        <callout arearefs="int-co-run-war-1" id="int-cr-run-war-1">
           <para>The Maven Dependency plugin is configured to copy the
           sample-web web application archive to the
-          ${project.build.directory}/war/sample-web.war file. The copy goal is
+          \${project.build.directory}/war/sample-web.war file. The copy goal is
           bound to the package phase.</para>
         </callout>
 
-        <callout arearefs="int-co-run-war-2">
+        <callout arearefs="int-co-run-war-2" id="int-cr-run-war-2">
           <para>The Surefire plugin is configured to skip all tests during the
           test phase and to execute all tests during the integration-test
           phase.</para>
         </callout>
 
-        <callout arearefs="int-co-run-war-3">
+        <callout arearefs="int-co-run-war-3" id="int-cr-run-war-3">
           <para>The Selenium server is started during the pre-integration-test
           phase as a background process. This makes the Selenium server
           available to any integration tests that need to interact with a
           browser.</para>
         </callout>
 
-        <callout arearefs="int-co-run-war-4">
+        <callout arearefs="int-co-run-war-4" id="int-cr-run-war-4">
           <para>The start-jetty execution starts the Jetty server in the
           pre-integration-test phase. This execution references the WAR
           downloaded by the Maven Dependency plugin and it also sets the
@@ -572,12 +576,12 @@ public class FibTest {
           and wait for the Jetty process to complete.</para>
         </callout>
 
-        <callout arearefs="int-co-run-war-5">
+        <callout arearefs="int-co-run-war-5" id="int-cr-run-war-5">
           <para>The stop-jetty execution stops the Jetty server after the
           integration tests have been executed.</para>
         </callout>
 
-        <callout arearefs="int-co-run-war-6">
+        <callout arearefs="int-co-run-war-6" id="int-cr-run-war-6">
           <para>To stop the Jetty server we need to supply a stop port and a
           stop key. Both the run-war and stop goals of the Jetty plugin will
           use this configuration so it is defined at the plugin level instead
@@ -587,7 +591,7 @@ public class FibTest {
           process.</para>
         </callout>
 
-        <callout arearefs="int-co-run-war-7">
+        <callout arearefs="int-co-run-war-7" id="int-cr-run-war-7">
           <para>Adding a dependency to the web application project that is
           being tested will make sure that this project is ordered after the
           web application in a multi-module build.</para>
