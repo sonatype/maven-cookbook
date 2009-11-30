@@ -352,7 +352,7 @@ public class FibonacciServlet extends HttpServlet {
           implementation of the Java Content Repository (JCR) API.</para>
         </callout>
 
-        <callout arearefs="web-co-run-war-3" id="web-cr-run-war-3">
+        <callout arearefs="web-co-run-war-3" id="web-cr-run-war-4">
           <para>Even though this project is nothing more than a place-holder
           project for the plugin configuration contained in the POM it does
           declare a dependency on the jackrabbit-webapp artifact it requires
