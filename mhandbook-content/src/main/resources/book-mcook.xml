@@ -67,6 +67,9 @@
   <xi:include href="chapter-ruby.xml"
               xmlns:xi="http://www.w3.org/2001/XInclude" />
 
+  <xi:include href="chapter-web.xml"
+              xmlns:xi="http://www.w3.org/2001/XInclude" />
+
   <xi:include href="chapter-unit-testing.xml"
               xmlns:xi="http://www.w3.org/2001/XInclude" />
 
@@ -77,6 +80,12 @@
               xmlns:xi="http://www.w3.org/2001/XInclude" />
 
   <xi:include href="chapter-repoman.xml"
+              xmlns:xi="http://www.w3.org/2001/XInclude" />
+
+  <xi:include href="appendix-license.xml"
+              xmlns:xi="http://www.w3.org/2001/XInclude" />
+
+  <xi:include href="appendix-changes.xml"
               xmlns:xi="http://www.w3.org/2001/XInclude" />
 
   <index></index>

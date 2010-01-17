@@ -2,7 +2,7 @@
   <modelVersion>4.0.0</modelVersion>
   <groupId>org.sonatype.mhandbook</groupId>
   <artifactId>mhandbook-parent</artifactId>
-  <version>0.1.4</version>
+  <version>0.1.5</version>
   <packaging>pom</packaging>
   <name>Maven Handbook</name>
   <description>A Handbook about Maven</description>
@@ -98,6 +98,11 @@
   </profiles>
   <build>
     <plugins>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-gpg-plugin</artifactId>
+        <version>1.0-alpha-4</version>
+      </plugin>
       <plugin>
 	<groupId>org.apache.maven.plugins</groupId>
 	<artifactId>maven-compiler-plugin</artifactId>

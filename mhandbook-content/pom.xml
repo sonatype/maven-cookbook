@@ -3,7 +3,7 @@
   <parent>
 	<groupId>org.sonatype.mhandbook</groupId>
 	<artifactId>mhandbook-parent</artifactId>
-	<version>0.1.4</version>
+	<version>0.1.5</version>
   </parent>
   <artifactId>mhandbook-content</artifactId>
   <packaging>jar</packaging>
@@ -40,14 +40,14 @@
         			<goal>validate-chapter-ids</goal>
         		</goals>
         	</execution> -->
-        	<execution>
+<!--        	<execution>
         		<id>inject-examples</id>
         		<phase>process-classes</phase>
         		<goals>
         			<goal>inject-examples</goal>
         		</goals>
-        	</execution>
-        	<execution>
+        	</execution> -->
+<!--        	<execution>
         		<id>wrappify</id>
         		<goals>
         			<goal>wrappify</goal>
@@ -55,7 +55,7 @@
                 <configuration>
                   <columnLimit>79</columnLimit>
                 </configuration>
-        	</execution>
+        	</execution> -->
         </executions>
       </plugin>
       <plugin>
