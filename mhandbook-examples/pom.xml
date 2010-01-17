@@ -3,7 +3,7 @@
   <parent>
 	<groupId>org.sonatype.mhandbook</groupId>
 	<artifactId>mhandbook-parent</artifactId>
-	<version>0.1.5-SNAPSHOT</version>
+	<version>0.1.5</version>
   </parent>
   <artifactId>mhandbook-examples</artifactId>
   <packaging>jar</packaging>
