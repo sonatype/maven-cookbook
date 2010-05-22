@@ -1,13 +1,13 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
   <modelVersion>4.0.0</modelVersion>
   <parent>
-	<groupId>org.sonatype.mhandbook</groupId>
-	<artifactId>mhandbook-parent</artifactId>
+	<groupId>org.sonatype.mcookbook</groupId>
+	<artifactId>mcookbook-parent</artifactId>
 	<version>0.1.6-SNAPSHOT</version>
   </parent>
-  <artifactId>mhandbook-html</artifactId>
+  <artifactId>mcookbook-html</artifactId>
   <packaging>jar</packaging>
-  <name>Maven Handbook HTML</name>
+  <name>Maven Cookbook HTML</name>
   <build>
 		<resources>
 			<resource>
@@ -85,7 +85,7 @@
 							<artifactItems>
 								<artifactItem>
 									<groupId>${project.groupId}</groupId>
-									<artifactId>mhandbook-content</artifactId>
+									<artifactId>mcookbook-content</artifactId>
 									<version>${project.version}</version>
 								</artifactItem>
 							</artifactItems>
@@ -107,7 +107,7 @@
 	<dependencies>
 		<dependency>
 			<groupId>${project.groupId}</groupId>
-			<artifactId>mhandbook-content</artifactId>
+			<artifactId>mcookbook-content</artifactId>
 			<version>${project.version}</version>
 		</dependency>
 	</dependencies>
