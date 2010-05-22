@@ -1,14 +1,14 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
   <modelVersion>4.0.0</modelVersion>
   <parent>
-    <groupId>org.sonatype.mhandbook</groupId>
-    <artifactId>mhandbook-parent</artifactId>
+    <groupId>org.sonatype.mcookbook</groupId>
+    <artifactId>mcookbook-parent</artifactId>
     <version>0.1.6-SNAPSHOT</version>
   </parent>
-  <artifactId>mhandbook-pdf</artifactId>
+  <artifactId>mcookbook-pdf</artifactId>
   <packaging>jar</packaging>
-  <name>Maven Handbook PDF</name>
-  <description>A handbook about Maven</description>
+  <name>Maven Cookbook PDF</name>
+  <description>A cookbook about Maven</description>
   <build>
     <resources>
       <resource>
@@ -164,7 +164,7 @@
 	      <artifactItems>
 		<artifactItem>
 		  <groupId>${project.groupId}</groupId>
-		  <artifactId>mhandbook-content</artifactId>
+		  <artifactId>mcookbook-content</artifactId>
 		  <version>${project.version}</version>
 		</artifactItem>
 	      </artifactItems>
@@ -184,7 +184,7 @@
 	      <goal>install-file</goal>
 	    </goals>
 	    <configuration>
-	      <file>${basedir}/target/mhandbook-complete.pdf</file>
+	      <file>${basedir}/target/mcookbook-complete.pdf</file>
 	      <groupId>${groupId}</groupId>
 	      <artifactId>${artifactId}</artifactId>
 	      <version>${version}</version>
@@ -206,9 +206,9 @@
 	    </goals>
 	    <configuration>
 	      <outputDir>${basedir}/target</outputDir>
-	      <outputFilename>mhandbook-complete.pdf</outputFilename>
+	      <outputFilename>mcookbook-complete.pdf</outputFilename>
 	      <pdfs>
-		<pdf>${basedir}/src/main/resources/mhandbook-book-cover.pdf</pdf>
+		<pdf>${basedir}/src/main/resources/mcookbook-book-cover.pdf</pdf>
 		<pdf>${basedir}/src/main/resources/title-page.pdf</pdf>
 		<pdf>${basedir}/src/main/resources/copyright-page.pdf</pdf>
 		<pdf>${basedir}/src/main/resources/promo-page.pdf</pdf>
@@ -224,7 +224,7 @@
   <dependencies>
     <dependency>
       <groupId>${project.groupId}</groupId>
-      <artifactId>mhandbook-content</artifactId>
+      <artifactId>mcookbook-content</artifactId>
       <version>${project.version}</version>
     </dependency>
   </dependencies>
@@ -250,7 +250,7 @@
 		<configuration>
 		  <apiKey>${scribd.api.key}</apiKey>
 		  <docId>${scribd.doc.id}</docId>
-		  <pdf>${basedir}/target/mhandbook-complete.pdf</pdf>
+		  <pdf>${basedir}/target/mcookbook-complete.pdf</pdf>
 		  <access>public</access>
 		  <downloadAndDrm>view-only</downloadAndDrm>
 		</configuration>
@@ -281,7 +281,7 @@
 		<configuration>
 		  <apiKey>${scribd.api.key}</apiKey>
 		  <docId>${scribd.doc.id}</docId>
-		  <pdf>${basedir}/target/mhandbook-complete.pdf</pdf>
+		  <pdf>${basedir}/target/mcookbook-complete.pdf</pdf>
 		  <access>private</access>
 		  <downloadAndDrm>download-pdf</downloadAndDrm>
 		</configuration>
