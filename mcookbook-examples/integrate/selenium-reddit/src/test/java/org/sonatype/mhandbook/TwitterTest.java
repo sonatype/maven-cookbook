@@ -1,4 +1,4 @@
-package org.sonatype.mhandbook;
+package org.sonatype.mcookbook;
 
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;

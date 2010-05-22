@@ -1,4 +1,4 @@
-package org.sonatype.mhandbook;
+package org.sonatype.mcookbook;
 
 /**
  * Hello world!

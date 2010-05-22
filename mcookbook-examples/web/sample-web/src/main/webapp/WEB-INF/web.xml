@@ -6,7 +6,7 @@
   <display-name>Archetype Created Web Application</display-name>
   <servlet>
     <servlet-name>fibonacci</servlet-name>
-    <servlet-class>org.sonatype.mhandbook.FibonacciServlet</servlet-class>
+    <servlet-class>org.sonatype.mcookbook.FibonacciServlet</servlet-class>
   </servlet>
   <servlet-mapping>
     <servlet-name>fibonacci</servlet-name>

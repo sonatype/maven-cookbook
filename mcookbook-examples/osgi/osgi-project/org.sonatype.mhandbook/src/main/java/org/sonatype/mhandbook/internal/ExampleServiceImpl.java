@@ -1,10 +1,10 @@
-package org.sonatype.mhandbook.internal;
+package org.sonatype.mcookbook.internal;
 
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-import org.sonatype.mhandbook.ExampleService;
+import org.sonatype.mcookbook.ExampleService;
 
 /**
  * Internal implementation of our example OSGi service

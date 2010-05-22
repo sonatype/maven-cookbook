@@ -2,13 +2,13 @@
 <project xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd" xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
 
   <parent>
-    <groupId>org.sonatype.mhandbook</groupId>
+    <groupId>org.sonatype.mcookbook</groupId>
     <artifactId>osgi-project</artifactId>
     <version>1.0-SNAPSHOT</version>
   </parent>
 
   <modelVersion>4.0.0</modelVersion>
-  <groupId>org.sonatype.mhandbook.osgi-project.build</groupId>
+  <groupId>org.sonatype.mcookbook.osgi-project.build</groupId>
   <artifactId>provision</artifactId>
 
   <name>osgi-project - imported bundles</name>

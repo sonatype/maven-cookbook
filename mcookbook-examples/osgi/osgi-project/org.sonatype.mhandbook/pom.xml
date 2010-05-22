@@ -3,19 +3,19 @@
 
   <parent>
     <relativePath>../poms/compiled/</relativePath>
-    <groupId>org.sonatype.mhandbook.osgi-project.build</groupId>
+    <groupId>org.sonatype.mcookbook.osgi-project.build</groupId>
     <artifactId>compiled-bundle-settings</artifactId>
     <version>1.0-SNAPSHOT</version>
   </parent>
 
   <properties>
-    <bundle.symbolicName>org.sonatype.mhandbook</bundle.symbolicName>
-    <bundle.namespace>org.sonatype.mhandbook</bundle.namespace>
+    <bundle.symbolicName>org.sonatype.mcookbook</bundle.symbolicName>
+    <bundle.namespace>org.sonatype.mcookbook</bundle.namespace>
   </properties>
 
   <modelVersion>4.0.0</modelVersion>
-  <groupId>org.sonatype.mhandbook.osgi-project</groupId>
-  <artifactId>org.sonatype.mhandbook</artifactId>
+  <groupId>org.sonatype.mcookbook.osgi-project</groupId>
+  <artifactId>org.sonatype.mcookbook</artifactId>
   <version>1.0-SNAPSHOT</version>
 
   <name>${bundle.symbolicName}</name>
