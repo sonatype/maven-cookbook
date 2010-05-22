@@ -35,7 +35,7 @@
       <example>
         <title>TwitterTest a Selenium Test written in TestNG</title>
 
-        <programlisting>package org.sonatype.mhandbook;
+        <programlisting>package org.sonatype.mcookbook;
 
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
@@ -127,7 +127,7 @@ public class TwitterTest {
   xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 
            http://maven.apache.org/maven-v4_0_0.xsd"&gt;
   &lt;modelVersion&gt;4.0.0&lt;/modelVersion&gt;
-  &lt;groupId&gt;org.sonatype.mhandbook&lt;/groupId&gt;
+  &lt;groupId&gt;org.sonatype.mcookbook&lt;/groupId&gt;
   &lt;artifactId&gt;selenium-reddit&lt;/artifactId&gt;
   &lt;packaging&gt;jar&lt;/packaging&gt;
   &lt;version&gt;1.0-SNAPSHOT&lt;/version&gt;
@@ -232,21 +232,21 @@ resources, i.e. build is platform dependent!
 [INFO] Copying 0 resource
 [INFO] [compiler:testCompile {execution: default-testCompile}]
 [INFO] Compiling 1 source file to /Users/Tim/Library/Code/sonatype/
-maven-cookbook/mhandbook-examples/integrate/selenium-reddit/
+maven-cookbook/mcookbook-examples/integrate/selenium-reddit/
 target/test-classes
 [INFO] [surefire:test {execution: default-test}]
 [INFO] Tests are skipped.
 [INFO] [jar:jar {execution: default-jar}]
 [INFO] Building jar: /Users/Tim/Library/Code/sonatype/maven-cookbook/
-mhandbook-examples/integrate/selenium-reddit/
+mcookbook-examples/integrate/selenium-reddit/
 target/selenium-reddit-1.0-SNAPSHOT.jar
 [INFO] [selenium:start-server {execution: default}]
 Created dir: /Users/Tim/Library/Code/sonatype/maven-cookbook/
-mhandbook-examples/integrate/selenium-reddit/target/selenium
+mcookbook-examples/integrate/selenium-reddit/target/selenium
 Launching Selenium Server
 Waiting for Selenium Server...
 [INFO] User extensions: /Users/Tim/Library/Code/sonatype/maven-cookbook/
-mhandbook-examples/integrate/selenium-reddit/
+mcookbook-examples/integrate/selenium-reddit/
 target/selenium/user-extensions.js
 23:41:46,726 INFO  [SeleniumServer] Java: Apple Inc. 14.1-b02-90
 23:41:46,727 INFO  [SeleniumServer] OS: Mac OS X 10.6.1 x86_64
@@ -263,7 +263,7 @@ target/selenium/user-extensions.js
 Selenium Server started
 [INFO] [surefire:test {execution: default}]
 [INFO] Surefire report directory: /Users/Tim/Library/Code/sonatype/
-maven-cookbook/mhandbook-examples/integrate/selenium-reddit/
+maven-cookbook/mcookbook-examples/integrate/selenium-reddit/
 target/surefire-reports
 
 -------------------------------------------------------
@@ -338,9 +338,9 @@ Tests run: 1, Failures: 0, Errors: 0, Skipped: 0
       pre-integration-test phase and stop the instance in the
       post-integration-test phase.</para>
 
-      <para>Your web application is in the org.sonatype.mhandbook:sample-web
+      <para>Your web application is in the org.sonatype.mcookbook:sample-web
       project and your integration tests are in the
-      org.sonatype-mhandbook:sample-web-it project. You can configure the
+      org.sonatype-mcookbook:sample-web-it project. You can configure the
       Maven Dependency plugin to copy the WAR to the sample-web-it project
       during the package phase, then during the pre-integation-test phase you
       will configure the Maven Jetty plugin to start an instance of Jetty to
@@ -355,7 +355,7 @@ Tests run: 1, Failures: 0, Errors: 0, Skipped: 0
       (F<subscript>10</subscript>). This integration test is stored in
       <filename>\${basedir}/src/test/java</filename>.</para>
 
-      <programlisting>package org.sonatype.mhandbook;
+      <programlisting>package org.sonatype.mcookbook;
 
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
@@ -400,7 +400,7 @@ private Selenium selenium;
   xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 
            http://maven.apache.org/maven-v4_0_0.xsd"&gt;
   &lt;modelVersion&gt;4.0.0&lt;/modelVersion&gt;
-  &lt;groupId&gt;org.sonatype.mhandbook&lt;/groupId&gt;
+  &lt;groupId&gt;org.sonatype.mcookbook&lt;/groupId&gt;
   &lt;artifactId&gt;sample-web-it&lt;/artifactId&gt;
   &lt;packaging&gt;jar&lt;/packaging&gt;
   &lt;version&gt;1.0-SNAPSHOT&lt;/version&gt;
@@ -429,7 +429,7 @@ private Selenium selenium;
             &lt;configuration&gt;
               &lt;artifactItems&gt;
                 &lt;artifactItem&gt;
-                  &lt;groupId&gt;org.sonatype.mhandbook&lt;/groupId&gt;
+                  &lt;groupId&gt;org.sonatype.mcookbook&lt;/groupId&gt;
                   &lt;artifactId&gt;sample-web&lt;/artifactId&gt;
                   &lt;version&gt;1.0-SNAPSHOT&lt;/version&gt;
                   &lt;type&gt;war&lt;/type&gt;
@@ -533,7 +533,7 @@ private Selenium selenium;
       &lt;scope&gt;test&lt;/scope&gt;
     &lt;/dependency&gt;
     &lt;dependency&gt;
-      &lt;groupId&gt;org.sonatype.mhandbook&lt;/groupId&gt;<co
+      &lt;groupId&gt;org.sonatype.mcookbook&lt;/groupId&gt;<co
           id="int-co-run-war-7" linkends="int-cr-run-war-7" />
       &lt;artifactId&gt;sample-web&lt;/artifactId&gt;
       &lt;version&gt;1.0-SNAPSHOT&lt;/version&gt;
@@ -616,7 +616,7 @@ private Selenium selenium;
 ...
 [INFO] [compiler:testCompile {execution: default-testCompile}]
 [INFO] Compiling 1 source file to 
-~/Code/sonatype/maven-cookbook/mhandbook-examples/integrate/sample-web-it/
+~/Code/sonatype/maven-cookbook/mcookbook-examples/integrate/sample-web-it/
 target/test-classes
 [INFO] [surefire:test {execution: default-test}]
 [INFO] Tests are skipped.
@@ -625,15 +625,15 @@ target/test-classes
 [INFO] [dependency:copy {execution: copy}]
 ...
 [INFO] [selenium:start-server {execution: default}]
-Created dir: ~/maven-cookbook/mhandbook-examples/integrate/sample-web-it/
+Created dir: ~/maven-cookbook/mcookbook-examples/integrate/sample-web-it/
 target/selenium
 Launching Selenium Server
 Waiting for Selenium Server...
 ...
 [INFO] [dependency:copy {execution: copy}]
-[INFO] Configured Artifact: org.sonatype.mhandbook:sample-web:1.0-SNAPSHOT:war
+[INFO] Configured Artifact: org.sonatype.mcookbook:sample-web:1.0-SNAPSHOT:war
 [INFO] Copying sample-web-1.0-SNAPSHOT.war to 
-~/maven-cookbook/mhandbook-examples/integrate/sample-web-it/
+~/maven-cookbook/mcookbook-examples/integrate/sample-web-it/
 target/war/sample-web.war
 [INFO] [jetty:run-war {execution: start-jetty}]
 [INFO] Configuring Jetty for project: sample-web-it

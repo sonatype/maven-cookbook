@@ -9,7 +9,7 @@
 
     <para>Groovy is just that: Groovy, and maybe in future versions of this
     book, I'll go on and on and on about how wonderful it is. For now, the
-    pre-alpha Maven Handbook gets straight to the content. This chapter
+    pre-alpha Maven Cookbook gets straight to the content. This chapter
     contains a number of recipes that should make it easier for you to
     integrate Groovy into your Maven builds. For more information about
     Groovy, take a look at the Groovy project page <ulink
@@ -46,7 +46,7 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0                    
                              http://maven.apache.org/maven-v4_0_0.xsd"&gt;
   &lt;modelVersion&gt;4.0.0&lt;/modelVersion&gt;
-  &lt;groupId&gt;org.sonatype.mhandbook&lt;/groupId&gt;
+  &lt;groupId&gt;org.sonatype.mcookbook&lt;/groupId&gt;
   &lt;artifactId&gt;groovy-script&lt;/artifactId&gt;
   &lt;packaging&gt;jar&lt;/packaging&gt;
   &lt;version&gt;1.0-SNAPSHOT&lt;/version&gt;
@@ -181,7 +181,7 @@ org.apache.maven:maven-model:2.2.0
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0                        
                              http://maven.apache.org/maven-v4_0_0.xsd"&gt;
   &lt;modelVersion&gt;4.0.0&lt;/modelVersion&gt;
-  &lt;groupId&gt;org.sonatype.mhandbook&lt;/groupId&gt;
+  &lt;groupId&gt;org.sonatype.mcookbook&lt;/groupId&gt;
   &lt;artifactId&gt;groovy-script-ex&lt;/artifactId&gt;
   &lt;packaging&gt;jar&lt;/packaging&gt;
   &lt;version&gt;1.0-SNAPSHOT&lt;/version&gt;

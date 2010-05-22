@@ -53,7 +53,7 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0                        
                              http://maven.apache.org/maven-v4_0_0.xsd"&gt;
   &lt;modelVersion&gt;4.0.0&lt;/modelVersion&gt;
-  &lt;groupId&gt;org.sonatype.mhandbook&lt;/groupId&gt;
+  &lt;groupId&gt;org.sonatype.mcookbook&lt;/groupId&gt;
   &lt;artifactId&gt;ant-script&lt;/artifactId&gt;
   &lt;packaging&gt;jar&lt;/packaging&gt;
   &lt;version&gt;1.0-SNAPSHOT&lt;/version&gt;
@@ -138,7 +138,7 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 
                              http://maven.apache.org/maven-v4_0_0.xsd"&gt;
   &lt;modelVersion&gt;4.0.0&lt;/modelVersion&gt;
-  &lt;groupId&gt;org.sonatype.mhandbook&lt;/groupId&gt;
+  &lt;groupId&gt;org.sonatype.mcookbook&lt;/groupId&gt;
   &lt;artifactId&gt;ant-script-ex&lt;/artifactId&gt;
   &lt;packaging&gt;jar&lt;/packaging&gt;
   &lt;version&gt;1.0-SNAPSHOT&lt;/version&gt;

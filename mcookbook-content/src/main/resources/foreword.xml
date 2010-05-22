@@ -4,7 +4,7 @@
 <preface id="foreword">
   <title>Foreword: ${project.version}</title>
 
-  <para>This is an initial pre-alpha version of the Maven Handbook, and I mean
+  <para>This is an initial pre-alpha version of the Maven Cookbook, and I mean
   "pre-alpha". If you are coming to the book with the expectation that this is
   a polished product, please check back in a few months, we're going to be
   developing this content over the next few months, and you should expect at

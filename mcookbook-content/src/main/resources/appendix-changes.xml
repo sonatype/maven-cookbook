@@ -144,17 +144,17 @@
             </listitem>
 
             <listitem>
-              <para>Assigned the Handbook an ISBN. (<ulink
+              <para>Assigned the Cookbook an ISBN. (<ulink
               url="https://issues.sonatype.org/browse/MVNCOOK-19">MVNCOOK-19</ulink>)</para>
             </listitem>
 
             <listitem>
-              <para>Created a Title Page for the Handbook. (<ulink
+              <para>Created a Title Page for the Cookbook. (<ulink
               url="https://issues.sonatype.org/browse/MVNCOOK-20">MVNCOOK-20</ulink>)</para>
             </listitem>
 
             <listitem>
-              <para>Created a Copyright Page for the Handbook. (<ulink
+              <para>Created a Copyright Page for the Cookbook. (<ulink
               url="https://issues.sonatype.org/browse/MVNCOOK-21">MVNCOOK-21</ulink>)</para>
             </listitem>
 
@@ -187,7 +187,7 @@
         </listitem>
 
         <listitem>
-          <para>Changed the name of the book to Maven Handbook. (<ulink
+          <para>Changed the name of the book to Maven Cookbook. (<ulink
           url="https://issues.sonatype.org/browse/MVNCOOK-27">MVNCOOK-27</ulink>)</para>
         </listitem>
 
@@ -248,7 +248,7 @@
 
       <itemizedlist>
         <listitem>
-          <para>Added Scribd API integration to the Maven Handbook Maven build
+          <para>Added Scribd API integration to the Maven Cookbook Maven build
           (yes, the book has a Maven build). This book now uses the Maven
           Scribd Plugin to publish the book to Scribd.</para>
         </listitem>
@@ -307,7 +307,7 @@
         </listitem>
 
         <listitem>
-          <para>Create a cover for the Maven Handbook.</para>
+          <para>Create a cover for the Maven Cookbook.</para>
         </listitem>
 
         <listitem>

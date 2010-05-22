@@ -1,13 +1,13 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
   <modelVersion>4.0.0</modelVersion>
   <parent>
-	<groupId>org.sonatype.mhandbook</groupId>
-	<artifactId>mhandbook-parent</artifactId>
+	<groupId>org.sonatype.mcookbook</groupId>
+	<artifactId>mcookbook-parent</artifactId>
 	<version>0.1.6-SNAPSHOT</version>
   </parent>
-  <artifactId>mhandbook-content</artifactId>
+  <artifactId>mcookbook-content</artifactId>
   <packaging>jar</packaging>
-  <name>Maven Handbook Content</name>
+  <name>Maven Cookbook Content</name>
   <build>
     <sourceDirectory>src/main/resources</sourceDirectory>
     <resources>
@@ -76,7 +76,7 @@
         <site>
           <id>sonatype-site</id>
           <name>Sonatype Book Examples</name>
-          <url>scp://deployer@172.16.0.1/var/www/domains/sonatype.com/books/htdocs/mhandbook/</url>
+          <url>scp://deployer@172.16.0.1/var/www/domains/sonatype.com/books/htdocs/mcookbook/</url>
         </site>
         </distributionManagement>
         <properties>
@@ -89,7 +89,7 @@
         <site>
           <id>sonatype-site</id>
           <name>Sonatype Book Examples</name>
-          <url>scp://deployer@svn.sonatype.com/var/www/domains/sonatype.com/books/htdocs/mhandbook/</url>
+          <url>scp://deployer@svn.sonatype.com/var/www/domains/sonatype.com/books/htdocs/mcookbook/</url>
         </site>
         </distributionManagement>
         <properties>
@@ -102,7 +102,7 @@
         <site>
           <id>sonatype-site</id>
           <name>Sonatype Book Examples</name>
-          <url>scp://deployer@172.16.0.1/var/www/domains/sonatype.com/books/htdocs/mhandbook-stage/</url>
+          <url>scp://deployer@172.16.0.1/var/www/domains/sonatype.com/books/htdocs/mcookbook-stage/</url>
         </site>
         </distributionManagement>
       </profile>
@@ -112,7 +112,7 @@
         <site>
           <id>sonatype-site</id>
           <name>Sonatype Book Examples</name>
-          <url>scp://deployer@svn.sonatype.com/var/www/domains/sonatype.com/books/htdocs/mhandbook-stage/</url>
+          <url>scp://deployer@svn.sonatype.com/var/www/domains/sonatype.com/books/htdocs/mcookbook-stage/</url>
         </site>
         </distributionManagement>
       </profile>
@@ -120,7 +120,7 @@
   <dependencies>
     <dependency>
       <groupId>${project.groupId}</groupId>
-      <artifactId>mhandbook-examples</artifactId>
+      <artifactId>mcookbook-examples</artifactId>
       <version>${project.version}</version>
       <classifier>src</classifier>
       <type>zip</type>
