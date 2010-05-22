@@ -42,7 +42,6 @@
   </developers>
   <modules>
     <module>mcookbook-content</module>
-    <module>mcookbook-eclipse</module>
     <module>mcookbook-examples</module>
     <module>mcookbook-html</module>
     <module>mcookbook-pdf</module>
