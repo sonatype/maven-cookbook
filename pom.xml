@@ -2,7 +2,7 @@
   <modelVersion>4.0.0</modelVersion>
   <groupId>org.sonatype.mcookbook</groupId>
   <artifactId>mcookbook-parent</artifactId>
-  <version>0.1.6-SNAPSHOT</version>
+  <version>0.2</version>
   <packaging>pom</packaging>
   <name>Maven Cookbook</name>
   <description>A Cookbook about Maven</description>
