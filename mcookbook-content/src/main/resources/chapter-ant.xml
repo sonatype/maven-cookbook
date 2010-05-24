@@ -1,0 +1,393 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE chapter PUBLIC "-//OASIS//DTD DocBook XML V4.5//EN"
+"http://www.sonatype.com/tmp/docbook/xml/4.5/docbookx.dtd">
+<chapter id="ant">
+  <title>Ant and Maven</title>
+
+  <section id="ant-sect-intro">
+    <title>Introduction</title>
+
+    <para>Ant and Maven? Yes, it is true.</para>
+
+    <para>Ant isn't a language as much as it is a build tool which allows you
+    to describe a build as a set of tasks grouped into build targets. Ant then
+    allows you to declare dependencies between build targets. When you are
+    using Ant you are essentially creating your own lifecycle. An Ant
+    <filename>build.xml</filename> might have an install target which depends
+    on a test target which depends on a compile target, but these
+    relationships are arbitrary and managed by the person who writes the Ant
+    build file.</para>
+
+    <para>Ant is something of a ancestor to Maven, it was the ubiquitous
+    procedural build tool that almost every project used before Maven
+    introduced the concept of wide-scale reusability of common build plugins
+    and the concept of a universal lifecycle.</para>
+  </section>
+
+  <section>
+    <title>Running an Inline Ant Script in a Maven Build</title>
+
+    <section>
+      <title>Task</title>
+
+      <para>You need to run an inline Ant script as a part of your Maven
+      build.</para>
+    </section>
+
+    <section>
+      <title>Action</title>
+
+      <para>Configure the <varname>run</varname> goal of the Maven AntRun
+      plugin to execute an inline Ant script. The POM shown in configures the
+      <varname>run</varname> goal to execute during the
+      <varname>prepare-package</varname> phase of the build. The Ant script is
+      contained in the <varname>tasks</varname> configuration parameter for
+      the <varname>ant-magic</varname> execution.</para>
+
+      <example id="ex-ant-script-inline">
+        <title>Executing an Inline Ant Script in a Maven Build</title>
+
+        <programlisting db:wrap="force"
+                        xmlns:db="http://discursive.com/plugins/docbook">&lt;project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0                        
+                             http://maven.apache.org/maven-v4_0_0.xsd"&gt;
+  &lt;modelVersion&gt;4.0.0&lt;/modelVersion&gt;
+  &lt;groupId&gt;org.sonatype.mcookbook&lt;/groupId&gt;
+  &lt;artifactId&gt;ant-script&lt;/artifactId&gt;
+  &lt;packaging&gt;jar&lt;/packaging&gt;
+  &lt;version&gt;1.0-SNAPSHOT&lt;/version&gt;
+  &lt;name&gt;ant-script&lt;/name&gt;
+  &lt;build&gt;
+    &lt;plugins&gt;
+      &lt;plugin&gt;
+        &lt;artifactId&gt;maven-antrun-plugin&lt;/artifactId&gt;
+        &lt;executions&gt;
+          &lt;execution&gt;
+            &lt;id&gt;ant-magic&lt;/id&gt;
+            &lt;phase&gt;prepare-package&lt;/phase&gt;
+            &lt;goals&gt;
+              &lt;goal&gt;run&lt;/goal&gt;
+            &lt;/goals&gt;
+            &lt;configuration&gt;
+              &lt;tasks&gt;
+                &lt;property name="compile_classpath"
+                          refid="maven.compile.classpath"/&gt;
+                &lt;echo file="\${project.build.outputDirectory}/deps.txt"
+                      message="compile classpath: \${compile_classpath}"/&gt;
+
+                &lt;copy todir="\${project.build.outputDirectory}"&gt;
+                  &lt;fileset dir="\${project.build.sourceDirectory}"/&gt;
+                &lt;/copy&gt;
+              &lt;/tasks&gt;
+            &lt;/configuration&gt;
+          &lt;/execution&gt;
+        &lt;/executions&gt;
+      &lt;/plugin&gt;
+    &lt;/plugins&gt;
+  &lt;/build&gt;
+&lt;/project&gt;</programlisting>
+      </example>
+
+      <para>You can run this script, by executing the package phase.</para>
+
+      <screen db:wrap="force" xmlns:db="http://discursive.com/plugins/docbook">${root.example.dir}/ant/ant-script $ <command>mvn package</command>
+[INFO] Scanning for projects...
+...
+[INFO] [antrun:run {execution: ant-magic}]
+[INFO] Executing tasks
+     [copy] Copying 1 file to ${root.example.dir}/ant/ant-script/target/classes
+[INFO] Executed tasks
+...
+[INFO] BUILD SUCCESSFUL
+</screen>
+
+      <para>Once this simple Ant script has been completed, the contents of
+      <filename>\${basedir}/target/classes/deps.txt</filename> should contain
+      the following:</para>
+
+      <programlisting db:wrap="force"
+                      xmlns:db="http://discursive.com/plugins/docbook">compile classpath: ${root.example.dir}/ant/ant-script/target/classes</programlisting>
+    </section>
+  </section>
+
+  <section>
+    <title>Running an External Ant Script in a Maven Build</title>
+
+    <section>
+      <title>Task</title>
+
+      <para>You need to execute an external Ant script in a Maven
+      build.</para>
+    </section>
+
+    <section>
+      <title>Action</title>
+
+      <para>Configure the run goal form the Maven AntRun plugin. Define any
+      properties you wish to pass to the external Ant build, and then call the
+      external Ant build with the ant task, specifying the antfile and target
+      you wish to execute.</para>
+
+      <example>
+        <title>Executing an External Ant Script from a Maven Build</title>
+
+        <programlisting db:wrap="force"
+                        xmlns:db="http://discursive.com/plugins/docbook">&lt;project xmlns="http://maven.apache.org/POM/4.0.0" 
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 
+                             http://maven.apache.org/maven-v4_0_0.xsd"&gt;
+  &lt;modelVersion&gt;4.0.0&lt;/modelVersion&gt;
+  &lt;groupId&gt;org.sonatype.mcookbook&lt;/groupId&gt;
+  &lt;artifactId&gt;ant-script-ex&lt;/artifactId&gt;
+  &lt;packaging&gt;jar&lt;/packaging&gt;
+  &lt;version&gt;1.0-SNAPSHOT&lt;/version&gt;
+  &lt;name&gt;ant-script-ex&lt;/name&gt;
+  &lt;build&gt;
+    &lt;plugins&gt;
+      &lt;plugin&gt;
+        &lt;artifactId&gt;maven-antrun-plugin&lt;/artifactId&gt;
+        &lt;executions&gt;
+          &lt;execution&gt;
+            &lt;id&gt;ant-magic&lt;/id&gt;
+            &lt;phase&gt;prepare-package&lt;/phase&gt;
+            &lt;goals&gt;
+              &lt;goal&gt;run&lt;/goal&gt;
+            &lt;/goals&gt;
+            &lt;configuration&gt;
+              &lt;tasks&gt;
+                &lt;property name="compile_classpath" 
+                          refid="maven.compile.classpath"/&gt;
+                &lt;property name="outputDir"
+                          value="\${project.build.outputDirectory}"/&gt;
+                &lt;property name="sourceDir"
+                          value="\${project.build.sourceDirectory}"/&gt;
+                &lt;ant antfile="\${basedir}/src/main/ant/create-deps.xml"
+                     target="create"/&gt;
+              &lt;/tasks&gt;
+            &lt;/configuration&gt;
+          &lt;/execution&gt;
+        &lt;/executions&gt;
+      &lt;/plugin&gt;
+    &lt;/plugins&gt;
+  &lt;/build&gt;
+&lt;/project&gt;
+</programlisting>
+      </example>
+
+      <para>To execute this external Ant build, run <command>mvn
+      package</command>.</para>
+
+      <screen db:wrap="force" xmlns:db="http://discursive.com/plugins/docbook">${root.example.dir}/ant/ant-script Tim$ <command>mvn package</command>
+[INFO] Scanning for projects...
+[INFO] ------------------------------------------------------------------------
+[INFO] Building ant-script-ex
+...
+[INFO] [antrun:run {execution: ant-magic}]
+[INFO] Executing tasks
+
+create:
+     [copy] Copying 1 file to ${root.example.dir}/ant/ant-script-ex/target/classes
+[INFO] Executed tasks
+...
+[INFO] BUILD SUCCESSFUL
+</screen>
+
+      <para>Once this simple Ant script has been completed, the contents of
+      <filename>\${basedir}/target/classes/deps.txt</filename> should contain
+      the following:</para>
+
+      <programlisting db:wrap="force"
+                      xmlns:db="http://discursive.com/plugins/docbook">compile classpath: ${root.example.dir}/ant/ant-script-ex/target/classes</programlisting>
+    </section>
+  </section>
+
+  <section>
+    <title>Creating an Ant Maven Plugin</title>
+
+    <para>While Maven is an improvement on Ant, Ant can still be useful when
+    describing parts of the build process. Ant provides a set of tasks which
+    can come in handy when you need to perform file operations or
+    <acronym>XSLT</acronym> transformations or any other operation you could
+    think of. There is a large library of available Ant tasks for everything
+    from running JUnit tests to transforming <acronym>XML</acronym> to copying
+    files to a remote server using <acronym>SCP</acronym>. An overview of
+    available Ant tasks can be found online in the <ulink
+    url="http://ant.apache.org/manual/tasksoverview.html">Apache Ant
+    Manual</ulink>. You can use these tasks as a low-level build customization
+    language, and you can also write a Maven plugin where, instead of a Mojo
+    written in Java, you can pass parameters to a Mojo which is an Ant build
+    target.</para>
+
+    <section>
+      <title>Task</title>
+
+      <para>You need to write a Maven Plugin in Ant.</para>
+    </section>
+
+    <section>
+      <title>Action</title>
+
+      <para>To create a Maven plugin using Ant, you will need to have a
+      <filename>pom.xml</filename> and a single Mojo implemented in Ant. To
+      get started, create a project directory named firstant-maven-plugin.
+      Place the following <filename>pom.xml</filename> in this
+      directory.</para>
+
+      <example>
+        <title>POM for an Ant Maven Plugin</title>
+
+        <programlisting language="xml">&lt;project&gt;
+  &lt;modelVersion&gt;4.0.0&lt;/modelVersion&gt;
+  &lt;groupId&gt;org.sonatype.mavenbook.plugins&lt;/groupId&gt;
+  &lt;artifactId&gt;firstant-maven-plugin&lt;/artifactId&gt;
+  &lt;name&gt;Example Ant Mojo - firstant-maven-plugin&lt;/name&gt;
+  &lt;packaging&gt;maven-plugin&lt;/packaging&gt;
+  &lt;version&gt;1.0-SNAPSHOT&lt;/version&gt;
+  &lt;dependencies&gt;
+    &lt;dependency&gt;
+      &lt;groupId&gt;org.apache.maven&lt;/groupId&gt;
+      &lt;artifactId&gt;maven-script-ant&lt;/artifactId&gt;
+      &lt;version&gt;${maven.version}&lt;/version&gt;
+    &lt;/dependency&gt;
+  &lt;/dependencies&gt;
+  &lt;build&gt;
+    &lt;plugins&gt;
+      &lt;plugin&gt;
+        &lt;artifactId&gt;maven-plugin-plugin&lt;/artifactId&gt;
+        &lt;version&gt;2.4&lt;/version&gt;
+        &lt;dependencies&gt;
+          &lt;dependency&gt;
+            &lt;groupId&gt;org.apache.maven.plugin-tools&lt;/groupId&gt;
+            &lt;artifactId&gt;maven-plugin-tools-ant&lt;/artifactId&gt;
+            &lt;version&gt;2.4&lt;/version&gt;
+          &lt;/dependency&gt;
+        &lt;/dependencies&gt;
+      &lt;/plugin&gt;
+    &lt;/plugins&gt;
+  &lt;/build&gt;
+&lt;/project&gt;</programlisting>
+      </example>
+
+      <para>Next, you will need to create your Ant Mojo. An Ant mojo consists
+      of two parts: the Ant tasks in an <acronym>XML</acronym> file, and a
+      file which supplies Mojo descriptor information. The Ant plugin tools
+      are going to look for both of these files in
+      <filename>\${basedir}/src/main/scripts</filename>. One file will be
+      named <filename>echo.build.xml</filename> and it will contain the Ant
+      <acronym>XML</acronym>.</para>
+
+      <example>
+        <title>Echo Ant Mojo</title>
+
+        <programlisting language="xml">&lt;project&gt;
+  &lt;target name="echotarget"&gt;
+    &lt;echo&gt;\${message}&lt;/echo&gt;
+  &lt;/target&gt;
+&lt;/project&gt;
+</programlisting>
+      </example>
+
+      <para>The other file will describe the Echo Ant Mojo and will be in the
+      <filename>echo.mojos.xml</filename> file also in
+      <filename>\${basedir}/src/main/scripts</filename>.</para>
+
+      <example>
+        <title>Echo Ant Mojo Descriptor</title>
+
+        <programlisting language="xml">&lt;pluginMetadata&gt;
+  &lt;mojos&gt;
+    &lt;mojo&gt;
+      &lt;goal&gt;echo&lt;/goal&gt;
+      &lt;call&gt;echotarget&lt;/call&gt;
+      &lt;description&gt;Echos a Message&lt;/description&gt;
+      &lt;parameters&gt;
+        &lt;parameter&gt;
+          &lt;name&gt;message&lt;/name&gt;
+          &lt;property&gt;message&lt;/property&gt;
+          &lt;required&gt;false&lt;/required&gt;
+          &lt;expression&gt;\${message}&lt;/expression&gt;
+          &lt;type&gt;java.lang.Object&lt;/type&gt;
+          &lt;defaultValue&gt;Hello Maven World&lt;/defaultValue&gt;
+          &lt;description&gt;Prints a message&lt;/description&gt;
+        &lt;/parameter&gt;
+      &lt;/parameters&gt;
+    &lt;/mojo&gt;
+  &lt;/mojos&gt;
+&lt;/pluginMetadata&gt;</programlisting>
+      </example>
+
+      <para>This <filename>echo.mojos.xml</filename> file configures the Mojo
+      descriptor for this plugin. It supplies the goal name "echo", and it
+      tells Maven what Ant task to call in the call element. In addition to
+      configuring the description, this <acronym>XML</acronym> file configures
+      the message parameter to use the expression
+      <varname>\${message}</varname> and to have a default value of "Hello
+      Maven World."</para>
+
+      <para>If you've configured your plugin groups in
+      <filename>~/.m2/settings.xml</filename> to include
+      <varname>org.sonatype.mavenbook.plugins</varname>, you can install this
+      Ant plugin by executing the following command at the
+      command-line:</para>
+
+      <screen>$ <command>mvn install</command>
+[INFO] ------------------------------------------------------------------------
+[INFO] Building Example Ant Mojo - firstant-maven-plugin
+[INFO]    task-segment: [install]
+[INFO] ------------------------------------------------------------------------
+[INFO] [plugin:descriptor]
+[INFO] Using 3 extractors.
+[INFO] Applying extractor for language: java
+[INFO] Extractor for language: java found 0 mojo descriptors.
+[INFO] Applying extractor for language: bsh
+[INFO] Extractor for language: bsh found 0 mojo descriptors.
+[INFO] Applying extractor for language: ant
+[INFO] Extractor for language: ant found 1 mojo descriptors.
+...
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD SUCCESSFUL
+[INFO] ------------------------------------------------------------------------
+</screen>
+
+      <para>Note that the <varname>plugin:descriptor</varname> goal found a
+      single Ant mojo descriptor. To run this goal, you would execute the
+      following command-line:</para>
+
+      <screen>$ <command>mvn firstant:echo</command>
+...
+[INFO] [firstant:echo]
+
+echotarget:
+     [echo] Hello Maven World
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD SUCCESSFUL
+[INFO] ------------------------------------------------------------------------
+</screen>
+
+      <para>The <varname>echo</varname> goal executed and printed out the
+      default value of the <varname>message</varname> parameter. If you are
+      used to Apache Ant build scripts, you will notice that Ant prints out
+      the name of the target executed and then adds a logging prefix to the
+      output of the echo Ant task.</para>
+    </section>
+
+    <section>
+      <title>Detail</title>
+
+      <para>While Maven is an improvement on Ant, Ant can still be useful when
+      describing parts of the build process. Ant provides a set of tasks which
+      can come in handy when you need to perform file operations or
+      <acronym>XSLT</acronym> transformations or any other operation you could
+      think of. There is a large library of available Ant tasks for everything
+      from running JUnit tests to transforming <acronym>XML</acronym> to
+      copying files to a remote server using <acronym>SCP</acronym>. An
+      overview of available Ant tasks can be found online in the <ulink
+      url="http://ant.apache.org/manual/tasksoverview.html">Apache Ant
+      Manual</ulink>. You can use these tasks as a low-level build
+      customization language, and you can also write a Maven plugin where,
+      instead of a Mojo written in Java, you can pass parameters to a Mojo
+      which is an Ant build target.</para>
+    </section>
+  </section>
+</chapter>
