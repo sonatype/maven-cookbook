@@ -427,11 +427,8 @@ version                             - display version of framework.
 [INFO]    task-segment: [pax:import-bundle] (aggregator-style)
 [INFO] ------------------------------------------------------------------------
 [INFO] [pax:import-bundle]
-Downloading: http://repo1.maven.org/maven2/org/apache/felix/org.apache.felix.webconsole/1.2.8/org.apache.felix.webconsole-1.2.8.pom
-6K downloaded  (org.apache.felix.webconsole-1.2.8.pom)
-Downloading: http://repo1.maven.org/maven2/org/apache/felix/felix/1.0.4/felix-1.0.4.pom
-14K downloaded  (felix-1.0.4.pom)
-[INFO] Importing Apache Felix Web Management Console to org.sonatype.mcookbook.osgi-project.build:provision:pom:1.0-SNAPSHOT
+[INFO] Importing Apache Felix Web Management Console to \
+       org.sonatype.mcookbook.osgi-project.build:provision:pom:1.0-SNAPSHOT
 [INFO] ------------------------------------------------------------------------
 [INFO] BUILD SUCCESSFUL
 [INFO] ------------------------------------------------------------------------
@@ -471,7 +468,8 @@ ${root.example.dir}/osgi/osgi-project $ <command>mvn pax:import-bundle \
       <screen db:wrap="force" xmlns:db="http://discursive.com/plugins/docbook">${root.example.dir}/osgi/osgi-project $ <command>mvn install pax:provision</command>
 [INFO] [pax:provision]
 [INFO] Installing ${root.example.dir}/osgi/osgi-project/runner/target/pom-transformed.xml 
-       to ${local.repo.dir}/org/sonatype/mcookbook/osgi-project/build/deployment/1.0-SNAPSHOT/deployment-1.0-SNAPSHOT.pom
+       to ${local.repo.dir}/org/sonatype/mcookbook/osgi-project/build/deployment/1.0-SNAPSHOT/\
+          deployment-1.0-SNAPSHOT.pom
     ______  ________  __  __
    / __  / /  __   / / / / /
   /  ___/ /  __   / _\ \ _/
@@ -688,7 +686,8 @@ org.mortbay.log:started /system/console/res
 [INFO]    task-segment: [install]
 [INFO] ------------------------------------------------------------------------
 [INFO] [resources:resources]
-[WARNING] Using platform encoding (MacRoman actually) to copy filtered resources, i.e. build is platform dependent!
+[WARNING] Using platform encoding (MacRoman actually) to copy filtered resources, i.e. build is platform \
+          dependent!
 [INFO] Copying 1 resource
 [INFO] Copying 0 resource
 [INFO] [pax:compile]
@@ -697,10 +696,14 @@ org.mortbay.log:started /system/console/res
 [INFO] No sources to compile
 ...
 [INFO] [install:install]
-[INFO] Installing ${root.example.dir}/osgi/osgi-project/org.sonatype.mcookbook/target/org.sonatype.mcookbook-1.0-SNAPSHOT.jar to ${local.repo.dir}/.m2/repository/org/sonatype/mcookbook/osgi-project/org.sonatype.mcookbook/1.0-SNAPSHOT/org.sonatype.mcookbook-1.0-SNAPSHOT.jar
+[INFO] Installing ${root.example.dir}/osgi/osgi-project/org.sonatype.mcookbook/target/\
+       org.sonatype.mcookbook-1.0-SNAPSHOT.jar to \
+       ${local.repo.dir}/.m2/repository/org/sonatype/mcookbook/osgi-project/org.sonatype.mcookbook/\
+       1.0-SNAPSHOT/org.sonatype.mcookbook-1.0-SNAPSHOT.jar
 [INFO] [bundle:install]
 [INFO] Parsing file:${local.repo.dir}/.m2/repository/repository.xml
-[INFO] Installing org/sonatype/mcookbook/osgi-project/org.sonatype.mcookbook/1.0-SNAPSHOT/org.sonatype.mcookbook-1.0-SNAPSHOT.jar
+[INFO] Installing org/sonatype/mcookbook/osgi-project/org.sonatype.mcookbook/1.0-SNAPSHOT/\
+       org.sonatype.mcookbook-1.0-SNAPSHOT.jar
 [INFO] Writing OBR metadata
 [INFO] ------------------------------------------------------------------------
 [INFO] Building org.sonatype.mcookbook.osgi-project (OSGi project)
@@ -738,7 +741,9 @@ org.mortbay.log:started /system/console/res
       5.</para>
 
       <screen db:wrap="force" xmlns:db="http://discursive.com/plugins/docbook">[INFO] [pax:provision]
-[INFO] Installing ${root.example.dir}/osgi/osgi-project/runner/target/pom-transformed.xml to ${local.repo.dir}/.m2/repository/org/sonatype/mcookbook/osgi-project/build/deployment/1.0-SNAPSHOT/deployment-1.0-SNAPSHOT.pom
+[INFO] Installing ${root.example.dir}/osgi/osgi-project/runner/target/pom-transformed.xml to \
+       ${local.repo.dir}/.m2/repository/org/sonatype/mcookbook/osgi-project/build/deployment/1.0-SNAPSHOT/\
+       deployment-1.0-SNAPSHOT.pom
 
 Pax Runner (1.0.0) from OPS4J - http://www.ops4j.org
 ----------------------------------------------------
@@ -747,11 +752,16 @@ Pax Runner (1.0.0) from OPS4J - http://www.ops4j.org
  -&gt; Using only arguments from command line
  -&gt; Scan bundles from [${root.example.dir}/osgi/osgi-project/runner/deploy-pom.xml]
  -&gt; Scan bundles from [scan-pom:file:${root.example.dir}/osgi/osgi-project/runner/deploy-pom.xml]
- -&gt; Provision bundle [mvn:org.apache.felix/org.apache.felix.webconsole/1.2.8, at default start level, bundle will be started, bundle will be loaded from the cache]
- -&gt; Provision bundle [mvn:org.apache.felix/javax.servlet/1.0.0, at default start level, bundle will be started, bundle will be loaded from the cache]
- -&gt; Provision bundle [mvn:org.apache.felix/org.apache.felix.scr/1.0.8, at default start level, bundle will be started, bundle will be loaded from the cache]
- -&gt; Provision bundle [mvn:org.apache.felix/org.apache.felix.http.jetty/1.0.1, at default start level, bundle will be started, bundle will be loaded from the cache]
-<emphasis> -&gt; Provision bundle [mvn:org.sonatype.mcookbook.osgi-project/org.sonatype.mcookbook/1.0-SNAPSHOT, at default start level, bundle will be started, bundle will be loaded from the cache]
+ -&gt; Provision bundle [mvn:org.apache.felix/org.apache.felix.webconsole/1.2.8, at default start level, \
+    bundle will be started, bundle will be loaded from the cache]
+ -&gt; Provision bundle [mvn:org.apache.felix/javax.servlet/1.0.0, at default start level, bundle will be \
+    started, bundle will be loaded from the cache]
+ -&gt; Provision bundle [mvn:org.apache.felix/org.apache.felix.scr/1.0.8, at default start level, bundle will be \
+    started, bundle will be loaded from the cache]
+ -&gt; Provision bundle [mvn:org.apache.felix/org.apache.felix.http.jetty/1.0.1, at default start level, bundle \
+    will be started, bundle will be loaded from the cache]
+<emphasis> -&gt; Provision bundle [mvn:org.sonatype.mcookbook.osgi-project/org.sonatype.mcookbook/1.0-SNAPSHOT, at default \
+    start level, bundle will be started, bundle will be loaded from the cache]
 </emphasis> -&gt; Preparing framework [Felix 1.8.0]
 ...
  -&gt; Runner has successfully finished his job!
@@ -986,7 +996,9 @@ Bundle-Activator: \${bundle.namespace}.internal.ExampleActivator
 [INFO] Scanning for projects...
 ...
 [INFO] [pax:provision]
-[INFO] Installing ${root.example.dir}/osgi/osgi-project/runner/target/pom-transformed.xml to /Users/Tim/.m2/repository/org/sonatype/mcookbook/osgi-project/build/deployment/1.0-SNAPSHOT/deployment-1.0-SNAPSHOT.pom
+[INFO] Installing ${root.example.dir}/osgi/osgi-project/runner/target/pom-transformed.xml to \
+       /Users/Tim/.m2/repository/org/sonatype/mcookbook/osgi-project/build/deployment/1.0-SNAPSHOT/\
+       deployment-1.0-SNAPSHOT.pom
 [INFO] artifact org.ops4j.pax.runner:pax-runner: checking for updates from central
 Downloading: http://repo1.maven.org/maven2/org/ops4j/pax/runner/pax-runner/1.1.1/pax-runner-1.1.1.jar
 1067K downloaded  (pax-runner-1.1.1.jar)
@@ -1011,11 +1023,6 @@ Pax Runner (1.1.1) from OPS4J - http://www.ops4j.org
  -&gt; Knopflerfish Console : 36329 bytes @ [ 55kBps ]
  -&gt; Knopflerfish Console TTY : 6153 bytes @ [ 1538kBps ]
  -&gt; Knopflerfish Framework Commands : 26090 bytes @ [ 158kBps ]
- -&gt; mvn:org.apache.felix/org.apache.felix.webconsole/1.2.8 : 102399 bytes @ [ 8533kBps -&gt; mvn:org.apache.felix/org.apache.felix.webconsole/1.2.8 : 204799 bytes @ [ 4654kBps -&gt; mvn:org.apache.felix/org.apache.felix.webconsole/1.2.8 : 307199 bytes @ [ 5585kBps -&gt; mvn:org.apache.felix/org.apache.felix.webconsole/1.2.8 : 409599 bytes @ [ 6206kBps -&gt; mvn:org.apache.felix/org.apache.felix.webconsole/1.2.8 : 507026 bytes @ [ 6671kBps ]
- -&gt; mvn:org.apache.felix/javax.servlet/1.0.0 : 30450 bytes @ [ 7612kBps ]
- -&gt; mvn:org.apache.felix/org.apache.felix.scr/1.0.8 : 112058 bytes @ [ 9338kBps ]
- -&gt; mvn:org.apache.felix/org.apache.felix.http.jetty/1.0.1 : 102399 bytes @ [ 2438kBps -&gt; mvn:org.apache.felix/org.apache.felix.http.jetty/1.0.1 : 204799 bytes @ [ 3938kBps -&gt; mvn:org.apache.felix/org.apache.felix.http.jetty/1.0.1 : 307199 bytes @ [ 4876kBps -&gt; mvn:org.apache.felix/org.apache.felix.http.jetty/1.0.1 : 409599 bytes @ [ 5535kBps -&gt; mvn:org.apache.felix/org.apache.felix.http.jetty/1.0.1 : 511999 bytes @ [ 5953kBps -&gt; mvn:org.apache.felix/org.apache.felix.http.jetty/1.0.1 : 614399 bytes @ [ 6334kBps -&gt; mvn:org.apache.felix/org.apache.felix.http.jetty/1.0.1 : 716799 bytes @ [ 6699kBps -&gt; mvn:org.apache.felix/org.apache.felix.http.jetty/1.0.1 : 769485 bytes @ [ 6809kBps ]
- -&gt; mvn:org.sonatype.mcookbook.osgi-project/org.sonatype.mcookbook/1.0-SNAPSHOT : conn -&gt; mvn:org.sonatype.mcookbook.osgi-project/org.sonatype.mcookbook/1.0-SNAPSHOT : 5388 bytes @ [ 128kBps ]
  -&gt; Using execution environment [J2SE-1.5]
  -&gt; Runner has successfully finished his job!
 
@@ -1056,8 +1063,6 @@ org.mortbay.log:started org.mortbay.jetty.nio.SelectChannelConnector$1@31db04
 org.mortbay.log:Started SelectChannelConnector@0.0.0.0:8080
 org.mortbay.log:started SelectChannelConnector@0.0.0.0:8080
 org.mortbay.log:started Server@eea7f0
-*INFO * Failed to instantiate plugin org.apache.felix.webconsole.internal.deppack.DepPackServlet. Reason: java.lang.NoClassDefFoundError: org/osgi/service/deploymentadmin/DeploymentException
-*INFO * Failed to instantiate plugin org.apache.felix.webconsole.internal.misc.ShellServlet. Reason: java.lang.NoClassDefFoundError: org.apache.felix.shell.ShellService
 org.mortbay.log:started /system/console/*
 org.mortbay.log:started /system/console/res
 </screen>
@@ -1117,7 +1122,10 @@ org.mortbay.log:started /system/console/res
 [INFO]    task-segment: [pax:provision] (aggregator-style)
 [INFO] ------------------------------------------------------------------------
 [INFO] [pax:provision]
-[INFO] Installing /Users/Tim/Library/Code/sonatype/maven-cookbook/mcookbook-examples/osgi/osgi-project/runner/target/pom-transformed.xml to /Users/Tim/.m2/repository/org/sonatype/mcookbook/osgi-project/build/deployment/1.0-SNAPSHOT/deployment-1.0-SNAPSHOT.pom
+[INFO] Installing /Users/Tim/Library/Code/sonatype/maven-cookbook/mcookbook-examples/osgi/osgi-project/\
+       runner/target/pom-transformed.xml to \
+       /Users/Tim/.m2/repository/org/sonatype/mcookbook/osgi-project/build/deployment/1.0-SNAPSHOT/\
+       deployment-1.0-SNAPSHOT.pom
     ______  ________  __  __
    / __  / /  __   / / / / /
   /  ___/ /  __   / _\ \ _/
@@ -1129,23 +1137,25 @@ Pax Runner (1.1.1) from OPS4J - http://www.ops4j.org
 
  -&gt; Using config [classpath:META-INF/runner.properties]
  -&gt; Using only arguments from command line
- -&gt; Scan bundles from [/Users/Tim/Library/Code/sonatype/maven-cookbook/mcookbook-examples/osgi/osgi-project/runner/deploy-pom.xml]
- -&gt; Scan bundles from [scan-pom:file:/Users/Tim/Library/Code/sonatype/maven-cookbook/mcookbook-examples/osgi/osgi-project/runner/deploy-pom.xml]
- -&gt; Provision bundle [mvn:org.apache.felix/org.apache.felix.webconsole/1.2.8, at default start level, bundle will be started, bundle will be loaded from the cache]
- -&gt; Provision bundle [mvn:org.apache.felix/javax.servlet/1.0.0, at default start level, bundle will be started, bundle will be loaded from the cache]
- -&gt; Provision bundle [mvn:org.apache.felix/org.apache.felix.scr/1.0.8, at default start level, bundle will be started, bundle will be loaded from the cache]
- -&gt; Provision bundle [mvn:org.apache.felix/org.apache.felix.http.jetty/1.0.1, at default start level, bundle will be started, bundle will be loaded from the cache]
- -&gt; Provision bundle [mvn:org.sonatype.mcookbook.osgi-project/org.sonatype.mcookbook/1.0-SNAPSHOT, at default start level, bundle will be started, bundle will be loaded from the cache]
+ -&gt; Scan bundles from [/Users/Tim/Library/Code/sonatype/maven-cookbook/mcookbook-examples/osgi/osgi-project/\
+                       runner/deploy-pom.xml]
+ -&gt; Scan bundles from [scan-pom:file:/Users/Tim/Library/Code/sonatype/maven-cookbook/mcookbook-examples/osgi/\
+                       osgi-project/runner/deploy-pom.xml]
+ -&gt; Provision bundle [mvn:org.apache.felix/org.apache.felix.webconsole/1.2.8, at default start level, bundle \
+    will be started, bundle will be loaded from the cache]
+ -&gt; Provision bundle [mvn:org.apache.felix/javax.servlet/1.0.0, at default start level, bundle will be \
+    started, bundle will be loaded from the cache]
+ -&gt; Provision bundle [mvn:org.apache.felix/org.apache.felix.scr/1.0.8, at default start level, bundle will be \
+    started, bundle will be loaded from the cache]
+ -&gt; Provision bundle [mvn:org.apache.felix/org.apache.felix.http.jetty/1.0.1, at default start level, bundle \
+    will be started, bundle will be loaded from the cache]
+ -&gt; Provision bundle [mvn:org.sonatype.mcookbook.osgi-project/org.sonatype.mcookbook/1.0-SNAPSHOT, at default \
+    start level, bundle will be started, bundle will be loaded from the cache]
  -&gt; Preparing framework [Equinox 3.5.0]
  -&gt; Downloading bundles...
  -&gt; Equinox 3.5.0 : 1122602 bytes @ [ 300kBps ]
  -&gt; Eclipse utilities : 22471 bytes @ [ 64kBps ]
  -&gt; Eclipse compendium services : 66065 bytes @ [ 113kBps ]
- -&gt; mvn:org.apache.felix/org.apache.felix.webconsole/1.2.8 : 102399 bytes @ [ 7876kBps -&gt; mvn:org.apache.felix/org.apache.felix.webconsole/1.2.8 : 204799 bytes @ [ 7876kBps -&gt; mvn:org.apache.felix/org.apache.felix.webconsole/1.2.8 : 307199 bytes @ [ 7876kBps -&gt; mvn:org.apache.felix/org.apache.felix.webconsole/1.2.8 : 409599 bytes @ [ 8031kBps -&gt; mvn:org.apache.felix/org.apache.felix.webconsole/1.2.8 : 507026 bytes @ [ 8311kBps ]
- -&gt; mvn:org.apache.felix/javax.servlet/1.0.0 : 30450 bytes @ [ 7612kBps ]
- -&gt; mvn:org.apache.felix/org.apache.felix.scr/1.0.8 : 112058 bytes @ [ 9338kBps ]
- -&gt; mvn:org.apache.felix/org.apache.felix.http.jetty/1.0.1 : 102399 bytes @ [ 9309kBps -&gt; mvn:org.apache.felix/org.apache.felix.http.jetty/1.0.1 : 204799 bytes @ [ 8904kBps -&gt; mvn:org.apache.felix/org.apache.felix.http.jetty/1.0.1 : 307199 bytes @ [ 8777kBps -&gt; mvn:org.apache.felix/org.apache.felix.http.jetty/1.0.1 : 409599 bytes @ [ 9102kBps -&gt; mvn:org.apache.felix/org.apache.felix.http.jetty/1.0.1 : 511999 bytes @ [ 9142kBps -&gt; mvn:org.apache.felix/org.apache.felix.http.jetty/1.0.1 : 614399 bytes @ [ 8653kBps -&gt; mvn:org.apache.felix/org.apache.felix.http.jetty/1.0.1 : 716799 bytes @ [ 8636kBps -&gt; mvn:org.apache.felix/org.apache.felix.http.jetty/1.0.1 : 769485 bytes @ [ 8744kBps ]
- -&gt; mvn:org.sonatype.mcookbook.osgi-project/org.sonatype.mcookbook/1.0-SNAPSHOT : conn -&gt; mvn:org.sonatype.mcookbook.osgi-project/org.sonatype.mcookbook/1.0-SNAPSHOT : 5388 bytes @ [ 5388kBps ]
  -&gt; Using execution environment [J2SE-1.5]
  -&gt; Runner has successfully finished his job!
 
@@ -1172,9 +1182,6 @@ org.mortbay.log:started org.mortbay.jetty.nio.SelectChannelConnector$1@9a44d6
 org.mortbay.log:Started SelectChannelConnector@0.0.0.0:8080
 org.mortbay.log:started SelectChannelConnector@0.0.0.0:8080
 org.mortbay.log:started Server@5e4dbe
-*INFO * Failed to instantiate plugin org.apache.felix.webconsole.internal.deppack.DepPackServlet. Reason: java.lang.NoClassDefFoundError: org/osgi/service/deploymentadmin/DeploymentException
-*INFO * Failed to instantiate plugin org.apache.felix.webconsole.internal.misc.ConfigurationRender. Reason: java.lang.NoClassDefFoundError: org/osgi/service/prefs/BackingStoreException
-*INFO * Failed to instantiate plugin org.apache.felix.webconsole.internal.misc.ShellServlet. Reason: java.lang.NoClassDefFoundError: org.apache.felix.shell.ShellService
 org.mortbay.log:started /system/console/*
 org.mortbay.log:started /system/console/res
 </screen>
@@ -1351,7 +1358,8 @@ Started Sonatype Nexus Repository Manager.
 ...
 [INFO] [deploy:deploy]
 [INFO] Retrieving previous build number from nx-snapshots
-Uploading: http://localhost:8081/nexus/content/repositories/snapshots/org/sonatype/mcookbook/osgi-project/1.0-SNAPSHOT/osgi-project-1.0-20090715.030835-2.pom
+Uploading: http://localhost:8081/nexus/content/repositories/snapshots/org/sonatype/mcookbook/osgi-project/\
+           1.0-SNAPSHOT/osgi-project-1.0-20090715.030835-2.pom
 2K uploaded  (osgi-project-1.0-20090715.030835-2.pom)
 [INFO] Retrieving previous metadata from nx-snapshots
 [INFO] Uploading repository metadata for: 'artifact org.sonatype.mcookbook:osgi-project'
@@ -1360,55 +1368,37 @@ Uploading: http://localhost:8081/nexus/content/repositories/snapshots/org/sonaty
 ...
 [INFO] [deploy:deploy]
 [INFO] Retrieving previous build number from nx-snapshots
-Uploading: http://localhost:8081/nexus/content/repositories/snapshots/org/sonatype/mcookbook/osgi-project/build/shared-plugin-settings/1.0-SNAPSHOT/shared-plugin-settings-1.0-20090715.030835-2.pom
+Uploading: http://localhost:8081/nexus/content/repositories/snapshots/org/sonatype/mcookbook/osgi-project/\
+           build/shared-plugin-settings/1.0-SNAPSHOT/shared-plugin-settings-1.0-20090715.030835-2.pom
 2K uploaded  (shared-plugin-settings-1.0-20090715.030835-2.pom)
 [INFO] Retrieving previous metadata from nx-snapshots
-[INFO] Uploading repository metadata for: 'artifact org.sonatype.mcookbook.osgi-project.build:shared-plugin-settings'
+[INFO] Uploading repository metadata for: 'artifact \
+       org.sonatype.mcookbook.osgi-project.build:shared-plugin-settings'
 [INFO] Retrieving previous metadata from nx-snapshots
-[INFO] Uploading repository metadata for: 'snapshot org.sonatype.mcookbook.osgi-project.build:shared-plugin-settings:1.0-SNAPSHOT'
+[INFO] Uploading repository metadata for: 'snapshot \
+       org.sonatype.mcookbook.osgi-project.build:shared-plugin-settings:1.0-SNAPSHOT'
 ...
 [INFO] [deploy:deploy]
 [INFO] Retrieving previous build number from nx-snapshots
-Uploading: http://localhost:8081/nexus/content/repositories/snapshots/org/sonatype/mcookbook/osgi-project/build/wrapper-bundle-settings/1.0-SNAPSHOT/wrapper-bundle-settings-1.0-20090715.030835-2.pom
+Uploading: http://localhost:8081/nexus/content/repositories/snapshots/org/sonatype/mcookbook/osgi-project/\
+           build/wrapper-bundle-settings/1.0-SNAPSHOT/wrapper-bundle-settings-1.0-20090715.030835-2.pom
 1K uploaded  (wrapper-bundle-settings-1.0-20090715.030835-2.pom)
 [INFO] Retrieving previous metadata from nx-snapshots
-[INFO] Uploading repository metadata for: 'artifact org.sonatype.mcookbook.osgi-project.build:wrapper-bundle-settings'
+[INFO] Uploading repository metadata for: 'artifact \
+       org.sonatype.mcookbook.osgi-project.build:wrapper-bundle-settings'
 [INFO] Retrieving previous metadata from nx-snapshots
-[INFO] Uploading repository metadata for: 'snapshot org.sonatype.mcookbook.osgi-project.build:wrapper-bundle-settings:1.0-SNAPSHOT'
+[INFO] Uploading repository metadata for: 'snapshot \
+       org.sonatype.mcookbook.osgi-project.build:wrapper-bundle-settings:1.0-SNAPSHOT'
 ...
 [INFO] [deploy:deploy]
 [INFO] Retrieving previous build number from nx-snapshots
-Uploading: http://localhost:8081/nexus/content/repositories/snapshots/org/sonatype/mcookbook/osgi-project/build/compiled-bundle-settings/1.0-SNAPSHOT/compiled-bundle-settings-1.0-20090715.030835-2.pom
-2K uploaded  (compiled-bundle-settings-1.0-20090715.030835-2.pom)
-[INFO] Retrieving previous metadata from nx-snapshots
-[INFO] Uploading repository metadata for: 'snapshot org.sonatype.mcookbook.osgi-project.build:compiled-bundle-settings:1.0-SNAPSHOT'
-[INFO] Retrieving previous metadata from nx-snapshots
-[INFO] Uploading repository metadata for: 'artifact org.sonatype.mcookbook.osgi-project.build:compiled-bundle-settings'
-...
-[INFO] [deploy:deploy]
-[INFO] Retrieving previous build number from nx-snapshots
-Uploading: http://localhost:8081/nexus/content/repositories/snapshots/org/sonatype/mcookbook/osgi-project/build/provision/1.0-SNAPSHOT/provision-1.0-20090715.030835-2.pom
-1K uploaded  (provision-1.0-20090715.030835-2.pom)
-[INFO] Retrieving previous metadata from nx-snapshots
-[INFO] Uploading repository metadata for: 'snapshot org.sonatype.mcookbook.osgi-project.build:provision:1.0-SNAPSHOT'
-[INFO] Retrieving previous metadata from nx-snapshots
-[INFO] Uploading repository metadata for: 'artifact org.sonatype.mcookbook.osgi-project.build:provision'
-...
-[INFO] [deploy:deploy]
-[INFO] Retrieving previous build number from nx-snapshots
-Uploading: http://localhost:8081/nexus/content/repositories/snapshots/org/sonatype/mcookbook/osgi-project/org.sonatype.mcookbook/1.0-SNAPSHOT/org.sonatype.mcookbook-1.0-20090715.030835-2.jar
-5K uploaded  (org.sonatype.mcookbook-1.0-20090715.030835-2.jar)
-[INFO] Retrieving previous metadata from nx-snapshots
-[INFO] Uploading repository metadata for: 'snapshot org.sonatype.mcookbook.osgi-project:org.sonatype.mcookbook:1.0-SNAPSHOT'
-[INFO] Retrieving previous metadata from nx-snapshots
-[INFO] Uploading repository metadata for: 'artifact org.sonatype.mcookbook.osgi-project:org.sonatype.mcookbook'
-[INFO] Uploading project information for org.sonatype.mcookbook 1.0-20090715.030835-2
 ...
 [INFO] [bundle:deploy]
 [INFO] LOCK http://localhost:8081/nexus/content/repositories/snapshots/repository.xml
 [INFO] Downloading repository.xml
 [INFO] Parsing file:/var/folders/qR/qRpEDfQcFPmRZpsXgPHOok+++TM/-Tmp-/12476273209637081490707781551794.xml
-[INFO] Deploying org/sonatype/mcookbook/osgi-project/org.sonatype.mcookbook/1.0-SNAPSHOT/org.sonatype.mcookbook-1.0-20090715.030835-2.jar
+[INFO] Deploying org/sonatype/mcookbook/osgi-project/org.sonatype.mcookbook/1.0-SNAPSHOT/\
+       org.sonatype.mcookbook-1.0-20090715.030835-2.jar
 [INFO] Writing OBR metadata
 [INFO] Uploading repository.xml
 [INFO] UNLOCK http://localhost:8081/nexus/content/repositories/snapshots/repository.xml
@@ -1711,7 +1701,10 @@ REGISTER org.sonatype.mcookbook.ExampleService
 
         <programlisting db:wrap="force"
                         xmlns:db="http://discursive.com/plugins/docbook">&lt;repository name='Snapshots OBR' lastmodified='1247630990695'&gt;
-&lt;resource id='org.sonatype.mcookbook/1.0.0.SNAPSHOT' presentationname='org.sonatype.mcookbook' symbolicname='org.sonatype.mcookbook' uri='../org/sonatype/mcookbook/osgi-project/org.sonatype.mcookbook/1.0-SNAPSHOT/org.sonatype.mcookbook-1.0-20090715.030813-1.jar' version='1.0.0.SNAPSHOT'&gt;
+&lt;resource id='org.sonatype.mcookbook/1.0.0.SNAPSHOT' presentationname='org.sonatype.mcookbook' 
+          symbolicname='org.sonatype.mcookbook' 
+          uri='../org/sonatype/mcookbook/osgi-project/org.sonatype.mcookbook/1.0-SNAPSHOT/\
+               org.sonatype.mcookbook-1.0-20090715.030813-1.jar' version='1.0.0.SNAPSHOT'&gt;
   &lt;description&gt;
     Generated using Pax-Construct
   &lt;/description&gt;
@@ -1729,15 +1722,20 @@ REGISTER org.sonatype.mcookbook.ExampleService
     &lt;p n='package' v='org.sonatype.mcookbook'/&gt;
     &lt;p n='version' t='version' v='1.0.0.SNAPSHOT'/&gt;
   &lt;/capability&gt;
-  &lt;require extend='false' filter='(&amp;amp;(package=org.osgi.framework)(version&amp;gt;=0.0.0))' multiple='false' name='package' optional='false'&gt;
+  &lt;require extend='false' filter='(&amp;amp;(package=org.osgi.framework)(version&amp;gt;=0.0.0))' multiple='false' 
+           name='package' optional='false'&gt;
 
     Import package org.osgi.framework
   &lt;/require&gt;
-  &lt;require extend='false' filter='(&amp;amp;(package=org.sonatype.mcookbook)(version&amp;gt;=1.0.0.SNAPSHOT))' multiple='false' name='package' optional='false'&gt;
+  &lt;require extend='false' filter='(&amp;amp;(package=org.sonatype.mcookbook)(version&amp;gt;=1.0.0.SNAPSHOT))' 
+           multiple='false' name='package' optional='false'&gt;
     Import package org.sonatype.mcookbook ;version=1.0.0.SNAPSHOT
   &lt;/require&gt;
 &lt;/resource&gt;
-&lt;resource id='org.sonatype.mcookbook/1.0.0.SNAPSHOT' presentationname='org.sonatype.mcookbook' symbolicname='org.sonatype.mcookbook' uri='../org/sonatype/mcookbook/osgi-project/org.sonatype.mcookbook/1.0-SNAPSHOT/org.sonatype.mcookbook-1.0-20090715.030835-2.jar' version='1.0.0.SNAPSHOT'&gt;
+&lt;resource id='org.sonatype.mcookbook/1.0.0.SNAPSHOT' presentationname='org.sonatype.mcookbook' 
+          symbolicname='org.sonatype.mcookbook' 
+          uri='../org/sonatype/mcookbook/osgi-project/org.sonatype.mcookbook/1.0-SNAPSHOT/\
+               org.sonatype.mcookbook-1.0-20090715.030835-2.jar' version='1.0.0.SNAPSHOT'&gt;
   &lt;description&gt;
     Generated using Pax-Construct
   &lt;/description&gt;
@@ -1756,10 +1754,12 @@ REGISTER org.sonatype.mcookbook.ExampleService
     &lt;p n='package' v='org.sonatype.mcookbook'/&gt;
     &lt;p n='version' t='version' v='1.0.0.SNAPSHOT'/&gt;
   &lt;/capability&gt;
-  &lt;require extend='false' filter='(&amp;amp;(package=org.osgi.framework)(version&amp;gt;=0.0.0))' multiple='false' name='package' optional='false'&gt;
+  &lt;require extend='false' filter='(&amp;amp;(package=org.osgi.framework)(version&amp;gt;=0.0.0))' multiple='false' 
+           name='package' optional='false'&gt;
     Import package org.osgi.framework
   &lt;/require&gt;
-  &lt;require extend='false' filter='(&amp;amp;(package=org.sonatype.mcookbook)(version&amp;gt;=1.0.0.SNAPSHOT))' multiple='false' name='package' optional='false'&gt;
+  &lt;require extend='false' filter='(&amp;amp;(package=org.sonatype.mcookbook)(version&amp;gt;=1.0.0.SNAPSHOT))' 
+           multiple='false' name='package' optional='false'&gt;
     Import package org.sonatype.mcookbook ;version=1.0.0.SNAPSHOT
   &lt;/require&gt;
 &lt;/resource&gt;

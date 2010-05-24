@@ -376,10 +376,12 @@ public class FibonacciServlet extends HttpServlet {
 [INFO]    task-segment: [clean, dependency:copy, jetty:run-war]
 [INFO] ------------------------------------------------------------------------
 [INFO] [clean:clean {execution: default-clean}]
-[INFO] Deleting directory /Users/Tim/Library/Code/sonatype/maven-cookbook/mcookbook-examples/web/start-jackrabbit/target
+[INFO] Deleting directory /Users/Tim/Library/Code/sonatype/maven-cookbook/mcookbook-examples/web/\
+       start-jackrabbit/target
 [INFO] [dependency:copy {execution: default-cli}]
 [INFO] Configured Artifact: org.apache.jackrabbit:jackrabbit-webapp:1.6.0:war
-[INFO] Copying jackrabbit-webapp-1.6.0.war to /Users/Tim/Library/Code/sonatype/maven-cookbook/mcookbook-examples/web/start-jackrabbit/target/war/jackrabbit-webapp.war
+[INFO] Copying jackrabbit-webapp-1.6.0.war to /Users/Tim/Library/Code/sonatype/maven-cookbook/\
+       mcookbook-examples/web/start-jackrabbit/target/war/jackrabbit-webapp.war
 ...
 [INFO] [jetty:run-war {execution: default-cli}]
 [INFO] Configuring Jetty for project: start-jackrabbit
@@ -390,17 +392,29 @@ public class FibonacciServlet extends HttpServlet {
 [INFO] Web overrides =  none
 [INFO] Starting jetty 6.1.22 ...
 2009-11-29 18:57:26.811:INFO::jetty-6.1.22
-2009-11-29 18:57:26.845:INFO::Extract /Users/Tim/Library/Code/sonatype/maven-cookbook/mcookbook-examples/web/start-jackrabbit/target/war/jackrabbit-webapp.war to /Users/Tim/Library/Code/sonatype/maven-cookbook/mcookbook-examples/web/start-jackrabbit/target/work/webapp
-2009-11-29 18:57:27.796:INFO::No Transaction manager found - if your webapp requires one, please configure one.
+2009-11-29 18:57:26.845:INFO::Extract /Users/Tim/Library/Code/sonatype/maven-cookbook/mcookbook-examples/\
+           web/start-jackrabbit/target/war/jackrabbit-webapp.war to \
+           /Users/Tim/Library/Code/sonatype/maven-cookbook/mcookbook-examples/web/start-jackrabbit/target/\
+           work/webapp
+2009-11-29 18:57:27.796:INFO::No Transaction manager found - if your webapp requires one, please configure one
 29.11.2009 18:57:28 *INFO * root: Logging initialized. (LoggingServlet.java, line 87)
-29.11.2009 18:57:28 *INFO * RepositoryStartupServlet: RepositoryStartupServlet initializing... (RepositoryStartupServlet.java, line 235)
-29.11.2009 18:57:28 *ERROR* RepositoryStartupServlet: Repository startup configuration is not valid but a bootstrap config is specified. (RepositoryStartupServlet.java, line 366)
-29.11.2009 18:57:28 *ERROR* RepositoryStartupServlet: Either create the jackrabbit/bootstrap.properties file or (RepositoryStartupServlet.java, line 367)
-29.11.2009 18:57:28 *ERROR* RepositoryStartupServlet: use the '/config/index.jsp' for easy configuration. (RepositoryStartupServlet.java, line 368)
-29.11.2009 18:57:28 *ERROR* RepositoryStartupServlet: RepositoryStartupServlet initializing failed: javax.servlet.ServletException: Repository startup configuration is not valid. (RepositoryStartupServlet.java, line 245)
-29.11.2009 18:57:28 *INFO * RepositoryAccessServlet: RepositoryAccessServlet initialized. (RepositoryAccessServlet.java, line 98)
-29.11.2009 18:57:28 *INFO * SimpleWebdavServlet: resource-path-prefix = '/repository' (SimpleWebdavServlet.java, line 145)
-29.11.2009 18:57:28 *INFO * SimpleWebdavServlet: WWW-Authenticate header = 'Basic realm="Jackrabbit Webdav Server"' (SimpleWebdavServlet.java, line 151)
+29.11.2009 18:57:28 *INFO * RepositoryStartupServlet: RepositoryStartupServlet initializing... 
+                            (RepositoryStartupServlet.java, line 235)
+29.11.2009 18:57:28 *ERROR* RepositoryStartupServlet: Repository startup configuration is not valid but a 
+           bootstrap config is specified. (RepositoryStartupServlet.java, line 366)
+29.11.2009 18:57:28 *ERROR* RepositoryStartupServlet: Either create the jackrabbit/bootstrap.properties file 
+           or (RepositoryStartupServlet.java, line 367)
+29.11.2009 18:57:28 *ERROR* RepositoryStartupServlet: use the '/config/index.jsp' for easy configuration. 
+           (RepositoryStartupServlet.java, line 368)
+29.11.2009 18:57:28 *ERROR* RepositoryStartupServlet: RepositoryStartupServlet initializing failed: 
+           javax.servlet.ServletException: Repository startup configuration is not valid. 
+           (RepositoryStartupServlet.java, line 245)
+29.11.2009 18:57:28 *INFO * RepositoryAccessServlet: RepositoryAccessServlet initialized. 
+           (RepositoryAccessServlet.java, line 98)
+29.11.2009 18:57:28 *INFO * SimpleWebdavServlet: resource-path-prefix = '/repository' 
+           (SimpleWebdavServlet.java, line 145)
+29.11.2009 18:57:28 *INFO * SimpleWebdavServlet: WWW-Authenticate header = 'Basic realm="Jackrabbit Webdav 
+           Server"' (SimpleWebdavServlet.java, line 151)
 2009-11-29 18:57:28.982:INFO::Started SelectChannelConnector@0.0.0.0:8080
 [INFO] Started Jetty Server
 </screen>

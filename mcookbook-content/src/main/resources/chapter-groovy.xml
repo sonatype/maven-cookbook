@@ -117,12 +117,14 @@
 [INFO]    task-segment: [package]
 [INFO] ------------------------------------------------------------------------
 [INFO] [resources:resources]
-[WARNING] Using platform encoding (MacRoman actually) to copy filtered resources, i.e. build is platform dependent!
+[WARNING] Using platform encoding (MacRoman actually) to copy filtered resources, i.e. build is platform 
+          dependent!
 [INFO] skip non existing resourceDirectory ${root.example.dir}/groovy/groovy-script/src/main/resources
 [INFO] [compiler:compile]
 [INFO] Nothing to compile - all classes are up to date
 [INFO] [resources:testResources]
-[WARNING] Using platform encoding (MacRoman actually) to copy filtered resources, i.e. build is platform dependent!
+[WARNING] Using platform encoding (MacRoman actually) to copy filtered resources, i.e. build is platform 
+          dependent!
 [INFO] skip non existing resourceDirectory ${root.example.dir}/groovy/groovy-script/src/test/resources
 [INFO] [compiler:testCompile]
 [INFO] Not compiling test sources
