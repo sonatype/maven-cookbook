@@ -130,6 +130,13 @@
 	    <version>1.2</version>
 	  </dependency>
 	</dependencies>
+    <extensions>
+      <extension>
+        <groupId>org.apache.maven.wagon</groupId>
+         <artifactId>wagon-ssh</artifactId>
+         <version>1.0-beta-6</version>
+      </extension>
+    </extensions>
       </plugin>
       <plugin>
 	<groupId>org.apache.maven.plugins</groupId>
