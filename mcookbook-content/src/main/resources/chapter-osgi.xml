@@ -224,7 +224,7 @@ HOT/osgi-project-1.0-SNAPSHOT.pom
     <section>
       <title>Task</title>
 
-      <para>You created an OSGi project, not you want to see it running in an
+      <para>You created an OSGi project, now you want to see it running in an
       OSGi environment. You need to start an OSGi container and load imported
       bundles into the runtime environment.</para>
     </section>
