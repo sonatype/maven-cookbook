@@ -3,7 +3,7 @@
   <parent>
 	<groupId>org.sonatype.mcookbook</groupId>
 	<artifactId>mcookbook-parent</artifactId>
-	<version>0.2</version>
+	<version>0.3-SNAPSHOT</version>
   </parent>
   <artifactId>mcookbook-content</artifactId>
   <packaging>jar</packaging>
@@ -76,7 +76,7 @@
         <site>
           <id>sonatype-site</id>
           <name>Sonatype Book Examples</name>
-          <url>scp://deployer@172.16.0.1/var/www/domains/sonatype.com/books/htdocs/mcookbook/</url>
+          <url>scp://site@172.16.0.1/home/site/books/mcookbook/</url>
         </site>
         </distributionManagement>
         <properties>
@@ -89,7 +89,7 @@
         <site>
           <id>sonatype-site</id>
           <name>Sonatype Book Examples</name>
-          <url>scp://deployer@svn.sonatype.com/var/www/domains/sonatype.com/books/htdocs/mcookbook/</url>
+          <url>scp://site@svn.sonatype.com/home/site/books/mcookbook/</url>
         </site>
         </distributionManagement>
         <properties>
@@ -102,7 +102,7 @@
         <site>
           <id>sonatype-site</id>
           <name>Sonatype Book Examples</name>
-          <url>scp://deployer@172.16.0.1/var/www/domains/sonatype.com/books/htdocs/mcookbook-stage/</url>
+          <url>scp://site@172.16.0.1/home/site/books/mcookbook-stage/</url>
         </site>
         </distributionManagement>
       </profile>
@@ -112,7 +112,7 @@
         <site>
           <id>sonatype-site</id>
           <name>Sonatype Book Examples</name>
-          <url>scp://deployer@svn.sonatype.com/var/www/domains/sonatype.com/books/htdocs/mcookbook-stage/</url>
+          <url>scp://site@svn.sonatype.com/home/site/books/mcookbook-stage/</url>
         </site>
         </distributionManagement>
       </profile>

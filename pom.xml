@@ -2,7 +2,7 @@
   <modelVersion>4.0.0</modelVersion>
   <groupId>org.sonatype.mcookbook</groupId>
   <artifactId>mcookbook-parent</artifactId>
-  <version>0.2</version>
+  <version>0.3-SNAPSHOT</version>
   <packaging>pom</packaging>
   <name>Maven Cookbook</name>
   <description>A Cookbook about Maven</description>
@@ -54,7 +54,7 @@
         <site>
           <id>sonatype-site</id>
           <name>Sonatype Book Examples</name>
-          <url>scp://deployer@172.16.0.1/var/www/domains/sonatype.com/books/htdocs/mcookbook/parent</url>
+          <url>scp://site@172.16.0.1/home/site/books/mcookbook/parent</url>
         </site>
       </distributionManagement>
       <properties>
@@ -67,7 +67,7 @@
         <site>
           <id>sonatype-site</id>
           <name>Sonatype Book Examples</name>
-          <url>scp://deployer@svn.sonatype.com/var/www/domains/sonatype.com/books/htdocs/mcookbook/parent</url>
+          <url>scp://site@svn.sonatype.com/home/site/books/mcookbook/parent</url>
         </site>
       </distributionManagement>
       <properties>
@@ -80,7 +80,7 @@
         <site>
           <id>sonatype-site</id>
           <name>Sonatype Book Examples</name>
-          <url>scp://deployer@172.16.0.1/var/www/domains/sonatype.com/books/htdocs/mcookbook-stage/parent</url>
+          <url>scp://site@172.16.0.1/home/site/books/mcookbook-stage/parent</url>
         </site>
       </distributionManagement>
     </profile>
@@ -90,7 +90,7 @@
         <site>
           <id>sonatype-site</id>
           <name>Sonatype Book Examples</name>
-          <url>scp://deployer@svn.sonatype.com/var/www/domains/sonatype.com/books/htdocs/mcookbook-stage/parent</url>
+          <url>scp://site@svn.sonatype.com/home/site/books/mcookbook-stage/parent</url>
         </site>
       </distributionManagement>
     </profile>
@@ -152,6 +152,13 @@
 	</configuration>
       </plugin>
     </plugins>
+    <extensions>
+      <extension>
+        <groupId>org.apache.maven.wagon</groupId>
+         <artifactId>wagon-ssh</artifactId>
+         <version>1.0-beta-6</version>
+      </extension>
+    </extensions>
   </build>
   <scm>
     <connection>scm:git:git://github.com/sonatype/maven-cookbook.git</connection>
