@@ -7,6 +7,44 @@
   <section id="release-sect-intro">
     <title>Introduction</title>
 
-    <para>Ant and Maven? Yes, it is true.</para>
+    <para>In Maven existing four different
+    possibilities to release an artifact. 
+    </para>
   </section>
+
+  <section id="release-sect-install">
+    <title>Install Artifact</title>
+    <para>Installing an artifact means to deploy an
+    artifact into the users Maven repository (<filename>~/.m2/repository</filename>).
+    This makes it possible to use this artifact as a
+    dependency for an other project under this user.
+    </para>
+  </section>
+
+
+  <section id="release-sect-deploy">
+    <title>Deploying Artifact</title>
+    <para>Deploying artifacts is needed if someone else would like
+    to use the deployed artifact.Usually you will deploy only
+    SNAPSHOT releases. 
+    </para>
+  </section>
+  
+  <section id="release-sect-prepare">
+    <title>Release Preparation</title>
+    <para>The release preparation contains checking if
+    no modifications have left over in your project. The 
+    tag for the release will be made..describe more in detail
+    with example.
+    </para>
+  </section>
+
+  <section id="release-sect-preform">
+    <title>Perform the Release</title>
+    <para>The perform contains installation of artifacts
+    whereas the deploy now deploys released artifact which
+    means to have no -SNAPSHOT anymore (site, javadoc, sources.jar, signing of artifacts)
+    </para>
+  </section>
+
 </chapter>
