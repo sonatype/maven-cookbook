@@ -14,7 +14,6 @@
   <packaging>jar</packaging>
   <name>Maven Cookbook Content</name>
   <build>
-    <sourceDirectory>src/main/resources</sourceDirectory>
     <resources>
       <resource>
         <directory>src/main/resources</directory>
