@@ -17,14 +17,14 @@
   <build>
     <resources>
       <resource>
-        <directory>src/main/resources</directory>
+        <directory>${src.main.resources}</directory>
         <filtering>true</filtering>
         <includes>
           <include>fopdf.xsl</include>
         </includes>
       </resource>
       <resource>
-        <directory>src/main/resources</directory>
+        <directory>${src.main.resources}</directory>
         <filtering>false</filtering>
         <excludes>
           <exclude>fopdf.xsl</exclude>
@@ -95,12 +95,12 @@
           </execution>
         </executions>
         <configuration>
-          <sourceDirectory>${basedir}/target/docbook</sourceDirectory>
-          <targetDirectory>${basedir}/target</targetDirectory>
+          <sourceDirectory>${project.build.directory}/docbook</sourceDirectory>
+          <targetDirectory>${project.build.directory}</targetDirectory>
           <includes>book-mcook.xml</includes>
           <xincludeSupported>true</xincludeSupported>
-          <imgSrcPath>${basedir}/target/docbook/</imgSrcPath>
-          <foCustomization>${basedir}/target/classes/fopdf.xsl</foCustomization>
+          <imgSrcPath>${project.build.directory}/docbook/</imgSrcPath>
+          <foCustomization>${project.build.outputDirectory}/fopdf.xsl</foCustomization>
           <bodyFontFamily>TimesNewRoman</bodyFontFamily>
           <monospaceFontFamily>Courier</monospaceFontFamily>
           <titleFontFamily>ArialBold</titleFontFamily>
@@ -110,7 +110,7 @@
               <style>normal</style>
               <weight>normal</weight>
               <embedFile>${basedir}/src/fonts/Arial.ttf</embedFile>
-              <metricsFile>${basedir}/target/fonts/Arial-metrics.xml</metricsFile>
+              <metricsFile>${project.build.directory}/fonts/Arial-metrics.xml</metricsFile>
 
             </font>
             <font>
@@ -118,7 +118,7 @@
               <style>normal</style>
               <weight>normal</weight>
               <embedFile>${basedir}/src/fonts/ArialBold.ttf</embedFile>
-              <metricsFile>${basedir}/target/fonts/ArialBold-metrics.xml</metricsFile>
+              <metricsFile>${project.build.directory}/fonts/ArialBold-metrics.xml</metricsFile>
 
             </font>
             <font>
@@ -126,7 +126,7 @@
               <style>normal</style>
               <weight>normal</weight>
               <embedFile>${basedir}/src/fonts/Courier.ttf</embedFile>
-              <metricsFile>${basedir}/target/fonts/Courier-metrics.xml</metricsFile>
+              <metricsFile>${project.build.directory}/fonts/Courier-metrics.xml</metricsFile>
 
             </font>
             <font>
@@ -134,7 +134,7 @@
               <style>normal</style>
               <weight>bold</weight>
               <embedFile>${basedir}/src/fonts/Courier-Bold.ttf</embedFile>
-              <metricsFile>${basedir}/target/fonts/Courier-Bold-metrics.xml</metricsFile>
+              <metricsFile>${project.build.directory}/fonts/Courier-Bold-metrics.xml</metricsFile>
 
             </font>
             <font>
@@ -142,7 +142,7 @@
               <style>italic</style>
               <weight>normal</weight>
               <embedFile>${basedir}/src/fonts/Courier-Oblique.ttf</embedFile>
-              <metricsFile>${basedir}/target/fonts/Courier-Oblique-metrics.xml</metricsFile>
+              <metricsFile>${project.build.directory}/fonts/Courier-Oblique-metrics.xml</metricsFile>
 
             </font>
             <font>
@@ -150,7 +150,7 @@
               <style>normal</style>
               <weight>normal</weight>
               <embedFile>${basedir}/src/fonts/TimesNewRoman.ttf</embedFile>
-              <metricsFile>${basedir}/target/fonts/TimesNewRoman-metrics.xml</metricsFile>
+              <metricsFile>${project.build.directory}/fonts/TimesNewRoman-metrics.xml</metricsFile>
 
             </font>
           </fonts>
@@ -173,7 +173,7 @@
                   <version>${project.version}</version>
                 </artifactItem>
               </artifactItems>
-              <outputDirectory>${basedir}/target/docbook</outputDirectory>
+              <outputDirectory>${project.build.directory}/docbook</outputDirectory>
             </configuration>
           </execution>
         </executions>
@@ -190,7 +190,7 @@
               <goal>install-file</goal>
             </goals>
             <configuration>
-              <file>${basedir}/target/mcookbook-complete.pdf</file>
+              <file>${project.build.directory}/mcookbook-complete.pdf</file>
               <groupId>${project.groupId}</groupId>
               <artifactId>${project.artifactId}</artifactId>
               <version>${project.version}</version>
@@ -211,15 +211,15 @@
               <goal>concatenate</goal>
             </goals>
             <configuration>
-              <outputDir>${basedir}/target</outputDir>
+              <outputDir>${project.build.directory}</outputDir>
               <outputFilename>mcookbook-complete.pdf</outputFilename>
               <pdfs>
-                <pdf>${basedir}/src/main/resources/mcookbook-book-cover.pdf</pdf>
-                <pdf>${basedir}/src/main/resources/title-page.pdf</pdf>
-                <pdf>${basedir}/src/main/resources/copyright-page.pdf</pdf>
-                <pdf>${basedir}/src/main/resources/promo-page.pdf</pdf>
-                <pdf>${basedir}/target/book-mcook.pdf</pdf>
-                <pdf>${basedir}/src/main/resources/promo-page.pdf</pdf>
+                <pdf>${src.main.resources}/mcookbook-book-cover.pdf</pdf>
+                <pdf>${src.main.resources}/title-page.pdf</pdf>
+                <pdf>${src.main.resources}/copyright-page.pdf</pdf>
+                <pdf>${src.main.resources}/promo-page.pdf</pdf>
+                <pdf>${project.build.directory}/book-mcook.pdf</pdf>
+                <pdf>${src.main.resources}/promo-page.pdf</pdf>
               </pdfs>
             </configuration>
           </execution>
@@ -256,7 +256,7 @@
                 <configuration>
                   <apiKey>${scribd.api.key}</apiKey>
                   <docId>${scribd.doc.id}</docId>
-                  <pdf>${basedir}/target/mcookbook-complete.pdf</pdf>
+                  <pdf>${project.build.directory}/mcookbook-complete.pdf</pdf>
                   <access>public</access>
                   <downloadAndDrm>view-only</downloadAndDrm>
                 </configuration>
@@ -287,7 +287,7 @@
                 <configuration>
                   <apiKey>${scribd.api.key}</apiKey>
                   <docId>${scribd.doc.id}</docId>
-                  <pdf>${basedir}/target/mcookbook-complete.pdf</pdf>
+                  <pdf>${project.build.directory}/mcookbook-complete.pdf</pdf>
                   <access>private</access>
                   <downloadAndDrm>download-pdf</downloadAndDrm>
                 </configuration>

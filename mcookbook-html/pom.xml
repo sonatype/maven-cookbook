@@ -16,7 +16,7 @@
   <build>
     <resources>
       <resource>
-        <directory>src/main/resources</directory>
+        <directory>${src.main.resources}</directory>
         <filtering>true</filtering>
         <includes>
           <include>html_chunk.xsl</include>
@@ -60,19 +60,19 @@
           </execution>
         </executions>
         <configuration>
-          <htmlCustomization>${basedir}/target/classes/html_chunk.xsl</htmlCustomization>
-          <sourceDirectory>${basedir}/target/docbook</sourceDirectory>
-          <targetDirectory>${basedir}/target/html</targetDirectory>
+          <htmlCustomization>${project.build.outputDirectory}/html_chunk.xsl</htmlCustomization>
+          <sourceDirectory>${project.build.directory}/docbook</sourceDirectory>
+          <targetDirectory>${project.build.directory}/html</targetDirectory>
           <includes>book-mcook.xml</includes>
           <xincludeSupported>true</xincludeSupported>
           <chunkedOutput>true</chunkedOutput>
           <chunkSectionDepth>1</chunkSectionDepth>
           <postProcess>
             <copy todir="${project.build.directory}/html/images">
-              <fileset dir="${basedir}/src/main/resources/images" />
+              <fileset dir="${src.main.resources}/images" />
             </copy>
             <copy todir="${project.build.directory}/html/figs/web">
-              <fileset dir="target/docbook/figs/web" />
+              <fileset dir="${project.build.directory}/docbook/figs/web" />
             </copy>
           </postProcess>
         </configuration>
@@ -94,7 +94,7 @@
                   <version>${project.version}</version>
                 </artifactItem>
               </artifactItems>
-              <outputDirectory>${basedir}/target/docbook</outputDirectory>
+              <outputDirectory>${project.build.directory}/docbook</outputDirectory>
             </configuration>
           </execution>
         </executions>
@@ -104,7 +104,7 @@
         <artifactId>maven-jar-plugin</artifactId>
         <version>2.3.1</version>
         <configuration>
-          <classesDirectory>${basedir}/target/html</classesDirectory>
+          <classesDirectory>${project.build.directory}/html</classesDirectory>
         </configuration>
       </plugin>
     </plugins>

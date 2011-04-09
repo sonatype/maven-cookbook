@@ -33,6 +33,7 @@
     <maven.book.baseurl>http://books.sonatype.com/maven-book-stage</maven.book.baseurl>
     <root.example.dir>~/examples</root.example.dir>
     <local.repo.dir>~/.m2/repository</local.repo.dir>
+    <src.main.resources>${basedir}/src/main/resources</src.main.resources>
   </properties>
   <developers>
     <developer>

@@ -32,7 +32,7 @@
                   <version>${project.version}</version>
                 </artifactItem>
               </artifactItems>
-              <outputDirectory>${basedir}/target/site/reference</outputDirectory>
+              <outputDirectory>${project.reporting.outputDirectory}/reference</outputDirectory>
             </configuration>
           </execution>
           <execution>
@@ -51,7 +51,7 @@
                   <type>zip</type>
                 </artifactItem>
               </artifactItems>
-              <outputDirectory>${basedir}/target/site/</outputDirectory>
+              <outputDirectory>${project.reporting.outputDirectory}</outputDirectory>
             </configuration>
           </execution>
           <execution>
@@ -69,7 +69,7 @@
                   <type>pdf</type>
                 </artifactItem>
               </artifactItems>
-              <outputDirectory>${basedir}/target/site/pdf</outputDirectory>
+              <outputDirectory>${project.reporting.outputDirectory}/pdf</outputDirectory>
               <stripVersion>true</stripVersion>
             </configuration>
           </execution>
@@ -87,7 +87,7 @@
               <goal>mesh-velocity</goal>
             </goals>
             <configuration>
-              <velocityTemplate>src/main/resources/vm/book-template.html</velocityTemplate>
+              <velocityTemplate>${src.main.resources}/vm/book-template.html</velocityTemplate>
             </configuration>
           </execution>
         </executions>
