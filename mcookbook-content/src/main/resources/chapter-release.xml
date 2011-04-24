@@ -8,7 +8,8 @@
     <title>Introduction</title>
 
     <para>In Maven existing four different
-    possibilities to release an artifact. 
+    possibilities to release an artifact. The release of an artifact
+    has different meaning in different areas where you release an artifact.
     </para>
   </section>
 
@@ -16,35 +17,59 @@
     <title>Install Artifact</title>
     <para>Installing an artifact means to deploy an
     artifact into the users Maven repository (<filename>~/.m2/repository</filename>).
-    This makes it possible to use this artifact as a
-    dependency for an other project under this user.
+    This makes it possible to use an artifact as a dependency for an other
+    project by this user on the same machine.
     </para>
   </section>
 
 
   <section id="release-sect-deploy">
     <title>Deploying Artifact</title>
-    <para>Deploying artifacts is needed if someone else would like
-    to use the deployed artifact.Usually you will deploy only
-    SNAPSHOT releases. 
-    </para>
-  </section>
-  
-  <section id="release-sect-prepare">
-    <title>Release Preparation</title>
-    <para>The release preparation contains checking if
-    no modifications have left over in your project. The 
-    tag for the release will be made..describe more in detail
-    with example.
+    <para>Deploying is meant to be releasing an artifact (SNAPSHOT) into
+    a repository outside users machine which means to make it usable
+    by others of the team into their projects.
     </para>
   </section>
 
-  <section id="release-sect-preform">
-    <title>Perform the Release</title>
-    <para>The perform contains installation of artifacts
-    whereas the deploy now deploys released artifact which
-    means to have no -SNAPSHOT anymore (site, javadoc, sources.jar, signing of artifacts)
-    </para>
+  <section id="release-sect-release">
+    <title>Releasing an Artifact</title>
+
+    <para>Releasing an artifact in Maven comprises of two
+      separated steps which are the <command>release:prepare</command> and the
+      <command>release:perform</command>. The two steps can be manually
+      or automatically by any Continuous Integration system.</para>
+
+    <section id="release-sect-release-prepare">
+      <title>Release Prepare</title>
+
+      <para>If you think your project reached a particular step of your
+      development the time comes to do a release of your project which simply
+      can be achieved by using Mavens release process. The first step is to do
+      <command>mvn release:prepare</command> in your current state of your
+      project. The <command>release:prepare</command> will check if you missed
+      code changes to check in and take a look at the projects dependencies that
+      it has no SNAPSHOT dependencies and furthermore change the versions in
+      the POMs from X-SNAPSHOT to a new version (you will be prompted for that).
+      The next thing is that the SCM information in the projects POM will be
+      changed to point to the final destination of the tag and all tests will be
+      run against the modified POMs to confirm everything is working fine.
+      Now the modified POMs will be committed and the code in the SCM
+      will be tagged by a version name (prompted for) and change the POMs
+      to use a new version y-SNAPSHOT (these values have been prompted for before)
+      and finally commit the modified POMs into the SCM system.
+      </para>
+      <para>XXXXX
+      </para>
+    </section>
+
+    <section id="release-sect-release-perform">
+      <title>Release Perform</title>
+      <para>The <command>release:perform</command> will checkout the code from
+        the previously create tag and run the predefined Maven goals (by default:
+        <command>deploy site-deploy</command>) on it.
+      </para>
+
+    </section>
   </section>
 
 </chapter>
