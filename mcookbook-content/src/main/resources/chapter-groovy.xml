@@ -101,9 +101,9 @@
       once you define more than one execution for a given plugin.</para>
 
       <para>The Groovy script included, creates a file named "deps.txt" in
-      \${basedir}/target/classes, it then iterates through the project's
+      <filename>\${basedir}/target/classes</filename>, it then iterates through the project's
       declared dependencies, and then it copies all of the source in
-      \${basedir}/src/main/java into the \${basedir}/target/classes directory.
+      <filename>\${basedir}/src/main/java</filename> into the <filename>\${basedir}/target/classes</filename> directory.
       This script demonstrates the use of Groovy's closure syntax and ease
       with which you can manipulate the filesystem. Groovy is an ideal
       scripting language for manipulating text and working with files. To test
@@ -136,7 +136,7 @@
 </screen>
 
       <para>After running this example, list the contents of
-      \${basedir}/target/classes/deps.txt, and you should see the following
+      <filename>\${basedir}/target/classes/deps.txt</filename>, and you should see the following
       contents:</para>
 
       <programlisting db:wrap="force"

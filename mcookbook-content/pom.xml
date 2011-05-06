@@ -1,25 +1,29 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+<project
+  xmlns="http://maven.apache.org/POM/4.0.0"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+
   <modelVersion>4.0.0</modelVersion>
+
   <parent>
-	<groupId>org.sonatype.mcookbook</groupId>
-	<artifactId>mcookbook-parent</artifactId>
-	<version>0.3-SNAPSHOT</version>
+    <groupId>org.sonatype.mcookbook</groupId>
+    <artifactId>mcookbook-parent</artifactId>
+    <version>0.3-SNAPSHOT</version>
   </parent>
   <artifactId>mcookbook-content</artifactId>
   <packaging>jar</packaging>
   <name>Maven Cookbook Content</name>
   <build>
-    <sourceDirectory>src/main/resources</sourceDirectory>
     <resources>
       <resource>
-        <directory>src/main/resources</directory>
+        <directory>${src.main.resources}</directory>
         <filtering>true</filtering>
         <includes>
           <include>*.xml</include>
         </includes>
       </resource>
       <resource>
-        <directory>src/main/resources</directory>
+        <directory>${src.main.resources}</directory>
         <filtering>false</filtering>
         <excludes>
           <exclude>*.xml</exclude>
@@ -33,29 +37,12 @@
         <version>1.0</version>
         <extensions>true</extensions>
         <executions>
-<!--        	<execution>
-        		<id>validate-chapters</id>
-        		<phase>test</phase>
-        		<goals>
-        			<goal>validate-chapter-ids</goal>
-        		</goals>
-        	</execution> -->
-<!--        	<execution>
-        		<id>inject-examples</id>
-        		<phase>process-classes</phase>
-        		<goals>
-        			<goal>inject-examples</goal>
-        		</goals>
-        	</execution> -->
-<!--        	<execution>
-        		<id>wrappify</id>
-        		<goals>
-        			<goal>wrappify</goal>
-        		</goals>
-                <configuration>
-                  <columnLimit>79</columnLimit>
-                </configuration>
-        	</execution> -->
+          <!-- <execution> <id>validate-chapters</id> <phase>test</phase> 
+            <goals> <goal>validate-chapter-ids</goal> </goals> </execution> -->
+          <!-- <execution> <id>inject-examples</id> <phase>process-classes</phase> 
+            <goals> <goal>inject-examples</goal> </goals> </execution> -->
+          <!-- <execution> <id>wrappify</id> <goals> <goal>wrappify</goal> 
+            </goals> <configuration> <columnLimit>79</columnLimit> </configuration> </execution> -->
         </executions>
       </plugin>
       <plugin>
@@ -71,51 +58,51 @@
   </build>
   <profiles>
     <profile>
-        <id>publish</id>
-        <distributionManagement>
+      <id>publish</id>
+      <distributionManagement>
         <site>
           <id>sonatype-site</id>
           <name>Sonatype Book Examples</name>
           <url>scp://site@172.16.0.1/home/site/books/mcookbook/</url>
         </site>
-        </distributionManagement>
-        <properties>
-           <maven.book.baseurl>http://books.sonatype.com/maven-book</maven.book.baseurl>
-        </properties>
-      </profile>
+      </distributionManagement>
+      <properties>
+        <maven.book.baseurl>http://books.sonatype.com/maven-book</maven.book.baseurl>
+      </properties>
+    </profile>
     <profile>
-        <id>publish-external</id>
-        <distributionManagement>
+      <id>publish-external</id>
+      <distributionManagement>
         <site>
           <id>sonatype-site</id>
           <name>Sonatype Book Examples</name>
           <url>scp://site@svn.sonatype.com/home/site/books/mcookbook/</url>
         </site>
-        </distributionManagement>
-        <properties>
-           <maven.book.baseurl>http://books.sonatype.com/maven-book</maven.book.baseurl>
-        </properties>
-      </profile>
+      </distributionManagement>
+      <properties>
+        <maven.book.baseurl>http://books.sonatype.com/maven-book</maven.book.baseurl>
+      </properties>
+    </profile>
     <profile>
-        <id>stage</id>
-        <distributionManagement>
+      <id>stage</id>
+      <distributionManagement>
         <site>
           <id>sonatype-site</id>
           <name>Sonatype Book Examples</name>
           <url>scp://site@172.16.0.1/home/site/books/mcookbook-stage/</url>
         </site>
-        </distributionManagement>
-      </profile>
+      </distributionManagement>
+    </profile>
     <profile>
-        <id>stage-external</id>
-        <distributionManagement>
+      <id>stage-external</id>
+      <distributionManagement>
         <site>
           <id>sonatype-site</id>
           <name>Sonatype Book Examples</name>
           <url>scp://site@svn.sonatype.com/home/site/books/mcookbook-stage/</url>
         </site>
-        </distributionManagement>
-      </profile>
+      </distributionManagement>
+    </profile>
   </profiles>
   <dependencies>
     <dependency>
