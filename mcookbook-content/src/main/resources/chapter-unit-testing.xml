@@ -46,7 +46,7 @@
 &lt;/project&gt;</programlisting>
 
       <para>Your project should then store unit classes in the default
-      location of ${basedir}/src/test/java. The Maven Surefire plugin will
+      location of <filename>\${basedir}/src/test/java</filename>. The Maven Surefire plugin will
       scan these directory for JUnit tests. In this example, a component named
       SeriousComponent has a corresponding JUnit test named
       SeriousComponentTest.</para>
@@ -113,7 +113,7 @@ public class SeriousComponentTest extends TestCase {
       </example>
 
       <para>To execute your unit test, you don't need to do anything. Maven's
-      default settings are to scan ${basedir}/src/test/java for unit tests
+      default settings are to scan <filename>\${basedir}/src/test/java</filename> for unit tests
       matching the pattern <filename>*Test.java</filename>. To run your unit
       test specify the test phase of the default Maven lifecycle and run
       <command>mvn test</command>.</para>
@@ -165,7 +165,7 @@ Tests run: 1, Failures: 0, Errors: 0, Skipped: 0
       <title>Detail</title>
 
       <para>The test results will be made available in
-      ${basedir}/target/surefire-reports as both an XML file and a text
+      <filename>\${basedir}/target/surefire-reports</filename> as both an XML file and a text
       file.</para>
 
       <figure id="fig-unit_junit-directory-structure-results">
@@ -274,7 +274,7 @@ SeriousComponentTest.java:15)
 </programlisting>
 
       <para>You would then put your TestNG unit test classses in the
-      <filename>${basedir}/src/test/java</filename> directory. The following
+      <filename>\${basedir}/src/test/java</filename> directory. The following
       TestNG test uses Java 5 annotations to mark a class and a method as a
       TestNG test. The following TestNG unit test duplicates the JUnit test
       shown in <xref linkend="unit-sect-junit-run" />, and it tests the
@@ -301,8 +301,8 @@ public class SeriousComponentTest {
       </example>
 
       <para>There is no other configuration necessary to have Maven execute
-      any TestNG tests it locates under ${basedir}/src/test/java which match
-      the pattern <filename>s*Test.java</filename>. Running <command>mvn
+      any TestNG tests it locates under <filename>\${basedir}/src/test/java</filename> which match
+      the pattern <filename>*Test.java</filename>. Running <command>mvn
       test</command> will execute your TestNG unit tests.</para>
 
       <screen>$ <command>mvn test</command>
@@ -354,7 +354,7 @@ Tests run: 1, Failures: 0, Errors: 0, Skipped: 0
 
       <para>Once the TestNG unit tests have been executed, you will have a
       TestNG HTML report under
-      <filename>${basedir}/target/surfire-reports/index.html</filename>. To
+      <filename>\${basedir}/target/surfire-reports/index.html</filename>. To
       view a report which displays statistics about which tests failed and
       which tests passed, load this HTML page in a web browser.</para>
 
@@ -703,7 +703,7 @@ Tests run: 1, Failures: 0, Errors: 0, Skipped: 0
       <para>To illustrate executing tests in parallel, we can create a
       component to be tests that sleeps for 5 seconds. The following listing
       is the SeriousComponent.java class which would be stored in
-      ${basedir}/src/main/java under the org.sonatype.mcookbook
+      <filename>\${basedir}/src/main/java</filename> under the org.sonatype.mcookbook
       package:</para>
 
       <programlisting>package org.sonatype.mcookbook;
@@ -727,7 +727,7 @@ public class SeriousComponent {
       <para>This class has a single static method which sleeps for five
       seconds and then tests a string for the presence of the word "funny". To
       test this class, there is a SeriousComponentTest.java class in
-      <filename>${basedir}/src/test/java</filename> under the
+      <filename>\${basedir}/src/test/java</filename> under the
       org.sonatype.mcookbook package which contains the following four test
       methods:</para>
 

@@ -1,5 +1,10 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+<project
+  xmlns="http://maven.apache.org/POM/4.0.0"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+
   <modelVersion>4.0.0</modelVersion>
+
   <parent>
     <groupId>org.sonatype.mcookbook</groupId>
     <artifactId>mcookbook-parent</artifactId>
@@ -12,212 +17,213 @@
   <build>
     <resources>
       <resource>
-	<directory>src/main/resources</directory>
-	<filtering>true</filtering>
-	<includes>
-	  <include>fopdf.xsl</include>
-	</includes>
+        <directory>${src.main.resources}</directory>
+        <filtering>true</filtering>
+        <includes>
+          <include>fopdf.xsl</include>
+        </includes>
       </resource>
       <resource>
-	<directory>src/main/resources</directory>
-	<filtering>false</filtering>
-	<excludes>
-	  <exclude>fopdf.xsl</exclude>
-	</excludes>
+        <directory>${src.main.resources}</directory>
+        <filtering>false</filtering>
+        <excludes>
+          <exclude>fopdf.xsl</exclude>
+        </excludes>
       </resource>
     </resources>
     <plugins>
       <plugin>
-	<groupId>org.apache.maven.plugins</groupId>
-	<artifactId>maven-resources-plugin</artifactId>
-	<version>2.3</version>
-	<configuration>
-	  <escapeString>\</escapeString>
-	  <encoding>UTF-8</encoding>
-	</configuration>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-resources-plugin</artifactId>
+        <version>2.3</version>
+        <configuration>
+          <escapeString>\</escapeString>
+          <encoding>UTF-8</encoding>
+        </configuration>
       </plugin>
       <plugin>
-	<groupId>com.agilejava.docbkx</groupId>
-	<artifactId>docbkx-fop-support</artifactId>
-	<version>2.0.9</version>
-	<executions>
-	  <execution>
-	    <phase>generate-resources</phase>
-	    <goals>
-	      <goal>generate</goal>
-	    </goals>
-	    <configuration>
-	      <ansi>true</ansi>
-	    </configuration>
-	  </execution>
-	</executions>
+        <groupId>com.agilejava.docbkx</groupId>
+        <artifactId>docbkx-fop-support</artifactId>
+        <version>2.0.9</version>
+        <executions>
+          <execution>
+            <phase>generate-resources</phase>
+            <goals>
+              <goal>generate</goal>
+            </goals>
+            <configuration>
+              <ansi>true</ansi>
+            </configuration>
+          </execution>
+        </executions>
       </plugin>
       <plugin>
-	<groupId>com.agilejava.docbkx</groupId>
-	<artifactId>docbkx-maven-plugin</artifactId>
-	<version>2.0.9</version>
-	<dependencies>
-	  <dependency>
-	    <groupId>docbook</groupId>
-	    <artifactId>docbook-xml</artifactId>
-	    <version>4.5</version>
-	  </dependency>
-	  <dependency>
-	    <groupId>org.apache.fop</groupId>
-	    <artifactId>fop-pdf-images</artifactId>
-	    <version>1.3</version>
-	  </dependency>
-	  <dependency>
-	    <groupId>org.apache.fop</groupId>
-	    <artifactId>fop-pdf-images-res</artifactId>
-	    <version>1.3</version>
-	    <classifier>res</classifier>
-	  </dependency>
-	  <dependency>
-	    <groupId>pdfbox</groupId>
-	    <artifactId>pdfbox</artifactId>
-	    <version>0.7.4-dev</version>
-	    <classifier>dev</classifier>
-	  </dependency>
-	</dependencies>
-	<executions>
-	  <execution>
-	    <id>generate-pdf</id>
-	    <phase>compile</phase>
-	    <goals>
-	      <goal>generate-pdf</goal>
-	    </goals>
-	  </execution>
-	</executions>
-	<configuration>
-	  <sourceDirectory>${basedir}/target/docbook</sourceDirectory>
-	  <targetDirectory>${basedir}/target</targetDirectory>
-	  <includes>book-mcook.xml</includes>
-	  <xincludeSupported>true</xincludeSupported>
-	  <imgSrcPath>${basedir}/target/docbook/</imgSrcPath>
-	  <foCustomization>${basedir}/target/classes/fopdf.xsl</foCustomization>
-	  <bodyFontFamily>TimesNewRoman</bodyFontFamily>
-	  <monospaceFontFamily>Courier</monospaceFontFamily>
-	  <titleFontFamily>ArialBold</titleFontFamily>
-	  <fonts>
-	    <font>
-	      <name>Arial</name>
-	      <style>normal</style>
-	      <weight>normal</weight>
-	      <embedFile>${basedir}/src/fonts/Arial.ttf</embedFile>
-	      <metricsFile>${basedir}/target/fonts/Arial-metrics.xml</metricsFile>
+        <groupId>com.agilejava.docbkx</groupId>
+        <artifactId>docbkx-maven-plugin</artifactId>
+        <version>2.0.9</version>
+        <dependencies>
+          <dependency>
+            <groupId>docbook</groupId>
+            <artifactId>docbook-xml</artifactId>
+            <version>4.5</version>
+          </dependency>
+          <dependency>
+            <groupId>org.apache.fop</groupId>
+            <artifactId>fop-pdf-images</artifactId>
+            <version>1.3</version>
+          </dependency>
+          <dependency>
+            <groupId>org.apache.fop</groupId>
+            <artifactId>fop-pdf-images-res</artifactId>
+            <version>1.3</version>
+            <classifier>res</classifier>
+          </dependency>
+          <dependency>
+            <groupId>pdfbox</groupId>
+            <artifactId>pdfbox</artifactId>
+            <version>0.7.4-dev</version>
+            <classifier>dev</classifier>
+          </dependency>
+        </dependencies>
+        <executions>
+          <execution>
+            <id>generate-pdf</id>
+            <phase>compile</phase>
+            <goals>
+              <goal>generate-pdf</goal>
+            </goals>
+          </execution>
+        </executions>
+        <configuration>
+          <sourceDirectory>${project.build.directory}/docbook</sourceDirectory>
+          <targetDirectory>${project.build.directory}</targetDirectory>
+          <includes>book-mcook.xml</includes>
+          <xincludeSupported>true</xincludeSupported>
+          <imgSrcPath>${project.build.directory}/docbook/</imgSrcPath>
+          <foCustomization>${project.build.outputDirectory}/fopdf.xsl</foCustomization>
+          <bodyFontFamily>TimesNewRoman</bodyFontFamily>
+          <monospaceFontFamily>Courier</monospaceFontFamily>
+          <titleFontFamily>ArialBold</titleFontFamily>
+          <fonts>
+            <font>
+              <name>Arial</name>
+              <style>normal</style>
+              <weight>normal</weight>
+              <embedFile>${basedir}/src/fonts/Arial.ttf</embedFile>
+              <metricsFile>${project.build.directory}/fonts/Arial-metrics.xml</metricsFile>
 
-	    </font>
-	    <font>
-	      <name>ArialBold</name>
-	      <style>normal</style>
-	      <weight>normal</weight>
-	      <embedFile>${basedir}/src/fonts/ArialBold.ttf</embedFile>
-	      <metricsFile>${basedir}/target/fonts/ArialBold-metrics.xml</metricsFile>
+            </font>
+            <font>
+              <name>ArialBold</name>
+              <style>normal</style>
+              <weight>normal</weight>
+              <embedFile>${basedir}/src/fonts/ArialBold.ttf</embedFile>
+              <metricsFile>${project.build.directory}/fonts/ArialBold-metrics.xml</metricsFile>
 
-	    </font>
-	    <font>
-	      <name>Courier</name>
-	      <style>normal</style>
-	      <weight>normal</weight>
-	      <embedFile>${basedir}/src/fonts/Courier.ttf</embedFile>
-	      <metricsFile>${basedir}/target/fonts/Courier-metrics.xml</metricsFile>
+            </font>
+            <font>
+              <name>Courier</name>
+              <style>normal</style>
+              <weight>normal</weight>
+              <embedFile>${basedir}/src/fonts/Courier.ttf</embedFile>
+              <metricsFile>${project.build.directory}/fonts/Courier-metrics.xml</metricsFile>
 
-	    </font>
-	    <font>
-	      <name>Courier</name>
-	      <style>normal</style>
-	      <weight>bold</weight>
-	      <embedFile>${basedir}/src/fonts/Courier-Bold.ttf</embedFile>
-	      <metricsFile>${basedir}/target/fonts/Courier-Bold-metrics.xml</metricsFile>
+            </font>
+            <font>
+              <name>Courier</name>
+              <style>normal</style>
+              <weight>bold</weight>
+              <embedFile>${basedir}/src/fonts/Courier-Bold.ttf</embedFile>
+              <metricsFile>${project.build.directory}/fonts/Courier-Bold-metrics.xml</metricsFile>
 
-	    </font>
-	    <font>
-	      <name>Courier</name>
-	      <style>italic</style>
-	      <weight>normal</weight>
-	      <embedFile>${basedir}/src/fonts/Courier-Oblique.ttf</embedFile>
-	      <metricsFile>${basedir}/target/fonts/Courier-Oblique-metrics.xml</metricsFile>
+            </font>
+            <font>
+              <name>Courier</name>
+              <style>italic</style>
+              <weight>normal</weight>
+              <embedFile>${basedir}/src/fonts/Courier-Oblique.ttf</embedFile>
+              <metricsFile>${project.build.directory}/fonts/Courier-Oblique-metrics.xml</metricsFile>
 
-	    </font>
-	    <font>
-	      <name>TimesNewRoman</name>
-	      <style>normal</style>
-	      <weight>normal</weight>
-	      <embedFile>${basedir}/src/fonts/TimesNewRoman.ttf</embedFile>
-	      <metricsFile>${basedir}/target/fonts/TimesNewRoman-metrics.xml</metricsFile>
+            </font>
+            <font>
+              <name>TimesNewRoman</name>
+              <style>normal</style>
+              <weight>normal</weight>
+              <embedFile>${basedir}/src/fonts/TimesNewRoman.ttf</embedFile>
+              <metricsFile>${project.build.directory}/fonts/TimesNewRoman-metrics.xml</metricsFile>
 
-	    </font>
-	  </fonts>
-	</configuration>
+            </font>
+          </fonts>
+        </configuration>
       </plugin>
       <plugin>
-	<artifactId>maven-dependency-plugin</artifactId>
-	<executions>
-	  <execution>
-	    <id>unpack</id>
-	    <phase>generate-sources</phase>
-	    <goals>
-	      <goal>unpack</goal>
-	    </goals>
-	    <configuration>
-	      <artifactItems>
-		<artifactItem>
-		  <groupId>${project.groupId}</groupId>
-		  <artifactId>mcookbook-content</artifactId>
-		  <version>${project.version}</version>
-		</artifactItem>
-	      </artifactItems>
-	      <outputDirectory>${basedir}/target/docbook</outputDirectory>
-	    </configuration>
-	  </execution>
-	</executions>
+        <artifactId>maven-dependency-plugin</artifactId>
+        <executions>
+          <execution>
+            <id>unpack</id>
+            <phase>generate-sources</phase>
+            <goals>
+              <goal>unpack</goal>
+            </goals>
+            <configuration>
+              <artifactItems>
+                <artifactItem>
+                  <groupId>${project.groupId}</groupId>
+                  <artifactId>mcookbook-content</artifactId>
+                  <version>${project.version}</version>
+                </artifactItem>
+              </artifactItems>
+              <outputDirectory>${project.build.directory}/docbook</outputDirectory>
+            </configuration>
+          </execution>
+        </executions>
       </plugin>
       <plugin>
-	<groupId>org.apache.maven.plugins</groupId>
-	<artifactId>maven-install-plugin</artifactId>
-	<executions>
-	  <execution>
-	    <id>install-pdf</id>
-	    <phase>install</phase>
-	    <goals>
-	      <goal>install-file</goal>
-	    </goals>
-	    <configuration>
-	      <file>${basedir}/target/mcookbook-complete.pdf</file>
-	      <groupId>${groupId}</groupId>
-	      <artifactId>${artifactId}</artifactId>
-	      <version>${version}</version>
-	      <packaging>pdf</packaging>
-	    </configuration>
-	  </execution>
-	</executions>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-install-plugin</artifactId>
+        <version>2.3.1</version>
+        <executions>
+          <execution>
+            <id>install-pdf</id>
+            <phase>install</phase>
+            <goals>
+              <goal>install-file</goal>
+            </goals>
+            <configuration>
+              <file>${project.build.directory}/mcookbook-complete.pdf</file>
+              <groupId>${project.groupId}</groupId>
+              <artifactId>${project.artifactId}</artifactId>
+              <version>${project.version}</version>
+              <packaging>pdf</packaging>
+            </configuration>
+          </execution>
+        </executions>
       </plugin>
       <plugin>
-	<groupId>org.codehaus.cjcook</groupId>
-	<artifactId>pdf-plugin</artifactId>
-	<version>1.0</version>
-	<executions>
-	  <execution>
-	    <id>concat-pdfs</id>
-	    <phase>process-classes</phase>
-	    <goals>
-	      <goal>concatenate</goal>
-	    </goals>
-	    <configuration>
-	      <outputDir>${basedir}/target</outputDir>
-	      <outputFilename>mcookbook-complete.pdf</outputFilename>
-	      <pdfs>
-		<pdf>${basedir}/src/main/resources/mcookbook-book-cover.pdf</pdf>
-		<pdf>${basedir}/src/main/resources/title-page.pdf</pdf>
-		<pdf>${basedir}/src/main/resources/copyright-page.pdf</pdf>
-		<pdf>${basedir}/src/main/resources/promo-page.pdf</pdf>
-		<pdf>${basedir}/target/book-mcook.pdf</pdf>
-		<pdf>${basedir}/src/main/resources/promo-page.pdf</pdf>
-	      </pdfs>
-	    </configuration>
-	  </execution>
-	</executions>
+        <groupId>org.codehaus.cjcook</groupId>
+        <artifactId>pdf-plugin</artifactId>
+        <version>1.0</version>
+        <executions>
+          <execution>
+            <id>concat-pdfs</id>
+            <phase>process-classes</phase>
+            <goals>
+              <goal>concatenate</goal>
+            </goals>
+            <configuration>
+              <outputDir>${project.build.directory}</outputDir>
+              <outputFilename>mcookbook-complete.pdf</outputFilename>
+              <pdfs>
+                <pdf>${src.main.resources}/mcookbook-book-cover.pdf</pdf>
+                <pdf>${src.main.resources}/title-page.pdf</pdf>
+                <pdf>${src.main.resources}/copyright-page.pdf</pdf>
+                <pdf>${src.main.resources}/promo-page.pdf</pdf>
+                <pdf>${project.build.directory}/book-mcook.pdf</pdf>
+                <pdf>${src.main.resources}/promo-page.pdf</pdf>
+              </pdfs>
+            </configuration>
+          </execution>
+        </executions>
       </plugin>
     </plugins>
   </build>
@@ -232,63 +238,63 @@
     <profile>
       <id>publish-external</id>
       <properties>
-	<scribd.doc.id>17417371</scribd.doc.id>
+        <scribd.doc.id>17417371</scribd.doc.id>
       </properties>
       <build>
-	<plugins>
-	  <plugin>
-	    <groupId>org.codehaus.cjcook</groupId>
-	    <artifactId>scribd-plugin</artifactId>
-	    <version>1.0</version>
-	    <executions>
-	      <execution>
-		<id>publish-to-scribd</id>
-		<phase>install</phase>
-		<goals>
-		  <goal>publish</goal>
-		</goals>
-		<configuration>
-		  <apiKey>${scribd.api.key}</apiKey>
-		  <docId>${scribd.doc.id}</docId>
-		  <pdf>${basedir}/target/mcookbook-complete.pdf</pdf>
-		  <access>public</access>
-		  <downloadAndDrm>view-only</downloadAndDrm>
-		</configuration>
-	      </execution>
-	    </executions>
-	  </plugin>
-	</plugins>
+        <plugins>
+          <plugin>
+            <groupId>org.codehaus.cjcook</groupId>
+            <artifactId>scribd-plugin</artifactId>
+            <version>1.0</version>
+            <executions>
+              <execution>
+                <id>publish-to-scribd</id>
+                <phase>install</phase>
+                <goals>
+                  <goal>publish</goal>
+                </goals>
+                <configuration>
+                  <apiKey>${scribd.api.key}</apiKey>
+                  <docId>${scribd.doc.id}</docId>
+                  <pdf>${project.build.directory}/mcookbook-complete.pdf</pdf>
+                  <access>public</access>
+                  <downloadAndDrm>view-only</downloadAndDrm>
+                </configuration>
+              </execution>
+            </executions>
+          </plugin>
+        </plugins>
       </build>
     </profile>
     <profile>
       <id>stage-external</id>
       <properties>
-	<scribd.doc.id>17545757</scribd.doc.id>
+        <scribd.doc.id>17545757</scribd.doc.id>
       </properties>
       <build>
-	<plugins>
-	  <plugin>
-	    <groupId>org.codehaus.cjcook</groupId>
-	    <artifactId>scribd-plugin</artifactId>
-	    <version>1.0</version>
-	    <executions>
-	      <execution>
-		<id>publish-to-scribd</id>
-		<phase>install</phase>
-		<goals>
-		  <goal>publish</goal>
-		</goals>
-		<configuration>
-		  <apiKey>${scribd.api.key}</apiKey>
-		  <docId>${scribd.doc.id}</docId>
-		  <pdf>${basedir}/target/mcookbook-complete.pdf</pdf>
-		  <access>private</access>
-		  <downloadAndDrm>download-pdf</downloadAndDrm>
-		</configuration>
-	      </execution>
-	    </executions>
-	  </plugin>
-	</plugins>
+        <plugins>
+          <plugin>
+            <groupId>org.codehaus.cjcook</groupId>
+            <artifactId>scribd-plugin</artifactId>
+            <version>1.0</version>
+            <executions>
+              <execution>
+                <id>publish-to-scribd</id>
+                <phase>install</phase>
+                <goals>
+                  <goal>publish</goal>
+                </goals>
+                <configuration>
+                  <apiKey>${scribd.api.key}</apiKey>
+                  <docId>${scribd.doc.id}</docId>
+                  <pdf>${project.build.directory}/mcookbook-complete.pdf</pdf>
+                  <access>private</access>
+                  <downloadAndDrm>download-pdf</downloadAndDrm>
+                </configuration>
+              </execution>
+            </executions>
+          </plugin>
+        </plugins>
       </build>
     </profile>
   </profiles>
