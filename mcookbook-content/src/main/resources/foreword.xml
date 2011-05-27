@@ -6,47 +6,28 @@
 
   <para>This is an initial alpha version of the Maven Cookbook, and I mean
   "pre-alpha". If you are coming to the book with the expectation that this is
-  a polished product, please check back in a few months, we're going to be
-  developing this content over the next few months, and you should expect at
-  least two chapters a month for the next five or six. I'm convinced that this
-  will be a better book because people are going to have a window into the
-  process, you will be able to see the false starts, outline revisions, and
-  other parts of the writing process that are usually hidden from view. You'll
-  be able to give us feedback and reviews even before we've stated that the
-  content is ready for review.</para>
+  a polished product, please check back in a few months. I'm convinced that
+  this will be a better book because people are going to have a window into
+  the process, you will be able to see the false starts, outline revisions,
+  and other parts of the writing process that are usually hidden from view.
+  You'll be able to give us feedback and reviews even before we've stated that
+  the content is ready for review.</para>
 
   <para>Tim O'Brien, Sonatype</para>
 
-  <para>November, 2010</para>
+  <para>May, 2011</para>
 
   <para>Edition: ${project.version}</para>
 
   <section>
-    <title>Changes in Edition 0.3</title>
+    <title>Changes in Edition 0.4</title>
 
-    <para>The following changes were introduced in Edition 0.3:</para>
+    <para>The following changes were introduced in Edition 0.4:</para>
 
     <itemizedlist>
       <listitem>
-        <para>Update the book title to "The Maven Cookbook". (<ulink
-        url="https://issues.sonatype.org/browse/MVNCOOK-74">MVNCOOK-74</ulink>)</para>
-      </listitem>
-
-      <listitem>
-        <para>Removed versions from the cover of the PDF. (<ulink
-        url="https://issues.sonatype.org/browse/MVNCOOK-72">MVNCOOK-72</ulink>)</para>
-      </listitem>
-
-      <listitem>
-        <para>Updated the business address on the Copyright page. (<ulink
-        url="https://issues.sonatype.org/browse/MVNCOOK-71">MVNCOOK-71</ulink>)</para>
-      </listitem>
-
-      <listitem>
-        <para>Fixed a trivial error in <xref
-        linkend="osgi-sect-starting-osgi-container" />. "not you want" changed
-        to "now you want". (<ulink
-        url="https://issues.sonatype.org/browse/MVNCOOK-68">MVNCOOK-68</ulink>)</para>
+        <para>Various changes to support the generation of a new Sonatype
+        site.</para>
       </listitem>
     </itemizedlist>
   </section>

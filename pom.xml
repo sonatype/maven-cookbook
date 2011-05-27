@@ -7,7 +7,7 @@
 
   <groupId>org.sonatype.mcookbook</groupId>
   <artifactId>mcookbook-parent</artifactId>
-  <version>0.3-SNAPSHOT</version>
+  <version>0.4</version>
   <packaging>pom</packaging>
   <name>Maven Cookbook</name>
   <description>A Cookbook about Maven</description>
