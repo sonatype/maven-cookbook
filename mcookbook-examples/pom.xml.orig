@@ -6,9 +6,15 @@
   <modelVersion>4.0.0</modelVersion>
 
   <parent>
+<<<<<<< HEAD:mcookbook-examples/pom.xml
+	<groupId>org.sonatype.mcookbook</groupId>
+	<artifactId>mcookbook-parent</artifactId>
+	<version>0.3.1</version>
+=======
     <groupId>org.sonatype.mcookbook</groupId>
     <artifactId>mcookbook-parent</artifactId>
-    <version>0.4</version>
+    <version>0.5-SNAPSHOT</version>
+>>>>>>> master:mcookbook-examples/pom.xml
   </parent>
   <artifactId>mcookbook-examples</artifactId>
   <packaging>jar</packaging>

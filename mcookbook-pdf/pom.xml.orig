@@ -8,7 +8,11 @@
   <parent>
     <groupId>org.sonatype.mcookbook</groupId>
     <artifactId>mcookbook-parent</artifactId>
-    <version>0.4</version>
+<<<<<<< HEAD:mcookbook-pdf/pom.xml
+    <version>0.3.1</version>
+=======
+    <version>0.5-SNAPSHOT</version>
+>>>>>>> master:mcookbook-pdf/pom.xml
   </parent>
   <artifactId>mcookbook-pdf</artifactId>
   <packaging>jar</packaging>
@@ -120,6 +124,40 @@
               <embedFile>${basedir}/src/fonts/ArialBold.ttf</embedFile>
               <metricsFile>${project.build.directory}/fonts/ArialBold-metrics.xml</metricsFile>
 
+<<<<<<< HEAD:mcookbook-pdf/pom.xml
+	    </font>
+	    <font>
+	      <name>Courier</name>
+	      <style>normal</style>
+	      <weight>normal</weight>
+	      <embedFile>${basedir}/src/fonts/Courier.ttf</embedFile>
+	      <metricsFile>${basedir}/target/fonts/Courier-metrics.xml</metricsFile>
+	    </font>
+	    <font>
+	      <name>Courier</name>
+	      <style>normal</style>
+	      <weight>bold</weight>
+	      <embedFile>${basedir}/src/fonts/Courier-Bold.ttf</embedFile>
+	      <metricsFile>${basedir}/target/fonts/Courier-Bold-metrics.xml</metricsFile>
+	    </font>
+	    <font>
+	      <name>Courier</name>
+	      <style>italic</style>
+	      <weight>normal</weight>
+	      <embedFile>${basedir}/src/fonts/Courier-Oblique.ttf</embedFile>
+	      <metricsFile>${basedir}/target/fonts/Courier-Oblique-metrics.xml</metricsFile>
+
+	    </font>
+	    <font>
+	      <name>TimesNewRoman</name>
+	      <style>normal</style>
+	      <weight>normal</weight>
+	      <embedFile>${basedir}/src/fonts/TimesNewRoman.ttf</embedFile>
+	      <metricsFile>${basedir}/target/fonts/TimesNewRoman-metrics.xml</metricsFile>
+	    </font>
+	  </fonts>
+	</configuration>
+=======
             </font>
             <font>
               <name>Courier</name>
@@ -155,6 +193,7 @@
             </font>
           </fonts>
         </configuration>
+>>>>>>> master:mcookbook-pdf/pom.xml
       </plugin>
       <plugin>
         <artifactId>maven-dependency-plugin</artifactId>
