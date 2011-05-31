@@ -104,6 +104,7 @@
               <goal>mesh-velocity</goal>
             </goals>
             <configuration>
+				<bookId>mcookbook</bookId>
 				<bookTitle>The Maven Cookbook</bookTitle>
 				<velocityTemplate>${basedir}/target/book-site/vm/book-template.html</velocityTemplate>
             </configuration>
