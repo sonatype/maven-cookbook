@@ -29,7 +29,7 @@
                 <artifactItem>
                   <groupId>com.sonatype.book</groupId>
                   <artifactId>book-site</artifactId>
-                  <version>0.1-SNAPSHOT</version>
+                  <version>0.2-SNAPSHOT</version>
                 </artifactItem>
               </artifactItems>
               <outputDirectory>${basedir}/target/book-site</outputDirectory>
