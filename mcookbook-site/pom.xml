@@ -19,23 +19,6 @@
         <artifactId>maven-dependency-plugin</artifactId>
         <executions>
           <execution>
-            <id>unpack-template</id>
-            <phase>site</phase>
-            <goals>
-              <goal>unpack</goal>
-            </goals>
-            <configuration>
-              <artifactItems>
-                <artifactItem>
-                  <groupId>com.sonatype.book</groupId>
-                  <artifactId>book-site</artifactId>
-                  <version>0.2-SNAPSHOT</version>
-                </artifactItem>
-              </artifactItems>
-              <outputDirectory>${basedir}/target/book-site</outputDirectory>
-            </configuration>
-          </execution>
-          <execution>
             <id>unpack-html</id>
             <phase>site</phase>
             <goals>
@@ -106,7 +89,7 @@
             <configuration>
 				<bookId>mcookbook</bookId>
 				<bookTitle>The Maven Cookbook</bookTitle>
-				<velocityTemplate>${basedir}/target/book-site/vm/book-template.html</velocityTemplate>
+				<velocityTemplate>${basedir}/src/template/book-template.html</velocityTemplate>
             </configuration>
           </execution>
         </executions>
@@ -128,32 +111,4 @@
       </plugin>
     </plugins>
   </reporting>
-<profiles>
-  <profile>
-    <id>publish-external</id>
-    <distributionManagement>
-      <site>
-          <id>sonatype-site</id>
-          <name>Sonatype Book Examples</name>
-          <url>scp://deployer@sonatype-marketing01.managed.contegix.com/var/www/domains/sonatype.com/www/shared/books/mcookbook/</url>
-        </site>
-    </distributionManagement>
-    <properties>
-      <maven.book.baseurl>http://books.sonatype.com/maven-book</maven.book.baseurl>
-    </properties>
-  </profile>
-  <profile>
-    <id>stage-external</id>
-    <distributionManagement>
-      <site>
-          <id>sonatype-site</id>
-          <name>Sonatype Book Examples</name>
-          <url>scp://deployer@sonatype-marketing01.managed.contegix.com/var/www/domains/sonatype.com/www/shared/books/mcookbook-stage/</url>
-        </site>
-    </distributionManagement>
-  </profile>
-</profiles>
-  <dependencies>
-  </dependencies>
-
 </project>
