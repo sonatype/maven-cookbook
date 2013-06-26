@@ -10,3 +10,5 @@ cp -r mcookbook-site/target/site/pdf/mcookbook-pdf.pdf target/site/pdf/
 
 mkdir -p target/site/reference
 cp -rv mcookbook-site/target/site/reference/book-m2e/* target/site/reference
+
+cp mcookbook-examples/target/mcookbook-examples-0.5-SNAPSHOT-src.zip target/site/
