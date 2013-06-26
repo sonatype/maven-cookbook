@@ -1,9 +1,9 @@
 #!/bin/bash
 set -e
 
-mvn clean install
+#mvn clean install
 
-cd m2ebook-site
+cd mcookbook-site
 
 mvn site
 
