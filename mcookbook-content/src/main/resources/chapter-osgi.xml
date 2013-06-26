@@ -120,7 +120,7 @@
           </imageobject>
 
           <imageobject role="print">
-            <imagedata fileref="figs/print/osgi_osgi-project-filesystems.pdf" />
+            <imagedata fileref="figs/web/osgi_osgi-project-filesystems.png" align="center" scale="50" />
           </imageobject>
         </mediaobject>
       </figure>
@@ -544,7 +544,7 @@ org.mortbay.log:started /system/console/res
           </imageobject>
 
           <imageobject role="print">
-            <imagedata fileref="figs/print/osgi_felix-admin-console.pdf" />
+            <imagedata fileref="figs/web/osgi_felix-admin-console.png" align="center" scale="50"/>
           </imageobject>
         </mediaobject>
       </figure>
@@ -580,7 +580,7 @@ org.mortbay.log:started /system/console/res
           </imageobject>
 
           <imageobject role="print">
-            <imagedata fileref="figs/print/osgi_felix-admin-console-shell.pdf" />
+            <imagedata fileref="figs/web/osgi_felix-admin-console-shell.png" align="center" scale="50"/>
           </imageobject>
         </mediaobject>
       </figure>
@@ -600,7 +600,7 @@ org.mortbay.log:started /system/console/res
           </imageobject>
 
           <imageobject role="print">
-            <imagedata fileref="figs/print/osgi_felix-admin-console-system.pdf" />
+            <imagedata fileref="figs/web/osgi_felix-admin-console-system.png" scale="50"/>
           </imageobject>
         </mediaobject>
       </figure>
@@ -817,7 +817,7 @@ START LEVEL 6
           </imageobject>
 
           <imageobject role="print">
-            <imagedata fileref="figs/print/osgi_osgi-custom-bundle-fs.pdf" />
+            <imagedata fileref="figs/web/osgi_osgi-custom-bundle-fs.png" align="center" scale="50"/>
           </imageobject>
         </mediaobject>
       </figure>
@@ -1450,7 +1450,7 @@ Uploading: http://localhost:8081/nexus/content/repositories/snapshots/org/sonaty
           </imageobject>
 
           <imageobject role="print">
-            <imagedata fileref="figs/print/osgi_nexus-standard-repo.pdf" />
+            <imagedata fileref="figs/web/osgi_nexus-standard-repo.png" align="center" scale="50"/>
           </imageobject>
         </mediaobject>
       </figure>
@@ -1674,7 +1674,7 @@ REGISTER org.sonatype.mcookbook.ExampleService
           </imageobject>
 
           <imageobject role="print">
-            <imagedata fileref="figs/print/osgi_nexus-new-virtual-snapshots.pdf" />
+            <imagedata fileref="figs/web/osgi_nexus-new-virtual-snapshots.png" align="center" scale="50"/>
           </imageobject>
         </mediaobject>
       </figure>
@@ -1977,7 +1977,7 @@ REGISTER org.sonatype.mcookbook.ExampleService
           </imageobject>
 
           <imageobject role="print">
-            <imagedata fileref="figs/print/osgi_nexus-new-proxy-felix.pdf" />
+            <imagedata fileref="figs/web/osgi_nexus-new-proxy-felix.png" align="center" scale="50"/>
           </imageobject>
         </mediaobject>
       </figure>
@@ -2172,7 +2172,7 @@ START LEVEL 1
           </imageobject>
 
           <imageobject role="print">
-            <imagedata fileref="figs/print/osgi_nexus-proxy-cache-felix.pdf" />
+            <imagedata fileref="figs/web/osgi_nexus-proxy-cache-felix.png" align="center" scale="50"/>
           </imageobject>
         </mediaobject>
       </figure>
@@ -2271,7 +2271,7 @@ START LEVEL 1
           </imageobject>
 
           <imageobject role="print">
-            <imagedata fileref="figs/print/osgi_nexus-new-group.pdf" />
+            <imagedata fileref="figs/web/osgi_nexus-new-group.png" align="center" scale="50"/>
           </imageobject>
         </mediaobject>
       </figure>

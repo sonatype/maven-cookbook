@@ -60,7 +60,7 @@
           </imageobject>
 
           <imageobject role="print">
-            <imagedata fileref="figs/print/osgi_osgi-project-filesystems.pdf" />
+            <imagedata fileref="figs/web/osgi_osgi-project-filesystems.png" align="center" scale="50"/>
           </imageobject>
         </mediaobject>
       </figure>
@@ -177,7 +177,7 @@ Tests run: 1, Failures: 0, Errors: 0, Skipped: 0
           </imageobject>
 
           <imageobject role="print">
-            <imagedata fileref="figs/web/unit_junit-directory-structure-results.pdf" />
+            <imagedata fileref="figs/web/unit_junit-directory-structure-results.png" align="center" scale="50"/>
           </imageobject>
         </mediaobject>
       </figure>
@@ -367,7 +367,7 @@ Tests run: 1, Failures: 0, Errors: 0, Skipped: 0
           </imageobject>
 
           <imageobject role="print">
-            <imagedata fileref="figs/web/unit_testng-directory-structure-results.pdf" />
+            <imagedata fileref="figs/web/unit_testng-directory-structure-results.png" align="center" scale="50"/>
           </imageobject>
         </mediaobject>
       </figure>

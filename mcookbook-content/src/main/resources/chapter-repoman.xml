@@ -41,8 +41,8 @@
 
           <imageobject role="print">
             <imagedata align="center"
-                       fileref="figs/print/repoman_nexus-open-source-unauthenticated.pdf"
-                       scalefit="0" security="" width="100%" />
+                       fileref="figs/print/repoman_nexus-open-source-unauthenticated.png"
+                       scale="50" />
           </imageobject>
         </mediaobject>
       </figure>
@@ -63,8 +63,8 @@
 
           <imageobject role="print">
             <imagedata align="center"
-                       fileref="figs/print/repoman_nexus-login.pdf"
-                       scalefit="0" security="" width="100%" />
+                       fileref="figs/print/repoman_nexus-login.png"
+                       scale="50" />
           </imageobject>
         </mediaobject>
       </figure>
@@ -84,8 +84,8 @@
 
           <imageobject role="print">
             <imagedata align="center"
-                       fileref="figs/print/repoman_nexus-open-source-interface.pdf"
-                       scalefit="0" security="" width="100%" />
+                       fileref="figs/print/repoman_nexus-open-source-interface.png"
+                       scale="50" />
           </imageobject>
         </mediaobject>
       </figure>
@@ -124,8 +124,8 @@
 
           <imageobject role="print">
             <imagedata align="center"
-                       fileref="figs/print/repoman_open-repositories.pdf"
-                       scalefit="0" security="" width="100%" />
+                       fileref="figs/print/repoman_open-repositories.png"
+                       scale="50" />
           </imageobject>
         </mediaobject>
       </figure>
@@ -144,8 +144,8 @@
 
           <imageobject role="print">
             <imagedata align="center"
-                       fileref="figs/print/repoman_create-proxy.pdf"
-                       scalefit="0" security="" width="100%" />
+                       fileref="figs/print/repoman_create-proxy.png"
+                       scale="50" />
           </imageobject>
         </mediaobject>
       </figure>
@@ -204,8 +204,8 @@
 
           <imageobject role="print">
             <imagedata align="center"
-                       fileref="figs/print/repoman_browse-storage-repo-tab.pdf"
-                       scalefit="0" security="" width="100%" />
+                       fileref="figs/print/repoman_browse-storage-repo-tab.png"
+                       scale="50" />
           </imageobject>
         </mediaobject>
       </figure>
@@ -226,8 +226,8 @@
 
           <imageobject role="print">
             <imagedata align="center"
-                       fileref="figs/print/repoman_browse-index-repo-tab.pdf"
-                       scalefit="0" security="" width="100%" />
+                       fileref="figs/print/repoman_browse-index-repo-tab.png"
+                       scale="50" />
           </imageobject>
         </mediaobject>
       </figure>
@@ -263,8 +263,8 @@
 
           <imageobject role="print">
             <imagedata align="center"
-                       fileref="figs/print/repoman_configuration-repo-tab.pdf"
-                       scalefit="0" security="" width="100%" />
+                       fileref="figs/print/repoman_configuration-repo-tab.png"
+                       scale="50" />
           </imageobject>
         </mediaobject>
       </figure>
@@ -301,8 +301,8 @@
 
           <imageobject role="print">
             <imagedata align="center"
-                       fileref="figs/print/repoman_summary-repo-tab.pdf"
-                       scalefit="0" security="" width="100%" />
+                       fileref="figs/print/repoman_summary-repo-tab.png"
+                       scale="50" />
           </imageobject>
         </mediaobject>
       </figure>
@@ -341,8 +341,8 @@
 
           <imageobject role="print">
             <imagedata align="center"
-                       fileref="figs/print/repoman_mirror-repo-tab.pdf"
-                       scalefit="0" security="" width="100%" />
+                       fileref="figs/print/repoman_mirror-repo-tab.png"
+                       scale="50"/>
           </imageobject>
         </mediaobject>
       </figure>
@@ -404,8 +404,8 @@
 
           <imageobject role="print">
             <imagedata align="center"
-                       fileref="figs/print/repoman_add-to-group.pdf"
-                       scalefit="0" security="" width="100%" />
+                       fileref="figs/print/repoman_add-to-group.png"
+                       scale="50" />
           </imageobject>
         </mediaobject>
       </figure>
@@ -423,8 +423,8 @@
 
           <imageobject role="print">
             <imagedata align="center"
-                       fileref="figs/print/repoman_nexus-adding-new-group.pdf"
-                       scalefit="0" security="" width="100%" />
+                       fileref="figs/print/repoman_nexus-adding-new-group.png"
+                       scale="50"/>
           </imageobject>
         </mediaobject>
       </figure>
@@ -523,8 +523,8 @@
 
           <imageobject role="print">
             <imagedata align="center"
-                       fileref="figs/print/repoman_stage-allow-deploy-release.pdf"
-                       scalefit="0" security="" width="100%" />
+                       fileref="figs/print/repoman_stage-allow-deploy-release.png"
+                       scale="50"/>
           </imageobject>
         </mediaobject>
       </figure>
@@ -596,8 +596,8 @@
 
           <imageobject role="print">
             <imagedata align="center"
-                       fileref="figs/print/repoman_stage-create-stage-profile.pdf"
-                       scalefit="0" security="" width="100%" />
+                       fileref="figs/print/repoman_stage-create-stage-profile.png"
+                       scale="50"/>
           </imageobject>
         </mediaobject>
       </figure>
@@ -619,8 +619,8 @@
 
           <imageobject role="print">
             <imagedata align="center"
-                       fileref="figs/print/repoman_stage-roles.pdf"
-                       scalefit="0" security="" width="100%" />
+                       fileref="figs/print/repoman_stage-roles.png"
+                       scale="50" />
           </imageobject>
         </mediaobject>
       </figure>
